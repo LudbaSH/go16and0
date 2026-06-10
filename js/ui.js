@@ -64,6 +64,86 @@ const UI = (() => {
     return Engine.isEligible(occupant, sourceSlot);
   }
 
+  // ---- Theme (light / dark) ----
+  // The whole palette lives in CSS custom properties, so a theme is just a class on
+  // <body> that re-points those variables (see main.css body.light). The choice is
+  // the only thing we persist for theming.
+  const THEME_KEY = "16-0:theme";
+  const ICON = {
+    sun: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>',
+    moon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+    soundOn: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+    soundOff: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>',
+  };
+
+  function applyTheme(theme) {
+    const light = theme === "light";
+    document.body.classList.toggle("light", light);
+    const btn = document.getElementById("theme-button");
+    if (btn) btn.innerHTML = light ? ICON.moon : ICON.sun; // show the mode you'd switch to
+  }
+
+  function toggleTheme() {
+    const next = document.body.classList.contains("light") ? "dark" : "light";
+    localStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+  }
+
+  function updateSoundButton() {
+    const btn = document.getElementById("sound-button");
+    if (btn) btn.innerHTML = Sound.isMuted() ? ICON.soundOff : ICON.soundOn;
+  }
+
+  function toggleSound() {
+    Sound.toggleMute();
+    updateSoundButton();
+  }
+
+  // ---- Attempt history (local only, no account) ----
+  // A short rolling log of finished runs in localStorage so the menu can show the
+  // last few attempts. No personal data - just mode, outcome, record, and the names
+  // of the five you drafted. Disclosed on the privacy page.
+  const HISTORY_KEY = "16-0:history";
+  const HISTORY_CAP = 30;   // how many we keep
+  const HISTORY_SHOWN = 5;  // how many the menu previews
+
+  function loadHistory() {
+    try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
+    catch { return []; }
+  }
+
+  function saveAttempt(entry) {
+    const next = [entry, ...loadHistory()].slice(0, HISTORY_CAP);
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(next)); } catch { /* storage full/blocked: skip */ }
+  }
+
+  function clearHistory() {
+    localStorage.removeItem(HISTORY_KEY);
+    renderHistory();
+  }
+
+  function renderHistory() {
+    const wrap = document.getElementById("history");
+    if (!wrap) return;
+    const items = loadHistory();
+    if (!items.length) { wrap.classList.add("hidden"); wrap.innerHTML = ""; return; }
+
+    const rows = items.slice(0, HISTORY_SHOWN).map((it) => {
+      const mode = it.mode === "gauntlet" ? "Gauntlet" : "16-0";
+      const team = (it.team || []).join(" · ");
+      return `<li class="history-row history-${it.outcome}">
+        <span class="history-outcome">${it.label}</span>
+        <span class="history-mode">${mode}</span>
+        <span class="history-record">${it.record}</span>
+        <span class="history-team">${team}</span></li>`;
+    }).join("");
+
+    wrap.innerHTML = `<div class="history-head"><span>Recent attempts</span>
+        <button class="history-clear" data-action="clear-history" type="button">Clear</button></div>
+      <ul class="history-list">${rows}</ul>`;
+    wrap.classList.remove("hidden");
+  }
+
   // ---- Boot ----
   async function boot() {
     try {
@@ -76,6 +156,8 @@ const UI = (() => {
     bindMenu();
     bindDraftCourt();
     bindConfirm();
+    applyTheme(localStorage.getItem(THEME_KEY) === "light" ? "light" : "dark");
+    updateSoundButton();
     document.getElementById("speed-select").addEventListener("change", (event) => {
       speed = event.target.value;
     });
@@ -92,6 +174,7 @@ const UI = (() => {
       section.classList.toggle("hidden", section.dataset.screen !== id);
     });
     GameState.set({ screen: id });
+    if (id === "menu") renderHistory();
     if (id === "draft") renderDraft();
     if (id === "tournament") renderRound();
     if (id === "result") renderResult();
@@ -112,8 +195,13 @@ const UI = (() => {
         case "spin": doSpin(); break;
         case "start-run": startRun(); break;
         case "play-game": playGame(); break;
+        case "sim-round": simulateRound(); break;
         case "advance-round": advanceRound(); break;
         case "play-again": leaveRun("menu"); break;
+        case "retry-gauntlet": retryAsGauntlet(); break;
+        case "toggle-theme": toggleTheme(); break;
+        case "toggle-sound": toggleSound(); break;
+        case "clear-history": clearHistory(); break;
         case "open-howto": openMenu("howto"); break;
       }
     });
@@ -351,6 +439,7 @@ const UI = (() => {
       reel.classList.remove("is-spinning");
       reel.classList.add("settled");
       tintSpinStage(team);
+      Sound.settle();
       isSpinning = false;
       renderPicks();
       updateDraftProgress();
@@ -360,11 +449,13 @@ const UI = (() => {
 
     reel.classList.remove("settled");
     reel.classList.add("is-spinning");
+    const TOTAL_TICKS = 16;
     let ticks = 0;
     const interval = setInterval(() => {
       const random = pool[Math.floor(Math.random() * pool.length)];
       reel.textContent = random.name;
-      if (++ticks > 16) { clearInterval(interval); reveal(); }
+      Sound.tick(ticks / TOTAL_TICKS);
+      if (++ticks > TOTAL_TICKS) { clearInterval(interval); reveal(); }
     }, 80);
   }
 
@@ -619,6 +710,8 @@ const UI = (() => {
     advance.classList.add("hidden");
     advance.textContent = gameMode === "gauntlet" ? "Next Decade →" : "Next Round →";
     document.getElementById("play-game").classList.remove("hidden");
+    // Simulate-round only makes sense for a multi-game series, i.e. classic.
+    document.getElementById("sim-round").classList.toggle("hidden", gameMode !== "classic");
     updatePlayLabel();
     refreshPlayControls();
   }
@@ -668,14 +761,14 @@ const UI = (() => {
 
   function refreshPlayControls() {
     document.getElementById("play-game").disabled = animating;
+    document.getElementById("sim-round").disabled = animating;
   }
 
-  function playGame() {
-    if (animating) return;
+  // Simulate the next game of the current series and attach its box scores. Pure
+  // result - no DOM, no animation - so both the watched and the instant paths use it.
+  function createGame() {
     const state = GameState.get();
     const t = state.tournament;
-    if (t.status !== "playing") return;
-
     const oppLineup = Engine.autoFillLineup(t.opponent.roster, SLOTS);
     const yourRating = Engine.lineupScore(state.five);
     const oppRating = Engine.lineupScore(oppLineup);
@@ -691,9 +784,17 @@ const UI = (() => {
     game.yourBox = orderBoxBySlot(Engine.simulateBoxScore(Object.values(state.five), game.yourPoints), state.five);
     game.oppBox = orderBoxBySlot(Engine.simulateBoxScore(Object.values(oppLineup), game.oppPoints), oppLineup);
     game.oppName = t.opponent.name;
-
     currentGameNo = t.games.length + 1;
     game.no = currentGameNo; // kept so finished games can be relabeled and re-viewed
+    return game;
+  }
+
+  function playGame() {
+    if (animating) return;
+    const t = GameState.get().tournament;
+    if (t.status !== "playing") return;
+
+    const game = createGame();
     animating = true;
     // Mount the box score at zero so its rows stay put, then count the numbers up
     // alongside the score (no show/hide layout shift between games).
@@ -702,6 +803,17 @@ const UI = (() => {
     });
     refreshPlayControls();
     animateCountUp(game, boxAnim, () => commitGame(game));
+  }
+
+  // Classic only: blow through the rest of the current best-of-seven at once and land
+  // on the series-end state (final box + game picker). Skips the count-up entirely.
+  function simulateRound() {
+    if (animating) return;
+    const t = GameState.get().tournament;
+    if (t.status !== "playing") return;
+    while (t.yourWins < t.winsNeeded && t.oppWins < t.winsNeeded) {
+      commitGame(createGame()); // commitGame ends the series once a side clinches
+    }
   }
 
   function commitGame(game) {
@@ -738,6 +850,7 @@ const UI = (() => {
     t.status = youWon ? (runOver ? "won" : "playing") : "eliminated";
 
     document.getElementById("play-game").classList.add("hidden");
+    document.getElementById("sim-round").classList.add("hidden");
     showSpeedControl(false);
     const advance = document.getElementById("series-advance");
     advance.textContent = runOver
@@ -807,10 +920,47 @@ const UI = (() => {
           : "Knocked out. Build a stronger roster and try again.";
 
     renderFinalsMVP(t);
+    renderResultActions(t, isGauntlet, perfect);
+    recordAttempt(t, gameMode, five, perfect);
 
     const recap = document.getElementById("result-five");
     recap.innerHTML = "";
     SLOTS.forEach((slot) => { if (five[slot]) recap.appendChild(playerMini(slot, five[slot], mode)); });
+  }
+
+  // After a classic championship, offer to take the very same five into the gauntlet.
+  // The button copy leans on whether the run was a flawless 16-0 or just a title.
+  function renderResultActions(t, isGauntlet, perfect) {
+    const retry = document.getElementById("result-retry");
+    const offerGauntlet = t.status === "won" && !isGauntlet;
+    retry.classList.toggle("hidden", !offerGauntlet);
+    if (offerGauntlet) {
+      retry.textContent = perfect
+        ? "Take this team to the Gauntlet →"
+        : "Redeem this team in the Gauntlet →";
+    }
+  }
+
+  function retryAsGauntlet() {
+    GameState.set({ gameMode: "gauntlet", tournament: GameState.freshTournament() });
+    startRun(); // keeps the existing five; builds the gauntlet bracket from currentTeams
+  }
+
+  // Save this finished run to local history (once). The label mirrors the headline.
+  function recordAttempt(t, gameMode, five, perfect) {
+    if (t._recorded) return;
+    t._recorded = true;
+    const label = perfect
+      ? (gameMode === "gauntlet" ? "Perfect 7-0" : "Perfect 16-0")
+      : t.status === "won" ? "Champions" : "Eliminated";
+    saveAttempt({
+      ts: Date.now(),
+      mode: gameMode,
+      outcome: t.status === "won" ? (perfect ? "perfect" : "won") : "eliminated",
+      label,
+      record: `${t.totalWins}-${t.totalLosses}`,
+      team: SLOTS.map((slot) => five[slot] && initials(five[slot].name)).filter(Boolean),
+    });
   }
 
   // Finals MVP: the player on your roster with the best average stats across the final

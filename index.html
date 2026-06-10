@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>16-0 - Basketball Dynasty Simulator</title>
+  <title>16-0</title>
   <meta name="description" content="Build a team, run the playoffs, try to go 16-0. An independent basketball simulation game." />
 
   <!-- Fonts: Barlow Condensed (display) + Barlow (body). Loaded from Google Fonts;
@@ -41,11 +41,15 @@
   <!-- Top bar: wordmark + menu button -->
   <header class="flex items-center justify-between px-4 py-3">
     <button class="font-display text-2xl font-extrabold tracking-wider text-white ml-2 sm:ml-10" data-action="home" type="button" aria-label="Home">16-0</button>
-    <button class="btn-icon" id="menu-button" type="button" aria-label="Open menu" aria-haspopup="dialog">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="17" x2="20" y2="17" />
-      </svg>
-    </button>
+    <div class="flex items-center gap-1">
+      <button class="btn-icon" id="theme-button" data-action="toggle-theme" type="button" aria-label="Toggle light or dark mode"></button>
+      <button class="btn-icon" id="sound-button" data-action="toggle-sound" type="button" aria-label="Toggle sound"></button>
+      <button class="btn-icon" id="menu-button" type="button" aria-label="Open menu" aria-haspopup="dialog">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+      </button>
+    </div>
   </header>
 
   <main id="app" class="flex-1 flex flex-col w-full max-w-4xl mx-auto px-4 pb-8">
@@ -60,6 +64,7 @@
         <button class="btn btn-gold" data-action="go-mode" type="button">Start</button>
         <button class="btn btn-ghost" data-action="open-howto" type="button">How to Play</button>
       </div>
+      <div id="history" class="history hidden"></div>
     </section>
 
     <!-- Screen: mode select -->
@@ -136,6 +141,7 @@
       <div class="flex flex-col items-center gap-3 mt-6">
         <div class="flex gap-3 justify-center">
           <button class="btn btn-gold" id="play-game" data-action="play-game" type="button">Play Game 1</button>
+          <button class="btn btn-ghost hidden" id="sim-round" data-action="sim-round" type="button">Simulate Round</button>
           <button class="btn btn-gold hidden" id="series-advance" data-action="advance-round" type="button">Next Round &rarr;</button>
         </div>
         <label class="speed-control">Speed
@@ -158,20 +164,25 @@
       <p id="result-sub" class="text-muted mt-2 max-w-md"></p>
       <div id="result-mvp" class="result-mvp hidden"></div>
       <div id="result-five" class="bench mt-6"></div>
-      <button class="btn btn-gold mt-8" data-action="play-again" type="button">Play Again</button>
+      <div class="flex flex-col sm:flex-row gap-3 mt-8 justify-center">
+        <button class="btn btn-gold hidden" id="result-retry" data-action="retry-gauntlet" type="button">Try the Gauntlet &rarr;</button>
+        <button class="btn btn-ghost" data-action="play-again" type="button">Play Again</button>
+      </div>
     </section>
 
   </main>
 
   <footer class="site-footer">
-    <a class="btn-coffee" href="https://www.buymeacoffee.com/your-handle" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
-    <nav class="legal-links">
-      <a href="pages/about.html">About</a>
-      <a href="pages/privacy.html">Privacy</a>
-      <a href="pages/terms.html">Terms</a>
-    </nav>
     <p class="footer-disclaimer">16-0 is a fan-made game with no official link to the NBA, its teams, or its players. No affiliation or endorsement is implied.</p>
-    <p class="footer-fine">&copy; 2026 16-0 &middot; Player statistics sourced from public historical records.</p>
+    <div class="footer-bar">
+      <p class="footer-fine">&copy; 2026 16-0 &middot; Player statistics sourced from public historical records.</p>
+      <nav class="legal-links">
+        <a href="pages/about.html">About</a>
+        <a href="pages/privacy.html">Privacy</a>
+        <a href="pages/terms.html">Terms</a>
+        <a class="btn-coffee" href="https://www.buymeacoffee.com/your-handle" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+      </nav>
+    </div>
   </footer>
 
   <!-- Menu overlay: tabbed panel for How to Play / Settings / Policies -->
@@ -230,6 +241,7 @@
   <script src="js/state.js"></script>
   <script src="js/data-loader.js"></script>
   <script src="js/engine.js"></script>
+  <script src="js/sound.js"></script>
   <script src="js/dragdrop.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/main.js"></script>

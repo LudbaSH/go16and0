@@ -10,6 +10,8 @@
   --color-muted: #9aa6b2;
   --color-orange: #e8743b;
   --color-gold: #fbbf24;
+  --coffee-bg: #fbbf24;   /* Buy me a coffee button: gold in both themes */
+  --coffee-text: #000000; /* black text on the gold button in both themes */
   --radius: 10px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --duration: 200ms;
@@ -36,6 +38,35 @@ body.bg-court {
     radial-gradient(90% 60% at 50% 110%, rgba(0, 0, 0, 0.55), transparent 65%);
   background-attachment: fixed;
   background-repeat: no-repeat;
+}
+
+/* Light theme: re-point the palette variables (every component reads these) and
+   override the few hard-coded utility colors and the app-shell background. Gold and
+   the team/court colors are intentionally kept. */
+body.light {
+  --color-bg: #f3f5f8;
+  --color-surface: #ffffff;
+  --color-surface-2: #e4e8ee;
+  --color-text: #1a2129;
+  --color-muted: #5c6773;
+  color: var(--color-text);
+}
+body.bg-court.light {
+  background-color: #eef1f5;
+  background-image:
+    radial-gradient(70% 45% at 50% -5%, rgba(251, 191, 36, 0.16), transparent 70%),
+    radial-gradient(90% 60% at 50% 110%, rgba(0, 0, 0, 0.06), transparent 65%);
+}
+body.light .text-white { color: var(--color-text); }
+body.light .text-muted { color: var(--color-muted); }
+body.light .spin-stage { background: linear-gradient(180deg, #ffffff, #eef1f5); }
+/* The cards hard-code a dark gradient bottom; give them a light one so their
+   description text stays readable in light mode. */
+body.light .mode-card,
+body.light .era-card { background: linear-gradient(180deg, #ffffff, #e7ebf2); }
+body.light .mode-card:hover,
+body.light .era-card:hover {
+  box-shadow: 0 12px 28px rgba(20, 30, 50, 0.14), 0 0 0 1px rgba(251, 191, 36, 0.3);
 }
 
 /* Standalone content pages (about/privacy/terms) opt in with class="doc". */
@@ -138,8 +169,8 @@ body.bg-court {
 
 .btn-coffee {
   display: inline-block;
-  background: var(--color-gold);
-  color: #1a1206;
+  background: var(--coffee-bg);
+  color: var(--coffee-text);
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -488,20 +519,28 @@ body.bg-court {
 .player.locked:hover { transform: none; box-shadow: none; }
 
 /* ---- Tournament ---- */
+/* minmax(0,1fr) lets the side columns shrink below their content's natural width
+   instead of pushing the grid past the viewport (the cause of the mobile sideways
+   scroll). On narrow screens the two teams stack so each gets the full width. */
 .matchup {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   gap: 0.75rem;
   align-items: start;
   margin-top: 1rem;
 }
 .matchup-side {
+  min-width: 0;
   background: var(--color-surface);
   border: 1px solid var(--color-surface-2);
   border-top: 3px solid var(--color-surface-2); /* color set inline per team */
   border-radius: var(--radius);
   padding: 0.85rem;
   text-align: center;
+}
+@media (max-width: 640px) {
+  .matchup { grid-template-columns: 1fr; gap: 0.5rem; }
+  .vs { padding: 0.15rem 0; }
 }
 .vs {
   align-self: center;
@@ -515,6 +554,7 @@ body.bg-court {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  min-width: 0;
   background: var(--color-surface-2);
   border-radius: 6px;
   padding: 0.3rem 0.5rem;
@@ -535,7 +575,7 @@ body.bg-court {
   color: #15110a;
 }
 .mini-slot { font-family: "Barlow Condensed", sans-serif; font-weight: 700; color: var(--color-muted); width: 1.6rem; text-align: left; }
-.mini-name { flex: 1; text-align: left; }
+.mini-name { flex: 1; min-width: 0; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .player-mini .p-ovr { color: var(--color-gold); font-family: "Barlow Condensed", sans-serif; font-weight: 800; }
 
 .game-log {
@@ -724,6 +764,61 @@ body.bg-court {
   margin-top: 0.15rem;
 }
 
+/* Recent attempts preview on the main menu (from local history). */
+.history {
+  width: 100%;
+  max-width: 30rem;
+  margin: 2.5rem auto 0;
+  text-align: left;
+}
+.history-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+.history-clear {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.history-clear:hover { color: var(--color-gold); }
+.history-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.history-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-left: 3px solid var(--color-surface-2);
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+}
+.history-row.history-perfect { border-left-color: var(--color-gold); }
+.history-row.history-won { border-left-color: #2bb673; }
+.history-row.history-eliminated { border-left-color: #9aa6b2; }
+.history-outcome { font-family: "Barlow Condensed", sans-serif; font-weight: 800; }
+.history-mode { color: var(--color-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.history-record { font-variant-numeric: tabular-nums; font-weight: 700; }
+.history-team {
+  grid-column: 1 / -1;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+}
+
 /* ---- Draft picks list (spun team) ---- */
 .pick-list {
   width: 100%;
@@ -734,6 +829,8 @@ body.bg-court {
   gap: 0.4rem;
   max-height: 22rem;
   overflow-y: auto;
+  user-select: none; /* tapping a player drafts them; text selection just gets in the way */
+  -webkit-user-select: none;
   padding-right: 0.35rem;
   scrollbar-width: thin;
   scrollbar-color: var(--color-surface-2) transparent;
@@ -883,27 +980,46 @@ body.bg-court {
 
 /* ---- Footer ---- */
 /* Compact, centered stack: support button, legal nav, disclaimer, fine print. */
+/* Compact footer: a thin disclaimer line, then one horizontal bar with the
+   copyright on the left and the links + coffee button on the right. Wraps and
+   re-centers on narrow screens. */
 .site-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  gap: 0.6rem;
   color: var(--color-muted);
   font-size: 0.85rem;
-  padding: 1.25rem 1rem 1.5rem;
-  border-top: 1px solid var(--color-surface);
+  padding: 0.9rem 1.25rem 1.1rem;
+  border-top: 1px solid var(--color-surface-2);
 }
-.site-footer .btn-coffee { margin-bottom: 0.85rem; }
-.legal-links { display: flex; gap: 1rem; margin-bottom: 0.75rem; }
-.legal-links a { color: var(--color-muted); transition: color var(--duration) var(--ease); }
-.legal-links a:hover { color: var(--color-gold); }
 .footer-disclaimer {
-  max-width: 34rem;
-  margin: 0 auto 0.5rem;
-  font-size: 0.78rem;
+  max-width: 60rem;
+  margin: 0;
+  font-size: 0.74rem;
   line-height: 1.5;
+  text-align: center;
 }
-.footer-fine { margin: 0; font-size: 0.72rem; opacity: 0.8; }
+.footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  width: 100%;
+  max-width: 64rem;
+}
+.footer-fine { margin: 0; font-size: 0.72rem; opacity: 0.85; }
+.legal-links { display: flex; align-items: center; gap: 1rem; margin: 0; }
+/* Plain text links only - the coffee button keeps its own colors (see .btn-coffee). */
+.legal-links a:not(.btn-coffee) { color: var(--color-muted); transition: color var(--duration) var(--ease); }
+.legal-links a:not(.btn-coffee):hover { color: var(--color-gold); }
+.site-footer .btn-coffee { padding: 0.4rem 1rem; font-size: 0.82rem; }
+.btn-coffee:hover { color: var(--coffee-text); } /* stay readable; hover only brightens the gold */
+@media (max-width: 640px) {
+  .footer-bar { justify-content: center; }
+  .footer-fine { width: 100%; text-align: center; }
+}
 
 /* ---- Focus + reduced motion ---- */
 :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }

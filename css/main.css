@@ -10,8 +10,8 @@
   --color-muted: #9aa6b2;
   --color-orange: #e8743b;
   --color-gold: #fbbf24;
-  --coffee-bg: #fbbf24;   /* Buy me a coffee button: gold in both themes */
-  --coffee-text: #000000; /* black text on the gold button in both themes */
+  --support-bg: #fbbf24;   /* Support button: gold in both themes */
+  --support-text: #000000; /* black text on the gold button in both themes */
   --radius: 10px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --duration: 200ms;
@@ -74,7 +74,8 @@ body.light .era-card:hover {
 .doc h1, .doc h2 { font-family: "Barlow Condensed", system-ui, sans-serif; font-weight: 700; }
 .doc h1 { font-size: 2.25rem; }
 .doc h2 { font-size: 1.4rem; margin-top: 1.75rem; }
-.doc a { color: var(--color-gold); }
+/* Plain text links are gold; button-styled anchors keep their own colors. */
+.doc a:not(.btn) { color: var(--color-gold); }
 .doc ul { padding-left: 1.25rem; }
 
 /* A screen is one full view. It grows to fill the main column so the footer
@@ -167,10 +168,10 @@ body.light .era-card:hover {
 }
 .btn-icon:hover { background: var(--color-surface-2); }
 
-.btn-coffee {
+.btn-support {
   display: inline-block;
-  background: var(--coffee-bg);
-  color: var(--coffee-text);
+  background: var(--support-bg);
+  color: var(--support-text);
   font-family: "Barlow Condensed", system-ui, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -179,7 +180,7 @@ body.light .era-card:hover {
   border-radius: 999px;
   transition: transform var(--duration) var(--ease), filter var(--duration) var(--ease);
 }
-.btn-coffee:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(251, 191, 36, 0.3); }
+.btn-support:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(251, 191, 36, 0.3); }
 
 /* ---- Cards (mode + era) ---- */
 .mode-card,
@@ -979,9 +980,8 @@ body.light .era-card:hover {
 .link:hover { text-decoration: underline; }
 
 /* ---- Footer ---- */
-/* Compact, centered stack: support button, legal nav, disclaimer, fine print. */
 /* Compact footer: a thin disclaimer line, then one horizontal bar with the
-   copyright on the left and the links + coffee button on the right. Wraps and
+   copyright on the left and the links + support button on the right. Wraps and
    re-centers on narrow screens. */
 .site-footer {
   display: flex;
@@ -1011,11 +1011,11 @@ body.light .era-card:hover {
 }
 .footer-fine { margin: 0; font-size: 0.72rem; opacity: 0.85; }
 .legal-links { display: flex; align-items: center; gap: 1rem; margin: 0; }
-/* Plain text links only - the coffee button keeps its own colors (see .btn-coffee). */
-.legal-links a:not(.btn-coffee) { color: var(--color-muted); transition: color var(--duration) var(--ease); }
-.legal-links a:not(.btn-coffee):hover { color: var(--color-gold); }
-.site-footer .btn-coffee { padding: 0.4rem 1rem; font-size: 0.82rem; }
-.btn-coffee:hover { color: var(--coffee-text); } /* stay readable; hover only brightens the gold */
+/* Plain text links only - the support button keeps its own colors (see .btn-support). */
+.legal-links a:not(.btn-support) { color: var(--color-muted); transition: color var(--duration) var(--ease); }
+.legal-links a:not(.btn-support):hover { color: var(--color-gold); }
+.site-footer .btn-support { padding: 0.4rem 1rem; font-size: 0.82rem; }
+.btn-support:hover { color: var(--support-text); } /* stay readable; hover only brightens the gold */
 @media (max-width: 640px) {
   .footer-bar { justify-content: center; }
   .footer-fine { width: 100%; text-align: center; }

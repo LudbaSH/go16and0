@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16-0 - Basketball Dynasty Simulator</title>
+  <meta name="description" content="Build a team, run the playoffs, try to go 16-0. An independent basketball simulation game." />
+
+  <!-- Fonts: Barlow Condensed (display) + Barlow (body). Loaded from Google Fonts;
+       disclosed on the privacy page as a third-party request. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind via Play CDN. Disclosed on the privacy page as a third-party script. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            court: "#0f1115",
+            surface: "#181c22",
+            muted: "#9aa6b2",
+            orange: "#e8743b",
+            gold: "#fbbf24",
+          },
+          fontFamily: {
+            display: ['"Barlow Condensed"', "system-ui", "sans-serif"],
+            body: ["Barlow", "system-ui", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body class="bg-court text-[#e8edf2] font-body min-h-screen flex flex-col">
+
+  <!-- Top bar: wordmark + menu button -->
+  <header class="flex items-center justify-between px-4 py-3">
+    <button class="font-display text-2xl font-extrabold tracking-wider text-white ml-2 sm:ml-10" data-action="home" type="button" aria-label="Home">16-0</button>
+    <button class="btn-icon" id="menu-button" type="button" aria-label="Open menu" aria-haspopup="dialog">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="17" x2="20" y2="17" />
+      </svg>
+    </button>
+  </header>
+
+  <main id="app" class="flex-1 flex flex-col w-full max-w-4xl mx-auto px-4 pb-8">
+
+    <!-- Screen: main menu -->
+    <section class="screen" data-screen="menu" aria-labelledby="menu-title">
+      <h1 id="menu-title" class="font-display font-extrabold leading-none text-[clamp(4rem,18vw,9rem)] tracking-wide">16-0</h1>
+      <p class="text-muted uppercase tracking-[0.2em] text-sm mt-3">Go perfect. Or go home.</p>
+      <p class="text-xl sm:text-2xl font-display font-semibold mt-8 max-w-xl">Can you build a team that goes 16-0?</p>
+      <p class="text-muted mt-3 max-w-md">Spin a real playoff team, set your lineup, and run a perfect postseason. Sixteen wins. Zero losses.</p>
+      <div class="flex flex-col sm:flex-row gap-3 mt-8">
+        <button class="btn btn-gold" data-action="go-mode" type="button">Start</button>
+        <button class="btn btn-ghost" data-action="open-howto" type="button">How to Play</button>
+      </div>
+    </section>
+
+    <!-- Screen: mode select -->
+    <section class="screen hidden" data-screen="mode" aria-labelledby="mode-title">
+      <button class="btn-back" data-action="go-menu" type="button">&larr; Back</button>
+      <h2 id="mode-title" class="font-display text-4xl font-bold mt-2">Choose your mode</h2>
+      <p class="text-muted mt-2">How much do you want to know about your players?</p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-8 w-full">
+        <button class="mode-card" data-action="set-mode" data-mode="ratings" type="button">
+          <span class="font-display text-2xl font-bold">Ratings &amp; Stats</span>
+          <span class="text-muted text-sm mt-2">See every overall and stat line. Build with full information.</span>
+        </button>
+        <button class="mode-card" data-action="set-mode" data-mode="blind" type="button">
+          <span class="font-display text-2xl font-bold">Blind Build</span>
+          <span class="text-muted text-sm mt-2">Names only. No overalls, no stats. Trust your basketball gut.</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Screen: game mode select -->
+    <section class="screen hidden" data-screen="gamemode" aria-labelledby="gamemode-title">
+      <button class="btn-back" data-action="go-mode" type="button">&larr; Back</button>
+      <h2 id="gamemode-title" class="font-display text-4xl font-bold mt-2">Choose your challenge</h2>
+      <p class="text-muted mt-2">Both modes draft from every team in NBA history.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-8 w-full">
+        <button class="mode-card" data-action="set-gamemode" data-gamemode="classic" type="button">
+          <span class="font-display text-2xl font-bold">16-0</span>
+          <span class="text-muted text-sm mt-2">Four playoff rounds, best of seven. Win all sixteen for a perfect run.</span>
+        </button>
+        <button class="mode-card" data-action="set-gamemode" data-gamemode="gauntlet" type="button">
+          <span class="font-display text-2xl font-bold">Gauntlet 7-0</span>
+          <span class="text-muted text-sm mt-2">One game against the best team of every decade. Seven legends. One loss ends it.</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Screen: draft (spin a team, pick one player, repeat until five is full) -->
+    <section class="screen hidden items-stretch" data-screen="draft" aria-labelledby="draft-title">
+      <h2 id="draft-title" class="font-display text-3xl font-bold mt-0 text-center">Draft your roster</h2>
+      <p id="draft-progress" class="text-muted text-center"></p>
+
+      <div class="draft-layout">
+        <!-- Left column: spin reel, controls, and the spun team's draftable players -->
+        <div class="draft-left">
+          <div id="spin-stage" class="spin-stage" aria-live="polite">
+            <span id="spin-reel" class="spin-reel">Spin for a random team</span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 mt-4 justify-center">
+            <button class="btn btn-gold" id="spin-button" data-action="spin" type="button">Spin</button>
+            <button class="btn btn-gold hidden" id="draft-continue" data-action="start-run" type="button">Enter Playoffs &rarr;</button>
+          </div>
+          <p id="respins-left" class="text-muted text-sm text-center mt-2"></p>
+
+          <div id="pick-controls" class="mt-4"></div>
+          <div class="pick-list" id="draft-picks"></div>
+        </div>
+
+        <!-- Right column: the half-court -->
+        <div class="draft-right">
+          <div class="court" id="draft-court"></div>
+          <div id="player-detail" class="player-detail" aria-live="polite"></div>
+          <p id="court-hint" class="court-hint" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen: tournament (4 rounds, best-of-7) -->
+    <section class="screen hidden items-stretch" data-screen="tournament" aria-labelledby="tournament-title">
+      <h2 id="tournament-title" class="font-display text-3xl font-bold mt-2 text-center">Playoffs</h2>
+      <p id="tournament-status" class="text-muted text-center"></p>
+      <div id="matchup" class="matchup"></div>
+      <div id="series-status" class="text-center font-display text-2xl font-bold mt-4"></div>
+      <div id="scoreboard" class="scoreboard" aria-live="polite"></div>
+      <div class="flex flex-col items-center gap-3 mt-6">
+        <div class="flex gap-3 justify-center">
+          <button class="btn btn-gold" id="play-game" data-action="play-game" type="button">Play Game 1</button>
+          <button class="btn btn-gold hidden" id="series-advance" data-action="advance-round" type="button">Next Round &rarr;</button>
+        </div>
+        <label class="speed-control">Speed
+          <select id="speed-select" aria-label="Score animation speed">
+            <option value="slow">Slow</option>
+            <option value="normal" selected>Normal</option>
+            <option value="fast">Fast</option>
+          </select>
+        </label>
+      </div>
+      <div id="box-tabs" class="box-tabs"></div>
+      <div id="statsheet" class="statsheet"></div>
+      <div id="game-log" class="game-log"></div>
+    </section>
+
+    <!-- Screen: result -->
+    <section class="screen hidden" data-screen="result" aria-labelledby="result-title">
+      <h2 id="result-title" class="font-display text-5xl font-extrabold mt-4"></h2>
+      <p id="result-record" class="font-display text-3xl mt-2"></p>
+      <p id="result-sub" class="text-muted mt-2 max-w-md"></p>
+      <div id="result-mvp" class="result-mvp hidden"></div>
+      <div id="result-five" class="bench mt-6"></div>
+      <button class="btn btn-gold mt-8" data-action="play-again" type="button">Play Again</button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <a class="btn-coffee" href="https://www.buymeacoffee.com/your-handle" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+    <nav class="legal-links">
+      <a href="pages/about.html">About</a>
+      <a href="pages/privacy.html">Privacy</a>
+      <a href="pages/terms.html">Terms</a>
+    </nav>
+    <p class="footer-disclaimer">16-0 is a fan-made game with no official link to the NBA, its teams, or its players. No affiliation or endorsement is implied.</p>
+    <p class="footer-fine">&copy; 2026 16-0 &middot; Player statistics sourced from public historical records.</p>
+  </footer>
+
+  <!-- Menu overlay: tabbed panel for How to Play / Settings / Policies -->
+  <div class="overlay hidden" id="menu-overlay" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="overlay-panel">
+      <button class="btn-icon overlay-close" id="menu-close" type="button" aria-label="Close menu">&times;</button>
+      <div class="overlay-tabs" role="tablist">
+        <button class="overlay-tab" data-tab="howto" role="tab" type="button">How to Play</button>
+        <button class="overlay-tab" data-tab="settings" role="tab" type="button">Settings</button>
+        <button class="overlay-tab" data-tab="policies" role="tab" type="button">Policies</button>
+      </div>
+
+      <div class="overlay-content" data-panel="howto">
+        <ol class="list-decimal pl-5 space-y-2">
+          <li>Pick how much you want to know: full ratings and stats, or a blind build.</li>
+          <li>Choose your challenge: <b>16-0</b> (four best-of-seven rounds) or <b>Gauntlet 7-0</b> (one game versus each decade's best team).</li>
+          <li>Spin to reveal a real team from any era, then draft one player from it.</li>
+          <li>Repeat until your starting five is complete, one per position.</li>
+          <li>Win every game. A single perfect run is the whole goal.</li>
+        </ol>
+        <h3 class="font-display font-bold text-lg mt-5">How games are decided</h3>
+        <p class="text-muted text-sm mt-2">Each lineup gets a strength score: the average overall of your roster, plus a small bonus for scoring punch (points per game). The two scores are compared, the home side gets a small edge, and a bit of random swing is added so upsets can happen. Later rounds face tougher opponents, so a clean 16-0 is meant to be hard.</p>
+      </div>
+
+      <div class="overlay-content hidden" data-panel="settings">
+        <label class="setting-row">
+          <span>Reduce motion</span>
+          <input type="checkbox" id="setting-reduce-motion" />
+        </label>
+        <p class="text-muted text-sm mt-3">Your browser's system setting for reduced motion is also respected automatically.</p>
+      </div>
+
+      <div class="overlay-content hidden" data-panel="policies">
+        <ul class="space-y-2">
+          <li><a class="link" href="pages/about.html">About &amp; Disclaimer</a></li>
+          <li><a class="link" href="pages/privacy.html">Privacy Policy</a></li>
+          <li><a class="link" href="pages/terms.html">Terms of Use</a></li>
+        </ul>
+        <p class="text-muted text-sm mt-4">This is an independent fan project. Not affiliated with, endorsed by, or sponsored by the NBA, NBPA, or any team or player.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm dialog: leaving a run from the home logo -->
+  <div class="overlay hidden" id="confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="confirm-text">
+    <div class="overlay-panel confirm-panel">
+      <p id="confirm-text" class="text-lg">Quit the current run and return to the main menu? Your progress will be lost.</p>
+      <div class="flex gap-3 mt-6 justify-end">
+        <button class="btn btn-ghost" id="confirm-no" type="button">Keep Playing</button>
+        <button class="btn btn-gold" id="confirm-yes" type="button">Quit Run</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load order: state, data, engine, drag, UI, then bootstrap. -->
+  <script src="js/state.js"></script>
+  <script src="js/data-loader.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/dragdrop.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

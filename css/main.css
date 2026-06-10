@@ -1,0 +1,918 @@
+/* 16-0 custom styles. Tailwind handles layout utilities; this file holds the
+   components Tailwind cannot express cleanly: buttons, the half-court, the spin
+   reel, drag states, and the menu overlay. Palette mirrors tailwind.config. */
+
+:root {
+  --color-bg: #0f1115;
+  --color-surface: #181c22;
+  --color-surface-2: #20262e;
+  --color-text: #e8edf2;
+  --color-muted: #9aa6b2;
+  --color-orange: #e8743b;
+  --color-gold: #fbbf24;
+  --radius: 10px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: 200ms;
+}
+
+/* Base layer. Index.html also sets these via Tailwind utility classes (which win
+   on that page); this keeps the standalone legal pages themed without Tailwind. */
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Barlow", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+.screen, .site-footer, .overlay { font-family: inherit; }
+
+/* Depth on the app shell: a faint warm glow up top and a soft vignette below, over
+   a near-black base. Higher specificity than Tailwind's bg-court so the color stays
+   but the gradient layers on. Fixed so it doesn't scroll. */
+body.bg-court {
+  background-color: #0b0d11;
+  background-image:
+    radial-gradient(70% 45% at 50% -5%, rgba(251, 191, 36, 0.07), transparent 70%),
+    radial-gradient(90% 60% at 50% 110%, rgba(0, 0, 0, 0.55), transparent 65%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Standalone content pages (about/privacy/terms) opt in with class="doc". */
+.doc { max-width: 60rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.doc h1, .doc h2 { font-family: "Barlow Condensed", system-ui, sans-serif; font-weight: 700; }
+.doc h1 { font-size: 2.25rem; }
+.doc h2 { font-size: 1.4rem; margin-top: 1.75rem; }
+.doc a { color: var(--color-gold); }
+.doc ul { padding-left: 1.25rem; }
+
+/* A screen is one full view. It grows to fill the main column so the footer
+   stays pinned to the bottom of the viewport instead of bouncing with content.
+   JS toggles Tailwind's .hidden (display:none) so only one screen is ever laid out. */
+.screen {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  padding-top: 0.25rem;
+  animation: screen-in var(--duration) var(--ease);
+}
+/* Short, hero-style screens read better centered in the available height. */
+.screen[data-screen="menu"],
+.screen[data-screen="result"] {
+  justify-content: center;
+  padding-top: 0;
+}
+
+@keyframes screen-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero wordmark: a whisper of warm glow so it lifts off the dark backdrop. */
+#menu-title { text-shadow: 0 0 48px rgba(251, 191, 36, 0.10); }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 1.8rem;
+  border: none;
+  border-radius: var(--radius);
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--duration) var(--ease),
+              filter var(--duration) var(--ease),
+              box-shadow var(--duration) var(--ease),
+              border-color var(--duration) var(--ease),
+              background-color var(--duration) var(--ease);
+}
+
+.btn-gold { background: var(--color-gold); color: #1a1206; }
+.btn-orange { background: var(--color-orange); color: #fff; }
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-surface-2);
+}
+.btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.btn:active { transform: translateY(1px); filter: brightness(1); }
+.btn-gold:hover { box-shadow: 0 8px 24px rgba(251, 191, 36, 0.28); }
+.btn-ghost:hover { background: var(--color-surface); border-color: rgba(251, 191, 36, 0.55); }
+
+.btn-back {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  transition: color var(--duration) var(--ease);
+}
+.btn-back:hover { color: var(--color-text); }
+
+.btn-icon {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-surface-2);
+  border-radius: var(--radius);
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--duration) var(--ease);
+}
+.btn-icon:hover { background: var(--color-surface-2); }
+
+.btn-coffee {
+  display: inline-block;
+  background: var(--color-gold);
+  color: #1a1206;
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  transition: transform var(--duration) var(--ease), filter var(--duration) var(--ease);
+}
+.btn-coffee:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 8px 22px rgba(251, 191, 36, 0.3); }
+
+/* ---- Cards (mode + era) ---- */
+.mode-card,
+.era-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  background: linear-gradient(180deg, var(--color-surface), #14181e);
+  border: 1px solid var(--color-surface-2);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: transform var(--duration) var(--ease),
+              border-color var(--duration) var(--ease),
+              box-shadow var(--duration) var(--ease),
+              background-color var(--duration) var(--ease);
+}
+.mode-card:hover,
+.era-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-gold);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(251, 191, 36, 0.22);
+}
+.mode-card.selected,
+.era-card.selected { border-color: var(--color-gold); }
+
+/* Cards rise in with a small stagger after the screen fades in. */
+.mode-card { animation: rise-in 380ms var(--ease) both; }
+.mode-card:nth-child(2) { animation-delay: 90ms; }
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.era-card {
+  align-items: center;
+  text-align: center;
+  min-height: 96px;
+  justify-content: center;
+}
+.era-card .era-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 1.25rem; }
+.era-card .era-years { color: var(--color-muted); font-size: 0.85rem; }
+
+.era-card.locked {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.era-card.locked:hover { transform: none; border-color: var(--color-surface-2); }
+.era-card .era-badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  margin-top: 0.35rem;
+}
+
+/* ---- Spin ---- */
+.spin-stage {
+  width: 100%;
+  max-width: 22rem;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, var(--color-surface), #14181e);
+  border: 1px solid var(--color-surface-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+/* The reel glows gold while spinning and holds a soft glow once it settles,
+   echoing 82-0's lit-up spin boxes but in our palette. */
+.spin-stage:has(.is-spinning) {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.35), inset 0 0 36px rgba(251, 191, 36, 0.12);
+}
+.spin-stage:has(.settled) {
+  border-color: color-mix(in srgb, var(--accent, var(--color-gold)) 55%, transparent);
+  box-shadow: 0 0 26px color-mix(in srgb, var(--accent, var(--color-gold)) 22%, transparent);
+}
+.spin-reel {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.1rem, 4vw, 1.7rem);
+  line-height: 1.05;
+  text-align: center;
+  padding: 0 0.75rem;
+}
+.spin-reel.is-spinning {
+  filter: blur(1px);
+  opacity: 0.85;
+  animation: reel-pulse 120ms linear infinite;
+}
+.spin-reel.settled {
+  color: var(--accent, var(--color-gold));
+  animation: reel-pop 320ms var(--ease);
+}
+.spin-reel .reel-year { display: block; font-size: 0.85em; color: var(--color-muted); }
+@keyframes reel-pulse { 50% { transform: translateY(-2px); } }
+@keyframes reel-pop { 0% { transform: scale(0.85); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
+
+/* ---- Draft layout: spin reel + picks on the left, half-court on the right ---- */
+.draft-layout {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.25rem;
+  align-items: center;
+}
+.draft-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Stacked on mobile: court first so the tap-to-place target stays in view. */
+.draft-right { width: 100%; order: -1; }
+@media (min-width: 768px) {
+  .draft-layout { flex-direction: row; align-items: flex-start; justify-content: center; }
+  .draft-left { width: 22rem; flex: none; order: 0; }
+  .draft-right { flex: 1; order: 0; }
+  .draft-right .court { margin-top: 0; }
+}
+
+/* ---- Half court ---- */
+/* Realistic light-hardwood floor with faint plank lines and white court markings. */
+.court {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  aspect-ratio: 1 / 0.82;
+  margin: 1.5rem auto 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 40px),
+    linear-gradient(180deg, #c79a63 0%, #b9893f 100%);
+  border: 2px solid rgba(255,255,255,0.55);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+/* Paint / key */
+.court::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 38%;
+  border: 2px solid rgba(255,255,255,0.55);
+  border-top: none;
+}
+/* Three-point arc + free-throw circle */
+.court::after {
+  content: "";
+  position: absolute;
+  top: -28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  height: 78%;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 0 0 50% 50%;
+}
+
+.slot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 4.4rem;
+  height: 4.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.75);
+  border-radius: 50%;
+  background: rgba(15,17,21,0.45);
+  transition: border-color var(--duration) var(--ease),
+              background-color var(--duration) var(--ease),
+              transform var(--duration) var(--ease);
+  z-index: 1;
+}
+.slot .slot-label {
+  position: absolute;
+  bottom: -1.2rem;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+/* Highlight slots an actively dragged player is eligible for. */
+.slot.eligible {
+  border-color: var(--color-gold);
+  background: rgba(251,191,36,0.18);
+}
+.slot.drop-hover { transform: translate(-50%, -50%) scale(1.08); }
+
+/* Detail card for the highlighted court player: full name, positions, then stats.
+   Hidden (collapsed + faded) until .show is added, then it slides/fades in. */
+.player-detail {
+  width: 100%;
+  max-width: 24rem;
+  margin: 0.85rem auto 0;
+  padding: 0 0.75rem;
+  border-left: 3px solid var(--accent, var(--color-gold));
+  text-align: left;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  transition: opacity var(--duration) var(--ease),
+              transform var(--duration) var(--ease),
+              max-height var(--duration) var(--ease);
+}
+.player-detail.show {
+  opacity: 1;
+  max-height: 6rem;
+  transform: translateY(0);
+  padding: 0.4rem 0.75rem;
+}
+.player-detail .pd-name {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  color: var(--color-text);
+}
+.player-detail .pd-pos {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--accent, var(--color-gold));
+}
+.player-detail .pd-stats {
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  margin-top: 0.15rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .player-detail { transition: none; }
+}
+
+/* Prompt under the court that guides placing/moving the active player. */
+.court-hint {
+  min-height: 1.4rem;
+  margin: 0.85rem auto 0;
+  max-width: 28rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-gold);
+}
+
+/* Slot positions mirror a real half-court diagram (basket at top):
+   PF + C flank the paint up high, SF on the left wing, SG on the right wing,
+   PG out front at the top of the key. */
+.slot[data-slot="PF"] { left: 28%; top: 22%; }
+.slot[data-slot="C"]  { left: 70%; top: 18%; }
+.slot[data-slot="SF"] { left: 16%; top: 48%; }
+.slot[data-slot="SG"] { left: 86%; top: 52%; }
+.slot[data-slot="PG"] { left: 50%; top: 78%; }
+
+/* ---- Player chips / bench ---- */
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  background: var(--color-surface-2);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 8px;
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+.player:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.35); border-color: rgba(251,191,36,0.45); }
+.player.dragging { opacity: 0.45; }
+
+/* Chip inside a court slot is round and compact. Neutral by default so it only
+   draws attention once selected. */
+/* Placed chip keeps its team's color (--accent, set inline) as a ring + faint tint
+   so the court reads as a real lineup of franchises. Falls back to neutral. */
+.slot .player {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent, var(--color-surface-2)) 16%, var(--color-surface-2));
+  color: var(--color-text);
+  border: 2px solid var(--accent, rgba(255,255,255,0.18));
+}
+/* The selected chip deepens its team color and glows; its eligible targets breathe. */
+.slot .player.selected {
+  background: color-mix(in srgb, var(--accent, var(--color-gold)) 34%, var(--color-surface-2));
+  border-color: #fff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, var(--color-gold)) 55%, transparent);
+}
+/* Court node shows 2-letter initials big, overall small underneath. */
+.player .p-init { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 1.15rem; line-height: 1; letter-spacing: 0.02em; }
+.player .p-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 0.8rem; line-height: 1; text-align: center; }
+.player .p-meta { font-size: 0.68rem; color: var(--color-muted); }
+.player .p-ovr {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: 0.78rem;
+  color: var(--color-gold);
+}
+
+/* Slots a selected player can move to or swap with. Pulses to invite a tap;
+   also carries a static highlight so reduced-motion users still see the targets. */
+.slot.breathing {
+  border-color: var(--color-gold);
+  background: rgba(251,191,36,0.16);
+  animation: breathe 1.4s var(--ease) infinite;
+}
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,0.0); }
+  50% { box-shadow: 0 0 0 6px rgba(251,191,36,0.22); }
+}
+
+.bench {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: 0.75rem;
+  min-height: 4rem;
+}
+.bench .player-mini { min-width: 9rem; }
+
+/* A pick that cannot be drafted right now (already owned, or no open slot). */
+.player.locked { opacity: 0.4; cursor: not-allowed; }
+.player.locked:hover { transform: none; box-shadow: none; }
+
+/* ---- Tournament ---- */
+.matchup {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  margin-top: 1rem;
+}
+.matchup-side {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-top: 3px solid var(--color-surface-2); /* color set inline per team */
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  text-align: center;
+}
+.vs {
+  align-self: center;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+.opp-year { color: var(--color-muted); font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.mini-five { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.5rem; }
+.player-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-surface-2);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+}
+/* Initial-avatar square; background color is set inline (team or gold). */
+.mini-av {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: 0.72rem;
+  color: #15110a;
+}
+.mini-slot { font-family: "Barlow Condensed", sans-serif; font-weight: 700; color: var(--color-muted); width: 1.6rem; text-align: left; }
+.mini-name { flex: 1; text-align: left; }
+.player-mini .p-ovr { color: var(--color-gold); font-family: "Barlow Condensed", sans-serif; font-weight: 800; }
+
+.game-log {
+  margin: 1rem auto 0;
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.game-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  background: var(--color-surface);
+  border-left: 3px solid transparent;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+}
+.game-row.win { border-color: var(--color-gold); }
+.game-row.loss { border-color: #9aa6b2; }
+
+/* Live game scoreboard with the count-up score. */
+.scoreboard { text-align: center; margin-top: 1rem; min-height: 4.5rem; }
+.sb-label {
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+.sb-score {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 9vw, 3.2rem);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.sb-score .sb-dash { color: var(--color-muted); }
+.sb-score .won { color: var(--color-gold); }
+
+.confirm-panel { max-width: 26rem; text-align: left; }
+
+/* Score-animation speed picker, sits beside the play button. */
+.speed-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-muted);
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.speed-control select {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-radius: 8px;
+  color: var(--color-text);
+  font: inherit;
+  padding: 0.4rem 0.5rem;
+  cursor: pointer;
+}
+
+/* Post-game box score: a small title over two tables (your roster | opponent). */
+.statsheet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1rem auto 0;
+  width: 100%;
+  max-width: 40rem;
+  animation: screen-in 240ms var(--ease);
+}
+.statsheet:empty { display: none; }
+.ss-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+.ss-tables {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  width: 100%;
+}
+.ss-table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  flex: 1 1 16rem;
+  max-width: 20rem;
+}
+.ss-table th, .ss-table td { padding: 0.3rem 0.4rem; text-align: right; }
+.ss-table thead th {
+  font-family: "Barlow Condensed", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  border-bottom: 1px solid var(--color-surface-2);
+}
+.ss-table th.ss-team { text-align: left; font-size: 0.95rem; font-weight: 800; }
+.ss-table td.ss-name { text-align: left; display: flex; align-items: center; gap: 0.45rem; }
+.ss-table tbody tr:nth-child(odd) { background: rgba(255,255,255,0.02); }
+/* Standout of each five (most pts + reb + ast). Listed after the zebra rule so it
+   wins on source order. */
+.ss-table tbody tr.ss-top { background: color-mix(in srgb, var(--color-gold) 16%, transparent); }
+.ss-table tbody tr.ss-top td { font-weight: 700; color: var(--color-text); }
+.ss-table tbody td { font-variant-numeric: tabular-nums; }
+.ss-av {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: 0.66rem;
+  color: #15110a;
+}
+
+/* Game picker shown at series end: one pill per game, click to view its box score. */
+.box-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 1rem auto 0;
+}
+.box-tabs:empty { display: none; }
+.box-tab {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+.box-tab:hover { color: var(--color-text); }
+.box-tab.active { color: #1a1206; background: var(--color-gold); border-color: var(--color-gold); }
+
+/* Finals MVP card on the result screen. */
+.result-mvp {
+  margin: 1.25rem auto 0;
+  padding: 0.85rem 1.75rem;
+  border: 1px solid var(--color-surface-2);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(251,191,36,0.08), transparent);
+}
+.result-mvp .mvp-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--color-gold);
+}
+.result-mvp .mvp-name {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+.result-mvp .mvp-stats {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin-top: 0.15rem;
+}
+
+/* ---- Draft picks list (spun team) ---- */
+.pick-list {
+  width: 100%;
+  max-width: 30rem;
+  margin: 0.6rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-height: 22rem;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-surface-2) transparent;
+}
+.pick-list::-webkit-scrollbar { width: 8px; }
+.pick-list::-webkit-scrollbar-thumb {
+  background: var(--color-surface-2);
+  border-radius: 999px;
+}
+.pick-row {
+  width: 100%;
+  text-align: left;
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-radius: 8px;
+  padding: 0.4rem 0.65rem;
+  cursor: pointer;
+  transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+.pick-row:hover { transform: translateX(3px); border-color: var(--color-gold); box-shadow: inset 3px 0 0 var(--color-gold); }
+.pick-row.selected { border-color: var(--color-gold); box-shadow: 0 0 0 1px var(--color-gold); }
+.pick-row.locked { opacity: 0.4; cursor: not-allowed; }
+.pick-row.locked:hover { transform: none; border-color: var(--color-surface-2); }
+.pick-head { display: flex; align-items: baseline; gap: 0.5rem; }
+.pick-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 0.98rem; line-height: 1.1; }
+.pick-pos { color: var(--color-muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.pick-ovr { margin-left: auto; font-family: "Barlow Condensed", sans-serif; font-weight: 800; color: var(--color-gold); }
+.pick-stats { color: var(--color-muted); font-size: 0.72rem; margin-top: 0.05rem; line-height: 1.2; }
+
+/* Ratings-mode filters: search, position chips, and sort. */
+.pick-controls {
+  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+}
+.pick-search {
+  flex: 1 1 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-radius: 8px;
+  color: var(--color-text);
+  padding: 0.32rem 0.6rem;
+  font: inherit;
+  font-size: 0.85rem;
+}
+.pick-search::placeholder { color: var(--color-muted); }
+.pick-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.pick-chip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+.pick-chip:hover { color: var(--color-text); }
+.pick-chip.active { color: #1a1206; background: var(--color-gold); border-color: var(--color-gold); }
+.pick-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pick-sort select {
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-radius: 8px;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.78rem;
+  padding: 0.2rem 0.45rem;
+}
+
+/* The floating clone that follows the pointer during a drag. */
+.drag-ghost {
+  position: fixed;
+  z-index: 60;
+  pointer-events: none;
+  width: 6rem;
+  opacity: 0.95;
+  transform: translate(-50%, -50%);
+}
+
+/* ---- Menu overlay ---- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+  animation: screen-in 150ms var(--ease);
+}
+.overlay-panel {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.overlay-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.overlay-tabs { display: flex; gap: 0.5rem; margin: 0.5rem 0 1.25rem; }
+.overlay-tab {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.2rem;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+.overlay-tab:hover { color: var(--color-text); }
+.overlay-tab.active { color: var(--color-text); border-color: var(--color-gold); }
+
+.setting-row { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0; }
+.link { color: var(--color-gold); }
+.link:hover { text-decoration: underline; }
+
+/* ---- Footer ---- */
+/* Compact, centered stack: support button, legal nav, disclaimer, fine print. */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  padding: 1.25rem 1rem 1.5rem;
+  border-top: 1px solid var(--color-surface);
+}
+.site-footer .btn-coffee { margin-bottom: 0.85rem; }
+.legal-links { display: flex; gap: 1rem; margin-bottom: 0.75rem; }
+.legal-links a { color: var(--color-muted); transition: color var(--duration) var(--ease); }
+.legal-links a:hover { color: var(--color-gold); }
+.footer-disclaimer {
+  max-width: 34rem;
+  margin: 0 auto 0.5rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+.footer-fine { margin: 0; font-size: 0.72rem; opacity: 0.8; }
+
+/* ---- Focus + reduced motion ---- */
+:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+/* Manual toggle from the Settings panel. */
+body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}

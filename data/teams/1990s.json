@@ -1,0 +1,178 @@
+[
+  {
+    "id": "bulls-1996",
+    "name": "Chicago Bulls",
+    "season": "1995-96",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Michael Jordan", "positions": ["SG", "SF"], "overall": 99, "stats": { "ppg": 30.4, "rpg": 6.6, "apg": 4.3, "spg": 2.2, "bpg": 0.5, "fg": 0.495, "tp": 0.427, "ft": 0.834 } },
+      { "name": "Scottie Pippen", "positions": ["SF", "PG"], "overall": 92, "stats": { "ppg": 19.4, "rpg": 6.4, "apg": 5.9, "spg": 1.7, "bpg": 0.6, "fg": 0.463, "tp": 0.374, "ft": 0.679 } },
+      { "name": "Dennis Rodman", "positions": ["PF", "C"], "overall": 84, "stats": { "ppg": 5.5, "rpg": 14.9, "apg": 2.5, "spg": 0.6, "bpg": 0.4, "fg": 0.480, "tp": 0.111, "ft": 0.528 } },
+      { "name": "Toni Kukoc", "positions": ["SF", "PF"], "overall": 80, "stats": { "ppg": 13.1, "rpg": 4.0, "apg": 3.5, "spg": 0.9, "bpg": 0.5, "fg": 0.490, "tp": 0.403, "ft": 0.772 } },
+      { "name": "Ron Harper", "positions": ["PG", "SG"], "overall": 75, "stats": { "ppg": 7.4, "rpg": 2.7, "apg": 2.6, "spg": 1.3, "bpg": 0.6, "fg": 0.467, "tp": 0.283, "ft": 0.705 } },
+      { "name": "Steve Kerr", "positions": ["PG", "SG"], "overall": 73, "stats": { "ppg": 8.4, "rpg": 1.3, "apg": 2.3, "spg": 0.8, "bpg": 0.1, "fg": 0.506, "tp": 0.515, "ft": 0.929 } },
+      { "name": "Luc Longley", "positions": ["C", "PF"], "overall": 72, "stats": { "ppg": 9.1, "rpg": 5.1, "apg": 1.9, "spg": 0.4, "bpg": 0.8, "fg": 0.482, "tp": 0.0, "ft": 0.774 } },
+      { "name": "Bill Wennington", "positions": ["C", "PF"], "overall": 65, "stats": { "ppg": 5.3, "rpg": 2.7, "apg": 0.8, "spg": 0.4, "bpg": 0.3, "fg": 0.488, "tp": 0.0, "ft": 0.812 } }
+    ]
+  },
+  {
+    "id": "rockets-1994",
+    "name": "Houston Rockets",
+    "season": "1993-94",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Hakeem Olajuwon", "positions": ["C", "PF"], "overall": 97, "stats": { "ppg": 27.3, "rpg": 11.9, "apg": 3.6, "spg": 1.6, "bpg": 3.7, "fg": 0.528, "tp": 0.421, "ft": 0.716 } },
+      { "name": "Otis Thorpe", "positions": ["PF", "C"], "overall": 80, "stats": { "ppg": 14.0, "rpg": 10.6, "apg": 2.4, "spg": 0.9, "bpg": 0.4, "fg": 0.561, "tp": 0.0, "ft": 0.630 } },
+      { "name": "Vernon Maxwell", "positions": ["SG", "PG"], "overall": 76, "stats": { "ppg": 13.4, "rpg": 2.8, "apg": 4.6, "spg": 1.6, "bpg": 0.2, "fg": 0.393, "tp": 0.344, "ft": 0.755 } },
+      { "name": "Robert Horry", "positions": ["SF", "PF"], "overall": 76, "stats": { "ppg": 9.9, "rpg": 5.4, "apg": 2.9, "spg": 1.7, "bpg": 1.2, "fg": 0.459, "tp": 0.308, "ft": 0.732 } },
+      { "name": "Kenny Smith", "positions": ["PG", "SG"], "overall": 75, "stats": { "ppg": 12.8, "rpg": 2.0, "apg": 4.1, "spg": 1.0, "bpg": 0.1, "fg": 0.478, "tp": 0.397, "ft": 0.832 } },
+      { "name": "Sam Cassell", "positions": ["PG", "SG"], "overall": 74, "stats": { "ppg": 9.5, "rpg": 2.3, "apg": 3.4, "spg": 1.0, "bpg": 0.2, "fg": 0.451, "tp": 0.346, "ft": 0.808 } },
+      { "name": "Mario Elie", "positions": ["SG", "SF"], "overall": 72, "stats": { "ppg": 9.3, "rpg": 3.0, "apg": 2.5, "spg": 1.0, "bpg": 0.2, "fg": 0.499, "tp": 0.388, "ft": 0.751 } },
+      { "name": "Carl Herrera", "positions": ["PF"], "overall": 66, "stats": { "ppg": 7.0, "rpg": 4.0, "apg": 0.9, "spg": 0.6, "bpg": 0.5, "fg": 0.501, "tp": 0.0, "ft": 0.683 } }
+    ]
+  },
+  {
+    "id": "suns-1993",
+    "name": "Phoenix Suns",
+    "season": "1992-93",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Charles Barkley", "positions": ["PF", "SF"], "overall": 95, "stats": { "ppg": 25.6, "rpg": 12.2, "apg": 5.1, "spg": 1.6, "bpg": 1.0, "fg": 0.520, "tp": 0.305, "ft": 0.765 } },
+      { "name": "Kevin Johnson", "positions": ["PG", "SG"], "overall": 84, "stats": { "ppg": 16.1, "rpg": 2.6, "apg": 7.8, "spg": 1.5, "bpg": 0.4, "fg": 0.499, "tp": 0.231, "ft": 0.819 } },
+      { "name": "Dan Majerle", "positions": ["SG", "SF"], "overall": 80, "stats": { "ppg": 16.9, "rpg": 4.9, "apg": 3.8, "spg": 1.9, "bpg": 0.3, "fg": 0.459, "tp": 0.382, "ft": 0.770 } },
+      { "name": "Cedric Ceballos", "positions": ["SF", "PF"], "overall": 74, "stats": { "ppg": 12.8, "rpg": 5.6, "apg": 0.9, "spg": 0.7, "bpg": 0.3, "fg": 0.576, "tp": 0.200, "ft": 0.725 } },
+      { "name": "Danny Ainge", "positions": ["SG", "PG"], "overall": 74, "stats": { "ppg": 11.8, "rpg": 2.7, "apg": 3.3, "spg": 1.0, "bpg": 0.1, "fg": 0.461, "tp": 0.402, "ft": 0.857 } },
+      { "name": "Richard Dumas", "positions": ["SF"], "overall": 73, "stats": { "ppg": 15.8, "rpg": 4.6, "apg": 1.4, "spg": 1.1, "bpg": 0.6, "fg": 0.524, "tp": 0.0, "ft": 0.671 } },
+      { "name": "Tom Chambers", "positions": ["PF", "C"], "overall": 72, "stats": { "ppg": 12.2, "rpg": 4.2, "apg": 1.3, "spg": 0.6, "bpg": 0.4, "fg": 0.463, "tp": 0.200, "ft": 0.812 } },
+      { "name": "Mark West", "positions": ["C", "PF"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 6.3, "apg": 0.4, "spg": 0.3, "bpg": 1.5, "fg": 0.614, "tp": 0.0, "ft": 0.646 } }
+    ]
+  },
+  {
+    "id": "magic-1995",
+    "name": "Orlando Magic",
+    "season": "1994-95",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Shaquille O'Neal", "positions": ["C", "PF"], "overall": 95, "stats": { "ppg": 29.3, "rpg": 11.4, "apg": 2.7, "spg": 0.9, "bpg": 2.4, "fg": 0.583, "tp": 0.0, "ft": 0.533 } },
+      { "name": "Anfernee Hardaway", "positions": ["PG", "SG"], "overall": 89, "stats": { "ppg": 20.9, "rpg": 4.4, "apg": 7.2, "spg": 1.7, "bpg": 0.3, "fg": 0.512, "tp": 0.349, "ft": 0.769 } },
+      { "name": "Horace Grant", "positions": ["PF"], "overall": 80, "stats": { "ppg": 12.8, "rpg": 9.7, "apg": 2.7, "spg": 1.0, "bpg": 1.0, "fg": 0.567, "tp": 0.0, "ft": 0.684 } },
+      { "name": "Nick Anderson", "positions": ["SG", "SF"], "overall": 79, "stats": { "ppg": 15.8, "rpg": 5.4, "apg": 4.0, "spg": 1.6, "bpg": 0.5, "fg": 0.476, "tp": 0.415, "ft": 0.700 } },
+      { "name": "Dennis Scott", "positions": ["SF"], "overall": 74, "stats": { "ppg": 12.7, "rpg": 3.0, "apg": 1.8, "spg": 1.0, "bpg": 0.3, "fg": 0.440, "tp": 0.400, "ft": 0.810 } },
+      { "name": "Brian Shaw", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 5.6, "rpg": 3.1, "apg": 5.2, "spg": 1.0, "bpg": 0.2, "fg": 0.419, "tp": 0.355, "ft": 0.728 } },
+      { "name": "Donald Royal", "positions": ["SF"], "overall": 64, "stats": { "ppg": 7.5, "rpg": 3.2, "apg": 1.3, "spg": 0.6, "bpg": 0.3, "fg": 0.469, "tp": 0.0, "ft": 0.799 } },
+      { "name": "Tree Rollins", "positions": ["C", "PF"], "overall": 60, "stats": { "ppg": 2.0, "rpg": 2.6, "apg": 0.2, "spg": 0.2, "bpg": 1.0, "fg": 0.478, "tp": 0.0, "ft": 0.643 } }
+    ]
+  },
+  {
+    "id": "jazz-1997",
+    "name": "Utah Jazz",
+    "season": "1996-97",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Karl Malone", "positions": ["PF"], "overall": 94, "stats": { "ppg": 27.4, "rpg": 9.9, "apg": 4.5, "spg": 1.4, "bpg": 0.6, "fg": 0.550, "tp": 0.0, "ft": 0.755 } },
+      { "name": "John Stockton", "positions": ["PG", "SG"], "overall": 90, "stats": { "ppg": 14.4, "rpg": 2.8, "apg": 10.5, "spg": 2.0, "bpg": 0.2, "fg": 0.548, "tp": 0.422, "ft": 0.822 } },
+      { "name": "Jeff Hornacek", "positions": ["SG", "PG"], "overall": 80, "stats": { "ppg": 14.5, "rpg": 2.9, "apg": 4.0, "spg": 1.5, "bpg": 0.1, "fg": 0.482, "tp": 0.441, "ft": 0.900 } },
+      { "name": "Bryon Russell", "positions": ["SF"], "overall": 74, "stats": { "ppg": 10.8, "rpg": 4.5, "apg": 1.6, "spg": 1.4, "bpg": 0.3, "fg": 0.473, "tp": 0.362, "ft": 0.746 } },
+      { "name": "Greg Ostertag", "positions": ["C", "PF"], "overall": 68, "stats": { "ppg": 7.3, "rpg": 7.3, "apg": 0.5, "spg": 0.4, "bpg": 2.1, "fg": 0.534, "tp": 0.0, "ft": 0.563 } },
+      { "name": "Shandon Anderson", "positions": ["SF", "SG"], "overall": 67, "stats": { "ppg": 7.3, "rpg": 3.0, "apg": 1.4, "spg": 0.9, "bpg": 0.2, "fg": 0.540, "tp": 0.333, "ft": 0.664 } },
+      { "name": "Antoine Carr", "positions": ["PF", "C"], "overall": 66, "stats": { "ppg": 7.7, "rpg": 2.6, "apg": 0.7, "spg": 0.3, "bpg": 0.6, "fg": 0.497, "tp": 0.0, "ft": 0.816 } },
+      { "name": "Howard Eisley", "positions": ["PG", "SG"], "overall": 64, "stats": { "ppg": 4.7, "rpg": 1.2, "apg": 2.6, "spg": 0.6, "bpg": 0.1, "fg": 0.422, "tp": 0.371, "ft": 0.806 } }
+    ]
+  },
+  {
+    "id": "knicks-1994",
+    "name": "New York Knicks",
+    "season": "1993-94",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Patrick Ewing", "positions": ["C", "PF"], "overall": 90, "stats": { "ppg": 24.5, "rpg": 11.2, "apg": 2.3, "spg": 1.1, "bpg": 2.7, "fg": 0.496, "tp": 0.286, "ft": 0.765 } },
+      { "name": "John Starks", "positions": ["SG"], "overall": 80, "stats": { "ppg": 19.0, "rpg": 3.1, "apg": 5.9, "spg": 1.5, "bpg": 0.2, "fg": 0.421, "tp": 0.331, "ft": 0.754 } },
+      { "name": "Charles Oakley", "positions": ["PF"], "overall": 79, "stats": { "ppg": 11.8, "rpg": 11.8, "apg": 3.0, "spg": 1.5, "bpg": 0.3, "fg": 0.478, "tp": 0.0, "ft": 0.706 } },
+      { "name": "Anthony Mason", "positions": ["PF", "SF"], "overall": 75, "stats": { "ppg": 7.9, "rpg": 7.2, "apg": 3.0, "spg": 0.9, "bpg": 0.4, "fg": 0.476, "tp": 0.0, "ft": 0.713 } },
+      { "name": "Derek Harper", "positions": ["PG", "SG"], "overall": 75, "stats": { "ppg": 10.0, "rpg": 2.0, "apg": 5.3, "spg": 1.5, "bpg": 0.1, "fg": 0.442, "tp": 0.375, "ft": 0.766 } },
+      { "name": "Charles Smith", "positions": ["PF", "C"], "overall": 73, "stats": { "ppg": 12.4, "rpg": 5.0, "apg": 1.0, "spg": 0.5, "bpg": 1.3, "fg": 0.487, "tp": 0.0, "ft": 0.719 } },
+      { "name": "Hubert Davis", "positions": ["SG"], "overall": 68, "stats": { "ppg": 8.5, "rpg": 1.4, "apg": 1.6, "spg": 0.5, "bpg": 0.1, "fg": 0.457, "tp": 0.424, "ft": 0.819 } },
+      { "name": "Greg Anthony", "positions": ["PG", "SG"], "overall": 67, "stats": { "ppg": 6.9, "rpg": 1.6, "apg": 3.6, "spg": 1.3, "bpg": 0.1, "fg": 0.417, "tp": 0.323, "ft": 0.773 } }
+    ]
+  },
+  {
+    "id": "blazers-1991",
+    "name": "Portland Trail Blazers",
+    "season": "1990-91",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Clyde Drexler", "positions": ["SG", "SF"], "overall": 88, "stats": { "ppg": 21.5, "rpg": 6.7, "apg": 6.0, "spg": 1.8, "bpg": 0.7, "fg": 0.482, "tp": 0.319, "ft": 0.794 } },
+      { "name": "Terry Porter", "positions": ["PG", "SG"], "overall": 82, "stats": { "ppg": 17.0, "rpg": 3.4, "apg": 8.0, "spg": 2.0, "bpg": 0.2, "fg": 0.515, "tp": 0.415, "ft": 0.823 } },
+      { "name": "Buck Williams", "positions": ["PF"], "overall": 78, "stats": { "ppg": 11.7, "rpg": 10.0, "apg": 1.2, "spg": 0.7, "bpg": 0.8, "fg": 0.602, "tp": 0.0, "ft": 0.593 } },
+      { "name": "Jerome Kersey", "positions": ["SF", "PF"], "overall": 76, "stats": { "ppg": 12.1, "rpg": 7.1, "apg": 2.6, "spg": 1.6, "bpg": 0.9, "fg": 0.478, "tp": 0.192, "ft": 0.655 } },
+      { "name": "Cliff Robinson", "positions": ["PF", "C"], "overall": 75, "stats": { "ppg": 11.7, "rpg": 4.6, "apg": 1.7, "spg": 0.8, "bpg": 1.4, "fg": 0.463, "tp": 0.247, "ft": 0.653 } },
+      { "name": "Kevin Duckworth", "positions": ["C", "PF"], "overall": 73, "stats": { "ppg": 15.8, "rpg": 6.4, "apg": 1.3, "spg": 0.4, "bpg": 0.4, "fg": 0.473, "tp": 0.0, "ft": 0.722 } },
+      { "name": "Danny Ainge", "positions": ["SG", "PG"], "overall": 73, "stats": { "ppg": 11.1, "rpg": 2.6, "apg": 3.5, "spg": 1.2, "bpg": 0.2, "fg": 0.469, "tp": 0.384, "ft": 0.846 } },
+      { "name": "Mark Bryant", "positions": ["PF", "C"], "overall": 64, "stats": { "ppg": 5.0, "rpg": 4.0, "apg": 0.6, "spg": 0.4, "bpg": 0.3, "fg": 0.497, "tp": 0.0, "ft": 0.686 } }
+    ]
+  },
+  {
+    "id": "pacers-1998",
+    "name": "Indiana Pacers",
+    "season": "1997-98",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Reggie Miller", "positions": ["SG"], "overall": 84, "stats": { "ppg": 19.5, "rpg": 3.0, "apg": 2.3, "spg": 1.0, "bpg": 0.2, "fg": 0.461, "tp": 0.429, "ft": 0.868 } },
+      { "name": "Rik Smits", "positions": ["C", "PF"], "overall": 78, "stats": { "ppg": 16.7, "rpg": 6.0, "apg": 1.4, "spg": 0.4, "bpg": 1.0, "fg": 0.516, "tp": 0.0, "ft": 0.763 } },
+      { "name": "Mark Jackson", "positions": ["PG", "SG"], "overall": 78, "stats": { "ppg": 8.0, "rpg": 4.3, "apg": 8.8, "spg": 1.5, "bpg": 0.1, "fg": 0.446, "tp": 0.368, "ft": 0.830 } },
+      { "name": "Chris Mullin", "positions": ["SF"], "overall": 76, "stats": { "ppg": 11.3, "rpg": 3.1, "apg": 2.1, "spg": 1.4, "bpg": 0.4, "fg": 0.482, "tp": 0.390, "ft": 0.939 } },
+      { "name": "Dale Davis", "positions": ["PF", "C"], "overall": 76, "stats": { "ppg": 10.6, "rpg": 9.4, "apg": 1.0, "spg": 0.8, "bpg": 1.5, "fg": 0.536, "tp": 0.0, "ft": 0.615 } },
+      { "name": "Antonio Davis", "positions": ["PF", "C"], "overall": 72, "stats": { "ppg": 8.0, "rpg": 6.9, "apg": 0.7, "spg": 0.4, "bpg": 1.3, "fg": 0.473, "tp": 0.0, "ft": 0.697 } },
+      { "name": "Jalen Rose", "positions": ["SF", "SG"], "overall": 72, "stats": { "ppg": 9.4, "rpg": 2.8, "apg": 2.5, "spg": 0.6, "bpg": 0.3, "fg": 0.457, "tp": 0.330, "ft": 0.770 } },
+      { "name": "Travis Best", "positions": ["PG", "SG"], "overall": 66, "stats": { "ppg": 7.2, "rpg": 1.5, "apg": 3.1, "spg": 0.7, "bpg": 0.0, "fg": 0.435, "tp": 0.349, "ft": 0.852 } }
+    ]
+  },
+  {
+    "id": "spurs-1995",
+    "name": "San Antonio Spurs",
+    "season": "1994-95",
+    "decade": "1990s",
+    "roster": [
+      { "name": "David Robinson", "positions": ["C", "PF"], "overall": 95, "stats": { "ppg": 27.6, "rpg": 10.8, "apg": 2.9, "spg": 1.7, "bpg": 3.2, "fg": 0.530, "tp": 0.300, "ft": 0.774 } },
+      { "name": "Dennis Rodman", "positions": ["PF"], "overall": 82, "stats": { "ppg": 7.1, "rpg": 16.8, "apg": 2.6, "spg": 0.5, "bpg": 0.4, "fg": 0.571, "tp": 0.000, "ft": 0.676 } },
+      { "name": "Sean Elliott", "positions": ["SF"], "overall": 78, "stats": { "ppg": 18.1, "rpg": 4.3, "apg": 2.9, "spg": 0.9, "bpg": 0.3, "fg": 0.477, "tp": 0.390, "ft": 0.798 } },
+      { "name": "Avery Johnson", "positions": ["PG", "SG"], "overall": 75, "stats": { "ppg": 8.4, "rpg": 2.0, "apg": 7.5, "spg": 1.6, "bpg": 0.1, "fg": 0.503, "tp": 0.143, "ft": 0.732 } },
+      { "name": "Chuck Person", "positions": ["SF", "PF"], "overall": 73, "stats": { "ppg": 9.8, "rpg": 4.2, "apg": 1.7, "spg": 0.7, "bpg": 0.2, "fg": 0.430, "tp": 0.362, "ft": 0.700 } },
+      { "name": "Vinny Del Negro", "positions": ["SG", "PG"], "overall": 72, "stats": { "ppg": 12.0, "rpg": 2.8, "apg": 3.0, "spg": 1.0, "bpg": 0.1, "fg": 0.500, "tp": 0.395, "ft": 0.840 } },
+      { "name": "Terry Cummings", "positions": ["PF", "C"], "overall": 71, "stats": { "ppg": 9.0, "rpg": 5.5, "apg": 1.2, "spg": 0.8, "bpg": 0.4, "fg": 0.494, "tp": 0.000, "ft": 0.700 } },
+      { "name": "Doc Rivers", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 5.5, "rpg": 2.0, "apg": 3.2, "spg": 1.2, "bpg": 0.2, "fg": 0.420, "tp": 0.350, "ft": 0.780 } }
+    ]
+  },
+  {
+    "id": "thunder-1996",
+    "name": "Oklahoma City Thunder",
+    "season": "1995-96",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Gary Payton", "positions": ["PG", "SG"], "overall": 88, "stats": { "ppg": 19.3, "rpg": 4.2, "apg": 7.5, "spg": 2.9, "bpg": 0.2, "fg": 0.484, "tp": 0.328, "ft": 0.748 } },
+      { "name": "Shawn Kemp", "positions": ["PF", "C"], "overall": 86, "stats": { "ppg": 19.6, "rpg": 11.4, "apg": 2.2, "spg": 1.2, "bpg": 1.6, "fg": 0.561, "tp": 0.182, "ft": 0.742 } },
+      { "name": "Detlef Schrempf", "positions": ["SF", "PF"], "overall": 79, "stats": { "ppg": 17.1, "rpg": 5.2, "apg": 4.4, "spg": 0.9, "bpg": 0.3, "fg": 0.486, "tp": 0.377, "ft": 0.802 } },
+      { "name": "Hersey Hawkins", "positions": ["SG"], "overall": 76, "stats": { "ppg": 15.6, "rpg": 3.4, "apg": 2.6, "spg": 2.0, "bpg": 0.3, "fg": 0.477, "tp": 0.395, "ft": 0.874 } },
+      { "name": "Sam Perkins", "positions": ["PF", "C"], "overall": 74, "stats": { "ppg": 11.0, "rpg": 5.0, "apg": 1.6, "spg": 0.9, "bpg": 0.7, "fg": 0.450, "tp": 0.361, "ft": 0.819 } },
+      { "name": "Nate McMillan", "positions": ["PG", "SG"], "overall": 70, "stats": { "ppg": 5.0, "rpg": 4.0, "apg": 6.0, "spg": 2.0, "bpg": 0.3, "fg": 0.430, "tp": 0.351, "ft": 0.730 } },
+      { "name": "Vincent Askew", "positions": ["SG", "SF"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 3.0, "apg": 2.4, "spg": 0.8, "bpg": 0.2, "fg": 0.480, "tp": 0.310, "ft": 0.760 } },
+      { "name": "Ervin Johnson", "positions": ["C", "PF"], "overall": 68, "stats": { "ppg": 6.0, "rpg": 7.0, "apg": 0.6, "spg": 0.5, "bpg": 1.9, "fg": 0.470, "tp": 0.000, "ft": 0.640 } }
+    ]
+  },
+  {
+    "id": "cavaliers-1992",
+    "name": "Cleveland Cavaliers",
+    "season": "1991-92",
+    "decade": "1990s",
+    "roster": [
+      { "name": "Brad Daugherty", "positions": ["C", "PF"], "overall": 82, "stats": { "ppg": 21.5, "rpg": 10.4, "apg": 3.7, "spg": 0.6, "bpg": 0.5, "fg": 0.570, "tp": 0.000, "ft": 0.751 } },
+      { "name": "Mark Price", "positions": ["PG", "SG"], "overall": 84, "stats": { "ppg": 19.6, "rpg": 2.9, "apg": 7.4, "spg": 1.5, "bpg": 0.1, "fg": 0.488, "tp": 0.387, "ft": 0.947 } },
+      { "name": "Larry Nance", "positions": ["PF", "C"], "overall": 80, "stats": { "ppg": 16.8, "rpg": 9.0, "apg": 2.6, "spg": 0.8, "bpg": 3.0, "fg": 0.546, "tp": 0.143, "ft": 0.802 } },
+      { "name": "Hot Rod Williams", "positions": ["C", "PF"], "overall": 75, "stats": { "ppg": 11.0, "rpg": 6.5, "apg": 1.7, "spg": 0.7, "bpg": 1.8, "fg": 0.516, "tp": 0.000, "ft": 0.752 } },
+      { "name": "Craig Ehlo", "positions": ["SG", "SF"], "overall": 72, "stats": { "ppg": 11.0, "rpg": 4.0, "apg": 3.4, "spg": 1.5, "bpg": 0.4, "fg": 0.471, "tp": 0.330, "ft": 0.750 } },
+      { "name": "John Battle", "positions": ["SG", "PG"], "overall": 68, "stats": { "ppg": 9.0, "rpg": 1.6, "apg": 2.5, "spg": 0.6, "bpg": 0.1, "fg": 0.460, "tp": 0.300, "ft": 0.840 } },
+      { "name": "Mike Sanders", "positions": ["SF"], "overall": 65, "stats": { "ppg": 7.0, "rpg": 3.0, "apg": 1.4, "spg": 0.7, "bpg": 0.3, "fg": 0.480, "tp": 0.250, "ft": 0.770 } },
+      { "name": "Steve Kerr", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 1.5, "apg": 2.4, "spg": 0.7, "bpg": 0.1, "fg": 0.510, "tp": 0.444, "ft": 0.830 } }
+    ]
+  }
+]

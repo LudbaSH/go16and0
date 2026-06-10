@@ -1,0 +1,178 @@
+[
+  {
+    "id": "celtics-1986",
+    "name": "Boston Celtics",
+    "season": "1985-86",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Larry Bird", "positions": ["SF", "PF"], "overall": 96, "stats": { "ppg": 25.8, "rpg": 9.8, "apg": 6.8, "spg": 2.0, "bpg": 0.6, "fg": 0.496, "tp": 0.423, "ft": 0.896 } },
+      { "name": "Kevin McHale", "positions": ["PF", "C"], "overall": 86, "stats": { "ppg": 21.3, "rpg": 8.1, "apg": 2.7, "spg": 0.4, "bpg": 2.0, "fg": 0.574, "tp": 0.0, "ft": 0.776 } },
+      { "name": "Robert Parish", "positions": ["C", "PF"], "overall": 84, "stats": { "ppg": 16.1, "rpg": 9.5, "apg": 1.8, "spg": 0.7, "bpg": 1.4, "fg": 0.549, "tp": 0.0, "ft": 0.731 } },
+      { "name": "Dennis Johnson", "positions": ["PG", "SG"], "overall": 81, "stats": { "ppg": 15.6, "rpg": 3.4, "apg": 5.8, "spg": 1.4, "bpg": 0.4, "fg": 0.455, "tp": 0.143, "ft": 0.846 } },
+      { "name": "Danny Ainge", "positions": ["SG", "PG"], "overall": 78, "stats": { "ppg": 10.7, "rpg": 2.9, "apg": 5.1, "spg": 1.5, "bpg": 0.1, "fg": 0.504, "tp": 0.357, "ft": 0.904 } },
+      { "name": "Bill Walton", "positions": ["C", "PF"], "overall": 76, "stats": { "ppg": 7.6, "rpg": 6.8, "apg": 2.1, "spg": 0.6, "bpg": 1.3, "fg": 0.562, "tp": 0.0, "ft": 0.713 } },
+      { "name": "Scott Wedman", "positions": ["SF"], "overall": 70, "stats": { "ppg": 8.0, "rpg": 2.5, "apg": 1.4, "spg": 0.6, "bpg": 0.3, "fg": 0.500, "tp": 0.444, "ft": 0.792 } },
+      { "name": "Jerry Sichting", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 6.5, "rpg": 1.4, "apg": 3.0, "spg": 0.8, "bpg": 0.0, "fg": 0.570, "tp": 0.250, "ft": 0.904 } }
+    ]
+  },
+  {
+    "id": "lakers-1987",
+    "name": "Los Angeles Lakers",
+    "season": "1986-87",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Magic Johnson", "positions": ["PG", "SG"], "overall": 96, "stats": { "ppg": 23.9, "rpg": 6.3, "apg": 12.2, "spg": 1.7, "bpg": 0.4, "fg": 0.522, "tp": 0.205, "ft": 0.848 } },
+      { "name": "James Worthy", "positions": ["SF"], "overall": 84, "stats": { "ppg": 19.4, "rpg": 5.7, "apg": 2.8, "spg": 1.0, "bpg": 0.7, "fg": 0.539, "tp": 0.000, "ft": 0.751 } },
+      { "name": "Kareem Abdul-Jabbar", "positions": ["C", "PF"], "overall": 84, "stats": { "ppg": 17.5, "rpg": 6.7, "apg": 2.6, "spg": 0.6, "bpg": 1.2, "fg": 0.564, "tp": 0.000, "ft": 0.714 } },
+      { "name": "Byron Scott", "positions": ["SG"], "overall": 80, "stats": { "ppg": 17.0, "rpg": 3.4, "apg": 3.4, "spg": 1.4, "bpg": 0.2, "fg": 0.489, "tp": 0.436, "ft": 0.892 } },
+      { "name": "Michael Cooper", "positions": ["SF", "SG"], "overall": 76, "stats": { "ppg": 10.5, "rpg": 2.6, "apg": 4.5, "spg": 1.4, "bpg": 0.6, "fg": 0.438, "tp": 0.386, "ft": 0.851 } },
+      { "name": "A.C. Green", "positions": ["PF"], "overall": 75, "stats": { "ppg": 10.8, "rpg": 7.8, "apg": 1.1, "spg": 0.9, "bpg": 0.6, "fg": 0.538, "tp": 0.000, "ft": 0.780 } },
+      { "name": "Mychal Thompson", "positions": ["PF", "C"], "overall": 74, "stats": { "ppg": 11.7, "rpg": 6.3, "apg": 1.0, "spg": 0.4, "bpg": 1.0, "fg": 0.529, "tp": 0.000, "ft": 0.580 } },
+      { "name": "Kurt Rambis", "positions": ["PF"], "overall": 68, "stats": { "ppg": 5.4, "rpg": 5.7, "apg": 1.0, "spg": 0.8, "bpg": 0.4, "fg": 0.566, "tp": 0.000, "ft": 0.681 } }
+    ]
+  },
+  {
+    "id": "sixers-1983",
+    "name": "Philadelphia 76ers",
+    "season": "1982-83",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Moses Malone", "positions": ["C", "PF"], "overall": 92, "stats": { "ppg": 24.5, "rpg": 15.3, "apg": 1.3, "spg": 1.1, "bpg": 2.0, "fg": 0.501, "tp": 0.000, "ft": 0.761 } },
+      { "name": "Julius Erving", "positions": ["SF"], "overall": 90, "stats": { "ppg": 21.4, "rpg": 6.8, "apg": 3.7, "spg": 1.6, "bpg": 1.6, "fg": 0.517, "tp": 0.182, "ft": 0.759 } },
+      { "name": "Maurice Cheeks", "positions": ["PG", "SG"], "overall": 80, "stats": { "ppg": 12.5, "rpg": 2.6, "apg": 6.9, "spg": 2.3, "bpg": 0.3, "fg": 0.542, "tp": 0.143, "ft": 0.754 } },
+      { "name": "Andrew Toney", "positions": ["SG"], "overall": 79, "stats": { "ppg": 19.7, "rpg": 2.5, "apg": 4.6, "spg": 1.1, "bpg": 0.2, "fg": 0.501, "tp": 0.288, "ft": 0.788 } },
+      { "name": "Bobby Jones", "positions": ["PF", "SF"], "overall": 76, "stats": { "ppg": 9.0, "rpg": 4.9, "apg": 2.5, "spg": 1.2, "bpg": 1.2, "fg": 0.535, "tp": 0.000, "ft": 0.792 } },
+      { "name": "Clint Richardson", "positions": ["SG", "PG"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 2.5, "apg": 2.5, "spg": 1.0, "bpg": 0.3, "fg": 0.500, "tp": 0.000, "ft": 0.760 } },
+      { "name": "Marc Iavaroni", "positions": ["PF", "C"], "overall": 65, "stats": { "ppg": 5.5, "rpg": 3.5, "apg": 1.0, "spg": 0.5, "bpg": 0.3, "fg": 0.520, "tp": 0.000, "ft": 0.690 } },
+      { "name": "Franklin Edwards", "positions": ["PG", "SG"], "overall": 64, "stats": { "ppg": 6.0, "rpg": 1.5, "apg": 3.0, "spg": 0.7, "bpg": 0.1, "fg": 0.480, "tp": 0.000, "ft": 0.790 } }
+    ]
+  },
+  {
+    "id": "pistons-1989",
+    "name": "Detroit Pistons",
+    "season": "1988-89",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Isiah Thomas", "positions": ["PG", "SG"], "overall": 88, "stats": { "ppg": 18.2, "rpg": 3.4, "apg": 8.3, "spg": 1.7, "bpg": 0.3, "fg": 0.464, "tp": 0.273, "ft": 0.818 } },
+      { "name": "Joe Dumars", "positions": ["SG"], "overall": 83, "stats": { "ppg": 17.2, "rpg": 2.6, "apg": 5.7, "spg": 1.1, "bpg": 0.1, "fg": 0.505, "tp": 0.310, "ft": 0.850 } },
+      { "name": "Mark Aguirre", "positions": ["SF"], "overall": 79, "stats": { "ppg": 18.9, "rpg": 4.5, "apg": 2.9, "spg": 0.7, "bpg": 0.2, "fg": 0.484, "tp": 0.290, "ft": 0.795 } },
+      { "name": "Bill Laimbeer", "positions": ["C", "PF"], "overall": 79, "stats": { "ppg": 13.7, "rpg": 9.6, "apg": 1.8, "spg": 0.5, "bpg": 1.0, "fg": 0.485, "tp": 0.166, "ft": 0.840 } },
+      { "name": "Dennis Rodman", "positions": ["PF", "SF"], "overall": 80, "stats": { "ppg": 9.0, "rpg": 9.4, "apg": 1.4, "spg": 0.9, "bpg": 0.9, "fg": 0.595, "tp": 0.000, "ft": 0.626 } },
+      { "name": "Vinnie Johnson", "positions": ["SG", "PG"], "overall": 76, "stats": { "ppg": 13.8, "rpg": 3.0, "apg": 3.4, "spg": 0.9, "bpg": 0.1, "fg": 0.456, "tp": 0.222, "ft": 0.760 } },
+      { "name": "Rick Mahorn", "positions": ["PF", "C"], "overall": 73, "stats": { "ppg": 7.3, "rpg": 6.0, "apg": 1.0, "spg": 0.6, "bpg": 0.7, "fg": 0.520, "tp": 0.000, "ft": 0.760 } },
+      { "name": "John Salley", "positions": ["C", "PF"], "overall": 72, "stats": { "ppg": 7.0, "rpg": 6.0, "apg": 1.0, "spg": 0.6, "bpg": 1.8, "fg": 0.498, "tp": 0.000, "ft": 0.700 } }
+    ]
+  },
+  {
+    "id": "rockets-1986",
+    "name": "Houston Rockets",
+    "season": "1985-86",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Hakeem Olajuwon", "positions": ["C", "PF"], "overall": 89, "stats": { "ppg": 23.5, "rpg": 11.5, "apg": 2.0, "spg": 2.0, "bpg": 3.4, "fg": 0.526, "tp": 0.000, "ft": 0.645 } },
+      { "name": "Ralph Sampson", "positions": ["PF", "C"], "overall": 82, "stats": { "ppg": 18.9, "rpg": 11.1, "apg": 3.6, "spg": 0.9, "bpg": 1.6, "fg": 0.488, "tp": 0.182, "ft": 0.641 } },
+      { "name": "Rodney McCray", "positions": ["SF", "PF"], "overall": 76, "stats": { "ppg": 12.6, "rpg": 7.4, "apg": 3.7, "spg": 1.0, "bpg": 0.7, "fg": 0.537, "tp": 0.200, "ft": 0.738 } },
+      { "name": "Robert Reid", "positions": ["SF", "SG"], "overall": 74, "stats": { "ppg": 11.4, "rpg": 5.0, "apg": 3.6, "spg": 1.2, "bpg": 0.4, "fg": 0.473, "tp": 0.276, "ft": 0.776 } },
+      { "name": "Lewis Lloyd", "positions": ["SG"], "overall": 73, "stats": { "ppg": 11.5, "rpg": 3.0, "apg": 3.6, "spg": 1.0, "bpg": 0.2, "fg": 0.481, "tp": 0.111, "ft": 0.755 } },
+      { "name": "Allen Leavell", "positions": ["PG", "SG"], "overall": 71, "stats": { "ppg": 9.0, "rpg": 2.0, "apg": 5.0, "spg": 1.2, "bpg": 0.1, "fg": 0.450, "tp": 0.290, "ft": 0.840 } },
+      { "name": "Mitchell Wiggins", "positions": ["SG"], "overall": 69, "stats": { "ppg": 12.0, "rpg": 3.4, "apg": 2.0, "spg": 1.0, "bpg": 0.2, "fg": 0.460, "tp": 0.150, "ft": 0.770 } },
+      { "name": "Jim Petersen", "positions": ["C", "PF"], "overall": 66, "stats": { "ppg": 7.0, "rpg": 5.0, "apg": 1.2, "spg": 0.4, "bpg": 0.9, "fg": 0.500, "tp": 0.000, "ft": 0.730 } }
+    ]
+  },
+  {
+    "id": "bucks-1986",
+    "name": "Milwaukee Bucks",
+    "season": "1985-86",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Sidney Moncrief", "positions": ["SG", "PG"], "overall": 83, "stats": { "ppg": 20.2, "rpg": 4.7, "apg": 4.8, "spg": 1.3, "bpg": 0.3, "fg": 0.490, "tp": 0.286, "ft": 0.859 } },
+      { "name": "Terry Cummings", "positions": ["PF"], "overall": 81, "stats": { "ppg": 19.8, "rpg": 8.0, "apg": 2.0, "spg": 1.3, "bpg": 0.6, "fg": 0.474, "tp": 0.000, "ft": 0.656 } },
+      { "name": "Paul Pressey", "positions": ["SF", "PG"], "overall": 77, "stats": { "ppg": 14.0, "rpg": 5.4, "apg": 7.0, "spg": 1.9, "bpg": 0.8, "fg": 0.493, "tp": 0.227, "ft": 0.797 } },
+      { "name": "Ricky Pierce", "positions": ["SG", "SF"], "overall": 76, "stats": { "ppg": 13.4, "rpg": 2.7, "apg": 1.9, "spg": 0.6, "bpg": 0.2, "fg": 0.530, "tp": 0.200, "ft": 0.858 } },
+      { "name": "Alton Lister", "positions": ["C", "PF"], "overall": 71, "stats": { "ppg": 9.0, "rpg": 8.0, "apg": 1.5, "spg": 0.5, "bpg": 2.0, "fg": 0.519, "tp": 0.000, "ft": 0.629 } },
+      { "name": "Craig Hodges", "positions": ["SG", "PG"], "overall": 70, "stats": { "ppg": 9.0, "rpg": 1.6, "apg": 2.8, "spg": 1.1, "bpg": 0.1, "fg": 0.480, "tp": 0.451, "ft": 0.792 } },
+      { "name": "Randy Breuer", "positions": ["C", "PF"], "overall": 67, "stats": { "ppg": 7.0, "rpg": 5.0, "apg": 1.0, "spg": 0.3, "bpg": 1.3, "fg": 0.480, "tp": 0.000, "ft": 0.610 } },
+      { "name": "Paul Mokeski", "positions": ["C", "PF"], "overall": 63, "stats": { "ppg": 5.0, "rpg": 4.5, "apg": 0.9, "spg": 0.3, "bpg": 0.7, "fg": 0.460, "tp": 0.000, "ft": 0.760 } }
+    ]
+  },
+  {
+    "id": "hawks-1987",
+    "name": "Atlanta Hawks",
+    "season": "1986-87",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Dominique Wilkins", "positions": ["SF", "SG"], "overall": 88, "stats": { "ppg": 29.0, "rpg": 7.9, "apg": 3.3, "spg": 1.8, "bpg": 0.6, "fg": 0.463, "tp": 0.292, "ft": 0.818 } },
+      { "name": "Doc Rivers", "positions": ["PG", "SG"], "overall": 77, "stats": { "ppg": 12.8, "rpg": 3.8, "apg": 7.0, "spg": 2.0, "bpg": 0.5, "fg": 0.451, "tp": 0.222, "ft": 0.828 } },
+      { "name": "Kevin Willis", "positions": ["PF", "C"], "overall": 77, "stats": { "ppg": 16.1, "rpg": 10.5, "apg": 1.3, "spg": 0.8, "bpg": 0.8, "fg": 0.536, "tp": 0.000, "ft": 0.709 } },
+      { "name": "Randy Wittman", "positions": ["SG"], "overall": 70, "stats": { "ppg": 11.0, "rpg": 2.0, "apg": 3.0, "spg": 0.7, "bpg": 0.1, "fg": 0.512, "tp": 0.250, "ft": 0.844 } },
+      { "name": "Antoine Carr", "positions": ["PF", "C"], "overall": 71, "stats": { "ppg": 11.0, "rpg": 4.5, "apg": 1.4, "spg": 0.6, "bpg": 1.1, "fg": 0.522, "tp": 0.000, "ft": 0.830 } },
+      { "name": "Tree Rollins", "positions": ["C", "PF"], "overall": 70, "stats": { "ppg": 6.0, "rpg": 7.0, "apg": 0.7, "spg": 0.5, "bpg": 2.5, "fg": 0.560, "tp": 0.000, "ft": 0.620 } },
+      { "name": "Spud Webb", "positions": ["PG", "SG"], "overall": 70, "stats": { "ppg": 7.8, "rpg": 2.0, "apg": 5.0, "spg": 1.3, "bpg": 0.0, "fg": 0.477, "tp": 0.286, "ft": 0.798 } },
+      { "name": "Cliff Levingston", "positions": ["PF", "SF"], "overall": 70, "stats": { "ppg": 9.0, "rpg": 6.0, "apg": 1.5, "spg": 0.9, "bpg": 1.0, "fg": 0.540, "tp": 0.000, "ft": 0.680 } }
+    ]
+  },
+  {
+    "id": "mavericks-1988",
+    "name": "Dallas Mavericks",
+    "season": "1987-88",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Mark Aguirre", "positions": ["SF"], "overall": 82, "stats": { "ppg": 25.1, "rpg": 5.7, "apg": 3.1, "spg": 0.7, "bpg": 0.3, "fg": 0.476, "tp": 0.319, "ft": 0.770 } },
+      { "name": "Rolando Blackman", "positions": ["SG"], "overall": 80, "stats": { "ppg": 18.7, "rpg": 4.1, "apg": 3.0, "spg": 0.9, "bpg": 0.2, "fg": 0.473, "tp": 0.300, "ft": 0.873 } },
+      { "name": "Derek Harper", "positions": ["PG", "SG"], "overall": 78, "stats": { "ppg": 17.0, "rpg": 3.0, "apg": 6.1, "spg": 2.0, "bpg": 0.4, "fg": 0.459, "tp": 0.377, "ft": 0.759 } },
+      { "name": "Roy Tarpley", "positions": ["PF", "C"], "overall": 77, "stats": { "ppg": 13.5, "rpg": 11.8, "apg": 1.5, "spg": 1.4, "bpg": 1.4, "fg": 0.502, "tp": 0.000, "ft": 0.760 } },
+      { "name": "Sam Perkins", "positions": ["PF", "C"], "overall": 76, "stats": { "ppg": 14.2, "rpg": 7.6, "apg": 1.9, "spg": 0.9, "bpg": 1.1, "fg": 0.450, "tp": 0.296, "ft": 0.822 } },
+      { "name": "James Donaldson", "positions": ["C", "PF"], "overall": 74, "stats": { "ppg": 7.4, "rpg": 9.5, "apg": 1.1, "spg": 0.3, "bpg": 1.6, "fg": 0.558, "tp": 0.000, "ft": 0.752 } },
+      { "name": "Detlef Schrempf", "positions": ["SF", "PF"], "overall": 74, "stats": { "ppg": 8.5, "rpg": 4.1, "apg": 2.0, "spg": 0.8, "bpg": 0.3, "fg": 0.472, "tp": 0.222, "ft": 0.756 } },
+      { "name": "Brad Davis", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 1.5, "apg": 4.0, "spg": 0.7, "bpg": 0.1, "fg": 0.480, "tp": 0.384, "ft": 0.850 } }
+    ]
+  },
+  {
+    "id": "nuggets-1988",
+    "name": "Denver Nuggets",
+    "season": "1987-88",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Alex English", "positions": ["SF"], "overall": 84, "stats": { "ppg": 25.0, "rpg": 4.0, "apg": 4.8, "spg": 1.0, "bpg": 0.5, "fg": 0.495, "tp": 0.143, "ft": 0.804 } },
+      { "name": "Fat Lever", "positions": ["PG", "SG"], "overall": 81, "stats": { "ppg": 18.9, "rpg": 8.1, "apg": 7.8, "spg": 2.7, "bpg": 0.3, "fg": 0.473, "tp": 0.270, "ft": 0.785 } },
+      { "name": "Michael Adams", "positions": ["PG", "SG"], "overall": 74, "stats": { "ppg": 13.0, "rpg": 3.0, "apg": 6.0, "spg": 1.6, "bpg": 0.1, "fg": 0.449, "tp": 0.332, "ft": 0.834 } },
+      { "name": "Calvin Natt", "positions": ["SF", "PF"], "overall": 74, "stats": { "ppg": 12.0, "rpg": 5.0, "apg": 1.6, "spg": 0.6, "bpg": 0.2, "fg": 0.530, "tp": 0.000, "ft": 0.780 } },
+      { "name": "Danny Schayes", "positions": ["C", "PF"], "overall": 72, "stats": { "ppg": 13.0, "rpg": 8.6, "apg": 2.0, "spg": 0.6, "bpg": 1.0, "fg": 0.520, "tp": 0.000, "ft": 0.840 } },
+      { "name": "Wayne Cooper", "positions": ["C", "PF"], "overall": 70, "stats": { "ppg": 8.0, "rpg": 7.0, "apg": 1.0, "spg": 0.4, "bpg": 1.8, "fg": 0.480, "tp": 0.000, "ft": 0.760 } },
+      { "name": "Jay Vincent", "positions": ["PF", "SF"], "overall": 70, "stats": { "ppg": 10.0, "rpg": 4.0, "apg": 1.5, "spg": 0.6, "bpg": 0.2, "fg": 0.470, "tp": 0.200, "ft": 0.800 } },
+      { "name": "Bill Hanzlik", "positions": ["SF", "SG"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 3.0, "apg": 3.0, "spg": 1.2, "bpg": 0.4, "fg": 0.440, "tp": 0.250, "ft": 0.800 } }
+    ]
+  },
+  {
+    "id": "blazers-1990",
+    "name": "Portland Trail Blazers",
+    "season": "1989-90",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Clyde Drexler", "positions": ["SG", "SF"], "overall": 87, "stats": { "ppg": 23.3, "rpg": 6.9, "apg": 5.9, "spg": 2.0, "bpg": 0.7, "fg": 0.494, "tp": 0.358, "ft": 0.774 } },
+      { "name": "Terry Porter", "positions": ["PG", "SG"], "overall": 82, "stats": { "ppg": 17.0, "rpg": 4.8, "apg": 9.1, "spg": 2.4, "bpg": 0.2, "fg": 0.462, "tp": 0.376, "ft": 0.823 } },
+      { "name": "Jerome Kersey", "positions": ["SF", "PF"], "overall": 77, "stats": { "ppg": 16.0, "rpg": 8.0, "apg": 2.2, "spg": 1.5, "bpg": 1.0, "fg": 0.478, "tp": 0.190, "ft": 0.690 } },
+      { "name": "Buck Williams", "positions": ["PF"], "overall": 78, "stats": { "ppg": 13.6, "rpg": 9.8, "apg": 1.5, "spg": 0.8, "bpg": 0.8, "fg": 0.548, "tp": 0.000, "ft": 0.638 } },
+      { "name": "Kevin Duckworth", "positions": ["C", "PF"], "overall": 74, "stats": { "ppg": 16.2, "rpg": 6.2, "apg": 1.5, "spg": 0.4, "bpg": 0.5, "fg": 0.487, "tp": 0.000, "ft": 0.756 } },
+      { "name": "Cliff Robinson", "positions": ["PF", "C"], "overall": 74, "stats": { "ppg": 12.0, "rpg": 4.5, "apg": 1.7, "spg": 0.8, "bpg": 1.5, "fg": 0.463, "tp": 0.200, "ft": 0.653 } },
+      { "name": "Drazen Petrovic", "positions": ["SG"], "overall": 72, "stats": { "ppg": 7.6, "rpg": 1.4, "apg": 2.0, "spg": 0.6, "bpg": 0.1, "fg": 0.485, "tp": 0.459, "ft": 0.844 } },
+      { "name": "Danny Young", "positions": ["PG", "SG"], "overall": 65, "stats": { "ppg": 5.0, "rpg": 1.5, "apg": 3.0, "spg": 1.0, "bpg": 0.1, "fg": 0.450, "tp": 0.380, "ft": 0.820 } }
+    ]
+  },
+  {
+    "id": "suns-1989",
+    "name": "Phoenix Suns",
+    "season": "1988-89",
+    "decade": "1980s",
+    "roster": [
+      { "name": "Kevin Johnson", "positions": ["PG", "SG"], "overall": 84, "stats": { "ppg": 20.4, "rpg": 4.2, "apg": 12.2, "spg": 1.7, "bpg": 0.4, "fg": 0.505, "tp": 0.231, "ft": 0.882 } },
+      { "name": "Tom Chambers", "positions": ["PF", "SF"], "overall": 80, "stats": { "ppg": 25.7, "rpg": 8.4, "apg": 3.6, "spg": 1.1, "bpg": 0.5, "fg": 0.471, "tp": 0.232, "ft": 0.851 } },
+      { "name": "Eddie Johnson", "positions": ["SF", "SG"], "overall": 78, "stats": { "ppg": 21.5, "rpg": 5.0, "apg": 3.2, "spg": 0.7, "bpg": 0.2, "fg": 0.480, "tp": 0.291, "ft": 0.868 } },
+      { "name": "Jeff Hornacek", "positions": ["SG", "PG"], "overall": 76, "stats": { "ppg": 13.5, "rpg": 3.6, "apg": 5.0, "spg": 1.0, "bpg": 0.2, "fg": 0.495, "tp": 0.333, "ft": 0.826 } },
+      { "name": "Dan Majerle", "positions": ["SG", "SF"], "overall": 74, "stats": { "ppg": 11.5, "rpg": 5.0, "apg": 2.3, "spg": 1.4, "bpg": 0.4, "fg": 0.457, "tp": 0.290, "ft": 0.736 } },
+      { "name": "Mark West", "positions": ["C", "PF"], "overall": 72, "stats": { "ppg": 10.4, "rpg": 6.4, "apg": 0.5, "spg": 0.3, "bpg": 2.0, "fg": 0.653, "tp": 0.000, "ft": 0.561 } },
+      { "name": "Armen Gilliam", "positions": ["PF", "C"], "overall": 73, "stats": { "ppg": 15.0, "rpg": 7.0, "apg": 1.3, "spg": 0.6, "bpg": 0.5, "fg": 0.483, "tp": 0.000, "ft": 0.762 } },
+      { "name": "Kurt Rambis", "positions": ["PF", "C"], "overall": 68, "stats": { "ppg": 6.0, "rpg": 7.0, "apg": 1.5, "spg": 0.8, "bpg": 0.4, "fg": 0.540, "tp": 0.000, "ft": 0.680 } }
+    ]
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "lakers-1972",
+    "name": "Los Angeles Lakers",
+    "season": "1971-72",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Jerry West", "positions": ["PG", "SG"], "overall": 92, "stats": { "ppg": 25.8, "rpg": 4.2, "apg": 9.7, "spg": 1.5, "bpg": 0.4, "fg": 0.477, "tp": 0.0, "ft": 0.815 } },
+      { "name": "Gail Goodrich", "positions": ["SG", "PG"], "overall": 84, "stats": { "ppg": 25.9, "rpg": 3.4, "apg": 4.5, "spg": 1.2, "bpg": 0.2, "fg": 0.487, "tp": 0.0, "ft": 0.850 } },
+      { "name": "Wilt Chamberlain", "positions": ["C", "PF"], "overall": 88, "stats": { "ppg": 14.8, "rpg": 19.2, "apg": 4.0, "spg": 0.8, "bpg": 3.0, "fg": 0.649, "tp": 0.0, "ft": 0.422 } },
+      { "name": "Jim McMillian", "positions": ["SF"], "overall": 78, "stats": { "ppg": 18.8, "rpg": 6.5, "apg": 3.0, "spg": 1.0, "bpg": 0.3, "fg": 0.483, "tp": 0.0, "ft": 0.770 } },
+      { "name": "Happy Hairston", "positions": ["PF"], "overall": 76, "stats": { "ppg": 13.1, "rpg": 13.1, "apg": 1.9, "spg": 0.8, "bpg": 0.5, "fg": 0.482, "tp": 0.0, "ft": 0.731 } },
+      { "name": "Flynn Robinson", "positions": ["PG", "SG"], "overall": 70, "stats": { "ppg": 6.5, "rpg": 1.5, "apg": 2.2, "spg": 0.6, "bpg": 0.1, "fg": 0.450, "tp": 0.0, "ft": 0.880 } },
+      { "name": "Pat Riley", "positions": ["SG", "SF"], "overall": 68, "stats": { "ppg": 6.7, "rpg": 1.6, "apg": 1.7, "spg": 0.7, "bpg": 0.1, "fg": 0.470, "tp": 0.0, "ft": 0.770 } },
+      { "name": "Leroy Ellis", "positions": ["C", "PF"], "overall": 69, "stats": { "ppg": 7.5, "rpg": 7.2, "apg": 1.1, "spg": 0.4, "bpg": 0.8, "fg": 0.450, "tp": 0.0, "ft": 0.720 } }
+    ]
+  },
+  {
+    "id": "bucks-1971",
+    "name": "Milwaukee Bucks",
+    "season": "1970-71",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Kareem Abdul-Jabbar", "positions": ["C", "PF"], "overall": 96, "stats": { "ppg": 31.7, "rpg": 16.0, "apg": 3.3, "spg": 1.0, "bpg": 3.2, "fg": 0.577, "tp": 0.0, "ft": 0.690 } },
+      { "name": "Oscar Robertson", "positions": ["PG", "SG"], "overall": 88, "stats": { "ppg": 19.4, "rpg": 5.7, "apg": 8.2, "spg": 1.3, "bpg": 0.2, "fg": 0.496, "tp": 0.0, "ft": 0.850 } },
+      { "name": "Bob Dandridge", "positions": ["SF"], "overall": 80, "stats": { "ppg": 18.4, "rpg": 8.0, "apg": 2.5, "spg": 1.1, "bpg": 0.5, "fg": 0.490, "tp": 0.0, "ft": 0.750 } },
+      { "name": "Jon McGlocklin", "positions": ["SG"], "overall": 74, "stats": { "ppg": 15.8, "rpg": 3.0, "apg": 3.5, "spg": 0.8, "bpg": 0.1, "fg": 0.535, "tp": 0.0, "ft": 0.870 } },
+      { "name": "Greg Smith", "positions": ["PF"], "overall": 72, "stats": { "ppg": 11.4, "rpg": 8.0, "apg": 2.3, "spg": 0.7, "bpg": 0.6, "fg": 0.521, "tp": 0.0, "ft": 0.650 } },
+      { "name": "Lucius Allen", "positions": ["PG", "SG"], "overall": 71, "stats": { "ppg": 10.0, "rpg": 3.0, "apg": 3.5, "spg": 1.0, "bpg": 0.2, "fg": 0.460, "tp": 0.0, "ft": 0.760 } },
+      { "name": "Bob Boozer", "positions": ["PF", "SF"], "overall": 73, "stats": { "ppg": 9.8, "rpg": 5.5, "apg": 1.4, "spg": 0.5, "bpg": 0.2, "fg": 0.450, "tp": 0.0, "ft": 0.770 } },
+      { "name": "Dick Cunningham", "positions": ["C", "PF"], "overall": 62, "stats": { "ppg": 3.5, "rpg": 5.5, "apg": 0.7, "spg": 0.2, "bpg": 0.4, "fg": 0.460, "tp": 0.0, "ft": 0.660 } }
+    ]
+  },
+  {
+    "id": "knicks-1973",
+    "name": "New York Knicks",
+    "season": "1972-73",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Walt Frazier", "positions": ["PG", "SG"], "overall": 89, "stats": { "ppg": 21.1, "rpg": 5.9, "apg": 8.1, "spg": 2.0, "bpg": 0.2, "fg": 0.521, "tp": 0.0, "ft": 0.778 } },
+      { "name": "Earl Monroe", "positions": ["SG"], "overall": 83, "stats": { "ppg": 15.5, "rpg": 2.9, "apg": 3.8, "spg": 1.0, "bpg": 0.1, "fg": 0.488, "tp": 0.0, "ft": 0.805 } },
+      { "name": "Dave DeBusschere", "positions": ["PF", "SF"], "overall": 80, "stats": { "ppg": 16.3, "rpg": 10.2, "apg": 3.4, "spg": 1.1, "bpg": 0.5, "fg": 0.430, "tp": 0.0, "ft": 0.730 } },
+      { "name": "Willis Reed", "positions": ["C", "PF"], "overall": 80, "stats": { "ppg": 11.0, "rpg": 8.6, "apg": 1.9, "spg": 0.6, "bpg": 1.0, "fg": 0.474, "tp": 0.0, "ft": 0.731 } },
+      { "name": "Bill Bradley", "positions": ["SF"], "overall": 77, "stats": { "ppg": 16.1, "rpg": 3.6, "apg": 4.5, "spg": 0.8, "bpg": 0.2, "fg": 0.471, "tp": 0.0, "ft": 0.857 } },
+      { "name": "Jerry Lucas", "positions": ["C", "PF"], "overall": 75, "stats": { "ppg": 9.9, "rpg": 7.7, "apg": 3.3, "spg": 0.6, "bpg": 0.4, "fg": 0.460, "tp": 0.0, "ft": 0.800 } },
+      { "name": "Dean Meminger", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 6.5, "rpg": 2.5, "apg": 2.8, "spg": 1.0, "bpg": 0.1, "fg": 0.470, "tp": 0.0, "ft": 0.700 } },
+      { "name": "Phil Jackson", "positions": ["PF", "SF"], "overall": 67, "stats": { "ppg": 8.1, "rpg": 5.0, "apg": 1.3, "spg": 0.8, "bpg": 0.5, "fg": 0.450, "tp": 0.0, "ft": 0.760 } }
+    ]
+  },
+  {
+    "id": "celtics-1974",
+    "name": "Boston Celtics",
+    "season": "1973-74",
+    "decade": "1970s",
+    "roster": [
+      { "name": "John Havlicek", "positions": ["SF", "SG"], "overall": 88, "stats": { "ppg": 22.6, "rpg": 6.4, "apg": 5.9, "spg": 1.3, "bpg": 0.4, "fg": 0.456, "tp": 0.0, "ft": 0.832 } },
+      { "name": "Dave Cowens", "positions": ["C", "PF"], "overall": 86, "stats": { "ppg": 19.0, "rpg": 15.7, "apg": 4.1, "spg": 1.2, "bpg": 0.8, "fg": 0.486, "tp": 0.0, "ft": 0.823 } },
+      { "name": "Jo Jo White", "positions": ["PG", "SG"], "overall": 82, "stats": { "ppg": 18.1, "rpg": 3.7, "apg": 5.5, "spg": 1.4, "bpg": 0.2, "fg": 0.450, "tp": 0.0, "ft": 0.833 } },
+      { "name": "Paul Silas", "positions": ["PF"], "overall": 78, "stats": { "ppg": 10.5, "rpg": 13.0, "apg": 2.7, "spg": 1.1, "bpg": 0.4, "fg": 0.430, "tp": 0.0, "ft": 0.700 } },
+      { "name": "Don Chaney", "positions": ["SG", "SF"], "overall": 73, "stats": { "ppg": 10.5, "rpg": 4.0, "apg": 2.7, "spg": 1.8, "bpg": 0.6, "fg": 0.450, "tp": 0.0, "ft": 0.720 } },
+      { "name": "Don Nelson", "positions": ["SF", "PF"], "overall": 72, "stats": { "ppg": 11.5, "rpg": 4.4, "apg": 1.8, "spg": 0.6, "bpg": 0.2, "fg": 0.471, "tp": 0.0, "ft": 0.840 } },
+      { "name": "Paul Westphal", "positions": ["SG", "PG"], "overall": 74, "stats": { "ppg": 9.8, "rpg": 1.8, "apg": 2.4, "spg": 0.9, "bpg": 0.3, "fg": 0.480, "tp": 0.0, "ft": 0.790 } },
+      { "name": "Hank Finkel", "positions": ["C", "PF"], "overall": 60, "stats": { "ppg": 3.0, "rpg": 3.5, "apg": 0.5, "spg": 0.2, "bpg": 0.4, "fg": 0.450, "tp": 0.0, "ft": 0.700 } }
+    ]
+  },
+  {
+    "id": "warriors-1975",
+    "name": "Golden State Warriors",
+    "season": "1974-75",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Rick Barry", "positions": ["SF", "SG"], "overall": 91, "stats": { "ppg": 30.6, "rpg": 5.7, "apg": 6.2, "spg": 2.9, "bpg": 0.5, "fg": 0.464, "tp": 0.0, "ft": 0.904 } },
+      { "name": "Jamaal Wilkes", "positions": ["SF", "PF"], "overall": 78, "stats": { "ppg": 14.2, "rpg": 8.2, "apg": 2.2, "spg": 1.3, "bpg": 0.5, "fg": 0.444, "tp": 0.0, "ft": 0.764 } },
+      { "name": "Butch Beard", "positions": ["PG", "SG"], "overall": 75, "stats": { "ppg": 12.8, "rpg": 3.7, "apg": 5.2, "spg": 1.6, "bpg": 0.2, "fg": 0.480, "tp": 0.0, "ft": 0.808 } },
+      { "name": "Clifford Ray", "positions": ["C", "PF"], "overall": 74, "stats": { "ppg": 9.4, "rpg": 10.6, "apg": 2.0, "spg": 0.7, "bpg": 1.5, "fg": 0.490, "tp": 0.0, "ft": 0.630 } },
+      { "name": "Charles Johnson", "positions": ["SG"], "overall": 70, "stats": { "ppg": 8.5, "rpg": 2.4, "apg": 2.0, "spg": 1.2, "bpg": 0.2, "fg": 0.450, "tp": 0.0, "ft": 0.770 } },
+      { "name": "Jeff Mullins", "positions": ["SG", "SF"], "overall": 71, "stats": { "ppg": 8.6, "rpg": 2.5, "apg": 2.8, "spg": 0.8, "bpg": 0.1, "fg": 0.450, "tp": 0.0, "ft": 0.800 } },
+      { "name": "George Johnson", "positions": ["PF", "C"], "overall": 69, "stats": { "ppg": 5.0, "rpg": 6.0, "apg": 1.2, "spg": 0.6, "bpg": 2.1, "fg": 0.460, "tp": 0.0, "ft": 0.640 } },
+      { "name": "Derrek Dickey", "positions": ["PF"], "overall": 64, "stats": { "ppg": 6.5, "rpg": 4.5, "apg": 1.0, "spg": 0.4, "bpg": 0.2, "fg": 0.470, "tp": 0.0, "ft": 0.720 } }
+    ]
+  },
+  {
+    "id": "blazers-1977",
+    "name": "Portland Trail Blazers",
+    "season": "1976-77",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Bill Walton", "positions": ["C", "PF"], "overall": 90, "stats": { "ppg": 18.6, "rpg": 14.4, "apg": 3.8, "spg": 1.0, "bpg": 3.2, "fg": 0.528, "tp": 0.0, "ft": 0.697 } },
+      { "name": "Maurice Lucas", "positions": ["PF"], "overall": 82, "stats": { "ppg": 20.2, "rpg": 11.4, "apg": 2.6, "spg": 1.0, "bpg": 0.7, "fg": 0.466, "tp": 0.0, "ft": 0.770 } },
+      { "name": "Lionel Hollins", "positions": ["PG", "SG"], "overall": 75, "stats": { "ppg": 14.7, "rpg": 3.0, "apg": 4.1, "spg": 2.0, "bpg": 0.3, "fg": 0.451, "tp": 0.0, "ft": 0.748 } },
+      { "name": "Bob Gross", "positions": ["SF"], "overall": 72, "stats": { "ppg": 11.4, "rpg": 4.9, "apg": 3.1, "spg": 1.4, "bpg": 0.7, "fg": 0.529, "tp": 0.0, "ft": 0.730 } },
+      { "name": "Dave Twardzik", "positions": ["PG", "SG"], "overall": 71, "stats": { "ppg": 10.3, "rpg": 2.4, "apg": 3.6, "spg": 1.3, "bpg": 0.1, "fg": 0.612, "tp": 0.0, "ft": 0.788 } },
+      { "name": "Lloyd Neal", "positions": ["PF", "C"], "overall": 70, "stats": { "ppg": 8.6, "rpg": 6.2, "apg": 1.3, "spg": 0.6, "bpg": 0.7, "fg": 0.480, "tp": 0.0, "ft": 0.700 } },
+      { "name": "Larry Steele", "positions": ["SG", "SF"], "overall": 69, "stats": { "ppg": 8.0, "rpg": 2.7, "apg": 2.4, "spg": 1.5, "bpg": 0.3, "fg": 0.470, "tp": 0.0, "ft": 0.790 } },
+      { "name": "Herm Gilliam", "positions": ["SG"], "overall": 67, "stats": { "ppg": 6.5, "rpg": 2.0, "apg": 2.0, "spg": 0.9, "bpg": 0.1, "fg": 0.450, "tp": 0.0, "ft": 0.760 } }
+    ]
+  },
+  {
+    "id": "wizards-1978",
+    "name": "Washington Wizards",
+    "season": "1977-78",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Elvin Hayes", "positions": ["PF", "C"], "overall": 85, "stats": { "ppg": 19.7, "rpg": 13.3, "apg": 1.8, "spg": 1.0, "bpg": 2.0, "fg": 0.470, "tp": 0.0, "ft": 0.629 } },
+      { "name": "Bob Dandridge", "positions": ["SF"], "overall": 80, "stats": { "ppg": 19.3, "rpg": 5.6, "apg": 3.4, "spg": 1.2, "bpg": 0.5, "fg": 0.495, "tp": 0.0, "ft": 0.790 } },
+      { "name": "Wes Unseld", "positions": ["C", "PF"], "overall": 80, "stats": { "ppg": 7.6, "rpg": 11.9, "apg": 4.2, "spg": 1.0, "bpg": 0.6, "fg": 0.522, "tp": 0.0, "ft": 0.546 } },
+      { "name": "Phil Chenier", "positions": ["SG"], "overall": 76, "stats": { "ppg": 14.5, "rpg": 2.6, "apg": 3.0, "spg": 1.3, "bpg": 0.3, "fg": 0.450, "tp": 0.0, "ft": 0.790 } },
+      { "name": "Kevin Grevey", "positions": ["SG", "SF"], "overall": 72, "stats": { "ppg": 11.3, "rpg": 2.8, "apg": 1.8, "spg": 0.7, "bpg": 0.2, "fg": 0.460, "tp": 0.0, "ft": 0.800 } },
+      { "name": "Tom Henderson", "positions": ["PG", "SG"], "overall": 71, "stats": { "ppg": 9.0, "rpg": 2.6, "apg": 5.0, "spg": 1.3, "bpg": 0.1, "fg": 0.460, "tp": 0.0, "ft": 0.740 } },
+      { "name": "Mitch Kupchak", "positions": ["PF", "C"], "overall": 72, "stats": { "ppg": 15.9, "rpg": 7.1, "apg": 1.0, "spg": 0.5, "bpg": 0.4, "fg": 0.550, "tp": 0.0, "ft": 0.730 } },
+      { "name": "Charles Johnson", "positions": ["SG"], "overall": 68, "stats": { "ppg": 7.5, "rpg": 2.0, "apg": 1.8, "spg": 1.0, "bpg": 0.2, "fg": 0.450, "tp": 0.0, "ft": 0.760 } }
+    ]
+  },
+  {
+    "id": "thunder-1979",
+    "name": "Oklahoma City Thunder",
+    "season": "1978-79",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Gus Williams", "positions": ["PG", "SG"], "overall": 83, "stats": { "ppg": 19.2, "rpg": 3.3, "apg": 4.0, "spg": 2.0, "bpg": 0.2, "fg": 0.495, "tp": 0.0, "ft": 0.776 } },
+      { "name": "Dennis Johnson", "positions": ["SG", "PG"], "overall": 82, "stats": { "ppg": 15.9, "rpg": 4.7, "apg": 3.5, "spg": 1.3, "bpg": 1.2, "fg": 0.432, "tp": 0.0, "ft": 0.781 } },
+      { "name": "Jack Sikma", "positions": ["C", "PF"], "overall": 80, "stats": { "ppg": 15.6, "rpg": 12.4, "apg": 3.2, "spg": 0.9, "bpg": 1.0, "fg": 0.460, "tp": 0.0, "ft": 0.814 } },
+      { "name": "John Johnson", "positions": ["SF"], "overall": 74, "stats": { "ppg": 11.0, "rpg": 5.0, "apg": 4.0, "spg": 0.9, "bpg": 0.4, "fg": 0.470, "tp": 0.0, "ft": 0.770 } },
+      { "name": "Lonnie Shelton", "positions": ["PF"], "overall": 74, "stats": { "ppg": 13.5, "rpg": 7.4, "apg": 2.1, "spg": 1.0, "bpg": 0.9, "fg": 0.510, "tp": 0.0, "ft": 0.700 } },
+      { "name": "Fred Brown", "positions": ["SG"], "overall": 73, "stats": { "ppg": 14.0, "rpg": 2.3, "apg": 3.4, "spg": 1.3, "bpg": 0.2, "fg": 0.500, "tp": 0.0, "ft": 0.860 } },
+      { "name": "Paul Silas", "positions": ["PF", "C"], "overall": 72, "stats": { "ppg": 5.7, "rpg": 8.5, "apg": 1.8, "spg": 0.7, "bpg": 0.3, "fg": 0.430, "tp": 0.0, "ft": 0.680 } },
+      { "name": "Dick Snyder", "positions": ["SG", "SF"], "overall": 67, "stats": { "ppg": 6.5, "rpg": 1.8, "apg": 2.3, "spg": 0.7, "bpg": 0.2, "fg": 0.480, "tp": 0.0, "ft": 0.810 } }
+    ]
+  },
+  {
+    "id": "bullets-na-1975",
+    "name": "Chicago Bulls",
+    "season": "1974-75",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Bob Love", "positions": ["SF", "PF"], "overall": 81, "stats": { "ppg": 22.0, "rpg": 6.4, "apg": 2.5, "spg": 1.0, "bpg": 0.4, "fg": 0.456, "tp": 0.0, "ft": 0.790 } },
+      { "name": "Chet Walker", "positions": ["SF"], "overall": 79, "stats": { "ppg": 19.4, "rpg": 5.1, "apg": 2.7, "spg": 0.8, "bpg": 0.2, "fg": 0.482, "tp": 0.0, "ft": 0.860 } },
+      { "name": "Norm Van Lier", "positions": ["PG", "SG"], "overall": 78, "stats": { "ppg": 13.0, "rpg": 5.4, "apg": 7.1, "spg": 2.1, "bpg": 0.2, "fg": 0.420, "tp": 0.0, "ft": 0.760 } },
+      { "name": "Jerry Sloan", "positions": ["SG", "PG"], "overall": 76, "stats": { "ppg": 14.5, "rpg": 6.0, "apg": 2.9, "spg": 1.9, "bpg": 0.3, "fg": 0.430, "tp": 0.0, "ft": 0.730 } },
+      { "name": "Tom Boerwinkle", "positions": ["C", "PF"], "overall": 71, "stats": { "ppg": 6.0, "rpg": 9.0, "apg": 3.0, "spg": 0.5, "bpg": 0.7, "fg": 0.470, "tp": 0.0, "ft": 0.640 } },
+      { "name": "Nate Thurmond", "positions": ["C", "PF"], "overall": 76, "stats": { "ppg": 7.9, "rpg": 11.3, "apg": 2.6, "spg": 0.8, "bpg": 2.4, "fg": 0.420, "tp": 0.0, "ft": 0.660 } },
+      { "name": "Mickey Johnson", "positions": ["PF", "SF"], "overall": 70, "stats": { "ppg": 8.5, "rpg": 5.5, "apg": 1.8, "spg": 1.0, "bpg": 0.8, "fg": 0.440, "tp": 0.0, "ft": 0.760 } },
+      { "name": "Rowland Garrett", "positions": ["SF"], "overall": 63, "stats": { "ppg": 5.0, "rpg": 3.0, "apg": 0.8, "spg": 0.4, "bpg": 0.2, "fg": 0.450, "tp": 0.0, "ft": 0.700 } }
+    ]
+  },
+  {
+    "id": "braves-clippers-1975",
+    "name": "Los Angeles Clippers",
+    "season": "1974-75",
+    "decade": "1970s",
+    "roster": [
+      { "name": "Bob McAdoo", "positions": ["C", "PF"], "overall": 88, "stats": { "ppg": 34.5, "rpg": 14.1, "apg": 2.2, "spg": 1.1, "bpg": 2.1, "fg": 0.512, "tp": 0.0, "ft": 0.805 } },
+      { "name": "Randy Smith", "positions": ["PG", "SG"], "overall": 79, "stats": { "ppg": 18.4, "rpg": 4.1, "apg": 4.6, "spg": 1.9, "bpg": 0.2, "fg": 0.470, "tp": 0.0, "ft": 0.760 } },
+      { "name": "Jim McMillian", "positions": ["SF"], "overall": 76, "stats": { "ppg": 16.6, "rpg": 5.3, "apg": 2.9, "spg": 1.0, "bpg": 0.3, "fg": 0.470, "tp": 0.0, "ft": 0.790 } },
+      { "name": "Garfield Heard", "positions": ["PF", "SF"], "overall": 73, "stats": { "ppg": 11.5, "rpg": 8.5, "apg": 2.0, "spg": 1.0, "bpg": 1.0, "fg": 0.450, "tp": 0.0, "ft": 0.760 } },
+      { "name": "Ernie DiGregorio", "positions": ["PG", "SG"], "overall": 72, "stats": { "ppg": 11.5, "rpg": 2.3, "apg": 6.3, "spg": 0.8, "bpg": 0.1, "fg": 0.450, "tp": 0.0, "ft": 0.870 } },
+      { "name": "Jack Marin", "positions": ["SF", "SG"], "overall": 71, "stats": { "ppg": 11.0, "rpg": 4.0, "apg": 2.0, "spg": 0.7, "bpg": 0.2, "fg": 0.460, "tp": 0.0, "ft": 0.870 } },
+      { "name": "Kenny Charles", "positions": ["SG"], "overall": 67, "stats": { "ppg": 8.0, "rpg": 2.5, "apg": 2.0, "spg": 1.0, "bpg": 0.2, "fg": 0.450, "tp": 0.0, "ft": 0.780 } },
+      { "name": "Bob Kauffman", "positions": ["C", "PF"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 6.0, "apg": 2.5, "spg": 0.5, "bpg": 0.4, "fg": 0.460, "tp": 0.0, "ft": 0.730 } }
+    ]
+  }
+]

@@ -1,0 +1,194 @@
+[
+  {
+    "id": "lakers-2001",
+    "name": "Los Angeles Lakers",
+    "season": "2000-01",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Shaquille O'Neal", "positions": ["C", "PF"], "overall": 98, "stats": { "ppg": 28.7, "rpg": 12.7, "apg": 3.7, "spg": 0.6, "bpg": 2.8, "fg": 0.572, "tp": 0.0, "ft": 0.513 } },
+      { "name": "Kobe Bryant", "positions": ["SG", "SF"], "overall": 90, "stats": { "ppg": 28.5, "rpg": 5.9, "apg": 5.0, "spg": 1.7, "bpg": 0.6, "fg": 0.464, "tp": 0.305, "ft": 0.853 } },
+      { "name": "Derek Fisher", "positions": ["PG", "SG"], "overall": 74, "stats": { "ppg": 11.5, "rpg": 2.5, "apg": 4.0, "spg": 1.7, "bpg": 0.1, "fg": 0.444, "tp": 0.390, "ft": 0.820 } },
+      { "name": "Robert Horry", "positions": ["PF"], "overall": 74, "stats": { "ppg": 4.8, "rpg": 5.2, "apg": 2.0, "spg": 1.0, "bpg": 1.0, "fg": 0.428, "tp": 0.376, "ft": 0.768 } },
+      { "name": "Rick Fox", "positions": ["SF"], "overall": 73, "stats": { "ppg": 8.6, "rpg": 4.2, "apg": 3.0, "spg": 1.0, "bpg": 0.4, "fg": 0.456, "tp": 0.358, "ft": 0.789 } },
+      { "name": "Horace Grant", "positions": ["PF", "C"], "overall": 73, "stats": { "ppg": 8.5, "rpg": 7.2, "apg": 1.8, "spg": 0.9, "bpg": 0.9, "fg": 0.476, "tp": 0.0, "ft": 0.696 } },
+      { "name": "Ron Harper", "positions": ["PG", "SG"], "overall": 70, "stats": { "ppg": 7.0, "rpg": 3.1, "apg": 3.0, "spg": 1.0, "bpg": 0.3, "fg": 0.440, "tp": 0.190, "ft": 0.700 } },
+      { "name": "Brian Shaw", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 6.0, "rpg": 3.0, "apg": 3.0, "spg": 0.7, "bpg": 0.2, "fg": 0.420, "tp": 0.340, "ft": 0.760 } }
+    ]
+  },
+  {
+    "id": "spurs-2005",
+    "name": "San Antonio Spurs",
+    "season": "2004-05",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Tim Duncan", "positions": ["PF", "C"], "overall": 94, "stats": { "ppg": 20.3, "rpg": 11.1, "apg": 2.7, "spg": 0.7, "bpg": 2.6, "fg": 0.496, "tp": 0.0, "ft": 0.670 } },
+      { "name": "Manu Ginobili", "positions": ["SG", "SF"], "overall": 84, "stats": { "ppg": 16.0, "rpg": 4.4, "apg": 3.9, "spg": 1.6, "bpg": 0.4, "fg": 0.471, "tp": 0.376, "ft": 0.803 } },
+      { "name": "Tony Parker", "positions": ["PG", "SG"], "overall": 83, "stats": { "ppg": 16.6, "rpg": 3.2, "apg": 6.1, "spg": 1.2, "bpg": 0.1, "fg": 0.482, "tp": 0.276, "ft": 0.650 } },
+      { "name": "Bruce Bowen", "positions": ["SF"], "overall": 73, "stats": { "ppg": 8.2, "rpg": 2.9, "apg": 1.6, "spg": 1.0, "bpg": 0.4, "fg": 0.448, "tp": 0.429, "ft": 0.690 } },
+      { "name": "Robert Horry", "positions": ["PF", "C"], "overall": 72, "stats": { "ppg": 6.0, "rpg": 4.5, "apg": 1.8, "spg": 0.8, "bpg": 0.8, "fg": 0.430, "tp": 0.363, "ft": 0.760 } },
+      { "name": "Brent Barry", "positions": ["SG", "PG"], "overall": 72, "stats": { "ppg": 8.0, "rpg": 3.0, "apg": 2.6, "spg": 0.9, "bpg": 0.2, "fg": 0.480, "tp": 0.478, "ft": 0.840 } },
+      { "name": "Nazr Mohammed", "positions": ["C", "PF"], "overall": 70, "stats": { "ppg": 8.0, "rpg": 6.0, "apg": 0.5, "spg": 0.4, "bpg": 0.8, "fg": 0.520, "tp": 0.0, "ft": 0.690 } },
+      { "name": "Beno Udrih", "positions": ["PG", "SG"], "overall": 65, "stats": { "ppg": 5.0, "rpg": 1.5, "apg": 2.3, "spg": 0.5, "bpg": 0.1, "fg": 0.450, "tp": 0.330, "ft": 0.770 } }
+    ]
+  },
+  {
+    "id": "pistons-2004",
+    "name": "Detroit Pistons",
+    "season": "2003-04",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Ben Wallace", "positions": ["C", "PF"], "overall": 82, "stats": { "ppg": 9.5, "rpg": 12.4, "apg": 1.7, "spg": 1.8, "bpg": 3.0, "fg": 0.421, "tp": 0.0, "ft": 0.490 } },
+      { "name": "Chauncey Billups", "positions": ["PG", "SG"], "overall": 82, "stats": { "ppg": 16.9, "rpg": 3.5, "apg": 5.7, "spg": 1.0, "bpg": 0.2, "fg": 0.394, "tp": 0.388, "ft": 0.878 } },
+      { "name": "Richard Hamilton", "positions": ["SG"], "overall": 80, "stats": { "ppg": 17.6, "rpg": 3.5, "apg": 4.0, "spg": 1.1, "bpg": 0.2, "fg": 0.455, "tp": 0.338, "ft": 0.868 } },
+      { "name": "Rasheed Wallace", "positions": ["PF", "C"], "overall": 80, "stats": { "ppg": 13.7, "rpg": 6.5, "apg": 1.8, "spg": 1.1, "bpg": 2.0, "fg": 0.461, "tp": 0.332, "ft": 0.737 } },
+      { "name": "Tayshaun Prince", "positions": ["SF"], "overall": 76, "stats": { "ppg": 10.3, "rpg": 4.8, "apg": 2.3, "spg": 0.9, "bpg": 0.9, "fg": 0.453, "tp": 0.362, "ft": 0.789 } },
+      { "name": "Corliss Williamson", "positions": ["SF", "PF"], "overall": 70, "stats": { "ppg": 9.0, "rpg": 3.0, "apg": 1.0, "spg": 0.5, "bpg": 0.2, "fg": 0.477, "tp": 0.0, "ft": 0.760 } },
+      { "name": "Lindsey Hunter", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 6.0, "rpg": 2.0, "apg": 2.5, "spg": 1.4, "bpg": 0.1, "fg": 0.410, "tp": 0.320, "ft": 0.760 } },
+      { "name": "Mehmet Okur", "positions": ["C", "PF"], "overall": 72, "stats": { "ppg": 9.0, "rpg": 5.9, "apg": 1.3, "spg": 0.5, "bpg": 0.4, "fg": 0.443, "tp": 0.380, "ft": 0.769 } }
+    ]
+  },
+  {
+    "id": "heat-2006",
+    "name": "Miami Heat",
+    "season": "2005-06",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Dwyane Wade", "positions": ["SG", "PG"], "overall": 90, "stats": { "ppg": 27.2, "rpg": 5.7, "apg": 6.7, "spg": 1.9, "bpg": 0.8, "fg": 0.495, "tp": 0.171, "ft": 0.783 } },
+      { "name": "Shaquille O'Neal", "positions": ["C", "PF"], "overall": 86, "stats": { "ppg": 20.0, "rpg": 9.2, "apg": 1.9, "spg": 0.4, "bpg": 1.8, "fg": 0.600, "tp": 0.0, "ft": 0.469 } },
+      { "name": "Antoine Walker", "positions": ["SF", "PF"], "overall": 74, "stats": { "ppg": 12.2, "rpg": 4.8, "apg": 2.8, "spg": 0.8, "bpg": 0.3, "fg": 0.430, "tp": 0.323, "ft": 0.658 } },
+      { "name": "Jason Williams", "positions": ["PG", "SG"], "overall": 73, "stats": { "ppg": 12.3, "rpg": 2.4, "apg": 4.9, "spg": 0.9, "bpg": 0.1, "fg": 0.451, "tp": 0.380, "ft": 0.778 } },
+      { "name": "Udonis Haslem", "positions": ["PF", "C"], "overall": 73, "stats": { "ppg": 9.0, "rpg": 7.9, "apg": 1.1, "spg": 0.5, "bpg": 0.4, "fg": 0.516, "tp": 0.0, "ft": 0.701 } },
+      { "name": "James Posey", "positions": ["SF", "SG"], "overall": 72, "stats": { "ppg": 7.0, "rpg": 4.5, "apg": 1.4, "spg": 1.2, "bpg": 0.5, "fg": 0.401, "tp": 0.371, "ft": 0.745 } },
+      { "name": "Alonzo Mourning", "positions": ["C", "PF"], "overall": 73, "stats": { "ppg": 7.8, "rpg": 5.5, "apg": 0.3, "spg": 0.4, "bpg": 2.7, "fg": 0.609, "tp": 0.0, "ft": 0.625 } },
+      { "name": "Gary Payton", "positions": ["PG", "SG"], "overall": 72, "stats": { "ppg": 7.7, "rpg": 3.0, "apg": 3.5, "spg": 1.1, "bpg": 0.1, "fg": 0.461, "tp": 0.355, "ft": 0.700 } }
+    ]
+  },
+  {
+    "id": "celtics-2008",
+    "name": "Boston Celtics",
+    "season": "2007-08",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Kevin Garnett", "positions": ["PF", "C"], "overall": 88, "stats": { "ppg": 18.8, "rpg": 9.2, "apg": 3.4, "spg": 1.4, "bpg": 1.3, "fg": 0.539, "tp": 0.0, "ft": 0.801 } },
+      { "name": "Paul Pierce", "positions": ["SF", "SG"], "overall": 85, "stats": { "ppg": 19.6, "rpg": 5.1, "apg": 4.5, "spg": 1.3, "bpg": 0.5, "fg": 0.464, "tp": 0.392, "ft": 0.843 } },
+      { "name": "Ray Allen", "positions": ["SG"], "overall": 84, "stats": { "ppg": 17.4, "rpg": 3.7, "apg": 3.1, "spg": 0.9, "bpg": 0.2, "fg": 0.445, "tp": 0.398, "ft": 0.907 } },
+      { "name": "Rajon Rondo", "positions": ["PG", "SG"], "overall": 78, "stats": { "ppg": 10.6, "rpg": 4.2, "apg": 5.1, "spg": 1.7, "bpg": 0.2, "fg": 0.492, "tp": 0.263, "ft": 0.611 } },
+      { "name": "Kendrick Perkins", "positions": ["C", "PF"], "overall": 72, "stats": { "ppg": 6.9, "rpg": 6.1, "apg": 1.0, "spg": 0.4, "bpg": 1.5, "fg": 0.615, "tp": 0.0, "ft": 0.620 } },
+      { "name": "James Posey", "positions": ["SF", "SG"], "overall": 72, "stats": { "ppg": 7.4, "rpg": 4.4, "apg": 1.7, "spg": 1.0, "bpg": 0.4, "fg": 0.418, "tp": 0.380, "ft": 0.776 } },
+      { "name": "Eddie House", "positions": ["PG", "SG"], "overall": 70, "stats": { "ppg": 7.5, "rpg": 1.5, "apg": 1.5, "spg": 0.5, "bpg": 0.0, "fg": 0.440, "tp": 0.390, "ft": 0.840 } },
+      { "name": "Leon Powe", "positions": ["PF"], "overall": 68, "stats": { "ppg": 7.7, "rpg": 4.1, "apg": 0.5, "spg": 0.4, "bpg": 0.4, "fg": 0.530, "tp": 0.0, "ft": 0.733 } }
+    ]
+  },
+  {
+    "id": "mavericks-2003",
+    "name": "Dallas Mavericks",
+    "season": "2002-03",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Dirk Nowitzki", "positions": ["PF", "SF"], "overall": 88, "stats": { "ppg": 25.1, "rpg": 9.9, "apg": 3.0, "spg": 1.4, "bpg": 1.0, "fg": 0.463, "tp": 0.379, "ft": 0.881 } },
+      { "name": "Steve Nash", "positions": ["PG", "SG"], "overall": 84, "stats": { "ppg": 17.7, "rpg": 2.9, "apg": 7.3, "spg": 1.0, "bpg": 0.1, "fg": 0.465, "tp": 0.413, "ft": 0.909 } },
+      { "name": "Michael Finley", "positions": ["SG", "SF"], "overall": 80, "stats": { "ppg": 19.3, "rpg": 5.9, "apg": 3.0, "spg": 1.1, "bpg": 0.4, "fg": 0.456, "tp": 0.349, "ft": 0.804 } },
+      { "name": "Nick Van Exel", "positions": ["PG", "SG"], "overall": 75, "stats": { "ppg": 12.5, "rpg": 2.5, "apg": 4.2, "spg": 0.8, "bpg": 0.1, "fg": 0.420, "tp": 0.377, "ft": 0.810 } },
+      { "name": "Raef LaFrentz", "positions": ["C", "PF"], "overall": 73, "stats": { "ppg": 10.5, "rpg": 6.0, "apg": 1.2, "spg": 0.6, "bpg": 2.7, "fg": 0.452, "tp": 0.380, "ft": 0.700 } },
+      { "name": "Shawn Bradley", "positions": ["C", "PF"], "overall": 70, "stats": { "ppg": 6.0, "rpg": 6.0, "apg": 0.6, "spg": 0.5, "bpg": 2.4, "fg": 0.501, "tp": 0.0, "ft": 0.650 } },
+      { "name": "Walt Williams", "positions": ["SF", "PF"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 3.0, "apg": 1.4, "spg": 0.8, "bpg": 0.5, "fg": 0.430, "tp": 0.370, "ft": 0.800 } },
+      { "name": "Eduardo Najera", "positions": ["PF", "SF"], "overall": 67, "stats": { "ppg": 6.0, "rpg": 4.0, "apg": 1.0, "spg": 0.6, "bpg": 0.2, "fg": 0.520, "tp": 0.0, "ft": 0.700 } }
+    ]
+  },
+  {
+    "id": "kings-2002",
+    "name": "Sacramento Kings",
+    "season": "2001-02",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Chris Webber", "positions": ["PF", "C"], "overall": 86, "stats": { "ppg": 24.5, "rpg": 10.1, "apg": 4.8, "spg": 1.7, "bpg": 1.4, "fg": 0.495, "tp": 0.143, "ft": 0.749 } },
+      { "name": "Peja Stojakovic", "positions": ["SF"], "overall": 82, "stats": { "ppg": 21.2, "rpg": 5.3, "apg": 2.2, "spg": 1.2, "bpg": 0.2, "fg": 0.480, "tp": 0.416, "ft": 0.929 } },
+      { "name": "Mike Bibby", "positions": ["PG", "SG"], "overall": 80, "stats": { "ppg": 13.7, "rpg": 3.4, "apg": 5.0, "spg": 1.4, "bpg": 0.1, "fg": 0.453, "tp": 0.451, "ft": 0.844 } },
+      { "name": "Doug Christie", "positions": ["SG"], "overall": 76, "stats": { "ppg": 12.0, "rpg": 4.0, "apg": 4.4, "spg": 2.0, "bpg": 0.6, "fg": 0.466, "tp": 0.371, "ft": 0.838 } },
+      { "name": "Vlade Divac", "positions": ["C", "PF"], "overall": 76, "stats": { "ppg": 11.1, "rpg": 8.4, "apg": 3.7, "spg": 1.1, "bpg": 1.4, "fg": 0.460, "tp": 0.250, "ft": 0.692 } },
+      { "name": "Hedo Turkoglu", "positions": ["SF", "SG"], "overall": 70, "stats": { "ppg": 10.1, "rpg": 4.0, "apg": 1.9, "spg": 1.0, "bpg": 0.3, "fg": 0.448, "tp": 0.386, "ft": 0.738 } },
+      { "name": "Bobby Jackson", "positions": ["PG", "SG"], "overall": 73, "stats": { "ppg": 11.1, "rpg": 3.0, "apg": 2.4, "spg": 1.3, "bpg": 0.1, "fg": 0.443, "tp": 0.350, "ft": 0.800 } },
+      { "name": "Scot Pollard", "positions": ["C", "PF"], "overall": 65, "stats": { "ppg": 4.0, "rpg": 5.0, "apg": 0.7, "spg": 0.4, "bpg": 0.8, "fg": 0.490, "tp": 0.0, "ft": 0.620 } }
+    ]
+  },
+  {
+    "id": "suns-2007",
+    "name": "Phoenix Suns",
+    "season": "2006-07",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Steve Nash", "positions": ["PG", "SG"], "overall": 89, "stats": { "ppg": 18.6, "rpg": 3.5, "apg": 11.6, "spg": 0.8, "bpg": 0.1, "fg": 0.532, "tp": 0.455, "ft": 0.899 } },
+      { "name": "Amar'e Stoudemire", "positions": ["PF", "C"], "overall": 85, "stats": { "ppg": 20.4, "rpg": 9.6, "apg": 1.0, "spg": 1.0, "bpg": 1.3, "fg": 0.575, "tp": 0.0, "ft": 0.785 } },
+      { "name": "Shawn Marion", "positions": ["SF", "PF"], "overall": 83, "stats": { "ppg": 17.5, "rpg": 9.8, "apg": 1.7, "spg": 2.0, "bpg": 1.5, "fg": 0.524, "tp": 0.342, "ft": 0.810 } },
+      { "name": "Leandro Barbosa", "positions": ["SG", "PG"], "overall": 76, "stats": { "ppg": 18.1, "rpg": 2.9, "apg": 4.0, "spg": 1.1, "bpg": 0.2, "fg": 0.476, "tp": 0.434, "ft": 0.820 } },
+      { "name": "Raja Bell", "positions": ["SG"], "overall": 74, "stats": { "ppg": 14.7, "rpg": 3.2, "apg": 2.2, "spg": 1.3, "bpg": 0.2, "fg": 0.453, "tp": 0.404, "ft": 0.815 } },
+      { "name": "Boris Diaw", "positions": ["PF", "C"], "overall": 73, "stats": { "ppg": 9.7, "rpg": 4.4, "apg": 3.6, "spg": 0.7, "bpg": 0.6, "fg": 0.502, "tp": 0.323, "ft": 0.696 } },
+      { "name": "Kurt Thomas", "positions": ["C", "PF"], "overall": 70, "stats": { "ppg": 5.0, "rpg": 6.0, "apg": 0.8, "spg": 0.5, "bpg": 0.8, "fg": 0.494, "tp": 0.0, "ft": 0.750 } },
+      { "name": "James Jones", "positions": ["SF", "SG"], "overall": 67, "stats": { "ppg": 6.0, "rpg": 2.0, "apg": 0.7, "spg": 0.5, "bpg": 0.4, "fg": 0.450, "tp": 0.442, "ft": 0.800 } }
+    ]
+  },
+  {
+    "id": "cavaliers-2009",
+    "name": "Cleveland Cavaliers",
+    "season": "2008-09",
+    "decade": "2000s",
+    "roster": [
+      { "name": "LeBron James", "positions": ["SF", "PG"], "overall": 95, "stats": { "ppg": 28.4, "rpg": 7.6, "apg": 7.2, "spg": 1.7, "bpg": 1.1, "fg": 0.489, "tp": 0.344, "ft": 0.780 } },
+      { "name": "Mo Williams", "positions": ["PG", "SG"], "overall": 79, "stats": { "ppg": 17.8, "rpg": 3.4, "apg": 4.1, "spg": 0.9, "bpg": 0.1, "fg": 0.467, "tp": 0.436, "ft": 0.912 } },
+      { "name": "Zydrunas Ilgauskas", "positions": ["C", "PF"], "overall": 75, "stats": { "ppg": 12.9, "rpg": 7.5, "apg": 1.3, "spg": 0.4, "bpg": 1.4, "fg": 0.492, "tp": 0.0, "ft": 0.812 } },
+      { "name": "Delonte West", "positions": ["SG", "PG"], "overall": 73, "stats": { "ppg": 11.7, "rpg": 3.2, "apg": 3.6, "spg": 1.1, "bpg": 0.3, "fg": 0.456, "tp": 0.399, "ft": 0.853 } },
+      { "name": "Anderson Varejao", "positions": ["PF", "C"], "overall": 73, "stats": { "ppg": 8.6, "rpg": 7.2, "apg": 1.1, "spg": 0.9, "bpg": 1.0, "fg": 0.539, "tp": 0.0, "ft": 0.674 } },
+      { "name": "Ben Wallace", "positions": ["C", "PF"], "overall": 70, "stats": { "ppg": 2.9, "rpg": 6.5, "apg": 0.9, "spg": 0.8, "bpg": 1.3, "fg": 0.510, "tp": 0.0, "ft": 0.420 } },
+      { "name": "Daniel Gibson", "positions": ["PG", "SG"], "overall": 68, "stats": { "ppg": 8.0, "rpg": 1.5, "apg": 1.7, "spg": 0.5, "bpg": 0.1, "fg": 0.420, "tp": 0.431, "ft": 0.840 } },
+      { "name": "Wally Szczerbiak", "positions": ["SF", "SG"], "overall": 69, "stats": { "ppg": 7.0, "rpg": 2.5, "apg": 1.2, "spg": 0.4, "bpg": 0.1, "fg": 0.460, "tp": 0.380, "ft": 0.860 } }
+    ]
+  },
+  {
+    "id": "magic-2009",
+    "name": "Orlando Magic",
+    "season": "2008-09",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Dwight Howard", "positions": ["C", "PF"], "overall": 89, "stats": { "ppg": 20.6, "rpg": 13.8, "apg": 1.4, "spg": 1.0, "bpg": 2.9, "fg": 0.572, "tp": 0.0, "ft": 0.594 } },
+      { "name": "Rashard Lewis", "positions": ["PF", "SF"], "overall": 80, "stats": { "ppg": 17.7, "rpg": 5.7, "apg": 2.6, "spg": 1.1, "bpg": 0.3, "fg": 0.461, "tp": 0.397, "ft": 0.843 } },
+      { "name": "Hedo Turkoglu", "positions": ["SF", "SG"], "overall": 78, "stats": { "ppg": 16.8, "rpg": 5.3, "apg": 5.0, "spg": 0.8, "bpg": 0.4, "fg": 0.456, "tp": 0.354, "ft": 0.825 } },
+      { "name": "Jameer Nelson", "positions": ["PG", "SG"], "overall": 78, "stats": { "ppg": 16.7, "rpg": 3.6, "apg": 5.4, "spg": 1.2, "bpg": 0.1, "fg": 0.503, "tp": 0.453, "ft": 0.882 } },
+      { "name": "Rafer Alston", "positions": ["PG", "SG"], "overall": 72, "stats": { "ppg": 12.0, "rpg": 3.0, "apg": 4.5, "spg": 1.0, "bpg": 0.1, "fg": 0.400, "tp": 0.350, "ft": 0.770 } },
+      { "name": "Courtney Lee", "positions": ["SG"], "overall": 70, "stats": { "ppg": 8.4, "rpg": 2.4, "apg": 1.3, "spg": 0.7, "bpg": 0.3, "fg": 0.444, "tp": 0.394, "ft": 0.815 } },
+      { "name": "Mickael Pietrus", "positions": ["SG", "SF"], "overall": 70, "stats": { "ppg": 8.0, "rpg": 3.0, "apg": 1.0, "spg": 0.7, "bpg": 0.4, "fg": 0.430, "tp": 0.380, "ft": 0.720 } },
+      { "name": "Marcin Gortat", "positions": ["C", "PF"], "overall": 68, "stats": { "ppg": 4.0, "rpg": 5.0, "apg": 0.4, "spg": 0.3, "bpg": 0.7, "fg": 0.540, "tp": 0.0, "ft": 0.610 } }
+    ]
+  },
+  {
+    "id": "nets-2003",
+    "name": "Brooklyn Nets",
+    "season": "2002-03",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Jason Kidd", "positions": ["PG", "SG"], "overall": 88, "stats": { "ppg": 18.7, "rpg": 6.3, "apg": 8.9, "spg": 2.2, "bpg": 0.3, "fg": 0.414, "tp": 0.341, "ft": 0.841 } },
+      { "name": "Kenyon Martin", "positions": ["PF"], "overall": 78, "stats": { "ppg": 16.7, "rpg": 8.3, "apg": 2.5, "spg": 1.1, "bpg": 1.3, "fg": 0.472, "tp": 0.0, "ft": 0.694 } },
+      { "name": "Richard Jefferson", "positions": ["SF"], "overall": 76, "stats": { "ppg": 15.5, "rpg": 6.4, "apg": 2.6, "spg": 1.0, "bpg": 0.5, "fg": 0.489, "tp": 0.296, "ft": 0.781 } },
+      { "name": "Kerry Kittles", "positions": ["SG"], "overall": 74, "stats": { "ppg": 11.0, "rpg": 4.0, "apg": 2.5, "spg": 1.4, "bpg": 0.5, "fg": 0.453, "tp": 0.380, "ft": 0.800 } },
+      { "name": "Lucious Harris", "positions": ["SG", "SF"], "overall": 68, "stats": { "ppg": 9.0, "rpg": 2.5, "apg": 2.0, "spg": 0.9, "bpg": 0.2, "fg": 0.440, "tp": 0.370, "ft": 0.820 } },
+      { "name": "Todd MacCulloch", "positions": ["C", "PF"], "overall": 68, "stats": { "ppg": 7.0, "rpg": 5.5, "apg": 0.6, "spg": 0.3, "bpg": 0.9, "fg": 0.550, "tp": 0.0, "ft": 0.680 } },
+      { "name": "Aaron Williams", "positions": ["PF", "C"], "overall": 67, "stats": { "ppg": 6.0, "rpg": 4.5, "apg": 0.8, "spg": 0.4, "bpg": 0.9, "fg": 0.500, "tp": 0.0, "ft": 0.760 } },
+      { "name": "Anthony Johnson", "positions": ["PG", "SG"], "overall": 64, "stats": { "ppg": 5.0, "rpg": 1.5, "apg": 2.5, "spg": 0.6, "bpg": 0.1, "fg": 0.410, "tp": 0.330, "ft": 0.780 } }
+    ]
+  },
+  {
+    "id": "timberwolves-2004",
+    "name": "Minnesota Timberwolves",
+    "season": "2003-04",
+    "decade": "2000s",
+    "roster": [
+      { "name": "Kevin Garnett", "positions": ["PF", "C"], "overall": 91, "stats": { "ppg": 24.2, "rpg": 13.9, "apg": 5.0, "spg": 1.5, "bpg": 2.2, "fg": 0.499, "tp": 0.256, "ft": 0.791 } },
+      { "name": "Sam Cassell", "positions": ["PG", "SG"], "overall": 80, "stats": { "ppg": 19.8, "rpg": 3.2, "apg": 7.3, "spg": 1.2, "bpg": 0.1, "fg": 0.470, "tp": 0.388, "ft": 0.852 } },
+      { "name": "Latrell Sprewell", "positions": ["SG", "SF"], "overall": 78, "stats": { "ppg": 16.8, "rpg": 4.3, "apg": 4.0, "spg": 1.3, "bpg": 0.4, "fg": 0.428, "tp": 0.339, "ft": 0.842 } },
+      { "name": "Wally Szczerbiak", "positions": ["SF", "SG"], "overall": 73, "stats": { "ppg": 8.5, "rpg": 3.0, "apg": 1.6, "spg": 0.5, "bpg": 0.1, "fg": 0.471, "tp": 0.390, "ft": 0.870 } },
+      { "name": "Troy Hudson", "positions": ["PG", "SG"], "overall": 70, "stats": { "ppg": 9.0, "rpg": 2.0, "apg": 4.0, "spg": 0.7, "bpg": 0.1, "fg": 0.410, "tp": 0.350, "ft": 0.840 } },
+      { "name": "Trenton Hassell", "positions": ["SF", "SG"], "overall": 70, "stats": { "ppg": 8.4, "rpg": 3.0, "apg": 1.8, "spg": 1.0, "bpg": 0.3, "fg": 0.473, "tp": 0.250, "ft": 0.770 } },
+      { "name": "Michael Olowokandi", "positions": ["C", "PF"], "overall": 67, "stats": { "ppg": 6.4, "rpg": 6.4, "apg": 0.7, "spg": 0.4, "bpg": 1.4, "fg": 0.430, "tp": 0.0, "ft": 0.600 } },
+      { "name": "Ervin Johnson", "positions": ["C", "PF"], "overall": 65, "stats": { "ppg": 2.5, "rpg": 5.0, "apg": 0.5, "spg": 0.4, "bpg": 1.2, "fg": 0.470, "tp": 0.0, "ft": 0.640 } }
+    ]
+  }
+]

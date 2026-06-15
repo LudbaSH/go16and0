@@ -71,7 +71,7 @@ body.light .era-card:hover {
 
 /* Standalone content pages (about/privacy/terms) opt in with class="doc". */
 .doc { max-width: 60rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-.doc h1, .doc h2 { font-family: "Barlow Condensed", system-ui, sans-serif; font-weight: 700; }
+.doc h1, .doc h2 { font-family: "Oswald", system-ui, sans-serif; font-weight: 700; }
 .doc h1 { font-size: 2.25rem; }
 .doc h2 { font-size: 1.4rem; margin-top: 1.75rem; }
 /* Plain text links are gold; button-styled anchors keep their own colors. */
@@ -115,7 +115,7 @@ body.light .era-card:hover {
   padding: 0.7rem 1.8rem;
   border: none;
   border-radius: var(--radius);
-  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-family: "Oswald", system-ui, sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   text-transform: uppercase;
@@ -172,7 +172,7 @@ body.light .era-card:hover {
   display: inline-block;
   background: var(--support-bg);
   color: var(--support-text);
-  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-family: "Oswald", system-ui, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -222,7 +222,7 @@ body.light .era-card:hover {
   min-height: 96px;
   justify-content: center;
 }
-.era-card .era-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 1.25rem; }
+.era-card .era-name { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 1.25rem; }
 .era-card .era-years { color: var(--color-muted); font-size: 0.85rem; }
 
 .era-card.locked {
@@ -263,7 +263,7 @@ body.light .era-card:hover {
   box-shadow: 0 0 26px color-mix(in srgb, var(--accent, var(--color-gold)) 22%, transparent);
 }
 .spin-reel {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   font-size: clamp(1.1rem, 4vw, 1.7rem);
   line-height: 1.05;
@@ -366,7 +366,7 @@ body.light .era-card:hover {
 .slot .slot-label {
   position: absolute;
   bottom: -1.2rem;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 0.8rem;
   color: #fff;
@@ -403,14 +403,14 @@ body.light .era-card:hover {
   padding: 0.4rem 0.75rem;
 }
 .player-detail .pd-name {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   font-size: 1.1rem;
   line-height: 1.1;
   color: var(--color-text);
 }
 .player-detail .pd-pos {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
@@ -482,11 +482,11 @@ body.light .era-card:hover {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent, var(--color-gold)) 55%, transparent);
 }
 /* Court node shows 2-letter initials big, overall small underneath. */
-.player .p-init { font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 1.15rem; line-height: 1; letter-spacing: 0.02em; }
-.player .p-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 0.8rem; line-height: 1; text-align: center; }
+.player .p-init { font-family: "Oswald", sans-serif; font-weight: 800; font-size: 1.15rem; line-height: 1; letter-spacing: 0.02em; }
+.player .p-name { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 0.8rem; line-height: 1; text-align: center; }
 .player .p-meta { font-size: 0.68rem; color: var(--color-muted); }
 .player .p-ovr {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   font-size: 0.78rem;
   color: var(--color-gold);
@@ -523,6 +523,20 @@ body.light .era-card:hover {
 /* minmax(0,1fr) lets the side columns shrink below their content's natural width
    instead of pushing the grid past the viewport (the cause of the mobile sideways
    scroll). On narrow screens the two teams stack so each gets the full width. */
+/* Always-visible home-screen note: the roster build is what matters. */
+.build-note {
+  margin-top: 1.25rem;
+  max-width: 34rem;
+  padding: 0.85rem 1rem;
+  border-left: 3px solid var(--color-gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: color-mix(in srgb, var(--color-gold) 8%, var(--color-surface));
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+.build-note strong { color: var(--color-gold); }
+
 .matchup {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -545,11 +559,42 @@ body.light .era-card:hover {
 }
 .vs {
   align-self: center;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   color: var(--color-muted);
 }
 .opp-year { color: var(--color-muted); font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+
+/* Matchup record + rating line under each team name. Numbers read cleaner in the
+   non-condensed body face with tabular figures than in bold condensed. */
+.matchup-meta {
+  margin-top: 0.25rem;
+  font-family: "Barlow", system-ui, sans-serif;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+}
+.matchup-meta .meta-rating { color: var(--color-gold); font-weight: 700; margin-left: 0.4rem; }
+
+/* "Home court" pill on the higher-seeded side. */
+.home-badge {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-gold) 22%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 55%, transparent);
+  color: var(--color-gold);
+  font-family: "Oswald", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
 .mini-five { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.5rem; }
 .player-mini {
   display: flex;
@@ -570,14 +615,14 @@ body.light .era-card:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   font-size: 0.72rem;
   color: #15110a;
 }
-.mini-slot { font-family: "Barlow Condensed", sans-serif; font-weight: 700; color: var(--color-muted); width: 1.6rem; text-align: left; }
+.mini-slot { font-family: "Oswald", sans-serif; font-weight: 700; color: var(--color-muted); width: 1.6rem; text-align: left; }
 .mini-name { flex: 1; min-width: 0; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.player-mini .p-ovr { color: var(--color-gold); font-family: "Barlow Condensed", sans-serif; font-weight: 800; }
+.player-mini .p-ovr { color: var(--color-gold); font-family: "Oswald", sans-serif; font-weight: 800; }
 
 .game-log {
   margin: 1rem auto 0;
@@ -595,7 +640,7 @@ body.light .era-card:hover {
   border-radius: 6px;
   background: var(--color-surface);
   border-left: 3px solid transparent;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 600;
 }
 .game-row.win { border-color: var(--color-gold); }
@@ -604,14 +649,14 @@ body.light .era-card:hover {
 /* Live game scoreboard with the count-up score. */
 .scoreboard { text-align: center; margin-top: 1rem; min-height: 4.5rem; }
 .sb-label {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-muted);
   font-size: 0.85rem;
 }
 .sb-score {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   font-size: clamp(2.2rem, 9vw, 3.2rem);
   line-height: 1;
@@ -622,6 +667,16 @@ body.light .era-card:hover {
 }
 .sb-score .sb-dash { color: var(--color-muted); }
 .sb-score .won { color: var(--color-gold); }
+.sb-venue {
+  margin-left: 0.4rem;
+  padding: 0.02rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-surface-2);
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
 
 .confirm-panel { max-width: 26rem; text-align: left; }
 
@@ -631,7 +686,7 @@ body.light .era-card:hover {
   align-items: center;
   gap: 0.4rem;
   color: var(--color-muted);
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -660,7 +715,7 @@ body.light .era-card:hover {
 }
 .statsheet:empty { display: none; }
 .ss-title {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   font-size: 0.95rem;
   text-transform: uppercase;
@@ -682,7 +737,7 @@ body.light .era-card:hover {
 }
 .ss-table th, .ss-table td { padding: 0.3rem 0.4rem; text-align: right; }
 .ss-table thead th {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.7rem;
@@ -705,7 +760,7 @@ body.light .era-card:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   font-size: 0.66rem;
   color: #15110a;
@@ -725,7 +780,7 @@ body.light .era-card:hover {
   border: 1px solid var(--color-surface-2);
   border-radius: 999px;
   color: var(--color-muted);
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -746,7 +801,7 @@ body.light .era-card:hover {
   background: linear-gradient(180deg, rgba(251,191,36,0.08), transparent);
 }
 .result-mvp .mvp-label {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -754,7 +809,7 @@ body.light .era-card:hover {
   color: var(--color-gold);
 }
 .result-mvp .mvp-name {
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 800;
   font-size: 1.5rem;
   line-height: 1.1;
@@ -776,7 +831,7 @@ body.light .era-card:hover {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -810,7 +865,7 @@ body.light .era-card:hover {
 .history-row.history-perfect { border-left-color: var(--color-gold); }
 .history-row.history-won { border-left-color: #2bb673; }
 .history-row.history-eliminated { border-left-color: #9aa6b2; }
-.history-outcome { font-family: "Barlow Condensed", sans-serif; font-weight: 800; }
+.history-outcome { font-family: "Oswald", sans-serif; font-weight: 800; }
 .history-mode { color: var(--color-muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
 .history-record { font-variant-numeric: tabular-nums; font-weight: 700; }
 .history-team {
@@ -856,9 +911,9 @@ body.light .era-card:hover {
 .pick-row.locked { opacity: 0.4; cursor: not-allowed; }
 .pick-row.locked:hover { transform: none; border-color: var(--color-surface-2); }
 .pick-head { display: flex; align-items: baseline; gap: 0.5rem; }
-.pick-name { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 0.98rem; line-height: 1.1; }
+.pick-name { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 0.98rem; line-height: 1.1; }
 .pick-pos { color: var(--color-muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
-.pick-ovr { margin-left: auto; font-family: "Barlow Condensed", sans-serif; font-weight: 800; color: var(--color-gold); }
+.pick-ovr { margin-left: auto; font-family: "Oswald", sans-serif; font-weight: 800; color: var(--color-gold); }
 .pick-stats { color: var(--color-muted); font-size: 0.72rem; margin-top: 0.05rem; line-height: 1.2; }
 
 /* Ratings-mode filters: search, position chips, and sort. */
@@ -889,7 +944,7 @@ body.light .era-card:hover {
   border: 1px solid var(--color-surface-2);
   border-radius: 999px;
   color: var(--color-muted);
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -962,7 +1017,7 @@ body.light .era-card:hover {
   background: none;
   border: none;
   color: var(--color-muted);
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-size: 1rem;
   text-transform: uppercase;
@@ -1020,6 +1075,18 @@ body.light .era-card:hover {
   .footer-bar { justify-content: center; }
   .footer-fine { width: 100%; text-align: center; }
 }
+
+/* ---- Oswald weight trim ----
+   Oswald is a heavier condensed face than Barlow Condensed, so the small labels and
+   numbers looked thick. Lighten just those dense areas; big display text (wordmark,
+   headings, the live score) keeps its bold weight. Listed last so it wins on source
+   order at equal specificity. */
+.mini-slot, .pick-pos, .opp-year, .sb-label, .sb-venue, .home-badge,
+.ss-table thead th, .ss-title, .box-tab, .history-mode, .speed-control,
+.player .p-name { font-weight: 500; }
+
+.mini-av, .ss-av, .player .p-init, .player-mini .p-ovr,
+.pick-name, .pick-ovr, .history-outcome { font-weight: 600; }
 
 /* ---- Focus + reduced motion ---- */
 :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }

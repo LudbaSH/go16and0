@@ -15,7 +15,8 @@ const GameState = (() => {
       opponent: null,    // opponent team for the current round
       yourWins: 0,       // wins in the current series
       oppWins: 0,        // losses in the current series
-      games: [],         // game scores for the current series
+      games: [],         // game scores for the current series (reset each round)
+      allGames: [],      // every game across the whole run (for the gauntlet MVP)
       totalWins: 0,      // games won across the whole run
       totalLosses: 0,    // games lost across the whole run
       status: "playing", // "playing" | "won" | "eliminated"
@@ -29,6 +30,9 @@ const GameState = (() => {
     five: {},            // slot -> drafted player (the player's starting five)
     spunTeam: null,      // team shown by the latest draft spin
     respins: MAX_RESPINS, // re-rolls remaining this draft
+    teamRating: 0,       // drafted five's rating (shown once the roster is set)
+    teamRecord: null,    // projected regular-season record { wins, losses }
+    _teamSig: "",        // signature of the five the projection was computed for
     tournament: freshTournament(),
   };
 
@@ -44,7 +48,9 @@ const GameState = (() => {
   function reset() {
     set({
       screen: "menu", mode: null, gameMode: null,
-      five: {}, spunTeam: null, respins: MAX_RESPINS, tournament: freshTournament(),
+      five: {}, spunTeam: null, respins: MAX_RESPINS,
+      teamRating: 0, teamRecord: null, _teamSig: "",
+      tournament: freshTournament(),
     });
   }
 

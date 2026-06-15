@@ -68,34 +68,87 @@ const Engine = (() => {
   }
 
   // ---- Scoring + simulation ----
-  // NOTE: this is a PLACEHOLDER rating model. The stat weighting is intentionally
-  // simple and lives in one place so it can be tuned later. For now a lineup's
-  // strength is the average overall of its five, nudged by scoring punch (ppg).
-  const HOME_COURT_EDGE = 3;   // points of advantage for the home side
-  const GAME_VARIANCE = 11;    // random swing per side, in points (higher = more upsets)
-  const BASE_POINTS = 100;     // notional points before adjustments
+  // A lineup's strength is its composite rating (see lineupScore). The WINNER of a game
+  // is decided by a capped win probability (an Elo-style logistic): a favorite tops out
+  // at WIN_CAP, so even a blowout mismatch keeps a small upset floor. A perfect 16-0 is
+  // hard mainly because the bracket HARDENS each round (oppBonus in js/ui.js climbs to a
+  // near-peer Finals), so all 16 games must be won against a stiffening field. The
+  // displayed final score is cosmetic, generated afterwards to agree with the result.
+  const HOME_COURT_EDGE = 3;   // rating points of advantage for the home side
+  const RATING_SCALE = 6;      // how steeply a rating gap turns into win probability
+  const WIN_CAP = 0.98;        // a favorite's single-game win chance never exceeds this
+  const SEASON_WIN_CAP = 0.94; // lower cap for the regular-season sim, so even the best
+                               // all-time roster lands around a 76-6 record and an 82-0
+                               // season is a rare feat (cap^82) rather than a formality.
+                               // The playoffs keep the higher WIN_CAP; their difficulty
+                               // comes from the bracket hardening each round, not the cap.
+  const SEASON_RATING_SCALE = 12; // gentler win curve for the regular season ONLY. The
+                               // playoff scale (6) saturates by ~+15, so a merely-good five
+                               // and a stacked one both cruised to ~76 wins. At 12 you need
+                               // RTG ~92 to average 70 wins and the top end separates, so a
+                               // 70+ win season rewards a genuinely balanced, stacked roster.
+  const BASE_POINTS = 100;     // notional points each side scores before the margin
+  const MARGIN_SCALE = 12;     // how lopsided a strong favorite's win looks, on average
+  const SCORE_SPREAD = 9;      // extra random spread on the final margin (cosmetic only)
 
+  // Per-player shooting efficiency proxy. The data has no shot attempts, so blend the
+  // percentages into a true-shooting-ish number, roughly 0.45 (poor) to 0.62 (elite).
+  function shootingScore(stats) {
+    return 0.5 * stats.fg + 0.2 * stats.tp + 0.3 * stats.ft;
+  }
+
+  // A lineup's rating: the average overall (the quality anchor) plus bounded bonuses for
+  // being a COMPLETE team - scoring, rebounding, playmaking, defense, and efficiency.
+  // Each bonus saturates (tanh), so piling one stat hits diminishing returns and a
+  // balanced, two-way five out-rates a one-dimensional one of equal overall. Centers are
+  // a typical starter's per-game line; weights set how much each dimension can swing.
+  const SCORING_W = 2.5, REBOUND_W = 2.0, PASSING_W = 2.0, DEFENSE_W = 2.0, EFF_W = 2.0;
   function lineupScore(five) {
     const players = Object.values(five);
-    if (players.length === 0) return 0;
-    const ovr = players.reduce((sum, p) => sum + p.overall, 0) / players.length;
-    const punch = players.reduce((sum, p) => sum + p.stats.ppg, 0) / 10;
-    return ovr + punch;
+    const n = players.length;
+    if (n === 0) return 0;
+    const avg = (sel) => players.reduce((sum, p) => sum + sel(p), 0) / n;
+    const overall  = avg((p) => p.overall);
+    const scoring  = avg((p) => p.stats.ppg);
+    const rebound  = avg((p) => p.stats.rpg);
+    const passing  = avg((p) => p.stats.apg);
+    const defense  = avg((p) => p.stats.spg + p.stats.bpg);
+    const shooting = avg((p) => shootingScore(p.stats));
+    return overall
+      + SCORING_W * Math.tanh((scoring - 18) / 8)
+      + REBOUND_W * Math.tanh((rebound - 6) / 3)
+      + PASSING_W * Math.tanh((passing - 4) / 2.5)
+      + DEFENSE_W * Math.tanh((defense - 1.6) / 1)
+      + EFF_W     * Math.tanh((shooting - 0.52) / 0.05);
   }
 
-  function randomSwing() {
-    return (Math.random() * 2 - 1) * GAME_VARIANCE;
+  // Single-game win probability: a logistic (tanh) curve in the rating difference,
+  // squashed so a favorite never exceeds WIN_CAP and an underdog never drops below
+  // 1 - WIN_CAP. Capping per-game dominance is what makes 16 wins in a row genuinely
+  // hard, since a sweep is this probability raised to the 16th power.
+  function winProbability(diff, cap = WIN_CAP, scale = RATING_SCALE) {
+    return 0.5 + (cap - 0.5) * Math.tanh(diff / scale);
   }
 
-  // Simulate one game between two rated lineups. oppBonus is a difficulty boost
-  // added to the opponent's effective rating (used to escalate later rounds).
+  // Simulate one game between two rated lineups. oppBonus is a difficulty boost added
+  // to the opponent's effective rating (used to escalate later rounds). The winner is
+  // drawn from winProbability; the final score is then generated to match - a
+  // comfortable margin when the result follows the ratings, a close one on an upset.
   function simulateGame(yourRating, oppRating, youAreHome, oppBonus = 0) {
     const edge = youAreHome ? HOME_COURT_EDGE : -HOME_COURT_EDGE;
     const diff = (yourRating - (oppRating + oppBonus)) + edge;
-    let yourPoints = Math.round(BASE_POINTS + diff / 2 + randomSwing());
-    let oppPoints = Math.round(BASE_POINTS - diff / 2 + randomSwing());
-    if (yourPoints === oppPoints) yourPoints += Math.random() < 0.5 ? 1 : -1; // no ties
-    return { yourPoints, oppPoints, youWon: yourPoints > oppPoints };
+    const youWon = Math.random() < winProbability(diff);
+
+    const expectedMargin = MARGIN_SCALE * Math.tanh(diff / RATING_SCALE); // signed toward favorite
+    const resultFollowsRating = (youWon ? 1 : -1) === Math.sign(expectedMargin || 1);
+    const margin = resultFollowsRating
+      ? Math.max(1, Math.round(Math.abs(expectedMargin) + Math.random() * SCORE_SPREAD))
+      : Math.max(1, Math.round(1 + Math.random() * (SCORE_SPREAD - 1))); // upset: keep it close
+
+    const half = margin / 2;
+    const yourPoints = Math.round(BASE_POINTS + (youWon ? half : -half));
+    const oppPoints = Math.round(BASE_POINTS + (youWon ? -half : half));
+    return { yourPoints, oppPoints, youWon };
   }
 
   // Simulate a per-player box score for one team in one game. Points are shares of
@@ -129,8 +182,20 @@ const Engine = (() => {
     return lines.sort((a, b) => b.pts - a.pts);
   }
 
-  // Best-of-7 series. Home court follows the 2-2-1-1-1 NBA pattern for the higher
-  // seed (assumed to be the player). Plays until one side reaches winsNeeded.
+  // Simulate a regular season to give a drafted team a believable record. Plays `games`
+  // contests against a league-average opponent (half home, half away) with the same win
+  // model, so a stronger roster naturally posts a better record. That record then decides
+  // playoff seeding / home court, so it is more than flavor.
+  function simulateSeasonRecord(rating, leagueAvg, games = 82) {
+    let wins = 0;
+    for (let i = 0; i < games; i++) {
+      const edge = i % 2 === 0 ? HOME_COURT_EDGE : -HOME_COURT_EDGE;
+      if (Math.random() < winProbability(rating - leagueAvg + edge, SEASON_WIN_CAP, SEASON_RATING_SCALE)) wins++;
+    }
+    return { wins, losses: games - wins };
+  }
+
+  // Best-of-7 series. Home court follows the 2-2-1-1-1 pattern with user as home team
   function simulateSeries(yourRating, oppRating, winsNeeded, oppBonus = 0) {
     const homePattern = [true, true, false, false, true, false, true];
     const games = [];
@@ -147,6 +212,6 @@ const Engine = (() => {
 
   return {
     spinTeam, teamOverall, isEligible, autoFillLineup,
-    lineupScore, simulateGame, simulateSeries, simulateBoxScore,
+    lineupScore, simulateGame, simulateSeries, simulateBoxScore, simulateSeasonRecord,
   };
 })();

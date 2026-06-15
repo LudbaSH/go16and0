@@ -1,178 +1,7972 @@
 [
   {
-    "id": "lakers-2020",
-    "name": "Los Angeles Lakers",
-    "season": "2019-20",
-    "decade": "2020s",
-    "roster": [
-      { "name": "LeBron James", "positions": ["SF", "PG"], "overall": 96, "stats": { "ppg": 25.3, "rpg": 7.8, "apg": 10.2, "spg": 1.2, "bpg": 0.5, "fg": 0.493, "tp": 0.348, "ft": 0.693 } },
-      { "name": "Anthony Davis", "positions": ["PF", "C"], "overall": 93, "stats": { "ppg": 26.1, "rpg": 9.3, "apg": 3.2, "spg": 1.5, "bpg": 2.3, "fg": 0.503, "tp": 0.330, "ft": 0.846 } },
-      { "name": "Kentavious Caldwell-Pope", "positions": ["SG"], "overall": 73, "stats": { "ppg": 9.3, "rpg": 2.1, "apg": 1.6, "spg": 0.8, "bpg": 0.2, "fg": 0.467, "tp": 0.385, "ft": 0.821 } },
-      { "name": "Kyle Kuzma", "positions": ["SF", "PF"], "overall": 74, "stats": { "ppg": 12.8, "rpg": 4.5, "apg": 1.3, "spg": 0.5, "bpg": 0.4, "fg": 0.436, "tp": 0.316, "ft": 0.736 } },
-      { "name": "Danny Green", "positions": ["SG", "SF"], "overall": 72, "stats": { "ppg": 8.0, "rpg": 3.3, "apg": 1.3, "spg": 0.9, "bpg": 0.6, "fg": 0.398, "tp": 0.368, "ft": 0.838 } },
-      { "name": "Rajon Rondo", "positions": ["PG", "SG"], "overall": 72, "stats": { "ppg": 7.1, "rpg": 3.0, "apg": 5.0, "spg": 1.2, "bpg": 0.2, "fg": 0.461, "tp": 0.330, "ft": 0.625 } },
-      { "name": "Dwight Howard", "positions": ["C", "PF"], "overall": 72, "stats": { "ppg": 7.5, "rpg": 7.3, "apg": 0.7, "spg": 0.4, "bpg": 1.1, "fg": 0.729, "tp": 0.0, "ft": 0.515 } },
-      { "name": "Alex Caruso", "positions": ["SG", "PG"], "overall": 70, "stats": { "ppg": 5.5, "rpg": 1.9, "apg": 1.9, "spg": 1.1, "bpg": 0.3, "fg": 0.419, "tp": 0.331, "ft": 0.750 } }
-    ]
-  },
-  {
-    "id": "bucks-2021",
-    "name": "Milwaukee Bucks",
+    "id": "utah-jazz-2020",
+    "name": "Utah Jazz",
     "season": "2020-21",
     "decade": "2020s",
+    "record": {
+      "wins": 52,
+      "losses": 20
+    },
     "roster": [
-      { "name": "Giannis Antetokounmpo", "positions": ["PF", "C"], "overall": 95, "stats": { "ppg": 28.1, "rpg": 11.0, "apg": 5.9, "spg": 1.2, "bpg": 1.2, "fg": 0.569, "tp": 0.303, "ft": 0.685 } },
-      { "name": "Khris Middleton", "positions": ["SF"], "overall": 84, "stats": { "ppg": 20.4, "rpg": 6.0, "apg": 5.4, "spg": 1.1, "bpg": 0.1, "fg": 0.476, "tp": 0.411, "ft": 0.899 } },
-      { "name": "Jrue Holiday", "positions": ["PG", "SG"], "overall": 83, "stats": { "ppg": 17.7, "rpg": 4.5, "apg": 6.1, "spg": 1.6, "bpg": 0.6, "fg": 0.502, "tp": 0.392, "ft": 0.785 } },
-      { "name": "Brook Lopez", "positions": ["C", "PF"], "overall": 76, "stats": { "ppg": 12.3, "rpg": 5.0, "apg": 1.7, "spg": 0.5, "bpg": 1.5, "fg": 0.485, "tp": 0.341, "ft": 0.846 } },
-      { "name": "Bobby Portis", "positions": ["PF", "C"], "overall": 74, "stats": { "ppg": 11.4, "rpg": 7.1, "apg": 1.2, "spg": 0.6, "bpg": 0.4, "fg": 0.522, "tp": 0.473, "ft": 0.744 } },
-      { "name": "Donte DiVincenzo", "positions": ["SG"], "overall": 73, "stats": { "ppg": 10.4, "rpg": 5.8, "apg": 3.1, "spg": 1.1, "bpg": 0.2, "fg": 0.452, "tp": 0.378, "ft": 0.750 } },
-      { "name": "Pat Connaughton", "positions": ["SG", "SF"], "overall": 71, "stats": { "ppg": 9.9, "rpg": 4.4, "apg": 2.0, "spg": 0.5, "bpg": 0.3, "fg": 0.443, "tp": 0.394, "ft": 0.750 } },
-      { "name": "P.J. Tucker", "positions": ["PF", "SF"], "overall": 69, "stats": { "ppg": 4.4, "rpg": 3.4, "apg": 1.5, "spg": 0.9, "bpg": 0.3, "fg": 0.400, "tp": 0.360, "ft": 0.750 } }
+      {
+        "name": "Donovan Mitchell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 90,
+        "stats": {
+          "ppg": 26.4,
+          "rpg": 4.4,
+          "apg": 5.2,
+          "spg": 1,
+          "bpg": 0.3,
+          "fg": 0.438,
+          "tp": 0.386,
+          "ft": 0.845
+        }
+      },
+      {
+        "name": "Royce O'Neale",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 7,
+          "rpg": 6.8,
+          "apg": 2.5,
+          "spg": 0.8,
+          "bpg": 0.5,
+          "fg": 0.444,
+          "tp": 0.385,
+          "ft": 0.848
+        }
+      },
+      {
+        "name": "Rudy Gobert",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 14.3,
+          "rpg": 13.5,
+          "apg": 1.3,
+          "spg": 0.6,
+          "bpg": 2.7,
+          "fg": 0.675,
+          "tp": 0,
+          "ft": 0.623
+        }
+      },
+      {
+        "name": "Bojan Bogdanovic",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 17,
+          "rpg": 3.9,
+          "apg": 1.9,
+          "spg": 0.6,
+          "bpg": 0.1,
+          "fg": 0.439,
+          "tp": 0.39,
+          "ft": 0.879
+        }
+      },
+      {
+        "name": "Mike Conley",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 16.2,
+          "rpg": 3.5,
+          "apg": 6,
+          "spg": 1.4,
+          "bpg": 0.2,
+          "fg": 0.444,
+          "tp": 0.412,
+          "ft": 0.852
+        }
+      },
+      {
+        "name": "Joe Ingles",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 12.1,
+          "rpg": 3.6,
+          "apg": 4.7,
+          "spg": 0.7,
+          "bpg": 0.2,
+          "fg": 0.489,
+          "tp": 0.451,
+          "ft": 0.844
+        }
+      },
+      {
+        "name": "Jordan Clarkson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 18.4,
+          "rpg": 4,
+          "apg": 2.5,
+          "spg": 0.9,
+          "bpg": 0.1,
+          "fg": 0.425,
+          "tp": 0.347,
+          "ft": 0.896
+        }
+      },
+      {
+        "name": "Georges Niang",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 64,
+        "stats": {
+          "ppg": 6.9,
+          "rpg": 2.4,
+          "apg": 0.8,
+          "spg": 0.3,
+          "bpg": 0.1,
+          "fg": 0.437,
+          "tp": 0.425,
+          "ft": 0.957
+        }
+      }
     ]
   },
   {
-    "id": "warriors-2022",
-    "name": "Golden State Warriors",
-    "season": "2021-22",
-    "decade": "2020s",
-    "roster": [
-      { "name": "Stephen Curry", "positions": ["PG", "SG"], "overall": 92, "stats": { "ppg": 25.5, "rpg": 5.2, "apg": 6.3, "spg": 1.3, "bpg": 0.4, "fg": 0.437, "tp": 0.380, "ft": 0.923 } },
-      { "name": "Klay Thompson", "positions": ["SG"], "overall": 80, "stats": { "ppg": 20.4, "rpg": 3.9, "apg": 2.8, "spg": 0.5, "bpg": 0.5, "fg": 0.429, "tp": 0.385, "ft": 0.900 } },
-      { "name": "Andrew Wiggins", "positions": ["SF"], "overall": 80, "stats": { "ppg": 17.2, "rpg": 4.5, "apg": 2.2, "spg": 1.0, "bpg": 0.7, "fg": 0.466, "tp": 0.393, "ft": 0.634 } },
-      { "name": "Draymond Green", "positions": ["PF", "C"], "overall": 80, "stats": { "ppg": 7.5, "rpg": 7.3, "apg": 7.0, "spg": 1.3, "bpg": 1.1, "fg": 0.526, "tp": 0.296, "ft": 0.659 } },
-      { "name": "Jordan Poole", "positions": ["SG", "PG"], "overall": 78, "stats": { "ppg": 18.5, "rpg": 3.4, "apg": 4.0, "spg": 0.8, "bpg": 0.3, "fg": 0.448, "tp": 0.364, "ft": 0.925 } },
-      { "name": "Kevon Looney", "positions": ["C", "PF"], "overall": 71, "stats": { "ppg": 6.0, "rpg": 7.3, "apg": 2.0, "spg": 0.6, "bpg": 0.6, "fg": 0.570, "tp": 0.0, "ft": 0.629 } },
-      { "name": "Gary Payton II", "positions": ["SG", "PG"], "overall": 71, "stats": { "ppg": 7.1, "rpg": 3.5, "apg": 0.9, "spg": 1.4, "bpg": 0.3, "fg": 0.616, "tp": 0.358, "ft": 0.602 } },
-      { "name": "Otto Porter Jr.", "positions": ["SF", "PF"], "overall": 71, "stats": { "ppg": 8.2, "rpg": 5.7, "apg": 1.5, "spg": 1.1, "bpg": 0.5, "fg": 0.466, "tp": 0.370, "ft": 0.852 } }
-    ]
-  },
-  {
-    "id": "nuggets-2023",
-    "name": "Denver Nuggets",
-    "season": "2022-23",
-    "decade": "2020s",
-    "roster": [
-      { "name": "Nikola Jokic", "positions": ["C", "PF"], "overall": 96, "stats": { "ppg": 24.5, "rpg": 11.8, "apg": 9.8, "spg": 1.3, "bpg": 0.7, "fg": 0.632, "tp": 0.383, "ft": 0.822 } },
-      { "name": "Jamal Murray", "positions": ["PG", "SG"], "overall": 84, "stats": { "ppg": 20.0, "rpg": 4.0, "apg": 6.2, "spg": 1.0, "bpg": 0.4, "fg": 0.454, "tp": 0.398, "ft": 0.833 } },
-      { "name": "Aaron Gordon", "positions": ["PF", "SF"], "overall": 80, "stats": { "ppg": 16.3, "rpg": 6.6, "apg": 3.0, "spg": 0.8, "bpg": 0.8, "fg": 0.564, "tp": 0.348, "ft": 0.654 } },
-      { "name": "Michael Porter Jr.", "positions": ["SF"], "overall": 80, "stats": { "ppg": 17.4, "rpg": 5.5, "apg": 1.0, "spg": 0.6, "bpg": 0.6, "fg": 0.487, "tp": 0.411, "ft": 0.832 } },
-      { "name": "Kentavious Caldwell-Pope", "positions": ["SG"], "overall": 75, "stats": { "ppg": 10.8, "rpg": 2.7, "apg": 2.4, "spg": 1.3, "bpg": 0.3, "fg": 0.460, "tp": 0.424, "ft": 0.733 } },
-      { "name": "Bruce Brown", "positions": ["SG", "SF"], "overall": 74, "stats": { "ppg": 11.5, "rpg": 4.1, "apg": 3.4, "spg": 1.1, "bpg": 0.4, "fg": 0.483, "tp": 0.355, "ft": 0.755 } },
-      { "name": "Jeff Green", "positions": ["PF"], "overall": 70, "stats": { "ppg": 7.8, "rpg": 2.7, "apg": 1.2, "spg": 0.4, "bpg": 0.4, "fg": 0.534, "tp": 0.347, "ft": 0.780 } },
-      { "name": "Christian Braun", "positions": ["SG"], "overall": 68, "stats": { "ppg": 4.7, "rpg": 2.4, "apg": 1.0, "spg": 0.4, "bpg": 0.2, "fg": 0.495, "tp": 0.350, "ft": 0.714 } }
-    ]
-  },
-  {
-    "id": "suns-2021",
+    "id": "phoenix-suns-2020",
     "name": "Phoenix Suns",
     "season": "2020-21",
     "decade": "2020s",
+    "record": {
+      "wins": 51,
+      "losses": 21
+    },
     "roster": [
-      { "name": "Devin Booker", "positions": ["SG"], "overall": 86, "stats": { "ppg": 25.6, "rpg": 4.2, "apg": 4.3, "spg": 0.8, "bpg": 0.2, "fg": 0.484, "tp": 0.340, "ft": 0.867 } },
-      { "name": "Chris Paul", "positions": ["PG", "SG"], "overall": 86, "stats": { "ppg": 16.4, "rpg": 4.5, "apg": 8.9, "spg": 1.4, "bpg": 0.3, "fg": 0.499, "tp": 0.395, "ft": 0.934 } },
-      { "name": "Deandre Ayton", "positions": ["C", "PF"], "overall": 80, "stats": { "ppg": 14.4, "rpg": 10.5, "apg": 1.4, "spg": 0.7, "bpg": 1.2, "fg": 0.626, "tp": 0.0, "ft": 0.762 } },
-      { "name": "Mikal Bridges", "positions": ["SF"], "overall": 78, "stats": { "ppg": 13.5, "rpg": 4.3, "apg": 2.1, "spg": 1.1, "bpg": 0.9, "fg": 0.541, "tp": 0.425, "ft": 0.840 } },
-      { "name": "Jae Crowder", "positions": ["PF", "SF"], "overall": 73, "stats": { "ppg": 10.1, "rpg": 5.0, "apg": 1.9, "spg": 0.9, "bpg": 0.4, "fg": 0.401, "tp": 0.388, "ft": 0.767 } },
-      { "name": "Cameron Payne", "positions": ["PG", "SG"], "overall": 71, "stats": { "ppg": 8.4, "rpg": 2.4, "apg": 3.6, "spg": 0.8, "bpg": 0.1, "fg": 0.441, "tp": 0.440, "ft": 0.797 } },
-      { "name": "Cameron Johnson", "positions": ["SF", "PF"], "overall": 72, "stats": { "ppg": 9.6, "rpg": 3.3, "apg": 1.4, "spg": 0.7, "bpg": 0.3, "fg": 0.434, "tp": 0.347, "ft": 0.836 } },
-      { "name": "Torrey Craig", "positions": ["SF"], "overall": 68, "stats": { "ppg": 6.0, "rpg": 4.0, "apg": 1.0, "spg": 0.5, "bpg": 0.7, "fg": 0.460, "tp": 0.330, "ft": 0.700 } }
+      {
+        "name": "Devin Booker",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 88,
+        "stats": {
+          "ppg": 25.6,
+          "rpg": 4.2,
+          "apg": 4.3,
+          "spg": 0.8,
+          "bpg": 0.2,
+          "fg": 0.484,
+          "tp": 0.34,
+          "ft": 0.867
+        }
+      },
+      {
+        "name": "Mikal Bridges",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 13.5,
+          "rpg": 4.3,
+          "apg": 2.1,
+          "spg": 1.1,
+          "bpg": 0.9,
+          "fg": 0.543,
+          "tp": 0.425,
+          "ft": 0.84
+        }
+      },
+      {
+        "name": "Chris Paul",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 16.4,
+          "rpg": 4.5,
+          "apg": 8.9,
+          "spg": 1.4,
+          "bpg": 0.3,
+          "fg": 0.499,
+          "tp": 0.395,
+          "ft": 0.934
+        }
+      },
+      {
+        "name": "Deandre Ayton",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 14.4,
+          "rpg": 10.5,
+          "apg": 1.4,
+          "spg": 0.6,
+          "bpg": 1.2,
+          "fg": 0.626,
+          "tp": 0.2,
+          "ft": 0.769
+        }
+      },
+      {
+        "name": "Jae Crowder",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10.1,
+          "rpg": 4.7,
+          "apg": 2.1,
+          "spg": 0.8,
+          "bpg": 0.5,
+          "fg": 0.404,
+          "tp": 0.389,
+          "ft": 0.76
+        }
+      },
+      {
+        "name": "Cameron Johnson",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 9.6,
+          "rpg": 3.3,
+          "apg": 1.4,
+          "spg": 0.6,
+          "bpg": 0.3,
+          "fg": 0.42,
+          "tp": 0.349,
+          "ft": 0.847
+        }
+      },
+      {
+        "name": "Torrey Craig",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 7.2,
+          "rpg": 4.8,
+          "apg": 1,
+          "spg": 0.6,
+          "bpg": 0.6,
+          "fg": 0.503,
+          "tp": 0.369,
+          "ft": 0.8
+        }
+      },
+      {
+        "name": "Cameron Payne",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 8.4,
+          "rpg": 2.4,
+          "apg": 3.6,
+          "spg": 0.6,
+          "bpg": 0.3,
+          "fg": 0.484,
+          "tp": 0.44,
+          "ft": 0.893
+        }
+      }
     ]
   },
   {
-    "id": "heat-2023",
+    "id": "philadelphia-76ers-2020",
+    "name": "Philadelphia 76ers",
+    "season": "2020-21",
+    "decade": "2020s",
+    "record": {
+      "wins": 49,
+      "losses": 23
+    },
+    "roster": [
+      {
+        "name": "Tobias Harris",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 19.5,
+          "rpg": 6.8,
+          "apg": 3.5,
+          "spg": 0.9,
+          "bpg": 0.8,
+          "fg": 0.512,
+          "tp": 0.394,
+          "ft": 0.892
+        }
+      },
+      {
+        "name": "Ben Simmons",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 82,
+        "stats": {
+          "ppg": 14.3,
+          "rpg": 7.2,
+          "apg": 6.9,
+          "spg": 1.6,
+          "bpg": 0.6,
+          "fg": 0.557,
+          "tp": 0.3,
+          "ft": 0.613
+        }
+      },
+      {
+        "name": "Joel Embiid",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 97,
+        "stats": {
+          "ppg": 28.5,
+          "rpg": 10.6,
+          "apg": 2.8,
+          "spg": 1,
+          "bpg": 1.4,
+          "fg": 0.513,
+          "tp": 0.377,
+          "ft": 0.859
+        }
+      },
+      {
+        "name": "Seth Curry",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 12.5,
+          "rpg": 2.4,
+          "apg": 2.7,
+          "spg": 0.8,
+          "bpg": 0.1,
+          "fg": 0.467,
+          "tp": 0.45,
+          "ft": 0.896
+        }
+      },
+      {
+        "name": "Danny Green",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 9.5,
+          "rpg": 3.8,
+          "apg": 1.7,
+          "spg": 1.3,
+          "bpg": 0.8,
+          "fg": 0.412,
+          "tp": 0.405,
+          "ft": 0.775
+        }
+      },
+      {
+        "name": "Shake Milton",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 13,
+          "rpg": 2.3,
+          "apg": 3.1,
+          "spg": 0.6,
+          "bpg": 0.3,
+          "fg": 0.45,
+          "tp": 0.35,
+          "ft": 0.83
+        }
+      },
+      {
+        "name": "Matisse Thybulle",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 62,
+        "stats": {
+          "ppg": 4,
+          "rpg": 1.9,
+          "apg": 1,
+          "spg": 1.6,
+          "bpg": 1.1,
+          "fg": 0.42,
+          "tp": 0.301,
+          "ft": 0.444
+        }
+      },
+      {
+        "name": "Furkan Korkmaz",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 9.1,
+          "rpg": 2.1,
+          "apg": 1.5,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.401,
+          "tp": 0.375,
+          "ft": 0.732
+        }
+      }
+    ]
+  },
+  {
+    "id": "brooklyn-nets-2020",
+    "name": "Brooklyn Nets",
+    "season": "2020-21",
+    "decade": "2020s",
+    "record": {
+      "wins": 48,
+      "losses": 24
+    },
+    "roster": [
+      {
+        "name": "James Harden",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 97,
+        "stats": {
+          "ppg": 24.6,
+          "rpg": 8.5,
+          "apg": 10.9,
+          "spg": 1.3,
+          "bpg": 0.8,
+          "fg": 0.471,
+          "tp": 0.366,
+          "ft": 0.856
+        }
+      },
+      {
+        "name": "Kyrie Irving",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 93,
+        "stats": {
+          "ppg": 26.9,
+          "rpg": 4.8,
+          "apg": 6,
+          "spg": 1.4,
+          "bpg": 0.7,
+          "fg": 0.506,
+          "tp": 0.402,
+          "ft": 0.922
+        }
+      },
+      {
+        "name": "Kevin Durant",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 95,
+        "stats": {
+          "ppg": 26.9,
+          "rpg": 7.1,
+          "apg": 5.6,
+          "spg": 0.7,
+          "bpg": 1.3,
+          "fg": 0.537,
+          "tp": 0.45,
+          "ft": 0.882
+        }
+      },
+      {
+        "name": "Joe Harris",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 14.1,
+          "rpg": 3.6,
+          "apg": 1.9,
+          "spg": 0.7,
+          "bpg": 0.2,
+          "fg": 0.505,
+          "tp": 0.475,
+          "ft": 0.778
+        }
+      },
+      {
+        "name": "Jeff Green",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 11,
+          "rpg": 3.9,
+          "apg": 1.6,
+          "spg": 0.5,
+          "bpg": 0.4,
+          "fg": 0.492,
+          "tp": 0.412,
+          "ft": 0.776
+        }
+      },
+      {
+        "name": "Landry Shamet",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 9.3,
+          "rpg": 1.8,
+          "apg": 1.6,
+          "spg": 0.5,
+          "bpg": 0.2,
+          "fg": 0.408,
+          "tp": 0.387,
+          "ft": 0.846
+        }
+      },
+      {
+        "name": "Bruce Brown",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 8.8,
+          "rpg": 5.4,
+          "apg": 1.6,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.556,
+          "tp": 0.288,
+          "ft": 0.735
+        }
+      },
+      {
+        "name": "DeAndre Jordan",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 7.5,
+          "rpg": 7.5,
+          "apg": 1.6,
+          "spg": 0.3,
+          "bpg": 1.1,
+          "fg": 0.763,
+          "tp": 0,
+          "ft": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "milwaukee-bucks-2020",
+    "name": "Milwaukee Bucks",
+    "season": "2020-21",
+    "decade": "2020s",
+    "record": {
+      "wins": 46,
+      "losses": 26
+    },
+    "roster": [
+      {
+        "name": "Giannis Antetokounmpo",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 99,
+        "stats": {
+          "ppg": 28.6,
+          "rpg": 11.2,
+          "apg": 5.9,
+          "spg": 1.2,
+          "bpg": 1.2,
+          "fg": 0.569,
+          "tp": 0.303,
+          "ft": 0.686
+        }
+      },
+      {
+        "name": "Khris Middleton",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 20.4,
+          "rpg": 6,
+          "apg": 5.4,
+          "spg": 1.1,
+          "bpg": 0.1,
+          "fg": 0.476,
+          "tp": 0.414,
+          "ft": 0.898
+        }
+      },
+      {
+        "name": "Jrue Holiday",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 17.7,
+          "rpg": 4.5,
+          "apg": 6.1,
+          "spg": 1.6,
+          "bpg": 0.6,
+          "fg": 0.503,
+          "tp": 0.392,
+          "ft": 0.787
+        }
+      },
+      {
+        "name": "Donte DiVincenzo",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 10.4,
+          "rpg": 5.8,
+          "apg": 3.1,
+          "spg": 1.1,
+          "bpg": 0.2,
+          "fg": 0.42,
+          "tp": 0.379,
+          "ft": 0.718
+        }
+      },
+      {
+        "name": "Brook Lopez",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 12.3,
+          "rpg": 5,
+          "apg": 0.7,
+          "spg": 0.6,
+          "bpg": 1.5,
+          "fg": 0.503,
+          "tp": 0.338,
+          "ft": 0.845
+        }
+      },
+      {
+        "name": "Pat Connaughton",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 6.8,
+          "rpg": 4.8,
+          "apg": 1.2,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.434,
+          "tp": 0.371,
+          "ft": 0.775
+        }
+      },
+      {
+        "name": "Bobby Portis",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 11.4,
+          "rpg": 7.1,
+          "apg": 1.1,
+          "spg": 0.8,
+          "bpg": 0.4,
+          "fg": 0.523,
+          "tp": 0.471,
+          "ft": 0.74
+        }
+      },
+      {
+        "name": "Bryn Forbes",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 10,
+          "rpg": 1.6,
+          "apg": 0.6,
+          "spg": 0.3,
+          "bpg": 0,
+          "fg": 0.473,
+          "tp": 0.452,
+          "ft": 0.77
+        }
+      }
+    ]
+  },
+  {
+    "id": "atlanta-hawks-2020",
+    "name": "Atlanta Hawks",
+    "season": "2020-21",
+    "decade": "2020s",
+    "record": {
+      "wins": 41,
+      "losses": 31
+    },
+    "roster": [
+      {
+        "name": "Trae Young",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 91,
+        "stats": {
+          "ppg": 25.3,
+          "rpg": 3.9,
+          "apg": 9.4,
+          "spg": 0.8,
+          "bpg": 0.2,
+          "fg": 0.438,
+          "tp": 0.343,
+          "ft": 0.886
+        }
+      },
+      {
+        "name": "Kevin Huerter",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 11.9,
+          "rpg": 3.3,
+          "apg": 3.5,
+          "spg": 1.2,
+          "bpg": 0.3,
+          "fg": 0.432,
+          "tp": 0.363,
+          "ft": 0.781
+        }
+      },
+      {
+        "name": "Clint Capela",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 15.2,
+          "rpg": 14.3,
+          "apg": 0.8,
+          "spg": 0.7,
+          "bpg": 2,
+          "fg": 0.594,
+          "tp": 0,
+          "ft": 0.573
+        }
+      },
+      {
+        "name": "Bogdan Bogdanovic",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 16.4,
+          "rpg": 3.6,
+          "apg": 3.3,
+          "spg": 1.1,
+          "bpg": 0.3,
+          "fg": 0.473,
+          "tp": 0.438,
+          "ft": 0.909
+        }
+      },
+      {
+        "name": "John Collins",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 17.6,
+          "rpg": 7.4,
+          "apg": 1.2,
+          "spg": 0.5,
+          "bpg": 1,
+          "fg": 0.556,
+          "tp": 0.399,
+          "ft": 0.833
+        }
+      },
+      {
+        "name": "Cam Reddish",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 11.2,
+          "rpg": 4,
+          "apg": 1.3,
+          "spg": 1.3,
+          "bpg": 0.3,
+          "fg": 0.365,
+          "tp": 0.262,
+          "ft": 0.817
+        }
+      },
+      {
+        "name": "Danilo Gallinari",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 13.3,
+          "rpg": 4.1,
+          "apg": 1.5,
+          "spg": 0.6,
+          "bpg": 0.2,
+          "fg": 0.434,
+          "tp": 0.406,
+          "ft": 0.925
+        }
+      },
+      {
+        "name": "Solomon Hill",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 62,
+        "stats": {
+          "ppg": 4.5,
+          "rpg": 3,
+          "apg": 1.1,
+          "spg": 0.7,
+          "bpg": 0.2,
+          "fg": 0.359,
+          "tp": 0.321,
+          "ft": 0.761
+        }
+      }
+    ]
+  },
+  {
+    "id": "indiana-pacers-2020",
+    "name": "Indiana Pacers",
+    "season": "2020-21",
+    "decade": "2020s",
+    "record": {
+      "wins": 34,
+      "losses": 38
+    },
+    "roster": [
+      {
+        "name": "Domantas Sabonis",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 91,
+        "stats": {
+          "ppg": 20.3,
+          "rpg": 12,
+          "apg": 6.7,
+          "spg": 1.2,
+          "bpg": 0.5,
+          "fg": 0.535,
+          "tp": 0.321,
+          "ft": 0.732
+        }
+      },
+      {
+        "name": "Malcolm Brogdon",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 21.2,
+          "rpg": 5.3,
+          "apg": 5.9,
+          "spg": 0.9,
+          "bpg": 0.3,
+          "fg": 0.453,
+          "tp": 0.388,
+          "ft": 0.864
+        }
+      },
+      {
+        "name": "Caris LeVert",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 20.7,
+          "rpg": 4.6,
+          "apg": 4.9,
+          "spg": 1.5,
+          "bpg": 0.7,
+          "fg": 0.443,
+          "tp": 0.318,
+          "ft": 0.822
+        }
+      },
+      {
+        "name": "Myles Turner",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 12.6,
+          "rpg": 6.5,
+          "apg": 1,
+          "spg": 0.9,
+          "bpg": 3.4,
+          "fg": 0.477,
+          "tp": 0.335,
+          "ft": 0.782
+        }
+      },
+      {
+        "name": "Justin Holiday",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10.5,
+          "rpg": 3.6,
+          "apg": 1.7,
+          "spg": 1,
+          "bpg": 0.6,
+          "fg": 0.413,
+          "tp": 0.382,
+          "ft": 0.788
+        }
+      },
+      {
+        "name": "T.J. McConnell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 8.6,
+          "rpg": 3.7,
+          "apg": 6.6,
+          "spg": 1.9,
+          "bpg": 0.3,
+          "fg": 0.559,
+          "tp": 0.313,
+          "ft": 0.688
+        }
+      },
+      {
+        "name": "Doug McDermott",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 13.6,
+          "rpg": 3.3,
+          "apg": 1.3,
+          "spg": 0.3,
+          "bpg": 0.1,
+          "fg": 0.532,
+          "tp": 0.388,
+          "ft": 0.816
+        }
+      },
+      {
+        "name": "Jeremy Lamb",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10.1,
+          "rpg": 3.6,
+          "apg": 1.5,
+          "spg": 0.9,
+          "bpg": 0.6,
+          "fg": 0.435,
+          "tp": 0.406,
+          "ft": 0.947
+        }
+      }
+    ]
+  },
+  {
+    "id": "toronto-raptors-2020",
+    "name": "Toronto Raptors",
+    "season": "2020-21",
+    "decade": "2020s",
+    "record": {
+      "wins": 27,
+      "losses": 45
+    },
+    "roster": [
+      {
+        "name": "Fred VanVleet",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 19.6,
+          "rpg": 4.2,
+          "apg": 6.3,
+          "spg": 1.7,
+          "bpg": 0.7,
+          "fg": 0.389,
+          "tp": 0.366,
+          "ft": 0.885
+        }
+      },
+      {
+        "name": "Pascal Siakam",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 21.4,
+          "rpg": 7.2,
+          "apg": 4.5,
+          "spg": 1.1,
+          "bpg": 0.7,
+          "fg": 0.455,
+          "tp": 0.297,
+          "ft": 0.827
+        }
+      },
+      {
+        "name": "Kyle Lowry",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 17.2,
+          "rpg": 5.4,
+          "apg": 7.3,
+          "spg": 1,
+          "bpg": 0.3,
+          "fg": 0.436,
+          "tp": 0.396,
+          "ft": 0.875
+        }
+      },
+      {
+        "name": "OG Anunoby",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 15.9,
+          "rpg": 5.5,
+          "apg": 2.2,
+          "spg": 1.5,
+          "bpg": 0.7,
+          "fg": 0.48,
+          "tp": 0.398,
+          "ft": 0.784
+        }
+      },
+      {
+        "name": "Norman Powell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 19.6,
+          "rpg": 3,
+          "apg": 1.8,
+          "spg": 1.1,
+          "bpg": 0.2,
+          "fg": 0.498,
+          "tp": 0.439,
+          "ft": 0.865
+        }
+      },
+      {
+        "name": "Chris Boucher",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 13.6,
+          "rpg": 6.7,
+          "apg": 1.1,
+          "spg": 0.6,
+          "bpg": 1.9,
+          "fg": 0.514,
+          "tp": 0.383,
+          "ft": 0.788
+        }
+      },
+      {
+        "name": "Malachi Flynn",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 7.5,
+          "rpg": 2.5,
+          "apg": 2.9,
+          "spg": 0.8,
+          "bpg": 0.1,
+          "fg": 0.374,
+          "tp": 0.321,
+          "ft": 0.804
+        }
+      },
+      {
+        "name": "DeAndre' Bembry",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 65,
+        "stats": {
+          "ppg": 5.9,
+          "rpg": 2.9,
+          "apg": 2.1,
+          "spg": 1.1,
+          "bpg": 0.4,
+          "fg": 0.513,
+          "tp": 0.264,
+          "ft": 0.682
+        }
+      }
+    ]
+  },
+  {
+    "id": "houston-rockets-2020",
+    "name": "Houston Rockets",
+    "season": "2020-21",
+    "decade": "2020s",
+    "record": {
+      "wins": 17,
+      "losses": 55
+    },
+    "roster": [
+      {
+        "name": "Christian Wood",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 21,
+          "rpg": 9.6,
+          "apg": 1.7,
+          "spg": 0.8,
+          "bpg": 1.2,
+          "fg": 0.514,
+          "tp": 0.374,
+          "ft": 0.631
+        }
+      },
+      {
+        "name": "John Wall",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 20.6,
+          "rpg": 3.2,
+          "apg": 6.9,
+          "spg": 1.1,
+          "bpg": 0.8,
+          "fg": 0.404,
+          "tp": 0.317,
+          "ft": 0.749
+        }
+      },
+      {
+        "name": "Kevin Porter Jr.",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 16.6,
+          "rpg": 3.8,
+          "apg": 6.3,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.425,
+          "tp": 0.311,
+          "ft": 0.734
+        }
+      },
+      {
+        "name": "Kelly Olynyk",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 19,
+          "rpg": 8.4,
+          "apg": 4.1,
+          "spg": 1.4,
+          "bpg": 0.6,
+          "fg": 0.545,
+          "tp": 0.392,
+          "ft": 0.844
+        }
+      },
+      {
+        "name": "P.J. Tucker",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 64,
+        "stats": {
+          "ppg": 4.4,
+          "rpg": 4.6,
+          "apg": 1.4,
+          "spg": 0.9,
+          "bpg": 0.6,
+          "fg": 0.366,
+          "tp": 0.314,
+          "ft": 0.783
+        }
+      },
+      {
+        "name": "Jae'Sean Tate",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 11.3,
+          "rpg": 5.3,
+          "apg": 2.5,
+          "spg": 1.2,
+          "bpg": 0.5,
+          "fg": 0.506,
+          "tp": 0.308,
+          "ft": 0.694
+        }
+      },
+      {
+        "name": "Eric Gordon",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 17.8,
+          "rpg": 2.1,
+          "apg": 2.6,
+          "spg": 0.5,
+          "bpg": 0.5,
+          "fg": 0.433,
+          "tp": 0.329,
+          "ft": 0.825
+        }
+      },
+      {
+        "name": "Danuel House Jr.",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 8.8,
+          "rpg": 3.7,
+          "apg": 1.9,
+          "spg": 0.6,
+          "bpg": 0.4,
+          "fg": 0.404,
+          "tp": 0.346,
+          "ft": 0.651
+        }
+      }
+    ]
+  },
+  {
+    "id": "phoenix-suns-2021",
+    "name": "Phoenix Suns",
+    "season": "2021-22",
+    "decade": "2020s",
+    "record": {
+      "wins": 64,
+      "losses": 18
+    },
+    "roster": [
+      {
+        "name": "Mikal Bridges",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 14.2,
+          "rpg": 4.2,
+          "apg": 2.3,
+          "spg": 1.2,
+          "bpg": 0.4,
+          "fg": 0.534,
+          "tp": 0.369,
+          "ft": 0.834
+        }
+      },
+      {
+        "name": "Devin Booker",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 91,
+        "stats": {
+          "ppg": 26.8,
+          "rpg": 5,
+          "apg": 4.8,
+          "spg": 1.1,
+          "bpg": 0.4,
+          "fg": 0.466,
+          "tp": 0.383,
+          "ft": 0.868
+        }
+      },
+      {
+        "name": "Chris Paul",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 14.7,
+          "rpg": 4.4,
+          "apg": 10.8,
+          "spg": 1.9,
+          "bpg": 0.3,
+          "fg": 0.493,
+          "tp": 0.317,
+          "ft": 0.837
+        }
+      },
+      {
+        "name": "Deandre Ayton",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 17.2,
+          "rpg": 10.2,
+          "apg": 1.4,
+          "spg": 0.7,
+          "bpg": 0.7,
+          "fg": 0.634,
+          "tp": 0.368,
+          "ft": 0.746
+        }
+      },
+      {
+        "name": "Jae Crowder",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 9.4,
+          "rpg": 5.3,
+          "apg": 1.9,
+          "spg": 1.4,
+          "bpg": 0.4,
+          "fg": 0.399,
+          "tp": 0.348,
+          "ft": 0.789
+        }
+      },
+      {
+        "name": "Cameron Johnson",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 12.5,
+          "rpg": 4.1,
+          "apg": 1.5,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.46,
+          "tp": 0.425,
+          "ft": 0.86
+        }
+      },
+      {
+        "name": "Cameron Payne",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 10.8,
+          "rpg": 3,
+          "apg": 4.9,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.409,
+          "tp": 0.336,
+          "ft": 0.843
+        }
+      },
+      {
+        "name": "Landry Shamet",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 65,
+        "stats": {
+          "ppg": 8.3,
+          "rpg": 1.8,
+          "apg": 1.6,
+          "spg": 0.4,
+          "bpg": 0.1,
+          "fg": 0.394,
+          "tp": 0.368,
+          "ft": 0.84
+        }
+      }
+    ]
+  },
+  {
+    "id": "memphis-grizzlies-2021",
+    "name": "Memphis Grizzlies",
+    "season": "2021-22",
+    "decade": "2020s",
+    "record": {
+      "wins": 56,
+      "losses": 26
+    },
+    "roster": [
+      {
+        "name": "Ja Morant",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 94,
+        "stats": {
+          "ppg": 27.4,
+          "rpg": 5.7,
+          "apg": 6.7,
+          "spg": 1.2,
+          "bpg": 0.4,
+          "fg": 0.493,
+          "tp": 0.344,
+          "ft": 0.761
+        }
+      },
+      {
+        "name": "Desmond Bane",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 18.2,
+          "rpg": 4.4,
+          "apg": 2.7,
+          "spg": 1.2,
+          "bpg": 0.4,
+          "fg": 0.461,
+          "tp": 0.436,
+          "ft": 0.903
+        }
+      },
+      {
+        "name": "Dillon Brooks",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 18.4,
+          "rpg": 3.2,
+          "apg": 2.8,
+          "spg": 1.1,
+          "bpg": 0.3,
+          "fg": 0.432,
+          "tp": 0.309,
+          "ft": 0.849
+        }
+      },
+      {
+        "name": "Jaren Jackson Jr.",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 16.3,
+          "rpg": 5.8,
+          "apg": 1.1,
+          "spg": 0.9,
+          "bpg": 2.3,
+          "fg": 0.415,
+          "tp": 0.319,
+          "ft": 0.823
+        }
+      },
+      {
+        "name": "Steven Adams",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 6.9,
+          "rpg": 10,
+          "apg": 3.4,
+          "spg": 0.9,
+          "bpg": 0.8,
+          "fg": 0.547,
+          "tp": 0,
+          "ft": 0.543
+        }
+      },
+      {
+        "name": "De'Anthony Melton",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 10.8,
+          "rpg": 4.5,
+          "apg": 2.7,
+          "spg": 1.4,
+          "bpg": 0.5,
+          "fg": 0.404,
+          "tp": 0.374,
+          "ft": 0.75
+        }
+      },
+      {
+        "name": "Ziaire Williams",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 65,
+        "stats": {
+          "ppg": 8.1,
+          "rpg": 2.1,
+          "apg": 1,
+          "spg": 0.6,
+          "bpg": 0.2,
+          "fg": 0.45,
+          "tp": 0.314,
+          "ft": 0.782
+        }
+      },
+      {
+        "name": "Kyle Anderson",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 7.6,
+          "rpg": 5.3,
+          "apg": 2.7,
+          "spg": 1.1,
+          "bpg": 0.7,
+          "fg": 0.446,
+          "tp": 0.33,
+          "ft": 0.638
+        }
+      }
+    ]
+  },
+  {
+    "id": "golden-state-warriors-2021",
+    "name": "Golden State Warriors",
+    "season": "2021-22",
+    "decade": "2020s",
+    "record": {
+      "wins": 53,
+      "losses": 29
+    },
+    "roster": [
+      {
+        "name": "Stephen Curry",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 91,
+        "stats": {
+          "ppg": 25.5,
+          "rpg": 5.2,
+          "apg": 6.3,
+          "spg": 1.3,
+          "bpg": 0.4,
+          "fg": 0.437,
+          "tp": 0.38,
+          "ft": 0.923
+        }
+      },
+      {
+        "name": "Andrew Wiggins",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 17.2,
+          "rpg": 4.5,
+          "apg": 2.2,
+          "spg": 1,
+          "bpg": 0.7,
+          "fg": 0.466,
+          "tp": 0.393,
+          "ft": 0.634
+        }
+      },
+      {
+        "name": "Jordan Poole",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 18.5,
+          "rpg": 3.4,
+          "apg": 4,
+          "spg": 0.8,
+          "bpg": 0.3,
+          "fg": 0.448,
+          "tp": 0.364,
+          "ft": 0.925
+        }
+      },
+      {
+        "name": "Draymond Green",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 7.7,
+          "rpg": 7.5,
+          "apg": 7.1,
+          "spg": 1.4,
+          "bpg": 1.1,
+          "fg": 0.525,
+          "tp": 0.296,
+          "ft": 0.659
+        }
+      },
+      {
+        "name": "Klay Thompson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 20.4,
+          "rpg": 3.9,
+          "apg": 2.8,
+          "spg": 0.5,
+          "bpg": 0.5,
+          "fg": 0.429,
+          "tp": 0.385,
+          "ft": 0.902
+        }
+      },
+      {
+        "name": "Otto Porter Jr.",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 8.2,
+          "rpg": 5.7,
+          "apg": 1.5,
+          "spg": 1.1,
+          "bpg": 0.5,
+          "fg": 0.464,
+          "tp": 0.37,
+          "ft": 0.803
+        }
+      },
+      {
+        "name": "Kevon Looney",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 6,
+          "rpg": 7.3,
+          "apg": 2,
+          "spg": 0.6,
+          "bpg": 0.6,
+          "fg": 0.571,
+          "tp": 0,
+          "ft": 0.6
+        }
+      },
+      {
+        "name": "Damion Lee",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 65,
+        "stats": {
+          "ppg": 7.4,
+          "rpg": 3.2,
+          "apg": 1,
+          "spg": 0.6,
+          "bpg": 0.1,
+          "fg": 0.441,
+          "tp": 0.337,
+          "ft": 0.88
+        }
+      }
+    ]
+  },
+  {
+    "id": "miami-heat-2021",
     "name": "Miami Heat",
+    "season": "2021-22",
+    "decade": "2020s",
+    "record": {
+      "wins": 53,
+      "losses": 29
+    },
+    "roster": [
+      {
+        "name": "Kyle Lowry",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 13.4,
+          "rpg": 4.5,
+          "apg": 7.5,
+          "spg": 1.1,
+          "bpg": 0.3,
+          "fg": 0.44,
+          "tp": 0.377,
+          "ft": 0.851
+        }
+      },
+      {
+        "name": "Jimmy Butler",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 21.4,
+          "rpg": 5.9,
+          "apg": 5.5,
+          "spg": 1.6,
+          "bpg": 0.5,
+          "fg": 0.48,
+          "tp": 0.233,
+          "ft": 0.87
+        }
+      },
+      {
+        "name": "Bam Adebayo",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 19.1,
+          "rpg": 10.1,
+          "apg": 3.4,
+          "spg": 1.4,
+          "bpg": 0.8,
+          "fg": 0.557,
+          "tp": 0,
+          "ft": 0.753
+        }
+      },
+      {
+        "name": "Tyler Herro",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 20.7,
+          "rpg": 5,
+          "apg": 4,
+          "spg": 0.7,
+          "bpg": 0.1,
+          "fg": 0.447,
+          "tp": 0.399,
+          "ft": 0.868
+        }
+      },
+      {
+        "name": "P.J. Tucker",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 7.6,
+          "rpg": 5.5,
+          "apg": 2.1,
+          "spg": 0.8,
+          "bpg": 0.2,
+          "fg": 0.484,
+          "tp": 0.415,
+          "ft": 0.738
+        }
+      },
+      {
+        "name": "Duncan Robinson",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 10.9,
+          "rpg": 2.6,
+          "apg": 1.6,
+          "spg": 0.5,
+          "bpg": 0.2,
+          "fg": 0.399,
+          "tp": 0.372,
+          "ft": 0.836
+        }
+      },
+      {
+        "name": "Gabe Vincent",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 8.8,
+          "rpg": 1.9,
+          "apg": 3.1,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.417,
+          "tp": 0.368,
+          "ft": 0.815
+        }
+      },
+      {
+        "name": "Max Strus",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 10.6,
+          "rpg": 3,
+          "apg": 1.4,
+          "spg": 0.4,
+          "bpg": 0.2,
+          "fg": 0.441,
+          "tp": 0.41,
+          "ft": 0.792
+        }
+      }
+    ]
+  },
+  {
+    "id": "toronto-raptors-2021",
+    "name": "Toronto Raptors",
+    "season": "2021-22",
+    "decade": "2020s",
+    "record": {
+      "wins": 48,
+      "losses": 34
+    },
+    "roster": [
+      {
+        "name": "Pascal Siakam",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 90,
+        "stats": {
+          "ppg": 22.8,
+          "rpg": 8.5,
+          "apg": 5.3,
+          "spg": 1.3,
+          "bpg": 0.6,
+          "fg": 0.494,
+          "tp": 0.344,
+          "ft": 0.749
+        }
+      },
+      {
+        "name": "Fred VanVleet",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 20.3,
+          "rpg": 4.4,
+          "apg": 6.7,
+          "spg": 1.7,
+          "bpg": 0.5,
+          "fg": 0.403,
+          "tp": 0.377,
+          "ft": 0.874
+        }
+      },
+      {
+        "name": "OG Anunoby",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 17.1,
+          "rpg": 5.5,
+          "apg": 2.6,
+          "spg": 1.5,
+          "bpg": 0.5,
+          "fg": 0.443,
+          "tp": 0.363,
+          "ft": 0.754
+        }
+      },
+      {
+        "name": "Scottie Barnes",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 15.3,
+          "rpg": 7.5,
+          "apg": 3.5,
+          "spg": 1.1,
+          "bpg": 0.7,
+          "fg": 0.492,
+          "tp": 0.301,
+          "ft": 0.735
+        }
+      },
+      {
+        "name": "Gary Trent Jr.",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 18.3,
+          "rpg": 2.7,
+          "apg": 2,
+          "spg": 1.7,
+          "bpg": 0.3,
+          "fg": 0.414,
+          "tp": 0.383,
+          "ft": 0.853
+        }
+      },
+      {
+        "name": "Precious Achiuwa",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 9.1,
+          "rpg": 6.5,
+          "apg": 1.1,
+          "spg": 0.5,
+          "bpg": 0.6,
+          "fg": 0.439,
+          "tp": 0.359,
+          "ft": 0.595
+        }
+      },
+      {
+        "name": "Chris Boucher",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 9.4,
+          "rpg": 6.2,
+          "apg": 0.3,
+          "spg": 0.6,
+          "bpg": 0.9,
+          "fg": 0.464,
+          "tp": 0.297,
+          "ft": 0.777
+        }
+      },
+      {
+        "name": "Thaddeus Young",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 6.3,
+          "rpg": 4.4,
+          "apg": 1.7,
+          "spg": 1.2,
+          "bpg": 0.4,
+          "fg": 0.465,
+          "tp": 0.395,
+          "ft": 0.481
+        }
+      }
+    ]
+  },
+  {
+    "id": "atlanta-hawks-2021",
+    "name": "Atlanta Hawks",
+    "season": "2021-22",
+    "decade": "2020s",
+    "record": {
+      "wins": 43,
+      "losses": 39
+    },
+    "roster": [
+      {
+        "name": "Trae Young",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 95,
+        "stats": {
+          "ppg": 28.4,
+          "rpg": 3.7,
+          "apg": 9.7,
+          "spg": 0.9,
+          "bpg": 0.1,
+          "fg": 0.46,
+          "tp": 0.382,
+          "ft": 0.904
+        }
+      },
+      {
+        "name": "John Collins",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 16.2,
+          "rpg": 7.8,
+          "apg": 1.8,
+          "spg": 0.6,
+          "bpg": 1,
+          "fg": 0.526,
+          "tp": 0.364,
+          "ft": 0.793
+        }
+      },
+      {
+        "name": "De'Andre Hunter",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 13.4,
+          "rpg": 3.3,
+          "apg": 1.3,
+          "spg": 0.7,
+          "bpg": 0.4,
+          "fg": 0.442,
+          "tp": 0.379,
+          "ft": 0.765
+        }
+      },
+      {
+        "name": "Kevin Huerter",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 12.1,
+          "rpg": 3.4,
+          "apg": 2.7,
+          "spg": 0.7,
+          "bpg": 0.4,
+          "fg": 0.454,
+          "tp": 0.389,
+          "ft": 0.808
+        }
+      },
+      {
+        "name": "Bogdan Bogdanovic",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 15.1,
+          "rpg": 4,
+          "apg": 3.1,
+          "spg": 1.1,
+          "bpg": 0.2,
+          "fg": 0.431,
+          "tp": 0.368,
+          "ft": 0.843
+        }
+      },
+      {
+        "name": "Clint Capela",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 11.1,
+          "rpg": 11.9,
+          "apg": 1.2,
+          "spg": 0.7,
+          "bpg": 1.3,
+          "fg": 0.613,
+          "tp": 0,
+          "ft": 0.473
+        }
+      },
+      {
+        "name": "Danilo Gallinari",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 11.7,
+          "rpg": 4.7,
+          "apg": 1.5,
+          "spg": 0.4,
+          "bpg": 0.2,
+          "fg": 0.434,
+          "tp": 0.381,
+          "ft": 0.904
+        }
+      },
+      {
+        "name": "Cam Reddish",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 11.9,
+          "rpg": 2.5,
+          "apg": 1.1,
+          "spg": 1,
+          "bpg": 0.3,
+          "fg": 0.402,
+          "tp": 0.379,
+          "ft": 0.9
+        }
+      }
+    ]
+  },
+  {
+    "id": "portland-trail-blazers-2021",
+    "name": "Portland Trail Blazers",
+    "season": "2021-22",
+    "decade": "2020s",
+    "record": {
+      "wins": 27,
+      "losses": 55
+    },
+    "roster": [
+      {
+        "name": "Damian Lillard",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 88,
+        "stats": {
+          "ppg": 24,
+          "rpg": 4.1,
+          "apg": 7.3,
+          "spg": 0.6,
+          "bpg": 0.4,
+          "fg": 0.402,
+          "tp": 0.324,
+          "ft": 0.878
+        }
+      },
+      {
+        "name": "CJ McCollum",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 20.5,
+          "rpg": 4.3,
+          "apg": 4.5,
+          "spg": 1,
+          "bpg": 0.6,
+          "fg": 0.436,
+          "tp": 0.384,
+          "ft": 0.706
+        }
+      },
+      {
+        "name": "Norman Powell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 18.7,
+          "rpg": 3.3,
+          "apg": 2.1,
+          "spg": 1,
+          "bpg": 0.4,
+          "fg": 0.456,
+          "tp": 0.406,
+          "ft": 0.803
+        }
+      },
+      {
+        "name": "Robert Covington",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 7.6,
+          "rpg": 5.7,
+          "apg": 1.4,
+          "spg": 1.5,
+          "bpg": 1.3,
+          "fg": 0.381,
+          "tp": 0.343,
+          "ft": 0.833
+        }
+      },
+      {
+        "name": "Anfernee Simons",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 17.3,
+          "rpg": 2.6,
+          "apg": 3.9,
+          "spg": 0.5,
+          "bpg": 0.1,
+          "fg": 0.443,
+          "tp": 0.405,
+          "ft": 0.888
+        }
+      },
+      {
+        "name": "Jusuf Nurkic",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 82,
+        "stats": {
+          "ppg": 15,
+          "rpg": 11.1,
+          "apg": 2.8,
+          "spg": 1.1,
+          "bpg": 0.6,
+          "fg": 0.535,
+          "tp": 0.268,
+          "ft": 0.69
+        }
+      },
+      {
+        "name": "Nassir Little",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 9.8,
+          "rpg": 5.6,
+          "apg": 1.3,
+          "spg": 0.6,
+          "bpg": 0.9,
+          "fg": 0.46,
+          "tp": 0.331,
+          "ft": 0.734
+        }
+      },
+      {
+        "name": "Larry Nance Jr.",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 6.9,
+          "rpg": 5.6,
+          "apg": 2,
+          "spg": 1,
+          "bpg": 0.4,
+          "fg": 0.515,
+          "tp": 0.306,
+          "ft": 0.653
+        }
+      }
+    ]
+  },
+  {
+    "id": "houston-rockets-2021",
+    "name": "Houston Rockets",
+    "season": "2021-22",
+    "decade": "2020s",
+    "record": {
+      "wins": 20,
+      "losses": 62
+    },
+    "roster": [
+      {
+        "name": "Jalen Green",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 17.3,
+          "rpg": 3.4,
+          "apg": 2.6,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.426,
+          "tp": 0.343,
+          "ft": 0.797
+        }
+      },
+      {
+        "name": "Kevin Porter Jr.",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 15.6,
+          "rpg": 4.4,
+          "apg": 6.2,
+          "spg": 1.1,
+          "bpg": 0.4,
+          "fg": 0.415,
+          "tp": 0.375,
+          "ft": 0.642
+        }
+      },
+      {
+        "name": "Christian Wood",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 17.9,
+          "rpg": 10.1,
+          "apg": 2.3,
+          "spg": 0.8,
+          "bpg": 1,
+          "fg": 0.501,
+          "tp": 0.39,
+          "ft": 0.623
+        }
+      },
+      {
+        "name": "Eric Gordon",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 13.4,
+          "rpg": 2,
+          "apg": 2.7,
+          "spg": 0.5,
+          "bpg": 0.3,
+          "fg": 0.475,
+          "tp": 0.412,
+          "ft": 0.778
+        }
+      },
+      {
+        "name": "Jae'Sean Tate",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 11.8,
+          "rpg": 5.4,
+          "apg": 2.8,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.498,
+          "tp": 0.312,
+          "ft": 0.707
+        }
+      },
+      {
+        "name": "Garrison Mathews",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 10,
+          "rpg": 2.9,
+          "apg": 1,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.399,
+          "tp": 0.36,
+          "ft": 0.794
+        }
+      },
+      {
+        "name": "Daniel Theis",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 8.4,
+          "rpg": 5,
+          "apg": 0.8,
+          "spg": 0.4,
+          "bpg": 0.7,
+          "fg": 0.469,
+          "tp": 0.291,
+          "ft": 0.675
+        }
+      },
+      {
+        "name": "Kenyon Martin Jr.",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 8.8,
+          "rpg": 3.8,
+          "apg": 1.3,
+          "spg": 0.4,
+          "bpg": 0.5,
+          "fg": 0.533,
+          "tp": 0.357,
+          "ft": 0.634
+        }
+      }
+    ]
+  },
+  {
+    "id": "milwaukee-bucks-2022",
+    "name": "Milwaukee Bucks",
     "season": "2022-23",
     "decade": "2020s",
+    "record": {
+      "wins": 58,
+      "losses": 24
+    },
     "roster": [
-      { "name": "Jimmy Butler", "positions": ["SF"], "overall": 88, "stats": { "ppg": 22.9, "rpg": 5.9, "apg": 5.3, "spg": 1.8, "bpg": 0.3, "fg": 0.539, "tp": 0.350, "ft": 0.850 } },
-      { "name": "Bam Adebayo", "positions": ["C", "PF"], "overall": 83, "stats": { "ppg": 20.4, "rpg": 9.2, "apg": 3.2, "spg": 1.2, "bpg": 0.8, "fg": 0.540, "tp": 0.083, "ft": 0.806 } },
-      { "name": "Tyler Herro", "positions": ["SG"], "overall": 79, "stats": { "ppg": 20.1, "rpg": 5.4, "apg": 4.2, "spg": 0.8, "bpg": 0.2, "fg": 0.439, "tp": 0.376, "ft": 0.927 } },
-      { "name": "Kyle Lowry", "positions": ["PG", "SG"], "overall": 75, "stats": { "ppg": 11.2, "rpg": 4.0, "apg": 5.1, "spg": 1.1, "bpg": 0.3, "fg": 0.403, "tp": 0.346, "ft": 0.852 } },
-      { "name": "Caleb Martin", "positions": ["SF", "PF"], "overall": 73, "stats": { "ppg": 9.6, "rpg": 4.1, "apg": 1.5, "spg": 0.7, "bpg": 0.4, "fg": 0.484, "tp": 0.356, "ft": 0.760 } },
-      { "name": "Max Strus", "positions": ["SG"], "overall": 73, "stats": { "ppg": 11.5, "rpg": 3.2, "apg": 1.5, "spg": 0.6, "bpg": 0.2, "fg": 0.412, "tp": 0.350, "ft": 0.846 } },
-      { "name": "Gabe Vincent", "positions": ["PG", "SG"], "overall": 71, "stats": { "ppg": 9.4, "rpg": 1.9, "apg": 2.5, "spg": 0.7, "bpg": 0.1, "fg": 0.401, "tp": 0.334, "ft": 0.844 } },
-      { "name": "Duncan Robinson", "positions": ["SF", "SG"], "overall": 70, "stats": { "ppg": 6.4, "rpg": 1.8, "apg": 1.4, "spg": 0.3, "bpg": 0.1, "fg": 0.435, "tp": 0.394, "ft": 0.900 } }
+      {
+        "name": "Jrue Holiday",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 19.3,
+          "rpg": 5.1,
+          "apg": 7.4,
+          "spg": 1.2,
+          "bpg": 0.4,
+          "fg": 0.479,
+          "tp": 0.384,
+          "ft": 0.859
+        }
+      },
+      {
+        "name": "Giannis Antetokounmpo",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 99,
+        "stats": {
+          "ppg": 31.1,
+          "rpg": 11.8,
+          "apg": 5.7,
+          "spg": 0.8,
+          "bpg": 0.8,
+          "fg": 0.553,
+          "tp": 0.275,
+          "ft": 0.645
+        }
+      },
+      {
+        "name": "Brook Lopez",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 15.9,
+          "rpg": 6.7,
+          "apg": 1.3,
+          "spg": 0.5,
+          "bpg": 2.5,
+          "fg": 0.531,
+          "tp": 0.374,
+          "ft": 0.784
+        }
+      },
+      {
+        "name": "Grayson Allen",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10.4,
+          "rpg": 3.3,
+          "apg": 2.3,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.44,
+          "tp": 0.399,
+          "ft": 0.905
+        }
+      },
+      {
+        "name": "Bobby Portis",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 14.1,
+          "rpg": 9.6,
+          "apg": 1.5,
+          "spg": 0.4,
+          "bpg": 0.2,
+          "fg": 0.496,
+          "tp": 0.37,
+          "ft": 0.768
+        }
+      },
+      {
+        "name": "Khris Middleton",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 15.1,
+          "rpg": 4.2,
+          "apg": 4.9,
+          "spg": 0.7,
+          "bpg": 0.2,
+          "fg": 0.436,
+          "tp": 0.315,
+          "ft": 0.902
+        }
+      },
+      {
+        "name": "Pat Connaughton",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 7.6,
+          "rpg": 4.6,
+          "apg": 1.3,
+          "spg": 0.6,
+          "bpg": 0.2,
+          "fg": 0.392,
+          "tp": 0.339,
+          "ft": 0.659
+        }
+      },
+      {
+        "name": "Joe Ingles",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 6.9,
+          "rpg": 2.8,
+          "apg": 3.3,
+          "spg": 0.7,
+          "bpg": 0.1,
+          "fg": 0.435,
+          "tp": 0.409,
+          "ft": 0.857
+        }
+      }
     ]
   },
   {
-    "id": "celtics-2024",
+    "id": "boston-celtics-2022",
     "name": "Boston Celtics",
-    "season": "2023-24",
+    "season": "2022-23",
     "decade": "2020s",
+    "record": {
+      "wins": 57,
+      "losses": 25
+    },
     "roster": [
-      { "name": "Jayson Tatum", "positions": ["SF", "PF"], "overall": 92, "stats": { "ppg": 26.9, "rpg": 8.1, "apg": 4.9, "spg": 1.0, "bpg": 0.6, "fg": 0.471, "tp": 0.376, "ft": 0.833 } },
-      { "name": "Jaylen Brown", "positions": ["SG", "SF"], "overall": 87, "stats": { "ppg": 23.0, "rpg": 5.5, "apg": 3.6, "spg": 1.2, "bpg": 0.5, "fg": 0.493, "tp": 0.354, "ft": 0.703 } },
-      { "name": "Kristaps Porzingis", "positions": ["C", "PF"], "overall": 83, "stats": { "ppg": 20.1, "rpg": 7.2, "apg": 2.0, "spg": 0.7, "bpg": 1.9, "fg": 0.516, "tp": 0.375, "ft": 0.858 } },
-      { "name": "Jrue Holiday", "positions": ["PG", "SG"], "overall": 80, "stats": { "ppg": 12.5, "rpg": 5.4, "apg": 4.8, "spg": 0.9, "bpg": 0.8, "fg": 0.480, "tp": 0.429, "ft": 0.833 } },
-      { "name": "Derrick White", "positions": ["SG", "PG"], "overall": 80, "stats": { "ppg": 15.2, "rpg": 4.2, "apg": 5.2, "spg": 1.0, "bpg": 1.0, "fg": 0.461, "tp": 0.396, "ft": 0.901 } },
-      { "name": "Al Horford", "positions": ["C", "PF"], "overall": 75, "stats": { "ppg": 9.0, "rpg": 6.4, "apg": 2.6, "spg": 0.6, "bpg": 1.0, "fg": 0.510, "tp": 0.417, "ft": 0.864 } },
-      { "name": "Sam Hauser", "positions": ["SF", "PF"], "overall": 71, "stats": { "ppg": 9.0, "rpg": 3.5, "apg": 1.0, "spg": 0.6, "bpg": 0.3, "fg": 0.450, "tp": 0.421, "ft": 0.800 } },
-      { "name": "Payton Pritchard", "positions": ["PG", "SG"], "overall": 71, "stats": { "ppg": 9.6, "rpg": 3.2, "apg": 3.4, "spg": 0.5, "bpg": 0.1, "fg": 0.469, "tp": 0.385, "ft": 0.826 } }
+      {
+        "name": "Jayson Tatum",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 98,
+        "stats": {
+          "ppg": 30.1,
+          "rpg": 8.8,
+          "apg": 4.6,
+          "spg": 1.1,
+          "bpg": 0.7,
+          "fg": 0.466,
+          "tp": 0.35,
+          "ft": 0.854
+        }
+      },
+      {
+        "name": "Jaylen Brown",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 91,
+        "stats": {
+          "ppg": 26.6,
+          "rpg": 6.9,
+          "apg": 3.5,
+          "spg": 1.1,
+          "bpg": 0.4,
+          "fg": 0.491,
+          "tp": 0.335,
+          "ft": 0.765
+        }
+      },
+      {
+        "name": "Marcus Smart",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 11.5,
+          "rpg": 3.1,
+          "apg": 6.3,
+          "spg": 1.5,
+          "bpg": 0.4,
+          "fg": 0.415,
+          "tp": 0.336,
+          "ft": 0.746
+        }
+      },
+      {
+        "name": "Al Horford",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 9.8,
+          "rpg": 6.2,
+          "apg": 3,
+          "spg": 0.5,
+          "bpg": 1,
+          "fg": 0.476,
+          "tp": 0.446,
+          "ft": 0.714
+        }
+      },
+      {
+        "name": "Derrick White",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 12.4,
+          "rpg": 3.6,
+          "apg": 3.9,
+          "spg": 0.7,
+          "bpg": 0.9,
+          "fg": 0.462,
+          "tp": 0.381,
+          "ft": 0.875
+        }
+      },
+      {
+        "name": "Malcolm Brogdon",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 14.9,
+          "rpg": 4.2,
+          "apg": 3.7,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.484,
+          "tp": 0.444,
+          "ft": 0.87
+        }
+      },
+      {
+        "name": "Grant Williams",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 8.1,
+          "rpg": 4.6,
+          "apg": 1.7,
+          "spg": 0.5,
+          "bpg": 0.4,
+          "fg": 0.454,
+          "tp": 0.395,
+          "ft": 0.77
+        }
+      },
+      {
+        "name": "Robert Williams III",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 8,
+          "rpg": 8.3,
+          "apg": 1.4,
+          "spg": 0.6,
+          "bpg": 1.4,
+          "fg": 0.747,
+          "tp": 0,
+          "ft": 0.61
+        }
+      }
     ]
   },
   {
-    "id": "mavericks-2024",
-    "name": "Dallas Mavericks",
-    "season": "2023-24",
-    "decade": "2020s",
-    "roster": [
-      { "name": "Luka Doncic", "positions": ["PG", "SG"], "overall": 94, "stats": { "ppg": 33.9, "rpg": 9.2, "apg": 9.8, "spg": 1.4, "bpg": 0.5, "fg": 0.487, "tp": 0.382, "ft": 0.786 } },
-      { "name": "Kyrie Irving", "positions": ["SG", "PG"], "overall": 87, "stats": { "ppg": 25.6, "rpg": 5.0, "apg": 5.2, "spg": 1.3, "bpg": 0.5, "fg": 0.497, "tp": 0.417, "ft": 0.905 } },
-      { "name": "P.J. Washington", "positions": ["PF", "SF"], "overall": 75, "stats": { "ppg": 12.0, "rpg": 5.3, "apg": 2.2, "spg": 0.8, "bpg": 0.8, "fg": 0.450, "tp": 0.351, "ft": 0.730 } },
-      { "name": "Daniel Gafford", "positions": ["C", "PF"], "overall": 75, "stats": { "ppg": 10.9, "rpg": 7.9, "apg": 1.4, "spg": 0.6, "bpg": 1.9, "fg": 0.720, "tp": 0.0, "ft": 0.685 } },
-      { "name": "Derrick Jones Jr.", "positions": ["SF", "PF"], "overall": 71, "stats": { "ppg": 8.6, "rpg": 3.3, "apg": 1.2, "spg": 0.8, "bpg": 0.7, "fg": 0.490, "tp": 0.343, "ft": 0.713 } },
-      { "name": "Dereck Lively II", "positions": ["C", "PF"], "overall": 73, "stats": { "ppg": 8.8, "rpg": 6.9, "apg": 1.1, "spg": 0.5, "bpg": 1.4, "fg": 0.749, "tp": 0.0, "ft": 0.601 } },
-      { "name": "Tim Hardaway Jr.", "positions": ["SG", "SF"], "overall": 73, "stats": { "ppg": 14.4, "rpg": 3.0, "apg": 1.5, "spg": 0.6, "bpg": 0.3, "fg": 0.430, "tp": 0.353, "ft": 0.800 } },
-      { "name": "Josh Green", "positions": ["SG"], "overall": 70, "stats": { "ppg": 8.0, "rpg": 3.0, "apg": 2.0, "spg": 0.9, "bpg": 0.2, "fg": 0.460, "tp": 0.380, "ft": 0.762 } }
-    ]
-  },
-  {
-    "id": "sixers-2023",
+    "id": "philadelphia-76ers-2022",
     "name": "Philadelphia 76ers",
     "season": "2022-23",
     "decade": "2020s",
+    "record": {
+      "wins": 54,
+      "losses": 28
+    },
     "roster": [
-      { "name": "Joel Embiid", "positions": ["C", "PF"], "overall": 95, "stats": { "ppg": 33.1, "rpg": 10.2, "apg": 4.2, "spg": 1.0, "bpg": 1.7, "fg": 0.548, "tp": 0.330, "ft": 0.857 } },
-      { "name": "James Harden", "positions": ["PG", "SG"], "overall": 84, "stats": { "ppg": 21.0, "rpg": 6.1, "apg": 10.7, "spg": 1.2, "bpg": 0.5, "fg": 0.441, "tp": 0.380, "ft": 0.867 } },
-      { "name": "Tyrese Maxey", "positions": ["SG", "PG"], "overall": 80, "stats": { "ppg": 20.3, "rpg": 2.9, "apg": 3.5, "spg": 0.9, "bpg": 0.2, "fg": 0.481, "tp": 0.434, "ft": 0.851 } },
-      { "name": "Tobias Harris", "positions": ["PF", "SF"], "overall": 77, "stats": { "ppg": 14.7, "rpg": 5.7, "apg": 2.4, "spg": 0.9, "bpg": 0.6, "fg": 0.503, "tp": 0.389, "ft": 0.876 } },
-      { "name": "De'Anthony Melton", "positions": ["SG", "PG"], "overall": 73, "stats": { "ppg": 10.0, "rpg": 3.9, "apg": 2.8, "spg": 1.5, "bpg": 0.6, "fg": 0.412, "tp": 0.386, "ft": 0.770 } },
-      { "name": "P.J. Tucker", "positions": ["PF", "SF"], "overall": 68, "stats": { "ppg": 3.5, "rpg": 3.9, "apg": 0.8, "spg": 0.7, "bpg": 0.3, "fg": 0.439, "tp": 0.394, "ft": 0.750 } },
-      { "name": "Georges Niang", "positions": ["PF", "SF"], "overall": 69, "stats": { "ppg": 8.6, "rpg": 2.4, "apg": 1.3, "spg": 0.4, "bpg": 0.1, "fg": 0.443, "tp": 0.402, "ft": 0.857 } },
-      { "name": "Paul Reed", "positions": ["C", "PF"], "overall": 68, "stats": { "ppg": 4.2, "rpg": 4.2, "apg": 0.8, "spg": 0.6, "bpg": 0.9, "fg": 0.619, "tp": 0.0, "ft": 0.660 } }
+      {
+        "name": "James Harden",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 90,
+        "stats": {
+          "ppg": 21,
+          "rpg": 6.1,
+          "apg": 10.7,
+          "spg": 1.2,
+          "bpg": 0.5,
+          "fg": 0.441,
+          "tp": 0.385,
+          "ft": 0.867
+        }
+      },
+      {
+        "name": "Joel Embiid",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 99,
+        "stats": {
+          "ppg": 33.1,
+          "rpg": 10.2,
+          "apg": 4.2,
+          "spg": 1,
+          "bpg": 1.7,
+          "fg": 0.548,
+          "tp": 0.33,
+          "ft": 0.857
+        }
+      },
+      {
+        "name": "Tyrese Maxey",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 20.3,
+          "rpg": 2.9,
+          "apg": 3.5,
+          "spg": 0.8,
+          "bpg": 0.1,
+          "fg": 0.481,
+          "tp": 0.434,
+          "ft": 0.845
+        }
+      },
+      {
+        "name": "Tobias Harris",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 14.7,
+          "rpg": 5.7,
+          "apg": 2.5,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.501,
+          "tp": 0.389,
+          "ft": 0.876
+        }
+      },
+      {
+        "name": "De'Anthony Melton",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 10.1,
+          "rpg": 4.1,
+          "apg": 2.6,
+          "spg": 1.6,
+          "bpg": 0.5,
+          "fg": 0.425,
+          "tp": 0.39,
+          "ft": 0.793
+        }
+      },
+      {
+        "name": "P.J. Tucker",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 62,
+        "stats": {
+          "ppg": 3.5,
+          "rpg": 3.9,
+          "apg": 0.8,
+          "spg": 0.5,
+          "bpg": 0.2,
+          "fg": 0.427,
+          "tp": 0.393,
+          "ft": 0.826
+        }
+      },
+      {
+        "name": "Shake Milton",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 8.4,
+          "rpg": 2.5,
+          "apg": 3.2,
+          "spg": 0.3,
+          "bpg": 0.2,
+          "fg": 0.479,
+          "tp": 0.378,
+          "ft": 0.853
+        }
+      },
+      {
+        "name": "Georges Niang",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 8.2,
+          "rpg": 2.4,
+          "apg": 1,
+          "spg": 0.4,
+          "bpg": 0.2,
+          "fg": 0.442,
+          "tp": 0.401,
+          "ft": 0.867
+        }
+      }
     ]
   },
   {
-    "id": "thunder-2024",
+    "id": "denver-nuggets-2022",
+    "name": "Denver Nuggets",
+    "season": "2022-23",
+    "decade": "2020s",
+    "record": {
+      "wins": 53,
+      "losses": 29
+    },
+    "roster": [
+      {
+        "name": "Nikola Jokic",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 99,
+        "stats": {
+          "ppg": 24.5,
+          "rpg": 11.8,
+          "apg": 9.8,
+          "spg": 1.3,
+          "bpg": 0.7,
+          "fg": 0.632,
+          "tp": 0.383,
+          "ft": 0.822
+        }
+      },
+      {
+        "name": "Jamal Murray",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 20,
+          "rpg": 4,
+          "apg": 6.2,
+          "spg": 1,
+          "bpg": 0.2,
+          "fg": 0.454,
+          "tp": 0.398,
+          "ft": 0.833
+        }
+      },
+      {
+        "name": "Kentavious Caldwell-Pope",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 10.8,
+          "rpg": 2.7,
+          "apg": 2.4,
+          "spg": 1.5,
+          "bpg": 0.5,
+          "fg": 0.462,
+          "tp": 0.423,
+          "ft": 0.824
+        }
+      },
+      {
+        "name": "Aaron Gordon",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 16.3,
+          "rpg": 6.6,
+          "apg": 3,
+          "spg": 0.8,
+          "bpg": 0.8,
+          "fg": 0.564,
+          "tp": 0.347,
+          "ft": 0.608
+        }
+      },
+      {
+        "name": "Michael Porter Jr.",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 17.4,
+          "rpg": 5.5,
+          "apg": 1,
+          "spg": 0.6,
+          "bpg": 0.5,
+          "fg": 0.487,
+          "tp": 0.414,
+          "ft": 0.8
+        }
+      },
+      {
+        "name": "Bruce Brown",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 11.5,
+          "rpg": 4.1,
+          "apg": 3.4,
+          "spg": 1.1,
+          "bpg": 0.6,
+          "fg": 0.483,
+          "tp": 0.358,
+          "ft": 0.758
+        }
+      },
+      {
+        "name": "Bones Hyland",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 12.1,
+          "rpg": 2,
+          "apg": 3,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.399,
+          "tp": 0.378,
+          "ft": 0.866
+        }
+      },
+      {
+        "name": "Jeff Green",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 65,
+        "stats": {
+          "ppg": 7.8,
+          "rpg": 2.6,
+          "apg": 1.2,
+          "spg": 0.3,
+          "bpg": 0.3,
+          "fg": 0.488,
+          "tp": 0.288,
+          "ft": 0.744
+        }
+      }
+    ]
+  },
+  {
+    "id": "los-angeles-clippers-2022",
+    "name": "Los Angeles Clippers",
+    "season": "2022-23",
+    "decade": "2020s",
+    "record": {
+      "wins": 44,
+      "losses": 38
+    },
+    "roster": [
+      {
+        "name": "Paul George",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 90,
+        "stats": {
+          "ppg": 23.8,
+          "rpg": 6.1,
+          "apg": 5.1,
+          "spg": 1.5,
+          "bpg": 0.4,
+          "fg": 0.457,
+          "tp": 0.371,
+          "ft": 0.871
+        }
+      },
+      {
+        "name": "Kawhi Leonard",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 90,
+        "stats": {
+          "ppg": 23.8,
+          "rpg": 6.5,
+          "apg": 3.9,
+          "spg": 1.4,
+          "bpg": 0.5,
+          "fg": 0.512,
+          "tp": 0.416,
+          "ft": 0.871
+        }
+      },
+      {
+        "name": "Ivica Zubac",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 10.8,
+          "rpg": 9.9,
+          "apg": 1,
+          "spg": 0.4,
+          "bpg": 1.3,
+          "fg": 0.634,
+          "tp": 0,
+          "ft": 0.697
+        }
+      },
+      {
+        "name": "Marcus Morris Sr.",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 11.2,
+          "rpg": 4,
+          "apg": 1.8,
+          "spg": 0.6,
+          "bpg": 0.3,
+          "fg": 0.426,
+          "tp": 0.365,
+          "ft": 0.782
+        }
+      },
+      {
+        "name": "Norman Powell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 17,
+          "rpg": 2.9,
+          "apg": 1.8,
+          "spg": 0.8,
+          "bpg": 0.3,
+          "fg": 0.479,
+          "tp": 0.397,
+          "ft": 0.812
+        }
+      },
+      {
+        "name": "Reggie Jackson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10.9,
+          "rpg": 2.2,
+          "apg": 3.5,
+          "spg": 0.7,
+          "bpg": 0.1,
+          "fg": 0.418,
+          "tp": 0.35,
+          "ft": 0.924
+        }
+      },
+      {
+        "name": "Terance Mann",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 8.8,
+          "rpg": 3.4,
+          "apg": 2.3,
+          "spg": 0.5,
+          "bpg": 0.3,
+          "fg": 0.519,
+          "tp": 0.389,
+          "ft": 0.78
+        }
+      },
+      {
+        "name": "John Wall",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 11.4,
+          "rpg": 2.7,
+          "apg": 5.2,
+          "spg": 0.8,
+          "bpg": 0.4,
+          "fg": 0.407,
+          "tp": 0.303,
+          "ft": 0.681
+        }
+      }
+    ]
+  },
+  {
+    "id": "atlanta-hawks-2022",
+    "name": "Atlanta Hawks",
+    "season": "2022-23",
+    "decade": "2020s",
+    "record": {
+      "wins": 41,
+      "losses": 41
+    },
+    "roster": [
+      {
+        "name": "Dejounte Murray",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 20.5,
+          "rpg": 5.3,
+          "apg": 6.1,
+          "spg": 1.5,
+          "bpg": 0.3,
+          "fg": 0.464,
+          "tp": 0.344,
+          "ft": 0.832
+        }
+      },
+      {
+        "name": "Trae Young",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 92,
+        "stats": {
+          "ppg": 26.2,
+          "rpg": 3,
+          "apg": 10.2,
+          "spg": 1.1,
+          "bpg": 0.1,
+          "fg": 0.429,
+          "tp": 0.335,
+          "ft": 0.886
+        }
+      },
+      {
+        "name": "De'Andre Hunter",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 15.4,
+          "rpg": 4.2,
+          "apg": 1.4,
+          "spg": 0.5,
+          "bpg": 0.3,
+          "fg": 0.461,
+          "tp": 0.35,
+          "ft": 0.826
+        }
+      },
+      {
+        "name": "John Collins",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 13.1,
+          "rpg": 6.5,
+          "apg": 1.2,
+          "spg": 0.6,
+          "bpg": 1,
+          "fg": 0.508,
+          "tp": 0.292,
+          "ft": 0.803
+        }
+      },
+      {
+        "name": "Bogdan Bogdanovic",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 14,
+          "rpg": 3.1,
+          "apg": 2.8,
+          "spg": 0.8,
+          "bpg": 0.3,
+          "fg": 0.447,
+          "tp": 0.406,
+          "ft": 0.831
+        }
+      },
+      {
+        "name": "Clint Capela",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 12,
+          "rpg": 11,
+          "apg": 0.9,
+          "spg": 0.7,
+          "bpg": 1.2,
+          "fg": 0.653,
+          "tp": 0,
+          "ft": 0.603
+        }
+      },
+      {
+        "name": "Saddiq Bey",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 11.6,
+          "rpg": 4.8,
+          "apg": 1.4,
+          "spg": 0.8,
+          "bpg": 0,
+          "fg": 0.47,
+          "tp": 0.4,
+          "ft": 0.862
+        }
+      },
+      {
+        "name": "Onyeka Okongwu",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 9.9,
+          "rpg": 7.2,
+          "apg": 1,
+          "spg": 0.7,
+          "bpg": 1.3,
+          "fg": 0.638,
+          "tp": 0.308,
+          "ft": 0.781
+        }
+      }
+    ]
+  },
+  {
+    "id": "washington-wizards-2022",
+    "name": "Washington Wizards",
+    "season": "2022-23",
+    "decade": "2020s",
+    "record": {
+      "wins": 35,
+      "losses": 47
+    },
+    "roster": [
+      {
+        "name": "Kyle Kuzma",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 21.2,
+          "rpg": 7.2,
+          "apg": 3.7,
+          "spg": 0.6,
+          "bpg": 0.5,
+          "fg": 0.448,
+          "tp": 0.333,
+          "ft": 0.73
+        }
+      },
+      {
+        "name": "Bradley Beal",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 23.2,
+          "rpg": 3.9,
+          "apg": 5.4,
+          "spg": 0.9,
+          "bpg": 0.7,
+          "fg": 0.506,
+          "tp": 0.365,
+          "ft": 0.842
+        }
+      },
+      {
+        "name": "Kristaps Porzingis",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 90,
+        "stats": {
+          "ppg": 23.2,
+          "rpg": 8.4,
+          "apg": 2.7,
+          "spg": 0.9,
+          "bpg": 1.5,
+          "fg": 0.498,
+          "tp": 0.385,
+          "ft": 0.851
+        }
+      },
+      {
+        "name": "Corey Kispert",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 11.1,
+          "rpg": 2.8,
+          "apg": 1.2,
+          "spg": 0.4,
+          "bpg": 0.1,
+          "fg": 0.497,
+          "tp": 0.424,
+          "ft": 0.852
+        }
+      },
+      {
+        "name": "Monte Morris",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 10.3,
+          "rpg": 3.4,
+          "apg": 5.3,
+          "spg": 0.7,
+          "bpg": 0.2,
+          "fg": 0.48,
+          "tp": 0.382,
+          "ft": 0.831
+        }
+      },
+      {
+        "name": "Deni Avdija",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 9.2,
+          "rpg": 6.4,
+          "apg": 2.8,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.437,
+          "tp": 0.297,
+          "ft": 0.739
+        }
+      },
+      {
+        "name": "Delon Wright",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 7.4,
+          "rpg": 3.6,
+          "apg": 3.9,
+          "spg": 1.8,
+          "bpg": 0.3,
+          "fg": 0.474,
+          "tp": 0.345,
+          "ft": 0.867
+        }
+      },
+      {
+        "name": "Rui Hachimura",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 13,
+          "rpg": 4.3,
+          "apg": 1.2,
+          "spg": 0.4,
+          "bpg": 0.4,
+          "fg": 0.488,
+          "tp": 0.337,
+          "ft": 0.759
+        }
+      }
+    ]
+  },
+  {
+    "id": "detroit-pistons-2022",
+    "name": "Detroit Pistons",
+    "season": "2022-23",
+    "decade": "2020s",
+    "record": {
+      "wins": 17,
+      "losses": 65
+    },
+    "roster": [
+      {
+        "name": "Bojan Bogdanovic",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 82,
+        "stats": {
+          "ppg": 21.6,
+          "rpg": 3.8,
+          "apg": 2.6,
+          "spg": 0.6,
+          "bpg": 0.1,
+          "fg": 0.488,
+          "tp": 0.411,
+          "ft": 0.884
+        }
+      },
+      {
+        "name": "Jaden Ivey",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 16.3,
+          "rpg": 3.9,
+          "apg": 5.2,
+          "spg": 0.8,
+          "bpg": 0.2,
+          "fg": 0.416,
+          "tp": 0.343,
+          "ft": 0.747
+        }
+      },
+      {
+        "name": "Saddiq Bey",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 14.8,
+          "rpg": 4.7,
+          "apg": 1.6,
+          "spg": 1,
+          "bpg": 0.2,
+          "fg": 0.404,
+          "tp": 0.345,
+          "ft": 0.861
+        }
+      },
+      {
+        "name": "Killian Hayes",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 10.3,
+          "rpg": 2.9,
+          "apg": 6.2,
+          "spg": 1.4,
+          "bpg": 0.4,
+          "fg": 0.377,
+          "tp": 0.28,
+          "ft": 0.821
+        }
+      },
+      {
+        "name": "Isaiah Stewart",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 11.3,
+          "rpg": 8.1,
+          "apg": 1.4,
+          "spg": 0.4,
+          "bpg": 0.7,
+          "fg": 0.442,
+          "tp": 0.327,
+          "ft": 0.738
+        }
+      },
+      {
+        "name": "Jalen Duren",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 9.1,
+          "rpg": 8.9,
+          "apg": 1.1,
+          "spg": 0.7,
+          "bpg": 0.9,
+          "fg": 0.648,
+          "tp": 0,
+          "ft": 0.611
+        }
+      },
+      {
+        "name": "Marvin Bagley III",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 12,
+          "rpg": 6.4,
+          "apg": 0.9,
+          "spg": 0.5,
+          "bpg": 0.7,
+          "fg": 0.529,
+          "tp": 0.288,
+          "ft": 0.75
+        }
+      },
+      {
+        "name": "Isaiah Livers",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 64,
+        "stats": {
+          "ppg": 6.7,
+          "rpg": 2.8,
+          "apg": 0.8,
+          "spg": 0.5,
+          "bpg": 0.5,
+          "fg": 0.417,
+          "tp": 0.365,
+          "ft": 0.821
+        }
+      }
+    ]
+  },
+  {
+    "id": "boston-celtics-2023",
+    "name": "Boston Celtics",
+    "season": "2023-24",
+    "decade": "2020s",
+    "record": {
+      "wins": 64,
+      "losses": 18
+    },
+    "roster": [
+      {
+        "name": "Jayson Tatum",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 94,
+        "stats": {
+          "ppg": 27.1,
+          "rpg": 8.1,
+          "apg": 5,
+          "spg": 1,
+          "bpg": 0.6,
+          "fg": 0.474,
+          "tp": 0.387,
+          "ft": 0.834
+        }
+      },
+      {
+        "name": "Jaylen Brown",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 22.8,
+          "rpg": 5.6,
+          "apg": 3.6,
+          "spg": 1.2,
+          "bpg": 0.5,
+          "fg": 0.499,
+          "tp": 0.349,
+          "ft": 0.713
+        }
+      },
+      {
+        "name": "Jrue Holiday",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 12.5,
+          "rpg": 5.2,
+          "apg": 4.7,
+          "spg": 0.9,
+          "bpg": 0.8,
+          "fg": 0.484,
+          "tp": 0.429,
+          "ft": 0.824
+        }
+      },
+      {
+        "name": "Derrick White",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 15.2,
+          "rpg": 4.3,
+          "apg": 5.1,
+          "spg": 1,
+          "bpg": 1.2,
+          "fg": 0.463,
+          "tp": 0.4,
+          "ft": 0.917
+        }
+      },
+      {
+        "name": "Kristaps Porzingis",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 20.6,
+          "rpg": 7.2,
+          "apg": 2,
+          "spg": 0.7,
+          "bpg": 2,
+          "fg": 0.518,
+          "tp": 0.384,
+          "ft": 0.857
+        }
+      },
+      {
+        "name": "Al Horford",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 8.7,
+          "rpg": 6.4,
+          "apg": 2.5,
+          "spg": 0.6,
+          "bpg": 1,
+          "fg": 0.508,
+          "tp": 0.413,
+          "ft": 0.867
+        }
+      },
+      {
+        "name": "Payton Pritchard",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 9.8,
+          "rpg": 3.2,
+          "apg": 3.5,
+          "spg": 0.5,
+          "bpg": 0.1,
+          "fg": 0.474,
+          "tp": 0.393,
+          "ft": 0.833
+        }
+      },
+      {
+        "name": "Sam Hauser",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 8.8,
+          "rpg": 3.4,
+          "apg": 1,
+          "spg": 0.5,
+          "bpg": 0.3,
+          "fg": 0.444,
+          "tp": 0.421,
+          "ft": 0.941
+        }
+      }
+    ]
+  },
+  {
+    "id": "denver-nuggets-2023",
+    "name": "Denver Nuggets",
+    "season": "2023-24",
+    "decade": "2020s",
+    "record": {
+      "wins": 57,
+      "losses": 25
+    },
+    "roster": [
+      {
+        "name": "Nikola Jokic",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 99,
+        "stats": {
+          "ppg": 26.1,
+          "rpg": 12.1,
+          "apg": 8.9,
+          "spg": 1.4,
+          "bpg": 0.9,
+          "fg": 0.587,
+          "tp": 0.364,
+          "ft": 0.816
+        }
+      },
+      {
+        "name": "Michael Porter Jr.",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 16.8,
+          "rpg": 6.9,
+          "apg": 1.6,
+          "spg": 0.5,
+          "bpg": 0.6,
+          "fg": 0.483,
+          "tp": 0.401,
+          "ft": 0.86
+        }
+      },
+      {
+        "name": "Jamal Murray",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 21.2,
+          "rpg": 4.1,
+          "apg": 6.4,
+          "spg": 1,
+          "bpg": 0.7,
+          "fg": 0.483,
+          "tp": 0.427,
+          "ft": 0.848
+        }
+      },
+      {
+        "name": "Kentavious Caldwell-Pope",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10,
+          "rpg": 2.4,
+          "apg": 2.3,
+          "spg": 1.3,
+          "bpg": 0.6,
+          "fg": 0.459,
+          "tp": 0.403,
+          "ft": 0.903
+        }
+      },
+      {
+        "name": "Aaron Gordon",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 13.9,
+          "rpg": 6.4,
+          "apg": 3.5,
+          "spg": 0.8,
+          "bpg": 0.6,
+          "fg": 0.567,
+          "tp": 0.303,
+          "ft": 0.664
+        }
+      },
+      {
+        "name": "Reggie Jackson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 10.1,
+          "rpg": 1.9,
+          "apg": 3.8,
+          "spg": 0.5,
+          "bpg": 0.1,
+          "fg": 0.432,
+          "tp": 0.367,
+          "ft": 0.822
+        }
+      },
+      {
+        "name": "Christian Braun",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 7,
+          "rpg": 3.7,
+          "apg": 1.6,
+          "spg": 0.5,
+          "bpg": 0.4,
+          "fg": 0.449,
+          "tp": 0.377,
+          "ft": 0.69
+        }
+      },
+      {
+        "name": "Peyton Watson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 6.9,
+          "rpg": 3.3,
+          "apg": 1.1,
+          "spg": 0.6,
+          "bpg": 1.1,
+          "fg": 0.469,
+          "tp": 0.302,
+          "ft": 0.676
+        }
+      }
+    ]
+  },
+  {
+    "id": "oklahoma-city-thunder-2023",
     "name": "Oklahoma City Thunder",
     "season": "2023-24",
     "decade": "2020s",
+    "record": {
+      "wins": 57,
+      "losses": 25
+    },
     "roster": [
-      { "name": "Shai Gilgeous-Alexander", "positions": ["PG", "SG"], "overall": 91, "stats": { "ppg": 30.1, "rpg": 5.5, "apg": 6.2, "spg": 2.0, "bpg": 0.9, "fg": 0.535, "tp": 0.353, "ft": 0.874 } },
-      { "name": "Jalen Williams", "positions": ["SF", "SG"], "overall": 81, "stats": { "ppg": 19.1, "rpg": 4.0, "apg": 4.5, "spg": 1.1, "bpg": 0.6, "fg": 0.540, "tp": 0.426, "ft": 0.812 } },
-      { "name": "Chet Holmgren", "positions": ["C", "PF"], "overall": 80, "stats": { "ppg": 16.5, "rpg": 7.9, "apg": 2.6, "spg": 0.6, "bpg": 2.3, "fg": 0.530, "tp": 0.370, "ft": 0.793 } },
-      { "name": "Luguentz Dort", "positions": ["SG", "SF"], "overall": 74, "stats": { "ppg": 10.9, "rpg": 3.9, "apg": 1.5, "spg": 0.9, "bpg": 0.5, "fg": 0.435, "tp": 0.395, "ft": 0.783 } },
-      { "name": "Josh Giddey", "positions": ["PG", "SG"], "overall": 74, "stats": { "ppg": 12.3, "rpg": 6.4, "apg": 4.8, "spg": 0.8, "bpg": 0.6, "fg": 0.475, "tp": 0.337, "ft": 0.778 } },
-      { "name": "Isaiah Joe", "positions": ["SG"], "overall": 70, "stats": { "ppg": 8.2, "rpg": 2.0, "apg": 1.5, "spg": 0.5, "bpg": 0.3, "fg": 0.438, "tp": 0.417, "ft": 0.880 } },
-      { "name": "Cason Wallace", "positions": ["PG", "SG"], "overall": 69, "stats": { "ppg": 6.8, "rpg": 2.3, "apg": 1.7, "spg": 1.0, "bpg": 0.4, "fg": 0.475, "tp": 0.421, "ft": 0.760 } },
-      { "name": "Aaron Wiggins", "positions": ["SG", "SF"], "overall": 68, "stats": { "ppg": 6.9, "rpg": 2.6, "apg": 1.4, "spg": 0.5, "bpg": 0.2, "fg": 0.498, "tp": 0.490, "ft": 0.781 } }
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 98,
+        "stats": {
+          "ppg": 30,
+          "rpg": 5.5,
+          "apg": 6.3,
+          "spg": 1.9,
+          "bpg": 0.9,
+          "fg": 0.533,
+          "tp": 0.359,
+          "ft": 0.871
+        }
+      },
+      {
+        "name": "Jalen Williams",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 19.4,
+          "rpg": 4,
+          "apg": 4.6,
+          "spg": 1.2,
+          "bpg": 0.7,
+          "fg": 0.543,
+          "tp": 0.44,
+          "ft": 0.821
+        }
+      },
+      {
+        "name": "Chet Holmgren",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 16.6,
+          "rpg": 7.9,
+          "apg": 2.4,
+          "spg": 0.6,
+          "bpg": 2.4,
+          "fg": 0.537,
+          "tp": 0.372,
+          "ft": 0.788
+        }
+      },
+      {
+        "name": "Luguentz Dort",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 10.9,
+          "rpg": 3.6,
+          "apg": 1.5,
+          "spg": 0.9,
+          "bpg": 0.6,
+          "fg": 0.436,
+          "tp": 0.382,
+          "ft": 0.833
+        }
+      },
+      {
+        "name": "Josh Giddey",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 12.2,
+          "rpg": 6.5,
+          "apg": 4.9,
+          "spg": 0.7,
+          "bpg": 0.6,
+          "fg": 0.469,
+          "tp": 0.347,
+          "ft": 0.813
+        }
+      },
+      {
+        "name": "Cason Wallace",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 65,
+        "stats": {
+          "ppg": 6.7,
+          "rpg": 2.3,
+          "apg": 1.5,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.483,
+          "tp": 0.408,
+          "ft": 0.8
+        }
+      },
+      {
+        "name": "Isaiah Joe",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 8,
+          "rpg": 2.4,
+          "apg": 1.3,
+          "spg": 0.5,
+          "bpg": 0.3,
+          "fg": 0.456,
+          "tp": 0.416,
+          "ft": 0.864
+        }
+      },
+      {
+        "name": "Gordon Hayward",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 63,
+        "stats": {
+          "ppg": 5.3,
+          "rpg": 2.5,
+          "apg": 1.6,
+          "spg": 0.5,
+          "bpg": 0,
+          "fg": 0.453,
+          "tp": 0.517,
+          "ft": 0.692
+        }
+      }
     ]
   },
   {
-    "id": "raptors-2020",
-    "name": "Toronto Raptors",
-    "season": "2019-20",
+    "id": "minnesota-timberwolves-2023",
+    "name": "Minnesota Timberwolves",
+    "season": "2023-24",
     "decade": "2020s",
+    "record": {
+      "wins": 56,
+      "losses": 26
+    },
     "roster": [
-      { "name": "Pascal Siakam", "positions": ["PF", "SF"], "overall": 83, "stats": { "ppg": 22.9, "rpg": 7.3, "apg": 3.5, "spg": 1.0, "bpg": 0.9, "fg": 0.453, "tp": 0.359, "ft": 0.792 } },
-      { "name": "Kyle Lowry", "positions": ["PG", "SG"], "overall": 81, "stats": { "ppg": 19.4, "rpg": 5.0, "apg": 7.5, "spg": 1.4, "bpg": 0.4, "fg": 0.416, "tp": 0.352, "ft": 0.857 } },
-      { "name": "Fred VanVleet", "positions": ["SG", "PG"], "overall": 78, "stats": { "ppg": 17.6, "rpg": 3.8, "apg": 6.6, "spg": 1.9, "bpg": 0.3, "fg": 0.413, "tp": 0.390, "ft": 0.848 } },
-      { "name": "OG Anunoby", "positions": ["SF", "PF"], "overall": 75, "stats": { "ppg": 10.6, "rpg": 5.3, "apg": 1.6, "spg": 1.4, "bpg": 0.7, "fg": 0.505, "tp": 0.390, "ft": 0.706 } },
-      { "name": "Serge Ibaka", "positions": ["C", "PF"], "overall": 76, "stats": { "ppg": 15.4, "rpg": 8.2, "apg": 1.4, "spg": 0.4, "bpg": 0.8, "fg": 0.519, "tp": 0.385, "ft": 0.740 } },
-      { "name": "Marc Gasol", "positions": ["C", "PF"], "overall": 73, "stats": { "ppg": 7.5, "rpg": 6.3, "apg": 3.3, "spg": 0.8, "bpg": 1.1, "fg": 0.435, "tp": 0.385, "ft": 0.851 } },
-      { "name": "Norman Powell", "positions": ["SG", "SF"], "overall": 74, "stats": { "ppg": 16.0, "rpg": 3.7, "apg": 1.8, "spg": 1.1, "bpg": 0.3, "fg": 0.495, "tp": 0.399, "ft": 0.819 } },
-      { "name": "Terence Davis", "positions": ["SG"], "overall": 67, "stats": { "ppg": 7.5, "rpg": 3.3, "apg": 1.7, "spg": 0.6, "bpg": 0.3, "fg": 0.450, "tp": 0.392, "ft": 0.808 } }
+      {
+        "name": "Anthony Edwards",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 91,
+        "stats": {
+          "ppg": 25.9,
+          "rpg": 5.4,
+          "apg": 5.2,
+          "spg": 1.3,
+          "bpg": 0.5,
+          "fg": 0.463,
+          "tp": 0.358,
+          "ft": 0.839
+        }
+      },
+      {
+        "name": "Rudy Gobert",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 14.1,
+          "rpg": 12.9,
+          "apg": 1.4,
+          "spg": 0.7,
+          "bpg": 2.1,
+          "fg": 0.671,
+          "tp": 0,
+          "ft": 0.629
+        }
+      },
+      {
+        "name": "Karl-Anthony Towns",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 21.5,
+          "rpg": 8.1,
+          "apg": 3.1,
+          "spg": 0.7,
+          "bpg": 0.7,
+          "fg": 0.505,
+          "tp": 0.41,
+          "ft": 0.863
+        }
+      },
+      {
+        "name": "Jaden McDaniels",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10.7,
+          "rpg": 3.1,
+          "apg": 1.4,
+          "spg": 0.9,
+          "bpg": 0.6,
+          "fg": 0.49,
+          "tp": 0.341,
+          "ft": 0.722
+        }
+      },
+      {
+        "name": "Mike Conley",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 11.5,
+          "rpg": 2.9,
+          "apg": 5.8,
+          "spg": 1.2,
+          "bpg": 0.2,
+          "fg": 0.462,
+          "tp": 0.442,
+          "ft": 0.906
+        }
+      },
+      {
+        "name": "Naz Reid",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 13.6,
+          "rpg": 5.3,
+          "apg": 1.4,
+          "spg": 0.8,
+          "bpg": 0.9,
+          "fg": 0.473,
+          "tp": 0.41,
+          "ft": 0.736
+        }
+      },
+      {
+        "name": "Nickeil Alexander-Walker",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 8.1,
+          "rpg": 2.1,
+          "apg": 2.5,
+          "spg": 0.8,
+          "bpg": 0.5,
+          "fg": 0.444,
+          "tp": 0.396,
+          "ft": 0.794
+        }
+      },
+      {
+        "name": "Kyle Anderson",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 6.4,
+          "rpg": 3.4,
+          "apg": 4.2,
+          "spg": 0.9,
+          "bpg": 0.6,
+          "fg": 0.461,
+          "tp": 0.239,
+          "ft": 0.704
+        }
+      }
+    ]
+  },
+  {
+    "id": "cleveland-cavaliers-2023",
+    "name": "Cleveland Cavaliers",
+    "season": "2023-24",
+    "decade": "2020s",
+    "record": {
+      "wins": 48,
+      "losses": 34
+    },
+    "roster": [
+      {
+        "name": "Donovan Mitchell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 93,
+        "stats": {
+          "ppg": 26.1,
+          "rpg": 5,
+          "apg": 6,
+          "spg": 1.8,
+          "bpg": 0.5,
+          "fg": 0.456,
+          "tp": 0.368,
+          "ft": 0.863
+        }
+      },
+      {
+        "name": "Darius Garland",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 17.6,
+          "rpg": 2.7,
+          "apg": 6.6,
+          "spg": 1.3,
+          "bpg": 0.1,
+          "fg": 0.445,
+          "tp": 0.373,
+          "ft": 0.831
+        }
+      },
+      {
+        "name": "Jarrett Allen",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 16.6,
+          "rpg": 10.6,
+          "apg": 2.8,
+          "spg": 0.7,
+          "bpg": 1,
+          "fg": 0.634,
+          "tp": 0,
+          "ft": 0.741
+        }
+      },
+      {
+        "name": "Max Strus",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 12,
+          "rpg": 4.9,
+          "apg": 4,
+          "spg": 0.8,
+          "bpg": 0.4,
+          "fg": 0.416,
+          "tp": 0.346,
+          "ft": 0.806
+        }
+      },
+      {
+        "name": "Evan Mobley",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 82,
+        "stats": {
+          "ppg": 15.6,
+          "rpg": 9.1,
+          "apg": 3.2,
+          "spg": 0.9,
+          "bpg": 1.3,
+          "fg": 0.574,
+          "tp": 0.375,
+          "ft": 0.714
+        }
+      },
+      {
+        "name": "Caris LeVert",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 14.1,
+          "rpg": 4.2,
+          "apg": 5.2,
+          "spg": 1.1,
+          "bpg": 0.5,
+          "fg": 0.422,
+          "tp": 0.331,
+          "ft": 0.769
+        }
+      },
+      {
+        "name": "Isaac Okoro",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 9.5,
+          "rpg": 3,
+          "apg": 1.9,
+          "spg": 0.8,
+          "bpg": 0.5,
+          "fg": 0.488,
+          "tp": 0.39,
+          "ft": 0.684
+        }
+      },
+      {
+        "name": "Georges Niang",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 9.3,
+          "rpg": 3.2,
+          "apg": 1.2,
+          "spg": 0.4,
+          "bpg": 0.2,
+          "fg": 0.446,
+          "tp": 0.375,
+          "ft": 0.833
+        }
+      }
+    ]
+  },
+  {
+    "id": "sacramento-kings-2023",
+    "name": "Sacramento Kings",
+    "season": "2023-24",
+    "decade": "2020s",
+    "record": {
+      "wins": 46,
+      "losses": 36
+    },
+    "roster": [
+      {
+        "name": "De'Aaron Fox",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 92,
+        "stats": {
+          "ppg": 26.1,
+          "rpg": 4.4,
+          "apg": 5.5,
+          "spg": 2.1,
+          "bpg": 0.4,
+          "fg": 0.465,
+          "tp": 0.371,
+          "ft": 0.746
+        }
+      },
+      {
+        "name": "Domantas Sabonis",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 92,
+        "stats": {
+          "ppg": 19.5,
+          "rpg": 13.8,
+          "apg": 8.2,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.597,
+          "tp": 0.37,
+          "ft": 0.695
+        }
+      },
+      {
+        "name": "Keegan Murray",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 15.2,
+          "rpg": 5.4,
+          "apg": 1.7,
+          "spg": 1,
+          "bpg": 0.8,
+          "fg": 0.456,
+          "tp": 0.36,
+          "ft": 0.824
+        }
+      },
+      {
+        "name": "Harrison Barnes",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 12.4,
+          "rpg": 3,
+          "apg": 1.2,
+          "spg": 0.6,
+          "bpg": 0.1,
+          "fg": 0.476,
+          "tp": 0.394,
+          "ft": 0.802
+        }
+      },
+      {
+        "name": "Malik Monk",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 15.2,
+          "rpg": 3,
+          "apg": 5.2,
+          "spg": 0.6,
+          "bpg": 0.6,
+          "fg": 0.439,
+          "tp": 0.333,
+          "ft": 0.824
+        }
+      },
+      {
+        "name": "Kevin Huerter",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 9.9,
+          "rpg": 3.4,
+          "apg": 2.6,
+          "spg": 0.7,
+          "bpg": 0.4,
+          "fg": 0.432,
+          "tp": 0.357,
+          "ft": 0.767
+        }
+      },
+      {
+        "name": "Trey Lyles",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 7.2,
+          "rpg": 4.4,
+          "apg": 1.2,
+          "spg": 0.3,
+          "bpg": 0.3,
+          "fg": 0.449,
+          "tp": 0.388,
+          "ft": 0.702
+        }
+      },
+      {
+        "name": "Keon Ellis",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 64,
+        "stats": {
+          "ppg": 5.5,
+          "rpg": 2.3,
+          "apg": 1.5,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.466,
+          "tp": 0.427,
+          "ft": 0.724
+        }
+      }
+    ]
+  },
+  {
+    "id": "memphis-grizzlies-2023",
+    "name": "Memphis Grizzlies",
+    "season": "2023-24",
+    "decade": "2020s",
+    "record": {
+      "wins": 27,
+      "losses": 55
+    },
+    "roster": [
+      {
+        "name": "Desmond Bane",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 88,
+        "stats": {
+          "ppg": 23.8,
+          "rpg": 4.4,
+          "apg": 5.3,
+          "spg": 1,
+          "bpg": 0.4,
+          "fg": 0.464,
+          "tp": 0.382,
+          "ft": 0.873
+        }
+      },
+      {
+        "name": "Jaren Jackson Jr.",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 22.9,
+          "rpg": 5.5,
+          "apg": 2.3,
+          "spg": 1.3,
+          "bpg": 1.6,
+          "fg": 0.445,
+          "tp": 0.315,
+          "ft": 0.816
+        }
+      },
+      {
+        "name": "Vince Williams Jr.",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 10.8,
+          "rpg": 5.9,
+          "apg": 3.6,
+          "spg": 1,
+          "bpg": 0.7,
+          "fg": 0.449,
+          "tp": 0.382,
+          "ft": 0.8
+        }
+      },
+      {
+        "name": "GG Jackson",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 15.2,
+          "rpg": 4.3,
+          "apg": 1.3,
+          "spg": 0.6,
+          "bpg": 0.5,
+          "fg": 0.429,
+          "tp": 0.358,
+          "ft": 0.752
+        }
+      },
+      {
+        "name": "Santi Aldama",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 10.4,
+          "rpg": 5.9,
+          "apg": 2.3,
+          "spg": 0.7,
+          "bpg": 0.9,
+          "fg": 0.428,
+          "tp": 0.347,
+          "ft": 0.625
+        }
+      },
+      {
+        "name": "Luke Kennard",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 11.4,
+          "rpg": 2.8,
+          "apg": 3.7,
+          "spg": 0.6,
+          "bpg": 0,
+          "fg": 0.459,
+          "tp": 0.459,
+          "ft": 0.889
+        }
+      },
+      {
+        "name": "Bismack Biyombo",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 5.2,
+          "rpg": 6.3,
+          "apg": 1.8,
+          "spg": 0.3,
+          "bpg": 1.2,
+          "fg": 0.596,
+          "tp": 0,
+          "ft": 0.425
+        }
+      },
+      {
+        "name": "David Roddy",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 8.1,
+          "rpg": 4.3,
+          "apg": 1.7,
+          "spg": 0.5,
+          "bpg": 0.2,
+          "fg": 0.395,
+          "tp": 0.311,
+          "ft": 0.683
+        }
+      }
+    ]
+  },
+  {
+    "id": "detroit-pistons-2023",
+    "name": "Detroit Pistons",
+    "season": "2023-24",
+    "decade": "2020s",
+    "record": {
+      "wins": 14,
+      "losses": 68
+    },
+    "roster": [
+      {
+        "name": "Cade Cunningham",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 88,
+        "stats": {
+          "ppg": 22.8,
+          "rpg": 4.4,
+          "apg": 7.4,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.453,
+          "tp": 0.358,
+          "ft": 0.862
+        }
+      },
+      {
+        "name": "Bojan Bogdanovic",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 20.2,
+          "rpg": 3.4,
+          "apg": 2.5,
+          "spg": 0.8,
+          "bpg": 0.1,
+          "fg": 0.468,
+          "tp": 0.415,
+          "ft": 0.779
+        }
+      },
+      {
+        "name": "Isaiah Stewart",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 11,
+          "rpg": 6.7,
+          "apg": 1.6,
+          "spg": 0.3,
+          "bpg": 0.8,
+          "fg": 0.494,
+          "tp": 0.391,
+          "ft": 0.738
+        }
+      },
+      {
+        "name": "Jalen Duren",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 14,
+          "rpg": 11.7,
+          "apg": 2.4,
+          "spg": 0.5,
+          "bpg": 0.8,
+          "fg": 0.623,
+          "tp": 0,
+          "ft": 0.791
+        }
+      },
+      {
+        "name": "Jaden Ivey",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 15.4,
+          "rpg": 3.4,
+          "apg": 3.9,
+          "spg": 0.7,
+          "bpg": 0.5,
+          "fg": 0.424,
+          "tp": 0.337,
+          "ft": 0.753
+        }
+      },
+      {
+        "name": "Ausar Thompson",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 8.6,
+          "rpg": 6.2,
+          "apg": 1.8,
+          "spg": 1.1,
+          "bpg": 0.9,
+          "fg": 0.471,
+          "tp": 0.191,
+          "ft": 0.615
+        }
+      },
+      {
+        "name": "Killian Hayes",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 6.5,
+          "rpg": 2.9,
+          "apg": 5,
+          "spg": 0.8,
+          "bpg": 0.4,
+          "fg": 0.411,
+          "tp": 0.302,
+          "ft": 0.659
+        }
+      },
+      {
+        "name": "Alec Burks",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 12.7,
+          "rpg": 2.6,
+          "apg": 1.5,
+          "spg": 0.5,
+          "bpg": 0.3,
+          "fg": 0.401,
+          "tp": 0.403,
+          "ft": 0.9
+        }
+      }
+    ]
+  },
+  {
+    "id": "oklahoma-city-thunder-2024",
+    "name": "Oklahoma City Thunder",
+    "season": "2024-25",
+    "decade": "2020s",
+    "record": {
+      "wins": 68,
+      "losses": 14
+    },
+    "roster": [
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 99,
+        "stats": {
+          "ppg": 32.5,
+          "rpg": 5,
+          "apg": 6.3,
+          "spg": 1.7,
+          "bpg": 1,
+          "fg": 0.517,
+          "tp": 0.372,
+          "ft": 0.897
+        }
+      },
+      {
+        "name": "Jalen Williams",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 21.5,
+          "rpg": 5.3,
+          "apg": 5.1,
+          "spg": 1.6,
+          "bpg": 0.7,
+          "fg": 0.482,
+          "tp": 0.363,
+          "ft": 0.787
+        }
+      },
+      {
+        "name": "Luguentz Dort",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10,
+          "rpg": 4.2,
+          "apg": 1.6,
+          "spg": 1.1,
+          "bpg": 0.6,
+          "fg": 0.433,
+          "tp": 0.408,
+          "ft": 0.729
+        }
+      },
+      {
+        "name": "Isaiah Hartenstein",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 11.3,
+          "rpg": 10.7,
+          "apg": 3.8,
+          "spg": 0.8,
+          "bpg": 1.1,
+          "fg": 0.58,
+          "tp": 0,
+          "ft": 0.686
+        }
+      },
+      {
+        "name": "Cason Wallace",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 8.3,
+          "rpg": 3.3,
+          "apg": 2.5,
+          "spg": 1.8,
+          "bpg": 0.5,
+          "fg": 0.477,
+          "tp": 0.356,
+          "ft": 0.795
+        }
+      },
+      {
+        "name": "Chet Holmgren",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 15,
+          "rpg": 8,
+          "apg": 2,
+          "spg": 0.7,
+          "bpg": 2.2,
+          "fg": 0.49,
+          "tp": 0.379,
+          "ft": 0.754
+        }
+      },
+      {
+        "name": "Aaron Wiggins",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 11.9,
+          "rpg": 3.9,
+          "apg": 1.7,
+          "spg": 0.8,
+          "bpg": 0.2,
+          "fg": 0.487,
+          "tp": 0.383,
+          "ft": 0.831
+        }
+      },
+      {
+        "name": "Isaiah Joe",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 10.2,
+          "rpg": 2.7,
+          "apg": 1.6,
+          "spg": 0.6,
+          "bpg": 0.1,
+          "fg": 0.439,
+          "tp": 0.409,
+          "ft": 0.828
+        }
+      }
+    ]
+  },
+  {
+    "id": "cleveland-cavaliers-2024",
+    "name": "Cleveland Cavaliers",
+    "season": "2024-25",
+    "decade": "2020s",
+    "record": {
+      "wins": 64,
+      "losses": 18
+    },
+    "roster": [
+      {
+        "name": "Donovan Mitchell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 88,
+        "stats": {
+          "ppg": 24,
+          "rpg": 4.5,
+          "apg": 5,
+          "spg": 1.3,
+          "bpg": 0.2,
+          "fg": 0.443,
+          "tp": 0.368,
+          "ft": 0.823
+        }
+      },
+      {
+        "name": "Darius Garland",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 20.6,
+          "rpg": 2.9,
+          "apg": 6.7,
+          "spg": 1.2,
+          "bpg": 0.1,
+          "fg": 0.472,
+          "tp": 0.401,
+          "ft": 0.878
+        }
+      },
+      {
+        "name": "Evan Mobley",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 18.5,
+          "rpg": 9.3,
+          "apg": 3.2,
+          "spg": 0.9,
+          "bpg": 1.6,
+          "fg": 0.557,
+          "tp": 0.37,
+          "ft": 0.725
+        }
+      },
+      {
+        "name": "Jarrett Allen",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 13.5,
+          "rpg": 9.7,
+          "apg": 1.9,
+          "spg": 0.9,
+          "bpg": 0.9,
+          "fg": 0.706,
+          "tp": 0,
+          "ft": 0.718
+        }
+      },
+      {
+        "name": "Max Strus",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 9.4,
+          "rpg": 4.3,
+          "apg": 3.2,
+          "spg": 0.5,
+          "bpg": 0.2,
+          "fg": 0.442,
+          "tp": 0.386,
+          "ft": 0.824
+        }
+      },
+      {
+        "name": "De'Andre Hunter",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 14.3,
+          "rpg": 4.2,
+          "apg": 1.3,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.485,
+          "tp": 0.426,
+          "ft": 0.821
+        }
+      },
+      {
+        "name": "Caris LeVert",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 10.2,
+          "rpg": 2.8,
+          "apg": 3.7,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.453,
+          "tp": 0.405,
+          "ft": 0.699
+        }
+      },
+      {
+        "name": "Dean Wade",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 64,
+        "stats": {
+          "ppg": 5.4,
+          "rpg": 4.2,
+          "apg": 1.3,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.413,
+          "tp": 0.36,
+          "ft": 0.533
+        }
+      }
+    ]
+  },
+  {
+    "id": "boston-celtics-2024",
+    "name": "Boston Celtics",
+    "season": "2024-25",
+    "decade": "2020s",
+    "record": {
+      "wins": 61,
+      "losses": 21
+    },
+    "roster": [
+      {
+        "name": "Jayson Tatum",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 95,
+        "stats": {
+          "ppg": 26.8,
+          "rpg": 8.7,
+          "apg": 6,
+          "spg": 1.1,
+          "bpg": 0.5,
+          "fg": 0.452,
+          "tp": 0.343,
+          "ft": 0.814
+        }
+      },
+      {
+        "name": "Jaylen Brown",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 22.2,
+          "rpg": 5.8,
+          "apg": 4.5,
+          "spg": 1.2,
+          "bpg": 0.3,
+          "fg": 0.463,
+          "tp": 0.324,
+          "ft": 0.764
+        }
+      },
+      {
+        "name": "Derrick White",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 16.4,
+          "rpg": 4.5,
+          "apg": 4.8,
+          "spg": 0.9,
+          "bpg": 1.1,
+          "fg": 0.442,
+          "tp": 0.384,
+          "ft": 0.839
+        }
+      },
+      {
+        "name": "Jrue Holiday",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 11.1,
+          "rpg": 4.3,
+          "apg": 3.9,
+          "spg": 1.1,
+          "bpg": 0.4,
+          "fg": 0.443,
+          "tp": 0.353,
+          "ft": 0.909
+        }
+      },
+      {
+        "name": "Kristaps Porzingis",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 19.5,
+          "rpg": 6.8,
+          "apg": 2.1,
+          "spg": 0.7,
+          "bpg": 1.5,
+          "fg": 0.483,
+          "tp": 0.412,
+          "ft": 0.809
+        }
+      },
+      {
+        "name": "Payton Pritchard",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 14.3,
+          "rpg": 3.8,
+          "apg": 3.5,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.472,
+          "tp": 0.407,
+          "ft": 0.845
+        }
+      },
+      {
+        "name": "Al Horford",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 9,
+          "rpg": 6.2,
+          "apg": 2.1,
+          "spg": 0.6,
+          "bpg": 0.9,
+          "fg": 0.423,
+          "tp": 0.363,
+          "ft": 0.895
+        }
+      },
+      {
+        "name": "Sam Hauser",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 8.5,
+          "rpg": 3.2,
+          "apg": 0.9,
+          "spg": 0.6,
+          "bpg": 0.2,
+          "fg": 0.451,
+          "tp": 0.416,
+          "ft": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "houston-rockets-2024",
+    "name": "Houston Rockets",
+    "season": "2024-25",
+    "decade": "2020s",
+    "record": {
+      "wins": 52,
+      "losses": 30
+    },
+    "roster": [
+      {
+        "name": "Fred VanVleet",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 14.2,
+          "rpg": 3.7,
+          "apg": 5.5,
+          "spg": 1.6,
+          "bpg": 0.4,
+          "fg": 0.38,
+          "tp": 0.348,
+          "ft": 0.81
+        }
+      },
+      {
+        "name": "Jalen Green",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 21,
+          "rpg": 4.6,
+          "apg": 3.5,
+          "spg": 0.9,
+          "bpg": 0.3,
+          "fg": 0.423,
+          "tp": 0.357,
+          "ft": 0.811
+        }
+      },
+      {
+        "name": "Amen Thompson",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 14.1,
+          "rpg": 8.2,
+          "apg": 3.9,
+          "spg": 1.4,
+          "bpg": 1.3,
+          "fg": 0.558,
+          "tp": 0.275,
+          "ft": 0.675
+        }
+      },
+      {
+        "name": "Dillon Brooks",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 14.1,
+          "rpg": 3.7,
+          "apg": 1.7,
+          "spg": 0.8,
+          "bpg": 0.2,
+          "fg": 0.43,
+          "tp": 0.397,
+          "ft": 0.818
+        }
+      },
+      {
+        "name": "Alperen Sengun",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 19.1,
+          "rpg": 10.3,
+          "apg": 4.9,
+          "spg": 1.1,
+          "bpg": 0.8,
+          "fg": 0.495,
+          "tp": 0.236,
+          "ft": 0.689
+        }
+      },
+      {
+        "name": "Jabari Smith Jr.",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 12.2,
+          "rpg": 7,
+          "apg": 1.1,
+          "spg": 0.4,
+          "bpg": 0.7,
+          "fg": 0.438,
+          "tp": 0.354,
+          "ft": 0.825
+        }
+      },
+      {
+        "name": "Tari Eason",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 12,
+          "rpg": 6.4,
+          "apg": 1.5,
+          "spg": 1.7,
+          "bpg": 0.9,
+          "fg": 0.487,
+          "tp": 0.342,
+          "ft": 0.76
+        }
+      },
+      {
+        "name": "Cam Whitmore",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 9.5,
+          "rpg": 2.9,
+          "apg": 1,
+          "spg": 0.6,
+          "bpg": 0.3,
+          "fg": 0.446,
+          "tp": 0.359,
+          "ft": 0.75
+        }
+      }
+    ]
+  },
+  {
+    "id": "memphis-grizzlies-2024",
+    "name": "Memphis Grizzlies",
+    "season": "2024-25",
+    "decade": "2020s",
+    "record": {
+      "wins": 48,
+      "losses": 34
+    },
+    "roster": [
+      {
+        "name": "Desmond Bane",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 19.2,
+          "rpg": 6.1,
+          "apg": 5.3,
+          "spg": 1.2,
+          "bpg": 0.4,
+          "fg": 0.484,
+          "tp": 0.392,
+          "ft": 0.894
+        }
+      },
+      {
+        "name": "Ja Morant",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 88,
+        "stats": {
+          "ppg": 23.2,
+          "rpg": 4.1,
+          "apg": 7.3,
+          "spg": 1.2,
+          "bpg": 0.2,
+          "fg": 0.454,
+          "tp": 0.309,
+          "ft": 0.824
+        }
+      },
+      {
+        "name": "Jaren Jackson Jr.",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 22.2,
+          "rpg": 5.6,
+          "apg": 2,
+          "spg": 1.2,
+          "bpg": 1.5,
+          "fg": 0.488,
+          "tp": 0.375,
+          "ft": 0.781
+        }
+      },
+      {
+        "name": "Jaylen Wells",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 10.4,
+          "rpg": 3.4,
+          "apg": 1.7,
+          "spg": 0.6,
+          "bpg": 0.1,
+          "fg": 0.425,
+          "tp": 0.352,
+          "ft": 0.822
+        }
+      },
+      {
+        "name": "Santi Aldama",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 12.5,
+          "rpg": 6.4,
+          "apg": 2.9,
+          "spg": 0.8,
+          "bpg": 0.4,
+          "fg": 0.483,
+          "tp": 0.368,
+          "ft": 0.691
+        }
+      },
+      {
+        "name": "Luke Kennard",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 8.9,
+          "rpg": 2.8,
+          "apg": 3.3,
+          "spg": 0.8,
+          "bpg": 0.1,
+          "fg": 0.478,
+          "tp": 0.433,
+          "ft": 0.895
+        }
+      },
+      {
+        "name": "Zach Edey",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 9.2,
+          "rpg": 8.3,
+          "apg": 1,
+          "spg": 0.5,
+          "bpg": 1.3,
+          "fg": 0.58,
+          "tp": 0.346,
+          "ft": 0.709
+        }
+      },
+      {
+        "name": "Scotty Pippen Jr.",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 9.9,
+          "rpg": 3.3,
+          "apg": 4.4,
+          "spg": 1.3,
+          "bpg": 0.4,
+          "fg": 0.48,
+          "tp": 0.397,
+          "ft": 0.713
+        }
+      }
+    ]
+  },
+  {
+    "id": "atlanta-hawks-2024",
+    "name": "Atlanta Hawks",
+    "season": "2024-25",
+    "decade": "2020s",
+    "record": {
+      "wins": 40,
+      "losses": 42
+    },
+    "roster": [
+      {
+        "name": "Trae Young",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 92,
+        "stats": {
+          "ppg": 24.3,
+          "rpg": 3.1,
+          "apg": 11.6,
+          "spg": 1.2,
+          "bpg": 0.2,
+          "fg": 0.411,
+          "tp": 0.341,
+          "ft": 0.874
+        }
+      },
+      {
+        "name": "Jalen Johnson",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 88,
+        "stats": {
+          "ppg": 18.9,
+          "rpg": 10,
+          "apg": 5,
+          "spg": 1.6,
+          "bpg": 1,
+          "fg": 0.5,
+          "tp": 0.312,
+          "ft": 0.746
+        }
+      },
+      {
+        "name": "Dyson Daniels",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 14.1,
+          "rpg": 5.9,
+          "apg": 4.4,
+          "spg": 3,
+          "bpg": 0.7,
+          "fg": 0.495,
+          "tp": 0.343,
+          "ft": 0.584
+        }
+      },
+      {
+        "name": "De'Andre Hunter",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 19.1,
+          "rpg": 3.9,
+          "apg": 1.6,
+          "spg": 0.9,
+          "bpg": 0.1,
+          "fg": 0.463,
+          "tp": 0.4,
+          "ft": 0.86
+        }
+      },
+      {
+        "name": "Onyeka Okongwu",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 13.4,
+          "rpg": 9,
+          "apg": 2.3,
+          "spg": 0.9,
+          "bpg": 0.9,
+          "fg": 0.566,
+          "tp": 0.322,
+          "ft": 0.759
+        }
+      },
+      {
+        "name": "Caris LeVert",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 14.9,
+          "rpg": 3.7,
+          "apg": 2.9,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.482,
+          "tp": 0.338,
+          "ft": 0.722
+        }
+      },
+      {
+        "name": "Zaccharie Risacher",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 12.6,
+          "rpg": 3.6,
+          "apg": 1.2,
+          "spg": 0.7,
+          "bpg": 0.5,
+          "fg": 0.458,
+          "tp": 0.355,
+          "ft": 0.711
+        }
+      },
+      {
+        "name": "Georges Niang",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 12.1,
+          "rpg": 3,
+          "apg": 1.6,
+          "spg": 0.4,
+          "bpg": 0.3,
+          "fg": 0.441,
+          "tp": 0.413,
+          "ft": 0.793
+        }
+      }
+    ]
+  },
+  {
+    "id": "toronto-raptors-2024",
+    "name": "Toronto Raptors",
+    "season": "2024-25",
+    "decade": "2020s",
+    "record": {
+      "wins": 30,
+      "losses": 52
+    },
+    "roster": [
+      {
+        "name": "Scottie Barnes",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 19.3,
+          "rpg": 7.7,
+          "apg": 5.8,
+          "spg": 1.4,
+          "bpg": 1,
+          "fg": 0.446,
+          "tp": 0.271,
+          "ft": 0.755
+        }
+      },
+      {
+        "name": "RJ Barrett",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 85,
+        "stats": {
+          "ppg": 21.1,
+          "rpg": 6.3,
+          "apg": 5.4,
+          "spg": 0.8,
+          "bpg": 0.3,
+          "fg": 0.468,
+          "tp": 0.35,
+          "ft": 0.63
+        }
+      },
+      {
+        "name": "Jakob Poeltl",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 82,
+        "stats": {
+          "ppg": 14.5,
+          "rpg": 9.6,
+          "apg": 2.8,
+          "spg": 1.2,
+          "bpg": 1.2,
+          "fg": 0.627,
+          "tp": 0.333,
+          "ft": 0.674
+        }
+      },
+      {
+        "name": "Gradey Dick",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 14.4,
+          "rpg": 3.6,
+          "apg": 1.8,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.41,
+          "tp": 0.35,
+          "ft": 0.858
+        }
+      },
+      {
+        "name": "Immanuel Quickley",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 17.1,
+          "rpg": 3.5,
+          "apg": 5.8,
+          "spg": 0.7,
+          "bpg": 0.1,
+          "fg": 0.42,
+          "tp": 0.378,
+          "ft": 0.867
+        }
+      },
+      {
+        "name": "Ochai Agbaji",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 10.4,
+          "rpg": 3.8,
+          "apg": 1.5,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.498,
+          "tp": 0.399,
+          "ft": 0.708
+        }
+      },
+      {
+        "name": "Davion Mitchell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 6.3,
+          "rpg": 1.9,
+          "apg": 4.6,
+          "spg": 0.7,
+          "bpg": 0.2,
+          "fg": 0.434,
+          "tp": 0.359,
+          "ft": 0.676
+        }
+      },
+      {
+        "name": "Ja'Kobe Walter",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 8.6,
+          "rpg": 3.1,
+          "apg": 1.6,
+          "spg": 0.8,
+          "bpg": 0.2,
+          "fg": 0.405,
+          "tp": 0.349,
+          "ft": 0.795
+        }
+      }
+    ]
+  },
+  {
+    "id": "utah-jazz-2024",
+    "name": "Utah Jazz",
+    "season": "2024-25",
+    "decade": "2020s",
+    "record": {
+      "wins": 17,
+      "losses": 65
+    },
+    "roster": [
+      {
+        "name": "Keyonte George",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 16.7,
+          "rpg": 3.8,
+          "apg": 5.7,
+          "spg": 0.7,
+          "bpg": 0.1,
+          "fg": 0.388,
+          "tp": 0.341,
+          "ft": 0.819
+        }
+      },
+      {
+        "name": "Lauri Markkanen",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 19,
+          "rpg": 5.9,
+          "apg": 1.5,
+          "spg": 0.7,
+          "bpg": 0.4,
+          "fg": 0.423,
+          "tp": 0.346,
+          "ft": 0.876
+        }
+      },
+      {
+        "name": "John Collins",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 19,
+          "rpg": 8.2,
+          "apg": 2,
+          "spg": 1,
+          "bpg": 1,
+          "fg": 0.527,
+          "tp": 0.399,
+          "ft": 0.848
+        }
+      },
+      {
+        "name": "Walker Kessler",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 11.1,
+          "rpg": 12.3,
+          "apg": 1.7,
+          "spg": 0.6,
+          "bpg": 2.4,
+          "fg": 0.669,
+          "tp": 0.179,
+          "ft": 0.52
+        }
+      },
+      {
+        "name": "Collin Sexton",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 18.4,
+          "rpg": 2.7,
+          "apg": 4.2,
+          "spg": 0.8,
+          "bpg": 0.1,
+          "fg": 0.476,
+          "tp": 0.401,
+          "ft": 0.87
+        }
+      },
+      {
+        "name": "Jordan Clarkson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 16.3,
+          "rpg": 3.2,
+          "apg": 3.7,
+          "spg": 0.9,
+          "bpg": 0.3,
+          "fg": 0.407,
+          "tp": 0.364,
+          "ft": 0.799
+        }
+      },
+      {
+        "name": "Isaiah Collier",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 8.6,
+          "rpg": 3.3,
+          "apg": 6.3,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.417,
+          "tp": 0.241,
+          "ft": 0.682
+        }
+      },
+      {
+        "name": "Kyle Filipowski",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 9.4,
+          "rpg": 6.1,
+          "apg": 1.9,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.497,
+          "tp": 0.341,
+          "ft": 0.662
+        }
+      }
+    ]
+  },
+  {
+    "id": "oklahoma-city-thunder-2025",
+    "name": "Oklahoma City Thunder",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 64,
+      "losses": 18
+    },
+    "roster": [
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 98,
+        "stats": {
+          "ppg": 31.1,
+          "rpg": 4.3,
+          "apg": 6.6,
+          "spg": 1.4,
+          "bpg": 0.8,
+          "fg": 0.553,
+          "tp": 0.386,
+          "ft": 0.879
+        }
+      },
+      {
+        "name": "Chet Holmgren",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 17.1,
+          "rpg": 8.9,
+          "apg": 1.7,
+          "spg": 0.6,
+          "bpg": 1.9,
+          "fg": 0.557,
+          "tp": 0.362,
+          "ft": 0.792
+        }
+      },
+      {
+        "name": "Jalen Williams",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 17.1,
+          "rpg": 4.6,
+          "apg": 5.5,
+          "spg": 1.2,
+          "bpg": 0.3,
+          "fg": 0.484,
+          "tp": 0.299,
+          "ft": 0.837
+        }
+      },
+      {
+        "name": "Luguentz Dort",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 8.3,
+          "rpg": 3.6,
+          "apg": 1.2,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.385,
+          "tp": 0.344,
+          "ft": 0.759
+        }
+      },
+      {
+        "name": "Cason Wallace",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 8.6,
+          "rpg": 3.1,
+          "apg": 2.6,
+          "spg": 1.9,
+          "bpg": 0.4,
+          "fg": 0.432,
+          "tp": 0.351,
+          "ft": 0.809
+        }
+      },
+      {
+        "name": "Ajay Mitchell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 13.6,
+          "rpg": 3.3,
+          "apg": 3.6,
+          "spg": 1.2,
+          "bpg": 0.3,
+          "fg": 0.485,
+          "tp": 0.347,
+          "ft": 0.87
+        }
+      },
+      {
+        "name": "Isaiah Hartenstein",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 9.2,
+          "rpg": 9.4,
+          "apg": 3.5,
+          "spg": 1,
+          "bpg": 0.8,
+          "fg": 0.622,
+          "tp": 0,
+          "ft": 0.61
+        }
+      },
+      {
+        "name": "Aaron Wiggins",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 9.4,
+          "rpg": 3.1,
+          "apg": 1.7,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.431,
+          "tp": 0.356,
+          "ft": 0.736
+        }
+      }
+    ]
+  },
+  {
+    "id": "san-antonio-spurs-2025",
+    "name": "San Antonio Spurs",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 62,
+      "losses": 20
+    },
+    "roster": [
+      {
+        "name": "De'Aaron Fox",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 82,
+        "stats": {
+          "ppg": 18.6,
+          "rpg": 3.8,
+          "apg": 6.2,
+          "spg": 1.2,
+          "bpg": 0.3,
+          "fg": 0.486,
+          "tp": 0.332,
+          "ft": 0.76
+        }
+      },
+      {
+        "name": "Devin Vassell",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 13.9,
+          "rpg": 4,
+          "apg": 2.5,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.437,
+          "tp": 0.383,
+          "ft": 0.815
+        }
+      },
+      {
+        "name": "Stephon Castle",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 82,
+        "stats": {
+          "ppg": 16.6,
+          "rpg": 5.3,
+          "apg": 7.4,
+          "spg": 1.1,
+          "bpg": 0.3,
+          "fg": 0.471,
+          "tp": 0.332,
+          "ft": 0.734
+        }
+      },
+      {
+        "name": "Victor Wembanyama",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 97,
+        "stats": {
+          "ppg": 25,
+          "rpg": 11.5,
+          "apg": 3.1,
+          "spg": 1,
+          "bpg": 3.1,
+          "fg": 0.512,
+          "tp": 0.349,
+          "ft": 0.827
+        }
+      },
+      {
+        "name": "Julian Champagnie",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 11.1,
+          "rpg": 5.8,
+          "apg": 1.5,
+          "spg": 0.8,
+          "bpg": 0.5,
+          "fg": 0.437,
+          "tp": 0.381,
+          "ft": 0.844
+        }
+      },
+      {
+        "name": "Harrison Barnes",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 10,
+          "rpg": 2.8,
+          "apg": 1.9,
+          "spg": 0.6,
+          "bpg": 0.2,
+          "fg": 0.457,
+          "tp": 0.388,
+          "ft": 0.829
+        }
+      },
+      {
+        "name": "Keldon Johnson",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 13.2,
+          "rpg": 5.4,
+          "apg": 1.4,
+          "spg": 0.6,
+          "bpg": 0.1,
+          "fg": 0.519,
+          "tp": 0.363,
+          "ft": 0.794
+        }
+      },
+      {
+        "name": "Dylan Harper",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 11.8,
+          "rpg": 3.4,
+          "apg": 3.9,
+          "spg": 0.8,
+          "bpg": 0.3,
+          "fg": 0.505,
+          "tp": 0.343,
+          "ft": 0.756
+        }
+      }
+    ]
+  },
+  {
+    "id": "detroit-pistons-2025",
+    "name": "Detroit Pistons",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 60,
+      "losses": 22
+    },
+    "roster": [
+      {
+        "name": "Cade Cunningham",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 93,
+        "stats": {
+          "ppg": 23.9,
+          "rpg": 5.5,
+          "apg": 9.9,
+          "spg": 1.4,
+          "bpg": 0.8,
+          "fg": 0.461,
+          "tp": 0.342,
+          "ft": 0.812
+        }
+      },
+      {
+        "name": "Jalen Duren",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 19.5,
+          "rpg": 10.5,
+          "apg": 2,
+          "spg": 0.8,
+          "bpg": 0.8,
+          "fg": 0.65,
+          "tp": 0,
+          "ft": 0.747
+        }
+      },
+      {
+        "name": "Tobias Harris",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 13.3,
+          "rpg": 5.1,
+          "apg": 2.5,
+          "spg": 0.9,
+          "bpg": 0.4,
+          "fg": 0.469,
+          "tp": 0.368,
+          "ft": 0.866
+        }
+      },
+      {
+        "name": "Duncan Robinson",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 12.2,
+          "rpg": 2.7,
+          "apg": 2.1,
+          "spg": 0.6,
+          "bpg": 0.3,
+          "fg": 0.456,
+          "tp": 0.41,
+          "ft": 0.755
+        }
+      },
+      {
+        "name": "Ausar Thompson",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 9.9,
+          "rpg": 5.7,
+          "apg": 3.1,
+          "spg": 2,
+          "bpg": 0.9,
+          "fg": 0.525,
+          "tp": 0.25,
+          "ft": 0.571
+        }
+      },
+      {
+        "name": "Isaiah Stewart",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 10,
+          "rpg": 5,
+          "apg": 1.1,
+          "spg": 0.3,
+          "bpg": 1.6,
+          "fg": 0.55,
+          "tp": 0.333,
+          "ft": 0.756
+        }
+      },
+      {
+        "name": "Kevin Huerter",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 8.6,
+          "rpg": 2.8,
+          "apg": 2.5,
+          "spg": 1.1,
+          "bpg": 0.3,
+          "fg": 0.443,
+          "tp": 0.294,
+          "ft": 0.933
+        }
+      },
+      {
+        "name": "Daniss Jenkins",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 9.3,
+          "rpg": 2.3,
+          "apg": 3.9,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.408,
+          "tp": 0.374,
+          "ft": 0.832
+        }
+      }
+    ]
+  },
+  {
+    "id": "boston-celtics-2025",
+    "name": "Boston Celtics",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 56,
+      "losses": 26
+    },
+    "roster": [
+      {
+        "name": "Jaylen Brown",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 95,
+        "stats": {
+          "ppg": 28.7,
+          "rpg": 6.9,
+          "apg": 5.1,
+          "spg": 1,
+          "bpg": 0.4,
+          "fg": 0.477,
+          "tp": 0.347,
+          "ft": 0.795
+        }
+      },
+      {
+        "name": "Derrick White",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 16.5,
+          "rpg": 4.4,
+          "apg": 5.4,
+          "spg": 1.1,
+          "bpg": 1.3,
+          "fg": 0.394,
+          "tp": 0.327,
+          "ft": 0.902
+        }
+      },
+      {
+        "name": "Payton Pritchard",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 17,
+          "rpg": 3.9,
+          "apg": 5.2,
+          "spg": 0.7,
+          "bpg": 0.1,
+          "fg": 0.464,
+          "tp": 0.377,
+          "ft": 0.89
+        }
+      },
+      {
+        "name": "Neemias Queta",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 10.2,
+          "rpg": 8.4,
+          "apg": 1.7,
+          "spg": 0.8,
+          "bpg": 1.3,
+          "fg": 0.653,
+          "tp": 0.125,
+          "ft": 0.703
+        }
+      },
+      {
+        "name": "Sam Hauser",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 68,
+        "stats": {
+          "ppg": 9.2,
+          "rpg": 3.8,
+          "apg": 1.5,
+          "spg": 0.5,
+          "bpg": 0.3,
+          "fg": 0.419,
+          "tp": 0.393,
+          "ft": 0.85
+        }
+      },
+      {
+        "name": "Anfernee Simons",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 73,
+        "stats": {
+          "ppg": 14.2,
+          "rpg": 2.4,
+          "apg": 2.4,
+          "spg": 0.6,
+          "bpg": 0.1,
+          "fg": 0.44,
+          "tp": 0.395,
+          "ft": 0.889
+        }
+      },
+      {
+        "name": "Baylor Scheierman",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 64,
+        "stats": {
+          "ppg": 5.5,
+          "rpg": 3.5,
+          "apg": 1.5,
+          "spg": 0.5,
+          "bpg": 0.1,
+          "fg": 0.453,
+          "tp": 0.399,
+          "ft": 0.903
+        }
+      },
+      {
+        "name": "Jordan Walsh",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 65,
+        "stats": {
+          "ppg": 5.4,
+          "rpg": 4,
+          "apg": 0.8,
+          "spg": 0.7,
+          "bpg": 0.5,
+          "fg": 0.509,
+          "tp": 0.384,
+          "ft": 0.772
+        }
+      }
+    ]
+  },
+  {
+    "id": "new-york-knicks-2025",
+    "name": "New York Knicks",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 53,
+      "losses": 29
+    },
+    "roster": [
+      {
+        "name": "Jalen Brunson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 90,
+        "stats": {
+          "ppg": 26,
+          "rpg": 3.3,
+          "apg": 6.8,
+          "spg": 0.8,
+          "bpg": 0.1,
+          "fg": 0.467,
+          "tp": 0.369,
+          "ft": 0.841
+        }
+      },
+      {
+        "name": "OG Anunoby",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 16.7,
+          "rpg": 5.2,
+          "apg": 2.2,
+          "spg": 1.6,
+          "bpg": 0.7,
+          "fg": 0.484,
+          "tp": 0.386,
+          "ft": 0.828
+        }
+      },
+      {
+        "name": "Mikal Bridges",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 14.4,
+          "rpg": 3.8,
+          "apg": 3.7,
+          "spg": 1.3,
+          "bpg": 0.8,
+          "fg": 0.49,
+          "tp": 0.371,
+          "ft": 0.827
+        }
+      },
+      {
+        "name": "Karl-Anthony Towns",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 88,
+        "stats": {
+          "ppg": 20.1,
+          "rpg": 11.9,
+          "apg": 3,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.501,
+          "tp": 0.368,
+          "ft": 0.858
+        }
+      },
+      {
+        "name": "Josh Hart",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 77,
+        "stats": {
+          "ppg": 12,
+          "rpg": 7.4,
+          "apg": 4.8,
+          "spg": 1.1,
+          "bpg": 0.3,
+          "fg": 0.508,
+          "tp": 0.413,
+          "ft": 0.72
+        }
+      },
+      {
+        "name": "Miles McBride",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 12,
+          "rpg": 2.4,
+          "apg": 2.6,
+          "spg": 0.9,
+          "bpg": 0.2,
+          "fg": 0.423,
+          "tp": 0.413,
+          "ft": 0.787
+        }
+      },
+      {
+        "name": "Landry Shamet",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 66,
+        "stats": {
+          "ppg": 9.3,
+          "rpg": 1.8,
+          "apg": 1.4,
+          "spg": 0.6,
+          "bpg": 0.2,
+          "fg": 0.437,
+          "tp": 0.392,
+          "ft": 0.711
+        }
+      },
+      {
+        "name": "Mitchell Robinson",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 5.7,
+          "rpg": 8.8,
+          "apg": 0.9,
+          "spg": 0.9,
+          "bpg": 1.2,
+          "fg": 0.723,
+          "tp": 0,
+          "ft": 0.408
+        }
+      }
+    ]
+  },
+  {
+    "id": "atlanta-hawks-2025",
+    "name": "Atlanta Hawks",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 46,
+      "losses": 36
+    },
+    "roster": [
+      {
+        "name": "Jalen Johnson",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 93,
+        "stats": {
+          "ppg": 22.5,
+          "rpg": 10.3,
+          "apg": 7.9,
+          "spg": 1.2,
+          "bpg": 0.4,
+          "fg": 0.489,
+          "tp": 0.352,
+          "ft": 0.788
+        }
+      },
+      {
+        "name": "Nickeil Alexander-Walker",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 20.8,
+          "rpg": 3.4,
+          "apg": 3.7,
+          "spg": 1.3,
+          "bpg": 0.5,
+          "fg": 0.459,
+          "tp": 0.399,
+          "ft": 0.902
+        }
+      },
+      {
+        "name": "Dyson Daniels",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 11.9,
+          "rpg": 6.8,
+          "apg": 5.9,
+          "spg": 2,
+          "bpg": 0.4,
+          "fg": 0.517,
+          "tp": 0.188,
+          "ft": 0.615
+        }
+      },
+      {
+        "name": "Onyeka Okongwu",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 15.2,
+          "rpg": 7.6,
+          "apg": 3.1,
+          "spg": 1.1,
+          "bpg": 1.1,
+          "fg": 0.48,
+          "tp": 0.376,
+          "ft": 0.757
+        }
+      },
+      {
+        "name": "CJ McCollum",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 81,
+        "stats": {
+          "ppg": 18.7,
+          "rpg": 3.1,
+          "apg": 4.1,
+          "spg": 1,
+          "bpg": 0.6,
+          "fg": 0.456,
+          "tp": 0.357,
+          "ft": 0.748
+        }
+      },
+      {
+        "name": "Zaccharie Risacher",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 9.6,
+          "rpg": 3.8,
+          "apg": 1.1,
+          "spg": 0.9,
+          "bpg": 0.5,
+          "fg": 0.455,
+          "tp": 0.368,
+          "ft": 0.644
+        }
+      },
+      {
+        "name": "Vit Krejci",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 9,
+          "rpg": 2.1,
+          "apg": 1.5,
+          "spg": 0.8,
+          "bpg": 0.3,
+          "fg": 0.464,
+          "tp": 0.423,
+          "ft": 0.75
+        }
+      },
+      {
+        "name": "Luke Kennard",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 7.9,
+          "rpg": 2.2,
+          "apg": 2.1,
+          "spg": 0.7,
+          "bpg": 0.1,
+          "fg": 0.538,
+          "tp": 0.497,
+          "ft": 0.914
+        }
+      }
+    ]
+  },
+  {
+    "id": "miami-heat-2025",
+    "name": "Miami Heat",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 43,
+      "losses": 39
+    },
+    "roster": [
+      {
+        "name": "Bam Adebayo",
+        "positions": [
+          "SF",
+          "PF",
+          "C"
+        ],
+        "overall": 87,
+        "stats": {
+          "ppg": 20.1,
+          "rpg": 10,
+          "apg": 3.2,
+          "spg": 1.2,
+          "bpg": 0.7,
+          "fg": 0.442,
+          "tp": 0.318,
+          "ft": 0.778
+        }
+      },
+      {
+        "name": "Tyler Herro",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 20.5,
+          "rpg": 4.8,
+          "apg": 4.1,
+          "spg": 0.7,
+          "bpg": 0.4,
+          "fg": 0.48,
+          "tp": 0.378,
+          "ft": 0.917
+        }
+      },
+      {
+        "name": "Andrew Wiggins",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 15.4,
+          "rpg": 4.8,
+          "apg": 2.7,
+          "spg": 1.1,
+          "bpg": 1,
+          "fg": 0.475,
+          "tp": 0.414,
+          "ft": 0.784
+        }
+      },
+      {
+        "name": "Norman Powell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 83,
+        "stats": {
+          "ppg": 21.7,
+          "rpg": 3.5,
+          "apg": 2.5,
+          "spg": 1.1,
+          "bpg": 0.2,
+          "fg": 0.47,
+          "tp": 0.38,
+          "ft": 0.827
+        }
+      },
+      {
+        "name": "Davion Mitchell",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 9.3,
+          "rpg": 2.7,
+          "apg": 6.5,
+          "spg": 1,
+          "bpg": 0.2,
+          "fg": 0.49,
+          "tp": 0.395,
+          "ft": 0.646
+        }
+      },
+      {
+        "name": "Jaime Jaquez Jr.",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 78,
+        "stats": {
+          "ppg": 15.4,
+          "rpg": 5,
+          "apg": 4.7,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.507,
+          "tp": 0.317,
+          "ft": 0.769
+        }
+      },
+      {
+        "name": "Pelle Larsson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 11.4,
+          "rpg": 3.5,
+          "apg": 3.4,
+          "spg": 0.7,
+          "bpg": 0.2,
+          "fg": 0.496,
+          "tp": 0.323,
+          "ft": 0.797
+        }
+      },
+      {
+        "name": "Kel'el Ware",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 75,
+        "stats": {
+          "ppg": 11.1,
+          "rpg": 9,
+          "apg": 0.7,
+          "spg": 0.8,
+          "bpg": 1.1,
+          "fg": 0.53,
+          "tp": 0.395,
+          "ft": 0.74
+        }
+      }
+    ]
+  },
+  {
+    "id": "new-orleans-pelicans-2025",
+    "name": "New Orleans Pelicans",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 26,
+      "losses": 56
+    },
+    "roster": [
+      {
+        "name": "Trey Murphy III",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 86,
+        "stats": {
+          "ppg": 21.5,
+          "rpg": 5.7,
+          "apg": 3.8,
+          "spg": 1.5,
+          "bpg": 0.4,
+          "fg": 0.47,
+          "tp": 0.379,
+          "ft": 0.886
+        }
+      },
+      {
+        "name": "Saddiq Bey",
+        "positions": [
+          "PG",
+          "SG",
+          "SF",
+          "PF"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 17.7,
+          "rpg": 5.6,
+          "apg": 2.5,
+          "spg": 0.9,
+          "bpg": 0.1,
+          "fg": 0.451,
+          "tp": 0.367,
+          "ft": 0.841
+        }
+      },
+      {
+        "name": "Zion Williamson",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 84,
+        "stats": {
+          "ppg": 21,
+          "rpg": 5.7,
+          "apg": 3.2,
+          "spg": 1,
+          "bpg": 0.5,
+          "fg": 0.6,
+          "tp": 0.25,
+          "ft": 0.716
+        }
+      },
+      {
+        "name": "Herbert Jones",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 70,
+        "stats": {
+          "ppg": 8.9,
+          "rpg": 3.4,
+          "apg": 2.8,
+          "spg": 1.6,
+          "bpg": 0.5,
+          "fg": 0.383,
+          "tp": 0.309,
+          "ft": 0.806
+        }
+      },
+      {
+        "name": "Jeremiah Fears",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 14.3,
+          "rpg": 3.7,
+          "apg": 3.4,
+          "spg": 1.2,
+          "bpg": 0.4,
+          "fg": 0.434,
+          "tp": 0.33,
+          "ft": 0.789
+        }
+      },
+      {
+        "name": "Derik Queen",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 76,
+        "stats": {
+          "ppg": 11.7,
+          "rpg": 7.1,
+          "apg": 3.7,
+          "spg": 1,
+          "bpg": 0.9,
+          "fg": 0.473,
+          "tp": 0.261,
+          "ft": 0.795
+        }
+      },
+      {
+        "name": "Jordan Poole",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 72,
+        "stats": {
+          "ppg": 13.4,
+          "rpg": 2,
+          "apg": 3.1,
+          "spg": 0.6,
+          "bpg": 0.4,
+          "fg": 0.372,
+          "tp": 0.333,
+          "ft": 0.86
+        }
+      },
+      {
+        "name": "Jose Alvarado",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 67,
+        "stats": {
+          "ppg": 7.9,
+          "rpg": 2.8,
+          "apg": 3.1,
+          "spg": 0.9,
+          "bpg": 0.1,
+          "fg": 0.418,
+          "tp": 0.363,
+          "ft": 0.833
+        }
+      }
+    ]
+  },
+  {
+    "id": "washington-wizards-2025",
+    "name": "Washington Wizards",
+    "season": "2025-26",
+    "decade": "2020s",
+    "record": {
+      "wins": 17,
+      "losses": 65
+    },
+    "roster": [
+      {
+        "name": "CJ McCollum",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 80,
+        "stats": {
+          "ppg": 18.8,
+          "rpg": 3.5,
+          "apg": 3.6,
+          "spg": 0.7,
+          "bpg": 0.3,
+          "fg": 0.454,
+          "tp": 0.393,
+          "ft": 0.804
+        }
+      },
+      {
+        "name": "Kyshawn George",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 79,
+        "stats": {
+          "ppg": 14.8,
+          "rpg": 5.1,
+          "apg": 4.5,
+          "spg": 1,
+          "bpg": 0.9,
+          "fg": 0.438,
+          "tp": 0.381,
+          "ft": 0.802
+        }
+      },
+      {
+        "name": "Bub Carrington",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 10.7,
+          "rpg": 3.4,
+          "apg": 4.6,
+          "spg": 0.6,
+          "bpg": 0.2,
+          "fg": 0.424,
+          "tp": 0.408,
+          "ft": 0.73
+        }
+      },
+      {
+        "name": "Alex Sarr",
+        "positions": [
+          "PF",
+          "C"
+        ],
+        "overall": 82,
+        "stats": {
+          "ppg": 16.3,
+          "rpg": 7.4,
+          "apg": 2.7,
+          "spg": 0.8,
+          "bpg": 2,
+          "fg": 0.482,
+          "tp": 0.333,
+          "ft": 0.692
+        }
+      },
+      {
+        "name": "Bilal Coulibaly",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 74,
+        "stats": {
+          "ppg": 11.7,
+          "rpg": 4.3,
+          "apg": 2.6,
+          "spg": 1.3,
+          "bpg": 1,
+          "fg": 0.425,
+          "tp": 0.319,
+          "ft": 0.746
+        }
+      },
+      {
+        "name": "Khris Middleton",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 10.3,
+          "rpg": 3.9,
+          "apg": 3.3,
+          "spg": 0.8,
+          "bpg": 0.3,
+          "fg": 0.433,
+          "tp": 0.333,
+          "ft": 0.841
+        }
+      },
+      {
+        "name": "Tre Johnson",
+        "positions": [
+          "PG",
+          "SG"
+        ],
+        "overall": 71,
+        "stats": {
+          "ppg": 12.2,
+          "rpg": 2.8,
+          "apg": 2,
+          "spg": 0.6,
+          "bpg": 0.3,
+          "fg": 0.419,
+          "tp": 0.358,
+          "ft": 0.874
+        }
+      },
+      {
+        "name": "Will Riley",
+        "positions": [
+          "SF",
+          "PF"
+        ],
+        "overall": 69,
+        "stats": {
+          "ppg": 10.3,
+          "rpg": 2.9,
+          "apg": 2,
+          "spg": 0.7,
+          "bpg": 0.1,
+          "fg": 0.439,
+          "tp": 0.316,
+          "ft": 0.8
+        }
+      }
     ]
   }
 ]

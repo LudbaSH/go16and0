@@ -5,10 +5,11 @@ const UI = (() => {
   const { SLOTS, ROUNDS, WINS_PER_SERIES, MAX_RESPINS } = GameState;
   const ROUND_NAMES = ["Round 1", "Round 2", "Conference Finals", "Finals"];
 
-  // Difficulty: opponents are seeded weakest-to-strongest, and each round adds a
-  // rating bonus on top so a clean 16-0 is genuinely hard. Tunable here.
-  const DIFFICULTY_BASE = 1;
-  const DIFFICULTY_STEP = 2;
+  // Difficulty: opponents are seeded weakest-to-strongest by REAL record, and each round
+  // adds a rating bonus on top so the field hardens to a near-peer Finals. Tunable here,
+  // paired with the engine's WIN_CAP/RATING_SCALE (js/engine.js).
+  const DIFFICULTY_BASE = 2;
+  const DIFFICULTY_STEP = 3;
 
   let eras = [];
   let currentTeams = [];
@@ -221,6 +222,7 @@ const UI = (() => {
       const playable = eras.filter((era) => era.hasData);
       const lists = await Promise.all(playable.map((era) => DataLoader.loadTeams(era.id)));
       currentTeams = lists.flat();
+      leagueAvgRating = computeLeagueAvg();
     } catch (error) {
       showFatal("Could not load team data.");
       return;
@@ -378,11 +380,36 @@ const UI = (() => {
     renderDraftCourt();
   }
 
+  // Project the drafted five's rating + regular-season record, recomputing only when the
+  // lineup actually changes so the record number stays stable across re-renders.
+  function refreshTeamProjection() {
+    const { five } = GameState.get();
+    const sig = SLOTS.map((s) => five[s] && five[s].name).join("|");
+    if (GameState.get()._teamSig !== sig) {
+      const rating = Engine.lineupScore(five);
+      GameState.set({
+        teamRating: rating,
+        teamRecord: Engine.simulateSeasonRecord(rating, leagueAvgRating),
+        _teamSig: sig,
+      });
+    }
+    return GameState.get();
+  }
+
   function updateDraftProgress() {
     const filled = GameState.draftCount();
-    const { respins, spunTeam } = GameState.get();
-    document.getElementById("draft-progress").textContent =
-      filled >= 5 ? "Your roster is set." : `Pick ${filled + 1} of 5`;
+    const { respins, spunTeam, mode } = GameState.get();
+    const progress = document.getElementById("draft-progress");
+    if (filled >= 5) {
+      const s = refreshTeamProjection();
+      const rec = `projected ${s.teamRecord.wins}-${s.teamRecord.losses}`;
+      // Keep the numeric rating out of blind builds; the record is fun flavor either way.
+      progress.innerHTML = mode === "ratings"
+        ? `Your roster is set &middot; <b>RTG ${Math.round(s.teamRating)}</b> &middot; ${rec}`
+        : `Your roster is set &middot; ${rec}`;
+    } else {
+      progress.textContent = `Pick ${filled + 1} of 5`;
+    }
     const cont = document.getElementById("draft-continue");
     cont.classList.toggle("hidden", filled < 5);
     cont.textContent = GameState.get().gameMode === "gauntlet" ? "Enter Gauntlet →" : "Enter Playoffs →";
@@ -636,6 +663,28 @@ const UI = (() => {
 
   // ---- Run (tournament / gauntlet) ----
   const DECADE_ORDER = ["1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"];
+  let leagueAvgRating = 0; // baseline a drafted team's regular-season record is sim'd against
+
+  const teamRatingOf = (roster) => Engine.lineupScore(Engine.autoFillLineup(roster, SLOTS));
+
+  function computeLeagueAvg() {
+    if (!currentTeams.length) return 0;
+    const sum = currentTeams.reduce((total, team) => total + teamRatingOf(team.roster), 0);
+    return sum / currentTeams.length;
+  }
+
+  // The five's rating, plus a one-line record summary, for the draft-screen reveal.
+  function yourTeamRating() {
+    return Engine.lineupScore(GameState.get().five);
+  }
+
+  // Higher seed (better record, rating as tiebreak) holds home court for a series.
+  function youHoldHomeCourt(t) {
+    const opp = t.oppMeta[t.round - 1];
+    if (!opp) return true;
+    if (t.yourRecord.wins !== opp.record.wins) return t.yourRecord.wins > opp.record.wins;
+    return t.yourRating >= opp.rating;
+  }
 
   function startRun() {
     const { gameMode } = GameState.get();
@@ -649,15 +698,42 @@ const UI = (() => {
       t.rounds = ROUNDS;             // 4 playoff rounds
       t.winsNeeded = WINS_PER_SERIES; // best of 7
     }
+    // Rate the drafted five and project a regular-season record (reusing the one shown
+    // on the draft screen if it is for this exact roster), then do the same for every
+    // opponent. Records drive playoff seeding / home court below.
+    t.yourRating = yourTeamRating();
+    t.yourRecord = (GameState.get().teamRecord) || Engine.simulateSeasonRecord(t.yourRating, leagueAvgRating);
+    t.oppMeta = t.bracket.map((team) => {
+      const rating = teamRatingOf(team.roster);
+      // Prefer the team's real historical record (modern eras carry it); fall back to a
+      // simulated one for the older curated eras that have no recorded W-L.
+      const record = team.record || Engine.simulateSeasonRecord(rating, leagueAvgRating);
+      return { rating, record };
+    });
     t.round = 1;
     resetSeries(t);
     showScreen("tournament");
   }
 
-  // Classic: seed 4 distinct opponents weakest-to-strongest by lineup strength.
+  // A team's seeding strength on the shared rating scale, so the all-time pool seeds by
+  // true strength. Teams with a real record (modern eras) are placed by win percentage,
+  // mapped around the league-average rating; older curated teams use their lineup rating.
+  // Both land in the same band, so a 60-win team and a stacked legend sort sensibly.
+  const RECORD_RATING_SPREAD = 33; // a .500 team sits at league average; .800 ~ +10
+  function seedStrength(team) {
+    if (team.record) {
+      const games = team.record.wins + team.record.losses;
+      const winPct = games ? team.record.wins / games : 0.5;
+      return leagueAvgRating + RECORD_RATING_SPREAD * (winPct - 0.5);
+    }
+    return Engine.lineupScore(Engine.autoFillLineup(team.roster, SLOTS));
+  }
+
+  // Classic: seed 4 distinct opponents weakest-to-strongest, so round 1 is a genuine
+  // cupcake (worst record) and the Finals opponent is a real contender.
   function buildClassicBracket() {
     const rated = currentTeams
-      .map((team) => ({ team, s: Engine.lineupScore(Engine.autoFillLineup(team.roster, SLOTS)) }))
+      .map((team) => ({ team, s: seedStrength(team) }))
       .sort((a, b) => a.s - b.s);
     const n = rated.length;
     const picks = [];
@@ -670,13 +746,22 @@ const UI = (() => {
     return picks;
   }
 
-  // Gauntlet: the single strongest team of each decade, in chronological order.
+  // Gauntlet: each decade's best regular-season team, in chronological order. Where real
+  // records exist (2000s on) the boss is the decade's winningest team (e.g. the 2024-25
+  // Thunder at 68-14); the older curated eras fall back to the strongest lineup.
   function buildGauntlet() {
     const strength = (team) => Engine.lineupScore(Engine.autoFillLineup(team.roster, SLOTS));
+    const bossOf = (teams) => {
+      const withRecord = teams.filter((team) => team.record);
+      if (withRecord.length) {
+        return withRecord.reduce((best, team) => (team.record.wins > best.record.wins ? team : best));
+      }
+      return teams.reduce((best, team) => (strength(team) > strength(best) ? team : best));
+    };
     return DECADE_ORDER
       .map((decade) => currentTeams.filter((team) => team.decade === decade))
       .filter((teams) => teams.length > 0)
-      .map((teams) => teams.reduce((best, team) => (strength(team) > strength(best) ? team : best)));
+      .map(bossOf);
   }
 
   function resetSeries(t) {
@@ -717,19 +802,30 @@ const UI = (() => {
   }
 
   function renderMatchup(opponent) {
-    const { five, mode } = GameState.get();
+    const { five, mode, tournament: t } = GameState.get();
     const oppColor = teamColor(opponent.name);
     const matchup = document.getElementById("matchup");
-    // Your five is drafted from many teams, so it carries the brand gold; the
-    // opponent is a single franchise, tinted with its real main color.
+    // Record (and rating, in ratings mode) for each side. The better record holds home
+    // court, marked with a badge so the user sees who has the edge before tip-off.
+    const oppInfo = t.oppMeta && t.oppMeta[t.round - 1];
+    const showRating = mode === "ratings";
+    const teamMeta = (record, rating) => {
+      const rec = record ? `${record.wins}-${record.losses}` : "";
+      const ovr = showRating && rating ? ` <span class="meta-rating">RTG ${Math.round(rating)}</span>` : "";
+      return `<div class="matchup-meta">${rec}${ovr}</div>`;
+    };
+    const homeBadge = '<span class="home-badge">Home court</span>';
+    const youHome = youHoldHomeCourt(t);
     matchup.innerHTML = `
       <div class="matchup-side" style="border-top-color:${GOLD}">
-        <h3 class="font-display font-bold text-lg">Your Roster</h3>
+        <h3 class="font-display font-bold text-lg">Your Roster ${youHome ? homeBadge : ""}</h3>
+        ${teamMeta(t.yourRecord, t.yourRating)}
         <div class="mini-five" id="your-five"></div>
       </div>
       <div class="vs">vs</div>
       <div class="matchup-side" style="border-top-color:${oppColor}">
-        <h3 class="font-display font-bold text-lg" style="color:${oppColor}">${opponent.name} <span class="opp-year">${opponent.season}</span></h3>
+        <h3 class="font-display font-bold text-lg" style="color:${oppColor}">${opponent.name} <span class="opp-year">${opponent.season}</span> ${youHome ? "" : homeBadge}</h3>
+        ${teamMeta(oppInfo && oppInfo.record, oppInfo && oppInfo.rating)}
         <div class="mini-five" id="opp-five"></div>
       </div>`;
 
@@ -772,7 +868,10 @@ const UI = (() => {
     const oppLineup = Engine.autoFillLineup(t.opponent.roster, SLOTS);
     const yourRating = Engine.lineupScore(state.five);
     const oppRating = Engine.lineupScore(oppLineup);
-    const youAreHome = [true, true, false, false, true, false, true][t.games.length] ?? true;
+    // Home court follows the 2-2-1-1-1 pattern for the HIGHER SEED. If the opponent
+    // out-seeded you, the pattern flips and you open on the road.
+    const seedPattern = [true, true, false, false, true, false, true][t.games.length] ?? true;
+    const youAreHome = youHoldHomeCourt(t) ? seedPattern : !seedPattern;
     // Gauntlet opponents are already each decade's best, so the ramp is gentler.
     const oppBonus = state.gameMode === "gauntlet"
       ? (t.round - 1) * 1
@@ -784,6 +883,7 @@ const UI = (() => {
     game.yourBox = orderBoxBySlot(Engine.simulateBoxScore(Object.values(state.five), game.yourPoints), state.five);
     game.oppBox = orderBoxBySlot(Engine.simulateBoxScore(Object.values(oppLineup), game.oppPoints), oppLineup);
     game.oppName = t.opponent.name;
+    game.youAreHome = youAreHome; // kept so the box score can tag the venue
     currentGameNo = t.games.length + 1;
     game.no = currentGameNo; // kept so finished games can be relabeled and re-viewed
     return game;
@@ -819,6 +919,7 @@ const UI = (() => {
   function commitGame(game) {
     const t = GameState.get().tournament;
     t.games.push(game);
+    t.allGames.push(game); // run-wide log; gauntlet MVP averages across every decade
     if (game.youWon) { t.yourWins += 1; t.totalWins += 1; }
     else { t.oppWins += 1; t.totalLosses += 1; }
 
@@ -884,7 +985,7 @@ const UI = (() => {
     });
     paintStatsheet(anim, 1);
     // Keep the scoreboard above in step with the game being viewed.
-    document.getElementById("scoreboard").innerHTML = scoreboardHTML(g.no, g.yourPoints, g.oppPoints, g);
+    document.getElementById("scoreboard").innerHTML = scoreboardHTML(g.no, g.yourPoints, g.oppPoints, g, true);
     document.querySelectorAll("#box-tabs .box-tab").forEach((btn, idx) =>
       btn.classList.toggle("active", idx === i));
   }
@@ -963,14 +1064,17 @@ const UI = (() => {
     });
   }
 
-  // Finals MVP: the player on your roster with the best average stats across the final
-  // series. Scoring is weighted - points count double, rebounds and assists equally -
-  // so the headline scorer usually wins but a huge all-round line can take it. Only
-  // shown when you actually win the title; t.games still holds the final series here.
+  // Finals MVP: the player on your roster with the best average stats. Scoring is
+  // weighted - points count double, rebounds and assists equally - so the headline
+  // scorer usually wins but a huge all-round line can take it. Classic averages over the
+  // final series (t.games); the gauntlet has no single "final series" - each decade is one
+  // game - so it averages over the whole run (t.allGames). Only shown when you win.
   const MVP_PTS_WEIGHT = 2;
   function renderFinalsMVP(t) {
     const box = document.getElementById("result-mvp");
-    const mvp = t.status === "won" ? computeFinalsMVP(t.games) : null;
+    const gauntlet = GameState.get().gameMode === "gauntlet";
+    const games = gauntlet ? t.allGames : t.games;
+    const mvp = t.status === "won" ? computeFinalsMVP(games) : null;
     if (!mvp) { box.classList.add("hidden"); box.innerHTML = ""; return; }
     box.innerHTML = `<div class="mvp-label">Finals MVP</div>
       <div class="mvp-name">${mvp.name}</div>
@@ -1030,7 +1134,7 @@ const UI = (() => {
     const board = document.getElementById("scoreboard");
     const duration = SPEED_MS[speed] ?? SPEED_MS.normal;
     if (prefersReducedMotion()) { // reduced motion: show the final score and box at once
-      board.innerHTML = scoreboardHTML(currentGameNo, game.yourPoints, game.oppPoints, game);
+      board.innerHTML = scoreboardHTML(currentGameNo, game.yourPoints, game.oppPoints, game, true);
       paintStatsheet(boxAnim, 1);
       done();
       return;
@@ -1041,7 +1145,7 @@ const UI = (() => {
       const eased = 1 - Math.pow(1 - progress, 2);
       const y = Math.round(game.yourPoints * eased);
       const o = Math.round(game.oppPoints * eased);
-      board.innerHTML = scoreboardHTML(currentGameNo, y, o, progress < 1 ? null : game);
+      board.innerHTML = scoreboardHTML(currentGameNo, y, o, game, progress >= 1);
       paintStatsheet(boxAnim, eased);
       if (progress < 1) requestAnimationFrame(frame);
       else done();
@@ -1056,10 +1160,13 @@ const UI = (() => {
     return gameMode === "gauntlet" ? roundLabel(t, gameMode) : `Game ${number}`;
   }
 
-  function scoreboardHTML(number, you, opp, finalGame) {
-    const youClass = finalGame ? (finalGame.youWon ? "won" : "") : "";
-    const oppClass = finalGame ? (finalGame.youWon ? "" : "won") : "";
-    return `<div class="sb-label">${gameLabel(number)}</div>
+  function scoreboardHTML(number, you, opp, game, isFinal = false) {
+    const youClass = isFinal ? (game.youWon ? "won" : "") : "";
+    const oppClass = isFinal ? (game.youWon ? "" : "won") : "";
+    // Venue is known before tip-off, so show it throughout the count-up.
+    const venue = game && typeof game.youAreHome === "boolean"
+      ? ` <span class="sb-venue">${game.youAreHome ? "Home" : "Away"}</span>` : "";
+    return `<div class="sb-label">${gameLabel(number)}${venue}</div>
       <div class="sb-score"><span class="${youClass}">${you}</span>
       <span class="sb-dash">-</span><span class="${oppClass}">${opp}</span></div>`;
   }

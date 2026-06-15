@@ -33,3 +33,6 @@ npm-debug.log*
 # Build output (none yet, reserved for future tooling)
 dist/
 build/
+
+# Dev data-build cache (downloaded source CSVs + pre-regen backups, not shipped)
+tools/.cache/

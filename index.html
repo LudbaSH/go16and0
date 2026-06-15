@@ -6,11 +6,11 @@
   <title>16-0</title>
   <meta name="description" content="Build a team, run the playoffs, try to go 16-0. An independent basketball simulation game." />
 
-  <!-- Fonts: Barlow Condensed (display) + Barlow (body). Loaded from Google Fonts;
+  <!-- Fonts: Oswald (display) + Barlow (body). Loaded from Google Fonts;
        disclosed on the privacy page as a third-party request. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Tailwind via Play CDN. Disclosed on the privacy page as a third-party script. -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +26,7 @@
             gold: "#fbbf24",
           },
           fontFamily: {
-            display: ['"Barlow Condensed"', "system-ui", "sans-serif"],
+            display: ['"Oswald"', "system-ui", "sans-serif"],
             body: ["Barlow", "system-ui", "sans-serif"],
           },
         },
@@ -60,6 +60,9 @@
       <p class="text-muted uppercase tracking-[0.2em] text-sm mt-3">Go perfect. Or go home.</p>
       <p class="text-xl sm:text-2xl font-display font-semibold mt-8 max-w-xl">Can you build a team that goes 16-0?</p>
       <p class="text-muted mt-3 max-w-md">Spin a real playoff team, set your lineup, and run a perfect postseason. Sixteen wins. Zero losses.</p>
+      <div class="build-note">
+        <strong>Your roster is everything.</strong> <br> Build a stacked, well-rounded squad. Scoring, defense, rebounding, playmaking, and efficiency all play a part. A lopsided or weak team posts a poor record, loses home court, and gets exposed in the later rounds. Who you draft decides how far you go.
+      </div>
       <div class="flex flex-col sm:flex-row gap-3 mt-8">
         <button class="btn btn-gold" data-action="go-mode" type="button">Start</button>
         <button class="btn btn-ghost" data-action="open-howto" type="button">How to Play</button>
@@ -204,7 +207,7 @@
           <li>Win every game. A single perfect run is the whole goal.</li>
         </ol>
         <h3 class="font-display font-bold text-lg mt-5">How games are decided</h3>
-        <p class="text-muted text-sm mt-2">Each lineup gets a strength score: the average overall of your roster, plus a small bonus for scoring punch (points per game). The two scores are compared, the home side gets a small edge, and a bit of random swing is added so upsets can happen. Later rounds face tougher opponents, so a clean 16-0 is meant to be hard.</p>
+        <p class="text-muted text-sm mt-2">Each team gets a strength rating from its starting five. For every game that rating gap becomes a win probability: the stronger team is favored and the home side gets an edge, but even a heavy favorite can drop a game, so nothing is guaranteed. Your team's projected regular-season record sets playoff seeding and home court, and each round faces a tougher opponent, so winning all sixteen is meant to be rare. Build the best, most balanced roster you can.</p>
       </div>
 
       <div class="overlay-content hidden" data-panel="settings">

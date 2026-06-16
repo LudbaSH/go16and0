@@ -10,6 +10,14 @@ const UI = (() => {
   // paired with the engine's WIN_CAP/RATING_SCALE (js/engine.js).
   const DIFFICULTY_BASE = 2;
   const DIFFICULTY_STEP = 3;
+  // Gauntlet difficulty is set by an explicit EFFECTIVE-strength curve, not the classic
+  // ramp. A handpicked draft (best player per position, no weak link) out-rates any real
+  // team - a maxed five hits ~106 while the best real team is ~89 - so without a buff the
+  // all-time legends play soft. These two numbers buff each round's effective strength on a
+  // line from the opener to the final boss, so the legends actually challenge an elite draft
+  // (boss ~100 = a near-maxed five is favored but not safe). See gauntletBonuses.
+  const GAUNTLET_OPENER_EFF = 83;  // round 1 effective rating (softest of the greats)
+  const GAUNTLET_BOSS_EFF = 98;    // final boss effective rating
 
   let eras = [];
   let currentTeams = [];
@@ -129,10 +137,12 @@ const UI = (() => {
     const items = loadHistory();
     if (!items.length) { wrap.classList.add("hidden"); wrap.innerHTML = ""; return; }
 
-    const rows = items.slice(0, HISTORY_SHOWN).map((it) => {
+    const rows = items.slice(0, HISTORY_SHOWN).map((it, i) => {
       const mode = it.mode === "gauntlet" ? "Gauntlet" : "16-0";
       const team = (it.team || []).join(" · ");
-      return `<li class="history-row history-${it.outcome}">
+      // Older entries predate the roster/bracket capture; only newer ones open a summary.
+      const clickable = it.roster ? ` data-action="view-run" data-index="${i}" role="button" tabindex="0"` : "";
+      return `<li class="history-row history-${it.outcome}${it.roster ? " is-clickable" : ""}"${clickable}>
         <span class="history-outcome">${it.label}</span>
         <span class="history-mode">${mode}</span>
         <span class="history-record">${it.record}</span>
@@ -143,6 +153,48 @@ const UI = (() => {
         <button class="history-clear" data-action="clear-history" type="button">Clear</button></div>
       <ul class="history-list">${rows}</ul>`;
     wrap.classList.remove("hidden");
+  }
+
+  // Open the click-through summary for a stored run: its roster and the bracket it faced.
+  function openRunSummary(index) {
+    const item = loadHistory()[index];
+    if (!item || !item.roster) return;
+    renderRunSummary(item);
+    document.getElementById("run-overlay").classList.remove("hidden");
+  }
+
+  function closeRunSummary() {
+    document.getElementById("run-overlay").classList.add("hidden");
+  }
+
+  function renderRunSummary(item) {
+    const mode = item.mode === "gauntlet" ? "Gauntlet 10-0" : "16-0";
+    const roundName = (i) => item.mode === "gauntlet"
+      ? `Round ${i + 1}` : (ROUND_NAMES[i] || `Round ${i + 1}`);
+    const verb = { won: "Beat", lost: "Lost to", unplayed: "Did not reach" };
+
+    const rosterRows = (item.roster || []).map((p) =>
+      `<tr><td class="ss-name"><span class="ss-av" style="background:${GOLD}">${p.slot}</span>${p.name}
+        <span class="run-pos">${p.pos}</span></td><td>${p.overall}</td></tr>`).join("");
+
+    const legRows = (item.bracket || []).map((b, i) =>
+      `<li class="run-leg run-${b.result}">
+        <span class="run-round">${roundName(i)}</span>
+        <span class="run-opp">${b.name} <em>${b.season}</em>${b.record ? ` <span class="run-rec">${b.record}</span>` : ""}</span>
+        <span class="run-badge">${verb[b.result] || ""}</span>
+      </li>`).join("");
+
+    document.getElementById("run-summary").innerHTML = `
+      <div class="run-head">
+        <div class="run-title">${item.label}</div>
+        <div class="run-sub">${mode} &middot; ${item.record}</div>
+      </div>
+      <h3 class="run-section">Roster${item.rtg ? ` &middot; RTG ${item.rtg}` : ""}</h3>
+      <div class="ss-tables"><table class="ss-table">
+        <thead><tr><th class="ss-team" style="color:${GOLD}">Player</th><th>OVR</th></tr></thead>
+        <tbody>${rosterRows}</tbody></table></div>
+      <h3 class="run-section">Bracket</h3>
+      <ul class="run-bracket">${legRows}</ul>`;
   }
 
   // ---- Boot ----
@@ -203,6 +255,7 @@ const UI = (() => {
         case "toggle-theme": toggleTheme(); break;
         case "toggle-sound": toggleSound(); break;
         case "clear-history": clearHistory(); break;
+        case "view-run": openRunSummary(Number(target.dataset.index)); break;
         case "open-howto": openMenu("howto"); break;
       }
     });
@@ -514,7 +567,7 @@ const UI = (() => {
     const controls = document.getElementById("pick-controls");
     if (!show) { controls.innerHTML = ""; return; }
     const groups = [["all", "All"], ["guard", "Guards"], ["forward", "Forwards"], ["center", "Centers"]];
-    const sorts = [["overall", "OVR"], ["ppg", "PPG"], ["rpg", "RPG"], ["apg", "APG"], ["name", "A-Z"]];
+    const sorts = [["overall", "OVR"], ["ppg", "PPG"], ["rpg", "RPG"], ["apg", "APG"], ["spg", "SPG"], ["bpg", "BPG"], ["name", "A-Z"]];
     controls.innerHTML = `
       <div class="pick-controls">
         <input id="pick-search" class="pick-search" type="search" placeholder="Search name"
@@ -609,10 +662,16 @@ const UI = (() => {
     return head + stats;
   }
 
-  // Compact stat line for the draft pick rows: the headline numbers only, so rows
-  // stay short and the list does not force a long scroll.
+  // Full stat line for the draft pick rows and the detail card. Counting stats first, then
+  // defense (steals/blocks) and the shooting splits, so a user can judge the two most
+  // overlooked rating areas - defense and efficiency - not just points and assists.
   function statLine(s) {
-    const parts = [`${s.ppg} PPG`, `${s.rpg} RPG`, `${s.apg} APG`, `${(s.fg * 100).toFixed(1)} FG%`];
+    const pct = (v) => (v * 100).toFixed(1);
+    const parts = [
+      `${s.ppg} PPG`, `${s.rpg} RPG`, `${s.apg} APG`,
+      `${s.spg} SPG`, `${s.bpg} BPG`,
+      `${pct(s.fg)} FG%`, `${pct(s.tp)} 3P%`, `${pct(s.ft)} FT%`,
+    ];
     return parts.join(" · ");
   }
 
@@ -662,7 +721,23 @@ const UI = (() => {
   }
 
   // ---- Run (tournament / gauntlet) ----
-  const DECADE_ORDER = ["1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"];
+  // Gauntlet ladder: the ten greatest teams of all time, ordered weakest -> strongest, so
+  // round 1 is the softest of the legends and round 10 is the boss. This is an editorial
+  // BLENDED ranking (legacy + record + engine rating), not a pure sort - a raw rating sort
+  // would crown the '85-86 Celtics and bury the '16-17 Warriors mid-pack. Each entry is
+  // matched to a real team in the pool by exact name + season.
+  const GAUNTLET_LADDER = [
+    ["Los Angeles Lakers", "2000-01"],   // Shaq + Kobe peak; softest opener of the greats
+    ["Miami Heat", "2012-13"],           // LeBron three-peat core, 27-game streak
+    ["Los Angeles Lakers", "1986-87"],   // Showtime, Magic
+    ["Los Angeles Lakers", "1971-72"],   // 33-game win streak
+    ["Philadelphia 76ers", "1966-67"],   // Wilt, 68-13
+    ["Boston Celtics", "2023-24"],       // highest-rated modern champion
+    ["Oklahoma City Thunder", "2024-25"],// modern juggernaut, best record in the pool
+    ["Boston Celtics", "1985-86"],       // Bird; the literal "best ever" candidate
+    ["Chicago Bulls", "1995-96"],        // 72-10, Jordan - the record the boss broke
+    ["Golden State Warriors", "2016-17"],// FINAL BOSS - KD superteam, 16-1 playoff run
+  ];
   let leagueAvgRating = 0; // baseline a drafted team's regular-season record is sim'd against
 
   const teamRatingOf = (roster) => Engine.lineupScore(Engine.autoFillLineup(roster, SLOTS));
@@ -691,8 +766,8 @@ const UI = (() => {
     const t = GameState.get().tournament;
     if (gameMode === "gauntlet") {
       t.bracket = buildGauntlet();
-      t.rounds = t.bracket.length;   // 7 decades
-      t.winsNeeded = 1;              // single game per decade
+      t.rounds = t.bracket.length;   // 10 all-time greats
+      t.winsNeeded = 1;              // single game per round
     } else {
       t.bracket = buildClassicBracket();
       t.rounds = ROUNDS;             // 4 playoff rounds
@@ -710,6 +785,11 @@ const UI = (() => {
       const record = team.record || Engine.simulateSeasonRecord(rating, leagueAvgRating);
       return { rating, record };
     });
+    // Gauntlet difficulty is computed from the opponents' actual ratings so the curve still
+    // climbs despite the narrative ordering (classic uses the flat BASE/STEP ramp instead).
+    t.gauntletBonus = gameMode === "gauntlet"
+      ? gauntletBonuses(t.oppMeta.map((m) => m.rating))
+      : null;
     t.round = 1;
     resetSeries(t);
     showScreen("tournament");
@@ -746,22 +826,28 @@ const UI = (() => {
     return picks;
   }
 
-  // Gauntlet: each decade's best regular-season team, in chronological order. Where real
-  // records exist (2000s on) the boss is the decade's winningest team (e.g. the 2024-25
-  // Thunder at 68-14); the older curated eras fall back to the strongest lineup.
+  // Gauntlet: the curated all-time ladder (GAUNTLET_LADDER) resolved against the live pool,
+  // weakest -> strongest. Any entry not found in the data is skipped so the run still builds.
   function buildGauntlet() {
-    const strength = (team) => Engine.lineupScore(Engine.autoFillLineup(team.roster, SLOTS));
-    const bossOf = (teams) => {
-      const withRecord = teams.filter((team) => team.record);
-      if (withRecord.length) {
-        return withRecord.reduce((best, team) => (team.record.wins > best.record.wins ? team : best));
-      }
-      return teams.reduce((best, team) => (strength(team) > strength(best) ? team : best));
-    };
-    return DECADE_ORDER
-      .map((decade) => currentTeams.filter((team) => team.decade === decade))
-      .filter((teams) => teams.length > 0)
-      .map(bossOf);
+    return GAUNTLET_LADDER
+      .map(([name, season]) => currentTeams.find((team) => team.name === name && team.season === season))
+      .filter(Boolean);
+  }
+
+  // Per-round rating bonus for the gauntlet. Each round targets an EFFECTIVE strength on a
+  // straight line from GAUNTLET_OPENER_EFF (round 1) to GAUNTLET_BOSS_EFF (final round), and
+  // the bonus is the gap between that target and the team's real rating. The line rises and
+  // always clears the raw ratings here, so effective strength climbs every round regardless
+  // of the narrative ordering. Bonuses are clamped at 0 so a legend never plays below its
+  // real strength (a no-op given the targets, but safe if the ladder or ratings change).
+  function gauntletBonuses(ratings) {
+    const last = ratings.length - 1;
+    return ratings.map((rating, i) => {
+      const target = last === 0
+        ? GAUNTLET_BOSS_EFF
+        : GAUNTLET_OPENER_EFF + (GAUNTLET_BOSS_EFF - GAUNTLET_OPENER_EFF) * (i / last);
+      return Math.max(0, target - rating);
+    });
   }
 
   function resetSeries(t) {
@@ -771,7 +857,7 @@ const UI = (() => {
   }
 
   function roundLabel(t, gameMode) {
-    if (gameMode === "gauntlet") return `The ${t.opponent.decade}`;
+    if (gameMode === "gauntlet") return `Round ${t.round} of ${t.rounds}`;
     return ROUND_NAMES[t.round - 1] || `Round ${t.round}`;
   }
 
@@ -793,7 +879,7 @@ const UI = (() => {
     document.getElementById("scoreboard").innerHTML = '<div class="sb-label">Press play to tip off</div>';
     const advance = document.getElementById("series-advance");
     advance.classList.add("hidden");
-    advance.textContent = gameMode === "gauntlet" ? "Next Decade →" : "Next Round →";
+    advance.textContent = "Next Round →";
     document.getElementById("play-game").classList.remove("hidden");
     // Simulate-round only makes sense for a multi-game series, i.e. classic.
     document.getElementById("sim-round").classList.toggle("hidden", gameMode !== "classic");
@@ -802,7 +888,7 @@ const UI = (() => {
   }
 
   function renderMatchup(opponent) {
-    const { five, mode, tournament: t } = GameState.get();
+    const { five, mode, gameMode, tournament: t } = GameState.get();
     const oppColor = teamColor(opponent.name);
     const matchup = document.getElementById("matchup");
     // Record (and rating, in ratings mode) for each side. The better record holds home
@@ -815,7 +901,10 @@ const UI = (() => {
       return `<div class="matchup-meta">${rec}${ovr}</div>`;
     };
     const homeBadge = '<span class="home-badge">Home court</span>';
-    const youHome = youHoldHomeCourt(t);
+    // The gauntlet is played on neutral courts, so neither side shows a home-court badge.
+    const isGauntlet = gameMode === "gauntlet";
+    const youHome = !isGauntlet && youHoldHomeCourt(t);
+    const oppHome = !isGauntlet && !youHome;
     matchup.innerHTML = `
       <div class="matchup-side" style="border-top-color:${GOLD}">
         <h3 class="font-display font-bold text-lg">Your Roster ${youHome ? homeBadge : ""}</h3>
@@ -824,7 +913,7 @@ const UI = (() => {
       </div>
       <div class="vs">vs</div>
       <div class="matchup-side" style="border-top-color:${oppColor}">
-        <h3 class="font-display font-bold text-lg" style="color:${oppColor}">${opponent.name} <span class="opp-year">${opponent.season}</span> ${youHome ? "" : homeBadge}</h3>
+        <h3 class="font-display font-bold text-lg" style="color:${oppColor}">${opponent.name} <span class="opp-year">${opponent.season}</span> ${oppHome ? homeBadge : ""}</h3>
         ${teamMeta(oppInfo && oppInfo.record, oppInfo && oppInfo.rating)}
         <div class="mini-five" id="opp-five"></div>
       </div>`;
@@ -832,7 +921,7 @@ const UI = (() => {
     const oppLineup = Engine.autoFillLineup(opponent.roster, SLOTS);
     SLOTS.forEach((slot) => {
       if (five[slot]) document.getElementById("your-five").appendChild(playerMini(slot, five[slot], mode, GOLD));
-      if (oppLineup[slot]) document.getElementById("opp-five").appendChild(playerMini(slot, oppLineup[slot], mode, oppColor));
+      if (oppLineup[slot]) document.getElementById("opp-five").appendChild(playerMini(slot, oppLineup[slot], mode, oppColor, true));
     });
   }
 
@@ -868,13 +957,17 @@ const UI = (() => {
     const oppLineup = Engine.autoFillLineup(t.opponent.roster, SLOTS);
     const yourRating = Engine.lineupScore(state.five);
     const oppRating = Engine.lineupScore(oppLineup);
-    // Home court follows the 2-2-1-1-1 pattern for the HIGHER SEED. If the opponent
-    // out-seeded you, the pattern flips and you open on the road.
+    // The gauntlet is played on neutral courts (null), so no home/away edge. Classic home
+    // court follows the 2-2-1-1-1 pattern for the HIGHER SEED; if the opponent out-seeded
+    // you, the pattern flips and you open on the road.
     const seedPattern = [true, true, false, false, true, false, true][t.games.length] ?? true;
-    const youAreHome = youHoldHomeCourt(t) ? seedPattern : !seedPattern;
-    // Gauntlet opponents are already each decade's best, so the ramp is gentler.
+    const youAreHome = state.gameMode === "gauntlet"
+      ? null
+      : (youHoldHomeCourt(t) ? seedPattern : !seedPattern);
+    // Gauntlet uses the precomputed per-round bonus (gauntletBonuses) that flattens the
+    // narrative ordering into a rising difficulty curve; classic uses the linear ramp.
     const oppBonus = state.gameMode === "gauntlet"
-      ? (t.round - 1) * 1
+      ? (t.gauntletBonus[t.round - 1] ?? 0)
       : DIFFICULTY_BASE + (t.round - 1) * DIFFICULTY_STEP;
     const game = Engine.simulateGame(yourRating, oppRating, youAreHome, oppBonus);
 
@@ -954,9 +1047,7 @@ const UI = (() => {
     document.getElementById("sim-round").classList.add("hidden");
     showSpeedControl(false);
     const advance = document.getElementById("series-advance");
-    advance.textContent = runOver
-      ? "See Result →"
-      : GameState.get().gameMode === "gauntlet" ? "Next Decade →" : "Next Round →";
+    advance.textContent = runOver ? "See Result →" : "Next Round →";
     advance.classList.remove("hidden");
 
     // Let the user flip back through any game in the series and read its box score.
@@ -1003,16 +1094,20 @@ const UI = (() => {
     const { tournament: t, five, mode, gameMode } = GameState.get();
     const isGauntlet = gameMode === "gauntlet";
     const perfect = t.status === "won" && t.totalLosses === 0;
-    const perfectMark = isGauntlet ? "7-0" : "16-0";
+    const perfectMark = isGauntlet ? "10-0" : "16-0";
 
     const title = document.getElementById("result-title");
     title.textContent = perfect ? perfectMark : t.status === "won" ? "Champions" : "Eliminated";
     title.classList.toggle("text-gold", t.status === "won");
 
-    document.getElementById("result-record").textContent = `${t.totalWins} - ${t.totalLosses}`;
+    // On a perfect run the big title already reads "10-0" / "16-0", so the record line
+    // would just repeat it - hide it. Otherwise it shows the real record (e.g. 14 - 2).
+    const recordEl = document.getElementById("result-record");
+    recordEl.textContent = perfect ? "" : `${t.totalWins} - ${t.totalLosses}`;
+    recordEl.classList.toggle("hidden", perfect);
     document.getElementById("result-sub").textContent = perfect
       ? (isGauntlet
-          ? "A perfect gauntlet. Seven decades, seven legends, not one loss."
+          ? "A perfect gauntlet. Ten of the greatest teams ever, not one loss."
           : "A perfect playoff run. Sixteen wins, zero losses. The dream.")
       : t.status === "won"
         ? "Champions, but not perfect. Can you run it back without a loss?"
@@ -1023,10 +1118,37 @@ const UI = (() => {
     renderFinalsMVP(t);
     renderResultActions(t, isGauntlet, perfect);
     recordAttempt(t, gameMode, five, perfect);
+    renderResultTeam(t, five);
+  }
 
+  // Box-score table of your five at run's end: position, overall, and each starter's
+  // per-game averages across the ENTIRE run (t.allGames). Shown win or lose. Overalls
+  // are revealed here even in blind mode - the run is over, so it is a recap, not a hint.
+  function renderResultTeam(t, five) {
     const recap = document.getElementById("result-five");
-    recap.innerHTML = "";
-    SLOTS.forEach((slot) => { if (five[slot]) recap.appendChild(playerMini(slot, five[slot], mode)); });
+    const games = t.allGames || [];
+    const totals = {};
+    games.forEach((g) => (g.yourBox || []).forEach((l) => {
+      const s = totals[l.name] || (totals[l.name] = { pts: 0, reb: 0, ast: 0 });
+      s.pts += l.pts; s.reb += l.reb; s.ast += l.ast;
+    }));
+    const n = games.length || 1;
+    const rows = SLOTS.map((slot) => {
+      const p = five[slot];
+      if (!p) return "";
+      const s = totals[p.name] || { pts: 0, reb: 0, ast: 0 };
+      return `<tr>
+        <td class="ss-name"><span class="ss-av" style="background:${GOLD}">${slot}</span>${p.name}</td>
+        <td>${p.overall}</td>
+        <td>${(s.pts / n).toFixed(1)}</td>
+        <td>${(s.reb / n).toFixed(1)}</td>
+        <td>${(s.ast / n).toFixed(1)}</td>
+      </tr>`;
+    }).join("");
+    recap.innerHTML = `<div class="ss-tables"><table class="ss-table">
+      <thead><tr><th class="ss-team" style="color:${GOLD}">Roster Averages</th>
+        <th>OVR</th><th>PPG</th><th>RPG</th><th>APG</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
   }
 
   // After a classic championship, offer to take the very same five into the gauntlet.
@@ -1052,15 +1174,31 @@ const UI = (() => {
     if (t._recorded) return;
     t._recorded = true;
     const label = perfect
-      ? (gameMode === "gauntlet" ? "Perfect 7-0" : "Perfect 16-0")
+      ? (gameMode === "gauntlet" ? "Perfect 10-0" : "Perfect 16-0")
       : t.status === "won" ? "Champions" : "Eliminated";
+    // Per-round outcome: rounds before the one we ended on were won; the final round we
+    // played is a win only if the whole run was won; anything after was never reached.
+    const lastPlayed = t.round;
+    const bracket = t.bracket.map((team, i) => {
+      const round = i + 1;
+      const result = round < lastPlayed ? "won"
+        : round === lastPlayed ? (t.status === "won" ? "won" : "lost")
+        : "unplayed";
+      const rec = t.oppMeta[i] && t.oppMeta[i].record;
+      return { name: team.name, season: team.season, result, record: rec ? `${rec.wins}-${rec.losses}` : "" };
+    });
     saveAttempt({
       ts: Date.now(),
       mode: gameMode,
       outcome: t.status === "won" ? (perfect ? "perfect" : "won") : "eliminated",
       label,
       record: `${t.totalWins}-${t.totalLosses}`,
+      rtg: Math.round(t.yourRating),
       team: SLOTS.map((slot) => five[slot] && initials(five[slot].name)).filter(Boolean),
+      roster: SLOTS.map((slot) => five[slot] && {
+        slot, name: five[slot].name, pos: five[slot].positions.join("/"), overall: five[slot].overall,
+      }).filter(Boolean),
+      bracket,
     });
   }
 
@@ -1073,8 +1211,16 @@ const UI = (() => {
   function renderFinalsMVP(t) {
     const box = document.getElementById("result-mvp");
     const gauntlet = GameState.get().gameMode === "gauntlet";
-    const games = gauntlet ? t.allGames : t.games;
-    const mvp = t.status === "won" ? computeFinalsMVP(games) : null;
+    // Win: your best player across the final series (classic) or the whole run (gauntlet).
+    // Lose in the final round: the opponent who beat you gets the Finals MVP instead, taken
+    // from that last matchup (t.games). Losing earlier shows no Finals MVP.
+    const lostInFinals = t.status === "eliminated" && t.round === t.rounds;
+    let mvp = null;
+    if (t.status === "won") {
+      mvp = computeFinalsMVP(gauntlet ? t.allGames : t.games, "yourBox");
+    } else if (lostInFinals) {
+      mvp = computeFinalsMVP(t.games, "oppBox");
+    }
     if (!mvp) { box.classList.add("hidden"); box.innerHTML = ""; return; }
     box.innerHTML = `<div class="mvp-label">Finals MVP</div>
       <div class="mvp-name">${mvp.name}</div>
@@ -1082,10 +1228,12 @@ const UI = (() => {
     box.classList.remove("hidden");
   }
 
-  function computeFinalsMVP(games) {
-    if (!games.length) return null;
+  // Best averaged line from a set of games, read off either side's box (boxKey is
+  // "yourBox" or "oppBox"). Scoring is weighted so the headline scorer usually wins.
+  function computeFinalsMVP(games, boxKey) {
+    if (!games || !games.length) return null;
     const totals = {};
-    games.forEach((g) => (g.yourBox || []).forEach((l) => {
+    games.forEach((g) => (g[boxKey] || []).forEach((l) => {
       const sum = totals[l.name] || (totals[l.name] = { name: l.name, pts: 0, reb: 0, ast: 0 });
       sum.pts += l.pts; sum.reb += l.reb; sum.ast += l.ast;
     }));
@@ -1120,10 +1268,13 @@ const UI = (() => {
     return el;
   }
 
-  function playerMini(slot, player, mode, accent = GOLD) {
+  function playerMini(slot, player, mode, accent = GOLD, isOpponent = false) {
     const el = document.createElement("div");
     el.className = "player-mini";
-    const ovr = mode === "ratings" ? `<span class="p-ovr">${player.overall}</span>` : "";
+    // Opponent overalls are hidden on purpose: seeing a "70" on a player you just lost to is
+    // more frustrating than informative, and the buffed gauntlet legends play well above
+    // their raw rating anyway. Your own five still shows overalls in ratings mode.
+    const ovr = (mode === "ratings" && !isOpponent) ? `<span class="p-ovr">${player.overall}</span>` : "";
     el.innerHTML = `<span class="mini-av" style="background:${accent}">${initials(player.name)}</span>` +
       `<span class="mini-slot">${slot}</span><span class="mini-name">${player.name}</span>${ovr}`;
     return el;
@@ -1153,8 +1304,8 @@ const UI = (() => {
     requestAnimationFrame(frame);
   }
 
-  // Classic plays a best-of-7, so each game is numbered. A gauntlet decade is a
-  // single elimination game, so the number is meaningless - show the decade instead.
+  // Classic plays a best-of-7, so each game is numbered. A gauntlet round is a single
+  // elimination game, so the number is meaningless - show the round instead.
   function gameLabel(number) {
     const { gameMode, tournament: t } = GameState.get();
     return gameMode === "gauntlet" ? roundLabel(t, gameMode) : `Game ${number}`;
@@ -1265,7 +1416,14 @@ const UI = (() => {
     document.getElementById("menu-button").addEventListener("click", () => openMenu("howto"));
     document.getElementById("menu-close").addEventListener("click", closeMenu);
     overlay.addEventListener("click", (event) => { if (event.target === overlay) closeMenu(); });
-    document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeMenu(); });
+
+    const runOverlay = document.getElementById("run-overlay");
+    document.getElementById("run-close").addEventListener("click", closeRunSummary);
+    runOverlay.addEventListener("click", (event) => { if (event.target === runOverlay) closeRunSummary(); });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") { closeMenu(); closeRunSummary(); }
+    });
     overlay.querySelectorAll(".overlay-tab").forEach((tab) => {
       tab.addEventListener("click", () => selectTab(tab.dataset.tab));
     });

@@ -9,9 +9,10 @@ const GameState = (() => {
   function freshTournament() {
     return {
       round: 1,          // 1..rounds
-      rounds: ROUNDS,    // number of rounds this run (4 classic, 7 gauntlet)
+      rounds: ROUNDS,    // number of rounds this run (4 classic, 10 gauntlet)
       winsNeeded: WINS_PER_SERIES, // wins to take a round (4 classic, 1 gauntlet)
       bracket: [],       // the opponents, in order
+      gauntletBonus: null, // per-round rating bonus for the gauntlet (null in classic)
       opponent: null,    // opponent team for the current round
       yourWins: 0,       // wins in the current series
       oppWins: 0,        // losses in the current series
@@ -26,7 +27,7 @@ const GameState = (() => {
   const state = {
     screen: "menu",
     mode: null,          // "ratings" | "blind" (how much info is shown)
-    gameMode: null,      // "classic" (16-0) | "gauntlet" (7-0)
+    gameMode: null,      // "classic" (16-0) | "gauntlet" (10-0)
     five: {},            // slot -> drafted player (the player's starting five)
     spunTeam: null,      // team shown by the latest draft spin
     respins: MAX_RESPINS, // re-rolls remaining this draft

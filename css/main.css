@@ -874,6 +874,49 @@ body.light .era-card:hover {
   font-size: 0.72rem;
   letter-spacing: 0.03em;
 }
+.history-row.is-clickable { cursor: pointer; transition: background 0.12s ease; }
+.history-row.is-clickable:hover { background: var(--color-surface-2); }
+.history-row.is-clickable:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 2px; }
+
+/* ---- Run summary overlay (clicked from a recent attempt) ---- */
+.run-head { margin: 0.25rem 0 1rem; }
+.run-title { font-family: "Oswald", sans-serif; font-weight: 800; font-size: 1.6rem; line-height: 1.1; }
+.run-sub { color: var(--color-muted); font-size: 0.85rem; margin-top: 0.15rem; }
+.run-section {
+  font-family: "Oswald", sans-serif; font-weight: 700; font-size: 0.95rem;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted);
+  margin: 1.1rem 0 0.5rem;
+}
+.run-pos { color: var(--color-muted); font-size: 0.72rem; margin-left: 0.4rem; }
+.run-bracket { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.run-leg {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.15rem 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-surface-2);
+  border-left: 3px solid var(--color-surface-2);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.7rem;
+}
+.run-leg.run-won { border-left-color: #2bb673; }
+.run-leg.run-lost { border-left-color: #e0564f; }
+.run-leg.run-unplayed { opacity: 0.5; }
+.run-round {
+  grid-row: 1; font-family: "Oswald", sans-serif; text-transform: uppercase;
+  letter-spacing: 0.04em; font-size: 0.7rem; color: var(--color-muted);
+}
+.run-opp { grid-row: 2; grid-column: 1; font-weight: 600; }
+.run-opp em { color: var(--color-muted); font-style: normal; font-size: 0.82rem; }
+.run-rec { color: var(--color-muted); font-variant-numeric: tabular-nums; font-size: 0.78rem; }
+.run-badge {
+  grid-row: 1 / -1; grid-column: 2; align-self: center;
+  font-family: "Oswald", sans-serif; font-weight: 700; font-size: 0.78rem;
+}
+.run-won .run-badge { color: #2bb673; }
+.run-lost .run-badge { color: #e0564f; }
+.run-unplayed .run-badge { color: var(--color-muted); }
 
 /* ---- Draft picks list (spun team) ---- */
 .pick-list {

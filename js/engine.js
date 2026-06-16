@@ -134,8 +134,9 @@ const Engine = (() => {
   // to the opponent's effective rating (used to escalate later rounds). The winner is
   // drawn from winProbability; the final score is then generated to match - a
   // comfortable margin when the result follows the ratings, a close one on an upset.
+  // youAreHome: true = home, false = away, null = neutral court (no edge, e.g. the gauntlet).
   function simulateGame(yourRating, oppRating, youAreHome, oppBonus = 0) {
-    const edge = youAreHome ? HOME_COURT_EDGE : -HOME_COURT_EDGE;
+    const edge = youAreHome === null ? 0 : (youAreHome ? HOME_COURT_EDGE : -HOME_COURT_EDGE);
     const diff = (yourRating - (oppRating + oppBonus)) + edge;
     const youWon = Math.random() < winProbability(diff);
 

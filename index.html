@@ -98,8 +98,8 @@
           <span class="text-muted text-sm mt-2">Four playoff rounds, best of seven. Win all sixteen for a perfect run.</span>
         </button>
         <button class="mode-card" data-action="set-gamemode" data-gamemode="gauntlet" type="button">
-          <span class="font-display text-2xl font-bold">Gauntlet 7-0</span>
-          <span class="text-muted text-sm mt-2">One game against the best team of every decade. Seven legends. One loss ends it.</span>
+          <span class="font-display text-2xl font-bold">Gauntlet 10-0</span>
+          <span class="text-muted text-sm mt-2">One game each against the ten greatest teams ever, weakest to strongest. One loss ends it.</span>
         </button>
       </div>
     </section>
@@ -199,15 +199,20 @@
       </div>
 
       <div class="overlay-content" data-panel="howto">
-        <ol class="list-decimal pl-5 space-y-2">
-          <li>Pick how much you want to know: full ratings and stats, or a blind build.</li>
-          <li>Choose your challenge: <b>16-0</b> (four best-of-seven rounds) or <b>Gauntlet 7-0</b> (one game versus each decade's best team).</li>
-          <li>Spin to reveal a real team from any era, then draft one player from it.</li>
-          <li>Repeat until your starting five is complete, one per position.</li>
-          <li>Win every game. A single perfect run is the whole goal.</li>
-        </ol>
-        <h3 class="font-display font-bold text-lg mt-5">How games are decided</h3>
-        <p class="text-muted text-sm mt-2">Each team gets a strength rating from its starting five. For every game that rating gap becomes a win probability: the stronger team is favored and the home side gets an edge, but even a heavy favorite can drop a game, so nothing is guaranteed. Your team's projected regular-season record sets playoff seeding and home court, and each round faces a tougher opponent, so winning all sixteen is meant to be rare. Build the best, most balanced roster you can.</p>
+        <h3 class="font-display font-bold text-lg">How games are decided</h3>
+        <ul class="list-disc pl-5 space-y-1 text-muted text-sm mt-2">
+          <li>Each team's starting five gives it a strength rating.</li>
+          <li>The rating gap sets the win odds. Favorites usually win, but never always.</li>
+          <li>Each round gets harder, so a perfect run is rare.</li>
+        </ul>
+
+        <h3 class="font-display font-bold text-lg mt-5">How to build a good team</h3>
+        <ul class="list-disc pl-5 space-y-1 text-muted text-sm mt-2">
+          <li>Rating = average overall + bonuses for a balanced, two-way five.</li>
+          <li>Don't stack scorers. Extra points add little.</li>
+          <li>Defense (steals + blocks) and efficient shooting are easy to miss and add the most.</li>
+          <li>Check SPG, BPG, and the shooting %s, not just PPG and APG.</li>
+        </ul>
       </div>
 
       <div class="overlay-content hidden" data-panel="settings">
@@ -237,6 +242,14 @@
         <button class="btn btn-ghost" id="confirm-no" type="button">Keep Playing</button>
         <button class="btn btn-gold" id="confirm-yes" type="button">Quit Run</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Run summary: opened by clicking a recent attempt. Shows that run's roster + bracket. -->
+  <div class="overlay hidden" id="run-overlay" role="dialog" aria-modal="true" aria-label="Run summary">
+    <div class="overlay-panel">
+      <button class="btn-icon overlay-close" id="run-close" type="button" aria-label="Close summary">&times;</button>
+      <div id="run-summary"></div>
     </div>
   </div>
 

@@ -50,25 +50,6 @@ NBPA, or any team or player.
 - Fully static. No backend, no database, no user accounts. State lives in memory for the
   session; `localStorage` holds only preferences and a local run history.
 
-```
-/
-├── index.html
-├── css/main.css
-├── js/            state, data-loader, engine, ui, dragdrop, sound
-├── data/          eras + teams (per-decade JSON)
-├── tools/         data generators and the Monte Carlo difficulty harness (dev only)
-└── pages/         about, privacy, terms
-```
-
-## Running locally
-
-It must be served over HTTP (the data loads via `fetch`, which fails on `file://`).
-
-```bash
-python -m http.server 8000
-# then open http://localhost:8000
-```
-
 ## Privacy
 
 Zero personal data, no analytics, no tracking, no cookies. The only stored data is local

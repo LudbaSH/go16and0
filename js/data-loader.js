@@ -14,8 +14,8 @@ const DataLoader = (() => {
   //   2. Run every overall (generated and curated) through a concave curve that
   //      leaves role players untouched (<=80) and squashes the top end, where
   //      RATING_K < 1 controls how hard the ceiling is pulled down.
-  const RATING_K = 0.72;
-  const SQUASH_FLOOR = 80;
+  const RATING_K = 0.7;
+  const SQUASH_FLOOR = 85;
 
   // Concave squash: identity below the floor, linearly compressed above it.
   function squashOverall(value) {

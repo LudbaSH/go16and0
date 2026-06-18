@@ -8,8 +8,8 @@ const UI = (() => {
   // Difficulty: opponents are seeded weakest-to-strongest by REAL record, and each round
   // adds a rating bonus on top so the field hardens to a near-peer Finals. Tunable here,
   // paired with the engine's WIN_CAP/RATING_SCALE (js/engine.js).
-  const DIFFICULTY_BASE = 3;
-  const DIFFICULTY_STEP = 4;
+  const DIFFICULTY_BASE = 2;
+  const DIFFICULTY_STEP = 3;
   // Gauntlet difficulty is set by an explicit EFFECTIVE-strength curve, not the classic
   // ramp. A handpicked draft (best player per position, no weak link) out-rates any real
   // team - a maxed five hits ~106 while the best real team is ~89 - so without a buff the

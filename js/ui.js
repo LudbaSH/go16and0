@@ -6,10 +6,39 @@ const UI = (() => {
   const ROUND_NAMES = ["Round 1", "Round 2", "Conference Finals", "Finals"];
 
   // Difficulty: opponents are seeded weakest-to-strongest by REAL record, and each round
-  // adds a rating bonus on top so the field hardens to a near-peer Finals. Tunable here,
-  // paired with the engine's WIN_CAP/RATING_SCALE (js/engine.js).
-  const DIFFICULTY_BASE = 2;
-  const DIFFICULTY_STEP = 3;
+  // adds a rating bonus on top so the field hardens to a near-peer Finals. The bonus for
+  // classic round r is base + (r-1)*step; the level chosen on the menu sets base/step.
+  // (Gauntlet ignores this - it uses its own effective-strength curve below.) Standard is
+  // the original tuning (base 2, step 3). Tunable here, paired with the engine's
+  // WIN_CAP/RATING_SCALE (js/engine.js).
+  const DIFFICULTY_LEVELS = [
+    { id: "casual",   name: "Casual",   base: 0, step: 2 },
+    { id: "easy",     name: "Easy",     base: 1, step: 2 },
+    { id: "standard", name: "Standard", base: 2, step: 3 },
+    { id: "hard",     name: "Hard",     base: 3, step: 4 },
+    { id: "brutal",   name: "Brutal",   base: 4, step: 5 },
+  ];
+  const DIFFICULTY_KEY = "16-0:difficulty";
+  let difficultyId = loadDifficulty();
+  function loadDifficulty() {
+    const saved = localStorage.getItem(DIFFICULTY_KEY);
+    return DIFFICULTY_LEVELS.some((d) => d.id === saved) ? saved : "standard";
+  }
+  function currentDifficulty() {
+    return DIFFICULTY_LEVELS.find((d) => d.id === difficultyId) || DIFFICULTY_LEVELS[2];
+  }
+  // The classic per-round difficulty bump (gauntlet uses gauntletBonus instead).
+  function classicRoundBonus(round) {
+    const d = currentDifficulty();
+    return d.base + (round - 1) * d.step;
+  }
+
+  // Hot Hand: a player who erupts (well above their scoring average, and a real load) carries
+  // a hot hand into the NEXT game in the run, where the box score tilts toward them and a flame
+  // marks the row. Purely a box-score effect - the game result is decided by lineup ratings, so
+  // this never changes win odds. Only one hot hand at a time, on YOUR roster.
+  const HOT_FORM_MIN = 1.5; // this-game points must be >= 1.5x the player's season average
+  const HOT_PTS_MIN = 20;   // ...and at least a 20-point night, so a low-usage spike doesn't count
   // Gauntlet difficulty is set by an explicit EFFECTIVE-strength curve, not the classic
   // ramp. A handpicked draft (best player per position, no weak link) out-rates any real
   // team - a maxed five hits ~106 while the best real team is ~89 - so without a buff the
@@ -18,6 +47,19 @@ const UI = (() => {
   // (boss ~100 = a near-maxed five is favored but not safe). See gauntletBonuses.
   const GAUNTLET_OPENER_EFF = 83;  // round 1 effective rating (softest of the greats)
   const GAUNTLET_BOSS_EFF = 98;    // final boss effective rating
+
+  // Mutators: one-at-a-time draft rule twists chosen on the mutators screen. Positionless
+  // lives in the engine (isEligible); the rest are enforced here at draft time.
+  const UNDERDOGS_MAX_OVERALL = 85;  // Underdogs: no player rated above this is draftable
+  const SALARY_CAP = 200;            // Salary Cap: total budget for the five
+  // Steep convex cost so stars are pricey and role players cheap (overall 99 ~99, 85 ~43,
+  // 80 ~28, 74 ~15). Floor of 1 so even a 59 costs something.
+  const playerCost = (p) => Math.max(1, Math.round(((p.overall - 58) ** 2) / 17));
+  // Short display names for the active mutator, used on the Records run rows + detail.
+  const MUTATOR_NAMES = {
+    positionless: "Positionless", eralock: "Era Lock", salarycap: "Salary Cap",
+    underdogs: "Underdogs", ironfive: "Iron Five",
+  };
 
   let eras = [];
   let currentTeams = [];
@@ -32,6 +74,7 @@ const UI = (() => {
   let animating = false;     // a score count-up is in progress
   let currentGameNo = 0;
   let speed = "normal";      // score count-up speed: "slow" | "normal" | "fast"
+  let statsTab = "overview"; // active tab on the Records screen
 
   // Count-up durations in ms by speed setting.
   const SPEED_MS = { slow: 4000, normal: 3000, fast: 1800 };
@@ -98,6 +141,24 @@ const UI = (() => {
     applyTheme(next);
   }
 
+  // ---- Difficulty (classic only) ----
+  // Render the menu's level buttons and mark the active one. The choice is persisted so a
+  // phone session keeps it between visits (it only affects the classic 16-0 ramp).
+  function renderDifficulty() {
+    const wrap = document.getElementById("difficulty-options");
+    if (!wrap) return;
+    wrap.innerHTML = DIFFICULTY_LEVELS
+      .map((d) => `<button type="button" class="diff-btn${d.id === difficultyId ? " active" : ""}" data-action="set-difficulty" data-diff="${d.id}" aria-pressed="${d.id === difficultyId}">${d.name}</button>`)
+      .join("");
+  }
+
+  function setDifficulty(id) {
+    if (!DIFFICULTY_LEVELS.some((d) => d.id === id)) return;
+    difficultyId = id;
+    try { localStorage.setItem(DIFFICULTY_KEY, id); } catch { /* storage blocked: keep in memory */ }
+    renderDifficulty();
+  }
+
   function updateSoundButton() {
     const btn = document.getElementById("sound-button");
     if (btn) btn.innerHTML = Sound.isMuted() ? ICON.soundOff : ICON.soundOn;
@@ -109,12 +170,10 @@ const UI = (() => {
   }
 
   // ---- Attempt history (local only, no account) ----
-  // A short rolling log of finished runs in localStorage so the menu can show the
-  // last few attempts. No personal data - just mode, outcome, record, and the names
-  // of the five you drafted. Disclosed on the privacy page.
+  // A rolling log of finished runs in localStorage, surfaced on the Records screen. No
+  // personal data - just mode, outcome, record, and the five you drafted. Privacy-disclosed.
   const HISTORY_KEY = "16-0:history";
   const HISTORY_CAP = 30;   // how many we keep
-  const HISTORY_SHOWN = 5;  // how many the menu previews
 
   function loadHistory() {
     try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
@@ -128,31 +187,204 @@ const UI = (() => {
 
   function clearHistory() {
     localStorage.removeItem(HISTORY_KEY);
-    renderHistory();
+    Career.clear();       // wipe lifetime/career stats too, so "Clear" erases all game data
+    Achievements.clear(); // and earned badges
+    if (GameState.get().screen === "stats") renderStats();
   }
 
-  function renderHistory() {
-    const wrap = document.getElementById("history");
-    if (!wrap) return;
+  // One run row for the Records > Runs tab. The index is the position in loadHistory() so
+  // view-run can re-open that exact run's summary. Older entries predate the roster capture;
+  // only newer ones are clickable. Shows the drafted five's full names when available.
+  function historyRowHTML(it, i) {
+    const modeName = it.mode === "gauntlet" ? "Gauntlet" : "16-0";
+    const mode = MUTATOR_NAMES[it.mutator] ? `${modeName} &middot; ${MUTATOR_NAMES[it.mutator]}` : modeName;
+    const team = it.roster && it.roster.length
+      ? it.roster.map((p) => p.name).join(" · ")
+      : (it.team || []).join(" · ");
+    const clickable = it.roster ? ` data-action="view-run" data-index="${i}" role="button" tabindex="0"` : "";
+    return `<li class="history-row history-${it.outcome}${it.roster ? " is-clickable" : ""}"${clickable}>
+      <span class="history-outcome">${it.label}</span>
+      <span class="history-mode">${mode}</span>
+      <span class="history-record">${it.record}</span>
+      <span class="history-team">${team}</span></li>`;
+  }
+
+  // Build the achievement evaluation context from durable run history (so past runs count
+  // toward cumulative badges) plus an optional live run (for per-series badges history can't
+  // reconstruct). isTitle treats a won or perfect run as a title.
+  function buildAchievementContext(liveRun = null) {
+    const hist = loadHistory();
+    const isTitle = (h) => h.outcome === "perfect" || h.outcome === "won";
+    const titles = hist.filter(isTitle).length;
+    const perfectRuns = hist.filter((h) => h.outcome === "perfect").length;
+    const maxRating = hist.reduce((m, h) => Math.max(m, h.rtg || 0), 0);
+    const gauntletTitle = hist.some((h) => h.mode === "gauntlet" && isTitle(h));
+    // Longest streak of consecutive titles. History is newest-first, so walk it backward
+    // (oldest to newest); any non-title resets the count.
+    let streak = 0, maxStreak = 0;
+    for (let i = hist.length - 1; i >= 0; i--) {
+      streak = isTitle(hist[i]) ? streak + 1 : 0;
+      if (streak > maxStreak) maxStreak = streak;
+    }
+    return { titles, perfectRuns, maxRating, gauntletTitle, maxStreak, run: liveRun };
+  }
+
+  // ---- Records screen: career stats, players, achievements, full run history ----
+  function renderStats() {
+    // Backfill cumulative badges from existing history each time Records opens, so past
+    // runs (including ones played before achievements shipped) count. Silent - no toast.
+    Achievements.evaluate(buildAchievementContext(null));
+    setActiveStatsTab(statsTab);
+    renderStatsBody(statsTab);
+  }
+
+  function selectStatsTab(tab) {
+    if (!tab) return;
+    statsTab = tab;
+    setActiveStatsTab(tab);
+    renderStatsBody(tab);
+  }
+
+  function setActiveStatsTab(tab) {
+    document.querySelectorAll(".stats-tab").forEach((btn) =>
+      btn.classList.toggle("active", btn.dataset.stab === tab));
+  }
+
+  function renderStatsBody(tab) {
+    const body = document.getElementById("stats-body");
+    if (!body) return;
+    if (tab === "players") body.innerHTML = statsPlayersHTML();
+    else if (tab === "achievements") body.innerHTML = statsAchievementsHTML();
+    else if (tab === "runs") body.innerHTML = statsRunsHTML();
+    else body.innerHTML = statsOverviewHTML();
+  }
+
+  function emptyStatsHTML() {
+    return `<p class="stats-empty">No runs yet. Finish a run to start building your record.</p>`;
+  }
+
+  // A donut ring filled to `pct`, with a big value and a caption in the middle. Pure inline
+  // SVG so it needs no charting library and inherits theme colors from CSS.
+  function donutSVG(pct, label, value) {
+    const r = 38, circ = 2 * Math.PI * r;
+    const dash = Math.max(0, Math.min(100, pct)) / 100 * circ;
+    return `<svg viewBox="0 0 100 100" class="donut" role="img" aria-label="${label}: ${value}">
+      <circle class="donut-track" cx="50" cy="50" r="${r}"></circle>
+      <circle class="donut-fill" cx="50" cy="50" r="${r}" transform="rotate(-90 50 50)"
+        stroke-dasharray="${dash.toFixed(1)} ${circ.toFixed(1)}"></circle>
+      <text class="donut-val" x="50" y="48">${value}</text>
+      <text class="donut-lbl" x="50" y="64">${label}</text>
+    </svg>`;
+  }
+
+  // One labeled horizontal bar scaled against `max`, for the outcome breakdown.
+  function barRow(label, value, max, color) {
+    const w = max ? Math.round((value / max) * 100) : 0;
+    return `<div class="bar-row">
+      <span class="bar-label">${label}</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${w}%;background:${color}"></span></span>
+      <span class="bar-val">${value}</span>
+    </div>`;
+  }
+
+  // Overview dashboard: a win-rate donut and an outcome bar chart over the top, a tile grid
+  // below. Run-level totals come from the durable history (so past runs show) - the Career
+  // store only backs the per-player tab. Game win % is over individual games, not runs.
+  function statsOverviewHTML() {
+    const hist = loadHistory();
+    if (!hist.length) return emptyStatsHTML();
+    const isTitle = (h) => h.outcome === "perfect" || h.outcome === "won";
+    const runs = hist.length;
+    const titles = hist.filter(isTitle).length;
+    const perfectRuns = hist.filter((h) => h.outcome === "perfect").length;
+    const eliminations = hist.filter((h) => h.outcome === "eliminated").length;
+    let gw = 0, gl = 0;
+    hist.forEach((h) => {
+      const [w, l] = (h.record || "0-0").split("-").map(Number);
+      gw += w || 0; gl += l || 0;
+    });
+    const games = gw + gl;
+    const winPct = games ? Math.round((gw / games) * 100) : 0;
+    const ach = Achievements.counts();
+    const maxOutcome = Math.max(titles, perfectRuns, eliminations, 1);
+
+    const charts = `<div class="overview-charts">
+      <div class="chart-card">${donutSVG(winPct, "Game win %", `${winPct}%`)}</div>
+      <div class="chart-card bars-card">
+        ${barRow("Titles", titles, maxOutcome, "var(--color-gold)")}
+        ${barRow("Perfect", perfectRuns, maxOutcome, "var(--color-gold)")}
+        ${barRow("Eliminated", eliminations, maxOutcome, "var(--color-orange)")}
+      </div>
+    </div>`;
+
+    const tiles = [
+      ["Runs", runs], ["Titles", titles],
+      ["Perfect runs", perfectRuns], ["Eliminations", eliminations],
+      ["Games won", gw], ["Games lost", gl],
+      ["Game win %", `${winPct}%`], ["Badges", `${ach.unlocked}/${ach.total}`],
+    ];
+    const tileGrid = `<div class="stat-tiles">${tiles.map(([key, val]) =>
+      `<div class="stat-tile"><span class="stat-val">${val}</span><span class="stat-key">${key}</span></div>`).join("")}</div>`;
+
+    return charts + tileGrid;
+  }
+
+  // A handful of player highlights from the career store, instead of an endless table - the
+  // most-used and best-performing players you've rostered, each accent-colored by its stat.
+  // Synthetic averages (box scores are generated to match results). Rate-stat leaders need a
+  // small sample so a one-game fluke can't top the board (falls back if nobody qualifies yet).
+  const HIGHLIGHT_MIN_GAMES = 3;
+  function statsPlayersHTML() {
+    const players = Career.load().players;
+    const rows = Object.entries(players).map(([name, s]) => {
+      const g = s.games || 0;
+      return { name, drafted: s.drafted || 0, g, ppg: g ? s.pts / g : 0, rpg: g ? s.reb / g : 0, apg: g ? s.ast / g : 0, hi: s.bestPts || 0 };
+    }).filter((r) => r.g > 0);
+    if (!rows.length) return `<p class="stats-empty">Player highlights start tracking from your next run.</p>`;
+
+    // Pick the row with the largest `sel`. For rate stats, prefer rows with enough games but
+    // fall back to the whole pool so an early career still shows a leader.
+    const leaderBy = (sel, minGames = 0) => {
+      const pool = rows.filter((r) => r.g >= minGames);
+      const from = pool.length ? pool : rows;
+      return from.reduce((best, r) => (sel(r) > sel(best) ? r : best), from[0]);
+    };
+    const M = HIGHLIGHT_MIN_GAMES;
+    const picks = (n) => (n === 1 ? "pick" : "picks");
+    const highlights = [
+      { cat: "Most Drafted", accent: "#fbbf24", r: leaderBy((r) => r.drafted), val: (r) => `${r.drafted}`, unit: (r) => picks(r.drafted) },
+      { cat: "Top Scorer", accent: "#fb7185", r: leaderBy((r) => r.ppg, M), val: (r) => r.ppg.toFixed(1), unit: () => "PPG" },
+      { cat: "Career High", accent: "#f97316", r: leaderBy((r) => r.hi), val: (r) => `${r.hi}`, unit: () => "PTS" },
+      { cat: "Top Rebounder", accent: "#38bdf8", r: leaderBy((r) => r.rpg, M), val: (r) => r.rpg.toFixed(1), unit: () => "RPG" },
+      { cat: "Top Playmaker", accent: "#a78bfa", r: leaderBy((r) => r.apg, M), val: (r) => r.apg.toFixed(1), unit: () => "APG" },
+    ];
+    const items = highlights.map((h) => `<li class="ph-row" style="--accent:${h.accent}">
+      <div class="ph-info">
+        <span class="ph-cat">${h.cat}</span>
+        <span class="ph-name">${h.r.name}</span>
+      </div>
+      <span class="ph-val">${h.val(h.r)} <small>${h.unit(h.r)}</small></span>
+    </li>`).join("");
+    return `<ul class="ph-list">${items}</ul>
+      <p class="stats-note">Your most-used and best-performing players across every run.</p>`;
+  }
+
+  function statsAchievementsHTML() {
+    const list = Achievements.all();
+    const c = Achievements.counts();
+    const cards = list.map((a) => `<div class="ach-card ${a.unlocked ? "unlocked" : "locked"}">
+      <span class="ach-name">${a.name}</span>
+      <span class="ach-desc">${a.desc}</span>
+      <span class="ach-state">${a.unlocked ? "Unlocked" : "Locked"}</span>
+    </div>`).join("");
+    return `<p class="stats-note">${c.unlocked} of ${c.total} unlocked.</p>
+      <div class="ach-grid">${cards}</div>`;
+  }
+
+  function statsRunsHTML() {
     const items = loadHistory();
-    if (!items.length) { wrap.classList.add("hidden"); wrap.innerHTML = ""; return; }
-
-    const rows = items.slice(0, HISTORY_SHOWN).map((it, i) => {
-      const mode = it.mode === "gauntlet" ? "Gauntlet" : "16-0";
-      const team = (it.team || []).join(" · ");
-      // Older entries predate the roster/bracket capture; only newer ones open a summary.
-      const clickable = it.roster ? ` data-action="view-run" data-index="${i}" role="button" tabindex="0"` : "";
-      return `<li class="history-row history-${it.outcome}${it.roster ? " is-clickable" : ""}"${clickable}>
-        <span class="history-outcome">${it.label}</span>
-        <span class="history-mode">${mode}</span>
-        <span class="history-record">${it.record}</span>
-        <span class="history-team">${team}</span></li>`;
-    }).join("");
-
-    wrap.innerHTML = `<div class="history-head"><span>Recent attempts</span>
-        <button class="history-clear" data-action="clear-history" type="button">Clear</button></div>
-      <ul class="history-list">${rows}</ul>`;
-    wrap.classList.remove("hidden");
+    if (!items.length) return emptyStatsHTML();
+    return `<ul class="history-list">${items.map((it, i) => historyRowHTML(it, i)).join("")}</ul>`;
   }
 
   // Open the click-through summary for a stored run: its roster and the bracket it faced.
@@ -168,7 +400,8 @@ const UI = (() => {
   }
 
   function renderRunSummary(item) {
-    const mode = item.mode === "gauntlet" ? "Gauntlet 10-0" : "16-0";
+    const modeName = item.mode === "gauntlet" ? "Gauntlet 10-0" : "16-0";
+    const mode = MUTATOR_NAMES[item.mutator] ? `${modeName} &middot; ${MUTATOR_NAMES[item.mutator]}` : modeName;
     const roundName = (i) => item.mode === "gauntlet"
       ? `Round ${i + 1}` : (ROUND_NAMES[i] || `Round ${i + 1}`);
     const verb = { won: "Beat", lost: "Lost to", unplayed: "Did not reach" };
@@ -211,6 +444,7 @@ const UI = (() => {
     bindConfirm();
     applyTheme(localStorage.getItem(THEME_KEY) === "light" ? "light" : "dark");
     updateSoundButton();
+    renderDifficulty();
     document.getElementById("speed-select").addEventListener("change", (event) => {
       speed = event.target.value;
     });
@@ -227,7 +461,7 @@ const UI = (() => {
       section.classList.toggle("hidden", section.dataset.screen !== id);
     });
     GameState.set({ screen: id });
-    if (id === "menu") renderHistory();
+    if (id === "stats") renderStats();
     if (id === "draft") renderDraft();
     if (id === "tournament") renderRound();
     if (id === "result") renderResult();
@@ -245,6 +479,7 @@ const UI = (() => {
         case "go-gamemode": showScreen("gamemode"); break;
         case "set-mode": chooseMode(target.dataset.mode); break;
         case "set-gamemode": chooseGameMode(target.dataset.gamemode); break;
+        case "set-mutator": chooseMutator(target.dataset.mutator); break;
         case "spin": doSpin(); break;
         case "start-run": startRun(); break;
         case "play-game": playGame(); break;
@@ -255,8 +490,11 @@ const UI = (() => {
         case "toggle-theme": toggleTheme(); break;
         case "toggle-sound": toggleSound(); break;
         case "clear-history": clearHistory(); break;
+        case "go-stats": showScreen("stats"); break;
+        case "stats-tab": selectStatsTab(target.dataset.stab); break;
         case "view-run": openRunSummary(Number(target.dataset.index)); break;
         case "open-howto": openMenu("howto"); break;
+        case "set-difficulty": setDifficulty(target.dataset.diff); break;
       }
     });
   }
@@ -269,18 +507,32 @@ const UI = (() => {
   // ---- Game mode select ----
   // Both modes draft from the full all-time pool (every seeded team), which is what
   // gives the draft real variety. The mode only changes the run that follows.
-  async function chooseGameMode(gameMode) {
+  // Game mode is chosen first, then the optional mutator on its own step. Picking a mode
+  // no longer loads teams or enters the draft - the mutator screen does that next.
+  function chooseGameMode(gameMode) {
     GameState.set({ gameMode });
+    showScreen("mutators");
+  }
+
+  // Apply the chosen mutator (or none), wire its draft-time effect, then load teams and
+  // enter the draft. Positionless flips eligibility in the engine for the player's draft.
+  async function chooseMutator(mutator) {
+    const active = mutator === "none" ? null : mutator;
+    GameState.set({ mutator: active });
+    Engine.setPositionless(active === "positionless");
     try {
       const playable = eras.filter((era) => era.hasData);
       const lists = await Promise.all(playable.map((era) => DataLoader.loadTeams(era.id)));
-      currentTeams = lists.flat();
+      // Tag each team with its era id so Era Lock can filter the spin pool to one decade.
+      currentTeams = lists.flatMap((teams, i) => teams.map((team) => ({ ...team, era: playable[i].id })));
       leagueAvgRating = computeLeagueAvg();
     } catch (error) {
       showFatal("Could not load team data.");
       return;
     }
-    GameState.set({ five: {}, spunTeam: null, respins: MAX_RESPINS });
+    // Iron Five removes re-rolls: you draft from whatever you spin.
+    const respins = active === "ironfive" ? 0 : MAX_RESPINS;
+    GameState.set({ five: {}, spunTeam: null, respins, lockedEra: null });
     selectedPlayer = null;
     pendingDraftPlayer = null;
     usedTeams = new Set();
@@ -290,10 +542,59 @@ const UI = (() => {
 
   // ---- Draft ----
   function renderDraft() {
+    renderDraftMutator();
     resetSpinReel();
     renderDraftCourt();
     renderPicks();
     updateDraftProgress();
+  }
+
+  // Show the active mutator above the draft progress so the rule twist is never a surprise.
+  // Salary Cap's label counts the live remaining budget, so each is a function of state.
+  const MUTATOR_LABELS = {
+    positionless: () => "Positionless - any player fits any slot",
+    eralock: () => "Era Lock - same decade as your first pick",
+    salarycap: () => `Salary Cap - ${remainingCap(GameState.get().five)} of ${SALARY_CAP} budget left`,
+    underdogs: () => `Underdogs - no player rated above ${UNDERDOGS_MAX_OVERALL}`,
+    ironfive: () => "Iron Five - no re-spins, draft who you spin",
+  };
+  function renderDraftMutator() {
+    const el = document.getElementById("draft-mutator");
+    if (!el) return;
+    const label = MUTATOR_LABELS[GameState.get().mutator];
+    const text = label ? label() : "";
+    el.textContent = text;
+    el.classList.toggle("hidden", !text);
+  }
+
+  // Budget left under Salary Cap = cap minus the cost of everyone already drafted.
+  function remainingCap(five) {
+    const spent = Object.values(five).reduce((sum, p) => sum + playerCost(p), 0);
+    return SALARY_CAP - spent;
+  }
+
+  // Does the active mutator allow drafting this player into the current five? Positionless,
+  // Era Lock and Iron Five impose no per-player draftability limit here (handled elsewhere);
+  // Underdogs caps overall, Salary Cap caps cost against the remaining budget.
+  function mutatorAllowsDraft(player, five) {
+    const { mutator } = GameState.get();
+    if (mutator === "underdogs") return player.overall <= UNDERDOGS_MAX_OVERALL;
+    if (mutator === "salarycap") {
+      // Reserve 1 budget point for every slot that would still be empty after this pick,
+      // so you can never strand the run unable to afford a fifth starter (min cost is 1).
+      const filled = Object.values(five).filter(Boolean).length;
+      const reserve = Math.max(0, SLOTS.length - filled - 1);
+      return playerCost(player) <= remainingCap(five) - reserve;
+    }
+    return true;
+  }
+
+  // Why a player can't be drafted right now, for the locked pick-row tooltip.
+  function mutatorLockReason() {
+    const { mutator } = GameState.get();
+    if (mutator === "underdogs") return `Rated above the Underdogs cap of ${UNDERDOGS_MAX_OVERALL}`;
+    if (mutator === "salarycap") return "Not enough cap space left";
+    return "Can't draft this player";
   }
 
   // Keep the spin reel in sync with run state, so backing out of a run and
@@ -473,9 +774,12 @@ const UI = (() => {
     spinButton.disabled = mustPick || isSpinning;
     spinButton.textContent = mustPick ? "No re-spins left" : spunTeam ? "Re-spin" : "Spin";
 
-    // Re-spins remaining sit directly under the spin button.
+    // Re-spins remaining sit directly under the spin button. Iron Five has none by design,
+    // so it gets its own line rather than a bare "0".
     const respinsEl = document.getElementById("respins-left");
-    respinsEl.textContent = filled >= 5 ? "" : `Re-spins left: ${respins}`;
+    respinsEl.textContent = filled >= 5 ? ""
+      : GameState.get().mutator === "ironfive" ? "Iron Five - no re-spins"
+      : `Re-spins left: ${respins}`;
   }
 
   // Does the currently spun team still have a player you can legally draft?
@@ -484,7 +788,8 @@ const UI = (() => {
     if (!spunTeam) return false;
     const taken = Object.values(five).map((p) => p.name);
     return spunTeam.roster.some((p) =>
-      !taken.includes(p.name) && SLOTS.some((slot) => !five[slot] && Engine.isEligible(p, slot)));
+      !taken.includes(p.name) && mutatorAllowsDraft(p, five) &&
+      SLOTS.some((slot) => !five[slot] && Engine.isEligible(p, slot)));
   }
 
   function doSpin() {
@@ -505,7 +810,12 @@ const UI = (() => {
     const previousTeam = state.spunTeam;
     // Exclude teams you've already drafted from; fall back to the full list only if
     // every team has been used (can't happen in a 5-pick run, but keep it safe).
-    const available = currentTeams.filter((team) => !usedTeams.has(team));
+    let available = currentTeams.filter((team) => !usedTeams.has(team));
+    // Era Lock: once the first pick fixes an era, only spin teams from that same decade.
+    if (state.mutator === "eralock" && state.lockedEra) {
+      const eraTeams = available.filter((team) => team.era === state.lockedEra);
+      if (eraTeams.length) available = eraTeams;
+    }
     const pool = available.length ? available : currentTeams;
     const reel = document.getElementById("spin-reel");
     const spinButton = document.getElementById("spin-button");
@@ -516,7 +826,7 @@ const UI = (() => {
       const team = Engine.spinTeam(pool, previousTeam);
       GameState.set({ spunTeam: team });
       reel.innerHTML = `${team.name}<span class="reel-year">${team.season}</span>`;
-      reel.classList.remove("is-spinning");
+      reel.classList.remove("is-spinning", "reel-roll");
       reel.classList.add("settled");
       tintSpinStage(team);
       Sound.settle();
@@ -529,14 +839,22 @@ const UI = (() => {
 
     reel.classList.remove("settled");
     reel.classList.add("is-spinning");
-    const TOTAL_TICKS = 16;
-    let ticks = 0;
-    const interval = setInterval(() => {
+    // Slot-machine feel: the reel flicks through names fast at first, then DECELERATES into
+    // the landing. The per-tick delay grows with the square of progress (an ease-out curve),
+    // so early ticks are a blur and the last few drop into place. Self-scheduling setTimeout
+    // (not a fixed setInterval) is what lets each tick have its own, longer, delay.
+    const TICKS = 22;
+    let i = 0;
+    const step = () => {
       const random = pool[Math.floor(Math.random() * pool.length)];
       reel.textContent = random.name;
-      Sound.tick(ticks / TOTAL_TICKS);
-      if (++ticks > TOTAL_TICKS) { clearInterval(interval); reveal(); }
-    }, 80);
+      reel.classList.remove("reel-roll"); void reel.offsetWidth; reel.classList.add("reel-roll"); // restart the slide
+      Sound.tick(i / TICKS);
+      if (i++ >= TICKS) { reveal(); return; }
+      const progress = i / TICKS;
+      setTimeout(step, 40 + 230 * progress * progress); // ease-out: 40ms -> ~270ms
+    };
+    step();
   }
 
   function renderPicks() {
@@ -636,7 +954,8 @@ const UI = (() => {
     roster.forEach((player) => {
       const alreadyOwned = takenNames.includes(player.name);
       const hasOpenSlot = SLOTS.some((slot) => !five[slot] && Engine.isEligible(player, slot));
-      const draftable = !alreadyOwned && hasOpenSlot;
+      const allowed = mutatorAllowsDraft(player, five);
+      const draftable = !alreadyOwned && hasOpenSlot && allowed;
 
       const row = document.createElement("button");
       row.type = "button";
@@ -647,7 +966,9 @@ const UI = (() => {
         row.addEventListener("click", () => selectPick(player));
       } else {
         row.disabled = true;
-        row.title = alreadyOwned ? "Already on your roster" : "No open spot for this position";
+        row.title = alreadyOwned ? "Already on your roster"
+          : !hasOpenSlot ? "No open spot for this position"
+          : mutatorLockReason();
       }
       wrap.appendChild(row);
     });
@@ -655,9 +976,16 @@ const UI = (() => {
 
   function pickRowHTML(player, mode) {
     const ovr = mode === "ratings" ? `<span class="pick-ovr">${player.overall}</span>` : "";
+    // Under Salary Cap, always surface each player's cost - it's a core part of the mode, so
+    // it shows even in blind mode (the dev opted to reveal cost there over hiding it).
+    const cost = GameState.get().mutator === "salarycap"
+      ? `<span class="pick-cost">${playerCost(player)}</span>` : "";
+    // Wrap the right-side tags so they right-align together no matter which are present
+    // (overall in ratings, cost under Salary Cap, both, or neither in plain blind mode).
+    const right = (ovr || cost) ? `<span class="pick-right">${ovr}${cost}</span>` : "";
     const head = `<div class="pick-head">
       <span class="pick-name">${player.name}</span>
-      <span class="pick-pos">${player.positions.join("/")}</span>${ovr}</div>`;
+      <span class="pick-pos">${player.positions.join("/")}</span>${right}</div>`;
     const stats = mode === "ratings" ? `<div class="pick-stats">${statLine(player.stats)}</div>` : "";
     return head + stats;
   }
@@ -685,15 +1013,17 @@ const UI = (() => {
   }
 
   function placeDraft(player, slot) {
-    const { five: current, spunTeam } = GameState.get();
+    const { five: current, spunTeam, mutator, lockedEra } = GameState.get();
     const five = { ...current };
-    if (five[slot] || !Engine.isEligible(player, slot)) return;
+    if (five[slot] || !Engine.isEligible(player, slot) || !mutatorAllowsDraft(player, current)) return;
     five[slot] = player;
+    // Era Lock: the very first pick fixes the decade every later spin is filtered to.
+    const nextLockedEra = (mutator === "eralock" && !lockedEra && spunTeam) ? spunTeam.era : lockedEra;
     if (spunTeam) {
       usedTeams.add(spunTeam);                           // this team can't be spun again
       draftAccents.set(player, teamColor(spunTeam.name)); // chip keeps the team's color
     }
-    GameState.set({ five, spunTeam: null });
+    GameState.set({ five, spunTeam: null, lockedEra: nextLockedEra });
     pendingDraftPlayer = null;
     selectedPlayer = null;
     renderDraft();
@@ -868,6 +1198,7 @@ const UI = (() => {
     document.getElementById("tournament-status").textContent =
       `${roundLabel(t, gameMode)} - ${format} - overall record ${t.totalWins}-${t.totalLosses}`;
     renderMatchup(t.opponent);
+    renderAnalytics(t);
     renderSeriesStatus(t);
     document.getElementById("game-log").innerHTML = "";
     document.getElementById("box-tabs").innerHTML = ""; // the game picker only appears at series end
@@ -906,13 +1237,13 @@ const UI = (() => {
     const youHome = !isGauntlet && youHoldHomeCourt(t);
     const oppHome = !isGauntlet && !youHome;
     matchup.innerHTML = `
-      <div class="matchup-side" style="border-top-color:${GOLD}">
+      <div class="matchup-side" style="--side:${GOLD}">
         <h3 class="font-display font-bold text-lg">Your Roster ${youHome ? homeBadge : ""}</h3>
         ${teamMeta(t.yourRecord, t.yourRating)}
         <div class="mini-five" id="your-five"></div>
       </div>
       <div class="vs">vs</div>
-      <div class="matchup-side" style="border-top-color:${oppColor}">
+      <div class="matchup-side" style="--side:${oppColor}">
         <h3 class="font-display font-bold text-lg" style="color:${oppColor}">${opponent.name} <span class="opp-year">${opponent.season}</span> ${oppHome ? homeBadge : ""}</h3>
         ${teamMeta(oppInfo && oppInfo.record, oppInfo && oppInfo.rating)}
         <div class="mini-five" id="opp-five"></div>
@@ -925,10 +1256,113 @@ const UI = (() => {
     });
   }
 
+  // Descriptive analytics for your built five: its own aggregates plus this round's matchup
+  // edge. Purely descriptive - no targets or "what you need" benchmarks. Ratings mode only;
+  // in Blind Build it stays hidden, since it would leak the ratings the mode hides.
+  function teamAnalytics(five) {
+    const players = SLOTS.map((s) => five[s]).filter(Boolean);
+    const n = players.length || 1;
+    const sum = (sel) => players.reduce((acc, p) => acc + sel(p), 0);
+    return {
+      overall: sum((p) => p.overall) / n,
+      ppg: sum((p) => p.stats.ppg),                       // team totals: the five sum to a team line
+      rpg: sum((p) => p.stats.rpg),
+      apg: sum((p) => p.stats.apg),
+      stocks: sum((p) => p.stats.spg + p.stats.bpg),       // steals + blocks, the "stocks" stat
+      ts: sum((p) => Engine.shootingScore(p.stats)) / n,   // avg shooting efficiency proxy (~0.45-0.62)
+    };
+  }
+
+  // Map a rating edge (your rating minus the opponent's effective rating for this round) to a
+  // plain-language tag and an accent that runs green (favored) -> gold (even) -> red (underdog).
+  function edgeDescriptor(edge) {
+    if (edge >= 8) return { label: "Heavy favorite", accent: "#34d399" };
+    if (edge >= 3) return { label: "Favored", accent: "#a3e635" };
+    if (edge > -3) return { label: "Toss-up", accent: "#fbbf24" };
+    if (edge > -8) return { label: "Underdog", accent: "#fb923c" };
+    return { label: "Long shot", accent: "#fb7185" };
+  }
+
+  function renderAnalytics(t) {
+    const el = document.getElementById("analytics");
+    if (!el) return;
+    const { five, mode, gameMode } = GameState.get();
+    if (mode !== "ratings") { el.innerHTML = ""; el.classList.add("hidden"); return; }
+
+    const a = teamAnalytics(five);
+    // Opponent's effective rating = its lineup rating plus this round's difficulty bump (the
+    // gauntlet's per-round buff or the classic linear ramp), matching what the sim actually uses.
+    const oppRating = (t.oppMeta && t.oppMeta[t.round - 1] && t.oppMeta[t.round - 1].rating) || 0;
+    const roundBonus = gameMode === "gauntlet"
+      ? (t.gauntletBonus[t.round - 1] ?? 0)
+      : classicRoundBonus(t.round);
+    const edge = t.yourRating - (oppRating + roundBonus);
+    const { label, accent } = edgeDescriptor(edge);
+    const signed = `${edge >= 0 ? "+" : ""}${edge.toFixed(1)}`;
+
+    // A bar shows where each aggregate sits across a plausible all-time range - a quick read on
+    // the team's shape, not a target. Each metric maps its value into [lo, hi] then clamps 0..1.
+    const fill = (v, lo, hi) => Math.max(0, Math.min(1, (v - lo) / (hi - lo)));
+    const metric = (val, key, f) =>
+      `<div class="an-metric"><div class="an-val">${val}</div><div class="an-key">${key}</div>
+       <div class="an-bar"><span style="width:${Math.round(f * 100)}%"></span></div></div>`;
+    el.innerHTML = `
+      <div class="an-head">
+        <span class="an-title">Team Profile</span>
+        <span class="an-edge" style="--accent:${accent}" title="Your rating vs this round's opponent, including the round's difficulty bump">${signed} edge &middot; ${label}</span>
+      </div>
+      <div class="an-metrics">
+        ${metric(Math.round(t.yourRating), "RTG", fill(t.yourRating, 70, 108))}
+        ${metric(Math.round(a.overall), "AVG OVR", fill(a.overall, 68, 99))}
+        ${metric(a.ppg.toFixed(1), "PPG", fill(a.ppg, 95, 135))}
+        ${metric(a.rpg.toFixed(1), "RPG", fill(a.rpg, 28, 55))}
+        ${metric(a.apg.toFixed(1), "APG", fill(a.apg, 18, 38))}
+        ${metric(a.stocks.toFixed(1), "STOCKS", fill(a.stocks, 5, 15))}
+        ${metric(Math.round(a.ts * 100), "TS%", fill(a.ts, 0.48, 0.62))}
+      </div>`;
+    el.classList.remove("hidden");
+  }
+
   function renderSeriesStatus(t) {
     // A gauntlet round is one game, so a "0 - 0" series score is just noise.
     const isGauntlet = GameState.get().gameMode === "gauntlet";
     document.getElementById("series-status").textContent = isGauntlet ? "" : `${t.yourWins} - ${t.oppWins}`;
+
+    // Momentum banner: spell out the series situation so the stakes are obvious. It is easy
+    // to fall down 1-3 without noticing the score line; this calls it out in plain words and
+    // color. Classic only - a single gauntlet game has no series arc, so the banner is hidden.
+    const banner = document.getElementById("series-momentum");
+    if (!banner) return;
+    if (isGauntlet) { banner.hidden = true; banner.textContent = ""; return; }
+    banner.hidden = false;
+    const m = seriesMomentum(t);
+    banner.className = `series-momentum mood-${m.mood}`;
+    banner.textContent = m.text;
+  }
+
+  // Describe a best-of-seven's current state as a short phrase plus a mood that drives its
+  // color (good = gold, bad = orange, critical = red alert, neutral = muted). Keyed off the
+  // win counts so a clinching game shows the final outcome even before the series formally
+  // ends. winsNeeded is 4 in classic, so "facing elimination" is one loss from out.
+  function seriesMomentum(t) {
+    const need = t.winsNeeded;
+    const y = t.yourWins, o = t.oppWins;
+    const score = `${y}-${o}`;
+    if (y >= need) return { text: `Series won ${score}`, mood: "good" };
+    if (o >= need) return { text: `Series lost ${score}`, mood: "neutral" };
+
+    const youFaceElim = o === need - 1; // one more opponent win ends your run
+    const oppFaceElim = y === need - 1; // one more of your wins takes the round
+    if (youFaceElim && oppFaceElim) return { text: `Game ${need * 2 - 1} - winner takes all`, mood: "critical" };
+    if (youFaceElim) return { text: `Down ${score}, facing elimination`, mood: "critical" };
+    if (oppFaceElim) return { text: `Up ${score}, closeout game`, mood: "good" };
+
+    if (y === o) return y === 0
+      ? { text: `Best of ${need * 2 - 1} - first to ${need}`, mood: "neutral" }
+      : { text: `Series tied ${score}`, mood: "neutral" };
+    return y > o
+      ? { text: `Series lead ${score}`, mood: "good" }
+      : { text: `Series deficit ${score}`, mood: "bad" };
   }
 
   function updatePlayLabel() {
@@ -968,13 +1402,16 @@ const UI = (() => {
     // narrative ordering into a rising difficulty curve; classic uses the linear ramp.
     const oppBonus = state.gameMode === "gauntlet"
       ? (t.gauntletBonus[t.round - 1] ?? 0)
-      : DIFFICULTY_BASE + (t.round - 1) * DIFFICULTY_STEP;
+      : classicRoundBonus(t.round);
     const game = Engine.simulateGame(yourRating, oppRating, youAreHome, oppBonus);
 
     // Per-player box scores that add up to each side's final points, ordered PG -> C
-    // so the rows line up with the matchup card and never reshuffle on count-up.
-    game.yourBox = orderBoxBySlot(Engine.simulateBoxScore(Object.values(state.five), game.yourPoints), state.five);
+    // so the rows line up with the matchup card and never reshuffle on count-up. The
+    // hot hand carried from the previous game (if any) tilts your box toward that player.
+    game.yourBox = orderBoxBySlot(Engine.simulateBoxScore(Object.values(state.five), game.yourPoints, t.hotHand || null), state.five);
     game.oppBox = orderBoxBySlot(Engine.simulateBoxScore(Object.values(oppLineup), game.oppPoints), oppLineup);
+    // Decide who carries a hot hand into the NEXT game (this game's eruption, if any).
+    t.hotHand = nextHotHand(game.yourBox);
     game.oppName = t.opponent.name;
     game.youAreHome = youAreHome; // kept so the box score can tag the venue
     currentGameNo = t.games.length + 1;
@@ -1043,6 +1480,16 @@ const UI = (() => {
     const runOver = !youWon || t.round >= t.rounds;
     t.status = youWon ? (runOver ? "won" : "playing") : "eliminated";
 
+    // Log the finished series so end-of-run achievements can read it (sweep, Game 7,
+    // comeback). seq is the ordered win/loss of each game in the series.
+    (t.seriesLog || (t.seriesLog = [])).push({
+      round: t.round,
+      result: youWon ? "won" : "lost",
+      yourWins: t.yourWins,
+      oppWins: t.oppWins,
+      seq: t.games.map((g) => g.youWon),
+    });
+
     document.getElementById("play-game").classList.add("hidden");
     document.getElementById("sim-round").classList.add("hidden");
     showSpeedControl(false);
@@ -1089,6 +1536,30 @@ const UI = (() => {
     showScreen("tournament");
   }
 
+  // A short confetti burst over the result screen on a championship. Pure DOM: spawn N
+  // colored pieces with randomized position/timing/drift, let CSS animate the fall, then
+  // remove the whole layer. No canvas, no library. Skipped under reduced-motion.
+  const CONFETTI_COLORS = ["#fbbf24", "#fb7185", "#34d399", "#38bdf8", "#a78bfa", "#f97316"];
+  function launchConfetti(amount) {
+    if (prefersReducedMotion()) return;
+    const layer = document.createElement("div");
+    layer.className = "confetti-layer";
+    for (let i = 0; i < amount; i++) {
+      const piece = document.createElement("span");
+      piece.className = "confetti-piece";
+      const drift = (Math.random() * 2 - 1) * 90; // horizontal sway as it falls, px
+      piece.style.cssText =
+        `left:${Math.random() * 100}%;` +
+        `background:${CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)]};` +
+        `animation-delay:${(Math.random() * 0.7).toFixed(2)}s;` +
+        `animation-duration:${(2.4 + Math.random() * 1.8).toFixed(2)}s;` +
+        `--drift:${drift.toFixed(0)}px;--rot:${Math.floor(Math.random() * 720)}deg`;
+      layer.appendChild(piece);
+    }
+    document.body.appendChild(layer);
+    setTimeout(() => layer.remove(), 5500); // outlast the longest piece (delay + duration)
+  }
+
   // ---- Result ----
   function renderResult() {
     const { tournament: t, five, mode, gameMode } = GameState.get();
@@ -1119,6 +1590,9 @@ const UI = (() => {
     renderResultActions(t, isGauntlet, perfect);
     recordAttempt(t, gameMode, five, perfect);
     renderResultTeam(t, five);
+    renderResultSummary(t);
+    // Celebrate a title - a fuller burst for a flawless run.
+    if (t.status === "won") launchConfetti(perfect ? 170 : 100);
   }
 
   // Box-score table of your five at run's end: position, overall, and each starter's
@@ -1149,6 +1623,86 @@ const UI = (() => {
       <thead><tr><th class="ss-team" style="color:${GOLD}">Roster Averages</th>
         <th>OVR</th><th>PPG</th><th>RPG</th><th>APG</th></tr></thead>
       <tbody>${rows}</tbody></table></div>`;
+  }
+
+  // Post-run recap below the roster table: a few headline numbers, a series-by-series
+  // breakdown, and any badges unlocked this run. Reads only the box scores already kept on
+  // t.allGames - the run is over, so revealing everything is a recap, not a hint.
+  // (Named distinctly from the Records-overlay renderRunSummary to avoid shadowing it.)
+  function renderResultSummary(t) {
+    const wrap = document.getElementById("result-summary");
+    if (!wrap) return;
+    const games = t.allGames || [];
+    if (!games.length) { wrap.innerHTML = ""; return; }
+
+    const s = runSummaryStats(t);
+    const tile = (val, key) => `<div class="stat-tile"><span class="stat-val">${val}</span><span class="stat-key">${key}</span></div>`;
+    const signed = (n) => (n > 0 ? `+${n}` : `${n}`);
+    const tiles = [
+      tile(signed(s.pointDiff), "Point Differential"),
+      s.biggestWin ? tile(`+${s.biggestWin.margin}`, `Biggest Win &middot; ${s.biggestWin.opp}`) : "",
+      s.closestWin ? tile(`+${s.closestWin.margin}`, `Closest Win &middot; ${s.closestWin.opp}`) : "",
+      s.topScorer ? tile(s.topScorer.ppg.toFixed(1), `Top Scorer &middot; ${s.topScorer.name}`) : "",
+    ].join("");
+
+    const series = s.series.map((sr) => `<li class="series-row ${sr.won ? "won" : "lost"}">
+      <span class="sr-rd">${sr.label}</span>
+      <span class="sr-opp">${sr.opp}</span>
+      <span class="sr-score">${sr.score}</span>
+      <span class="sr-margin">${signed(sr.margin)}</span></li>`).join("");
+
+    const badges = (t._earnedBadges || []);
+    const badgeHTML = badges.length
+      ? `<div class="run-badges"><span class="run-badges-label">Unlocked this run</span>${
+          badges.map((b) => `<span class="run-badge">${b.name}</span>`).join("")}</div>`
+      : "";
+
+    wrap.innerHTML = `<h3 class="summary-head">Run Summary</h3>
+      <div class="stat-tiles">${tiles}</div>
+      <ul class="series-list">${series}</ul>${badgeHTML}`;
+  }
+
+  // Crunch t.allGames into the recap numbers. Series are grouped by opponent name (each
+  // round faces a distinct team, so the name is a stable per-series key) in bracket order.
+  function runSummaryStats(t) {
+    const games = t.allGames || [];
+    const seasonByName = {};
+    (t.bracket || []).forEach((tm) => { seasonByName[tm.name] = tm.season; });
+    const label = (name) => seasonByName[name] ? `'${String(seasonByName[name]).slice(-2)} ${name}` : name;
+
+    let pointDiff = 0;
+    let biggestWin = null, closestWin = null;
+    const scorers = {};
+    const order = [];
+    const byOpp = {};
+
+    games.forEach((g) => {
+      const margin = g.yourPoints - g.oppPoints;
+      pointDiff += margin;
+      if (g.youWon) {
+        if (!biggestWin || margin > biggestWin.margin) biggestWin = { margin, opp: label(g.oppName) };
+        if (!closestWin || margin < closestWin.margin) closestWin = { margin, opp: label(g.oppName) };
+      }
+      (g.yourBox || []).forEach((l) => { scorers[l.name] = (scorers[l.name] || 0) + l.pts; });
+      if (!(g.oppName in byOpp)) { byOpp[g.oppName] = { wins: 0, losses: 0, margin: 0 }; order.push(g.oppName); }
+      const grp = byOpp[g.oppName];
+      if (g.youWon) grp.wins += 1; else grp.losses += 1;
+      grp.margin += margin;
+    });
+
+    let topScorer = null;
+    Object.entries(scorers).forEach(([name, pts]) => {
+      if (!topScorer || pts > topScorer.pts) topScorer = { name, pts };
+    });
+    if (topScorer) topScorer.ppg = topScorer.pts / games.length;
+
+    const series = order.map((name, i) => {
+      const grp = byOpp[name];
+      return { label: `Round ${i + 1}`, opp: label(name), score: `${grp.wins}-${grp.losses}`,
+        margin: grp.margin, won: grp.wins > grp.losses };
+    });
+
+    return { pointDiff, biggestWin, closestWin, topScorer, series };
   }
 
   // After a classic championship, offer to take the very same five into the gauntlet.
@@ -1190,6 +1744,7 @@ const UI = (() => {
     saveAttempt({
       ts: Date.now(),
       mode: gameMode,
+      mutator: GameState.get().mutator, // null when no mutator was used
       outcome: t.status === "won" ? (perfect ? "perfect" : "won") : "eliminated",
       label,
       record: `${t.totalWins}-${t.totalLosses}`,
@@ -1199,6 +1754,46 @@ const UI = (() => {
         slot, name: five[slot].name, pos: five[slot].positions.join("/"), overall: five[slot].overall,
       }).filter(Boolean),
       bracket,
+    });
+    // Fold this run's box scores into the lifetime career store (achievements/stats page
+    // read from it). Guarded by the same _recorded flag above, so it runs once per run.
+    Career.recordRun(t, five, perfect);
+
+    // Evaluate achievements AFTER saving to history above, so cumulative badges already
+    // count this run. The live run carries per-series detail history can't reconstruct.
+    const earned = Achievements.evaluate(buildAchievementContext({
+      won: t.status === "won",
+      perfect,
+      gauntlet: gameMode === "gauntlet",
+      blind: GameState.get().mode === "blind",
+      series: t.seriesLog || [],
+      games: t.allGames || [],
+    }));
+    // Keep this run's freshly unlocked badges on the tournament so the run summary can
+    // list them, surviving any re-render of the result screen (recordAttempt only runs once).
+    t._earnedBadges = earned;
+    if (earned.length) toastAchievements(earned);
+  }
+
+  // Slide-in toasts announcing newly unlocked achievements. They stack and auto-dismiss;
+  // purely additive, so a blocked/absent toast never affects the run.
+  function toastAchievements(list) {
+    const stack = document.getElementById("toast-stack");
+    if (!stack) return;
+    list.forEach((badge, i) => {
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.innerHTML = `<span class="toast-label">Achievement unlocked</span>
+        <span class="toast-name">${badge.name}</span>
+        <span class="toast-desc">${badge.desc}</span>`;
+      stack.appendChild(toast);
+      // Stagger entrances so multiple unlocks read one at a time, then auto-remove.
+      const show = setTimeout(() => toast.classList.add("show"), 60 + i * 180);
+      const hide = setTimeout(() => {
+        toast.classList.remove("show");
+        setTimeout(() => toast.remove(), 300);
+      }, 4200 + i * 180);
+      toast.addEventListener("click", () => { clearTimeout(show); clearTimeout(hide); toast.remove(); });
     });
   }
 
@@ -1339,10 +1934,11 @@ const UI = (() => {
         if (v > bestV) { bestV = v; topIdx = i; }
       });
       const rows = lines.map((l, i) =>
-        `<tr class="${i === topIdx ? "ss-top" : ""}"><td class="ss-name"><span class="ss-av" style="background:${color}">${initials(l.name)}</span>${l.name}</td>
-         <td class="ss-pts">0</td><td class="ss-reb">0</td><td class="ss-ast">0</td></tr>`).join("");
+        `<tr class="${i === topIdx ? "ss-top" : ""}${l.hot ? " ss-hothand" : ""}"><td class="ss-name"><span class="ss-av" style="background:${color}">${initials(l.name)}</span><span class="ss-pname">${l.name}</span>${l.hot ? '<span class="ss-hot" title="Hot hand - riding a hot streak" aria-label="Hot hand">🔥</span>' : ""}</td>
+         <td class="ss-pts">0</td><td class="ss-reb">0</td><td class="ss-ast">0</td>
+         <td class="ss-fg">0-0</td><td class="ss-tp">0-0</td><td class="ss-ft">0-0</td><td class="ss-ts"></td></tr>`).join("");
       return `<table class="ss-table">
-        <thead><tr><th class="ss-team" style="color:${color}">${label}</th><th>PTS</th><th>REB</th><th>AST</th></tr></thead>
+        <thead><tr><th class="ss-team" style="color:${color}">${label}</th><th>PTS</th><th>REB</th><th>AST</th><th>FG</th><th>3P</th><th>FT</th><th>TS%</th></tr></thead>
         <tbody>${rows}</tbody></table>`;
     };
     const titleHTML = title ? `<div class="ss-title">${title}</div>` : "";
@@ -1352,8 +1948,21 @@ const UI = (() => {
     const lines = [...yourLines, ...oppLines];
     const cells = Array.from(sheet.querySelectorAll("tbody tr")).map((tr) => ({
       pts: tr.querySelector(".ss-pts"), reb: tr.querySelector(".ss-reb"), ast: tr.querySelector(".ss-ast"),
+      fg: tr.querySelector(".ss-fg"), tp: tr.querySelector(".ss-tp"), ft: tr.querySelector(".ss-ft"), ts: tr.querySelector(".ss-ts"),
     }));
     return { lines, cells };
+  }
+
+  // Who, if anyone, carries a hot hand into the next game: the game's leading scorer,
+  // but only if they truly erupted (HOT_PTS_MIN points AND HOT_FORM_MIN x their average).
+  // Returns a player name or null. Reads the `form` the engine left on each line.
+  function nextHotHand(box) {
+    let best = null;
+    for (const l of box) {
+      const erupted = (l.pts || 0) >= HOT_PTS_MIN && (l.form || 0) >= HOT_FORM_MIN;
+      if (erupted && (!best || l.pts > best.pts)) best = l;
+    }
+    return best ? best.name : null;
   }
 
   // Reorder a (pts-sorted) box score into fixed PG -> C slot order, using the
@@ -1368,18 +1977,37 @@ const UI = (() => {
   // already-mounted cells. At eased = 1 this lands on the exact final numbers.
   function paintStatsheet(anim, eased) {
     if (!anim) return;
+    const makes = (made, att) => `${Math.round((made || 0) * eased)}-${Math.round((att || 0) * eased)}`;
     anim.lines.forEach((l, i) => {
       const c = anim.cells[i];
       c.pts.textContent = Math.round((l.pts || 0) * eased);
       c.reb.textContent = Math.round((l.reb || 0) * eased);
       c.ast.textContent = Math.round((l.ast || 0) * eased);
+      // Shooting splits count up alongside the score; TS% is revealed only on the final frame
+      // (it is a summary, not a counter). Older box scores without splits show blanks.
+      if (!c.fg) return;
+      const hasLine = l.fga !== undefined;
+      c.fg.textContent = hasLine ? makes(l.fgm, l.fga) : "";
+      c.tp.textContent = hasLine ? makes(l.tpm, l.tpa) : "";
+      c.ft.textContent = hasLine ? makes(l.ftm, l.fta) : "";
+      c.ts.textContent = hasLine && eased >= 0.999 ? `${Math.round((l.ts || 0) * 100)}%` : "";
     });
   }
 
   // ---- Leaving a run ----
+  // Only guard the home button when there's real progress to lose: a draft you've started
+  // picking, or a tournament in progress. The selection screens, Records, and the finished
+  // result screen have nothing to discard, so the logo just takes you home directly.
   function requestHome() {
-    if (GameState.get().screen === "menu") return;
-    document.getElementById("confirm-overlay").classList.remove("hidden");
+    const screen = GameState.get().screen;
+    if (screen === "menu") return;
+    const draftInProgress = screen === "draft" && GameState.draftCount() > 0;
+    const inActiveRun = draftInProgress || screen === "tournament";
+    if (inActiveRun) {
+      document.getElementById("confirm-overlay").classList.remove("hidden");
+      return;
+    }
+    leaveRun("menu");
   }
 
   function bindConfirm() {

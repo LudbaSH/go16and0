@@ -60,14 +60,34 @@
       <p class="text-muted uppercase tracking-[0.2em] text-sm mt-3">Go perfect. Or go home.</p>
       <p class="text-xl sm:text-2xl font-display font-semibold mt-8 max-w-xl">Can you build a team that goes 16-0?</p>
       <p class="text-muted mt-3 max-w-md">Spin a real playoff team, set your lineup, and run a perfect postseason. Sixteen wins. Zero losses.</p>
+      <div class="flex flex-col sm:flex-row gap-3 mt-8">
+        <button class="btn btn-ghost" data-action="open-howto" type="button">How to Play</button>
+        <button class="btn btn-gold" data-action="go-mode" type="button">Start</button>
+        <button class="btn btn-ghost" data-action="go-stats" type="button">Records</button>
+      </div>
+      <!-- Difficulty selector: sets the classic 16-0 round-by-round opponent ramp. -->
+      <div class="difficulty-select mt-6">
+        <span class="diff-label">Difficulty</span>
+        <div id="difficulty-options" class="diff-options" role="group" aria-label="Difficulty"></div>
+        <p class="diff-note text-muted">Sets how hard the 16-0 field climbs each round. Gauntlet has its own fixed curve.</p>
+      </div>
       <div class="build-note">
         <strong>Your roster is everything.</strong> <br> Build a stacked, well-rounded squad. Scoring, defense, rebounding, playmaking, and efficiency all play a part. A lopsided or weak team posts a poor record, loses home court, and gets exposed in the later rounds. Who you draft decides how far you go.
       </div>
-      <div class="flex flex-col sm:flex-row gap-3 mt-8">
-        <button class="btn btn-gold" data-action="go-mode" type="button">Start</button>
-        <button class="btn btn-ghost" data-action="open-howto" type="button">How to Play</button>
+    </section>
+
+    <!-- Screen: records (career stats, players, achievements, full run history) -->
+    <section class="screen hidden" data-screen="stats" aria-labelledby="stats-title">
+      <button class="btn-back" data-action="go-menu" type="button">&larr; Back</button>
+      <h2 id="stats-title" class="font-display text-4xl font-bold mt-2">Records</h2>
+      <div class="stats-tabs" role="tablist">
+        <button class="stats-tab" data-action="stats-tab" data-stab="overview" role="tab" type="button">Overview</button>
+        <button class="stats-tab" data-action="stats-tab" data-stab="players" role="tab" type="button">Players</button>
+        <button class="stats-tab" data-action="stats-tab" data-stab="achievements" role="tab" type="button">Achievements</button>
+        <button class="stats-tab" data-action="stats-tab" data-stab="runs" role="tab" type="button">Runs</button>
       </div>
-      <div id="history" class="history hidden"></div>
+      <div id="stats-body" class="stats-body" aria-live="polite"></div>
+      <button class="stats-clear" data-action="clear-history" type="button">Clear all data</button>
     </section>
 
     <!-- Screen: mode select -->
@@ -104,9 +124,43 @@
       </div>
     </section>
 
+    <!-- Screen: mutators (optional one-at-a-time draft rule twist) -->
+    <section class="screen hidden" data-screen="mutators" aria-labelledby="mutators-title">
+      <button class="btn-back" data-action="go-gamemode" type="button">&larr; Back</button>
+      <h2 id="mutators-title" class="font-display text-4xl font-bold mt-2">Pick a mutator</h2>
+      <p class="text-muted mt-2">An optional twist on how you draft. One at a time.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 w-full">
+        <button class="mode-card" data-action="set-mutator" data-mutator="none" type="button">
+          <span class="font-display text-2xl font-bold">Default</span>
+          <span class="text-muted text-sm mt-2">Standard rules. Draft by position and build the best five you can.</span>
+        </button>
+        <button class="mode-card" data-action="set-mutator" data-mutator="positionless" type="button">
+          <span class="font-display text-2xl font-bold">Positionless</span>
+          <span class="text-muted text-sm mt-2">Slots ignore position. Any player fits anywhere, so build a five of anyone.</span>
+        </button>
+        <button class="mode-card" data-action="set-mutator" data-mutator="eralock" type="button">
+          <span class="font-display text-2xl font-bold">Era Lock</span>
+          <span class="text-muted text-sm mt-2">Your first pick locks a decade. Every other player must come from that same era.</span>
+        </button>
+        <button class="mode-card" data-action="set-mutator" data-mutator="salarycap" type="button">
+          <span class="font-display text-2xl font-bold">Salary Cap</span>
+          <span class="text-muted text-sm mt-2">Every player costs cap space - stars are pricey. Stay under budget across all five.</span>
+        </button>
+        <button class="mode-card" data-action="set-mutator" data-mutator="underdogs" type="button">
+          <span class="font-display text-2xl font-bold">Underdogs</span>
+          <span class="text-muted text-sm mt-2">No superstars. Only players rated 85 or lower are draftable. Win the hard way.</span>
+        </button>
+        <button class="mode-card" data-action="set-mutator" data-mutator="ironfive" type="button">
+          <span class="font-display text-2xl font-bold">Iron Five</span>
+          <span class="text-muted text-sm mt-2">No re-spins. Draft a player from whatever team you land on, every time.</span>
+        </button>
+      </div>
+    </section>
+
     <!-- Screen: draft (spin a team, pick one player, repeat until five is full) -->
     <section class="screen hidden items-stretch" data-screen="draft" aria-labelledby="draft-title">
       <h2 id="draft-title" class="font-display text-3xl font-bold mt-0 text-center">Draft your roster</h2>
+      <p id="draft-mutator" class="draft-mutator text-center hidden"></p>
       <p id="draft-progress" class="text-muted text-center"></p>
 
       <div class="draft-layout">
@@ -139,7 +193,9 @@
       <h2 id="tournament-title" class="font-display text-3xl font-bold mt-2 text-center">Playoffs</h2>
       <p id="tournament-status" class="text-muted text-center"></p>
       <div id="matchup" class="matchup"></div>
+      <div id="analytics" class="analytics hidden"></div>
       <div id="series-status" class="text-center font-display text-2xl font-bold mt-4"></div>
+      <div id="series-momentum" class="series-momentum mood-neutral" aria-live="polite"></div>
       <div id="scoreboard" class="scoreboard" aria-live="polite"></div>
       <div class="flex flex-col items-center gap-3 mt-6">
         <div class="flex gap-3 justify-center">
@@ -167,6 +223,7 @@
       <p id="result-sub" class="text-muted mt-2 max-w-md"></p>
       <div id="result-mvp" class="result-mvp hidden"></div>
       <div id="result-five" class="bench mt-6"></div>
+      <div id="result-summary" class="run-summary"></div>
       <div class="flex flex-col sm:flex-row gap-3 mt-8 justify-center">
         <button class="btn btn-gold hidden" id="result-retry" data-action="retry-gauntlet" type="button">Try the Gauntlet &rarr;</button>
         <button class="btn btn-ghost" data-action="play-again" type="button">Play Again</button>
@@ -187,6 +244,9 @@
       </nav>
     </div>
   </footer>
+
+  <!-- Achievement toasts: slide in when a badge is earned at run's end. -->
+  <div id="toast-stack" class="toast-stack" aria-live="polite" aria-atomic="false"></div>
 
   <!-- Menu overlay: tabbed panel for How to Play / Settings / Policies -->
   <div class="overlay hidden" id="menu-overlay" role="dialog" aria-modal="true" aria-label="Menu">
@@ -253,10 +313,12 @@
     </div>
   </div>
 
-  <!-- Load order: state, data, engine, drag, UI, then bootstrap. -->
+  <!-- Load order: state, data, engine, career, drag, UI, then bootstrap. -->
   <script src="js/state.js"></script>
   <script src="js/data-loader.js"></script>
   <script src="js/engine.js"></script>
+  <script src="js/career.js"></script>
+  <script src="js/achievements.js"></script>
   <script src="js/sound.js"></script>
   <script src="js/dragdrop.js"></script>
   <script src="js/ui.js"></script>

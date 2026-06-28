@@ -19,9 +19,15 @@ const Engine = (() => {
     return sum / top.length;
   }
 
+  // Positionless mutator: when on, every player is eligible for every slot. Only the
+  // player's own draft eligibility (isEligible) reads this - opponent auto-fill below
+  // stays strictly positional, so the mutator never changes opponent difficulty.
+  let positionless = false;
+  function setPositionless(on) { positionless = !!on; }
+
   // Can this player occupy this court slot?
   function isEligible(player, slot) {
-    return player.positions.includes(slot);
+    return positionless || player.positions.includes(slot);
   }
 
   // Build the strongest legal starting five (slot -> player). Picks the eligible
@@ -91,10 +97,54 @@ const Engine = (() => {
   const MARGIN_SCALE = 12;     // how lopsided a strong favorite's win looks, on average
   const SCORE_SPREAD = 9;      // extra random spread on the final margin (cosmetic only)
 
+  function clamp(value, lo, hi) { return Math.max(lo, Math.min(hi, value)); }
+
   // Per-player shooting efficiency proxy. The data has no shot attempts, so blend the
   // percentages into a true-shooting-ish number, roughly 0.45 (poor) to 0.62 (elite).
   function shootingScore(stats) {
     return 0.5 * stats.fg + 0.2 * stats.tp + 0.3 * stats.ft;
+  }
+
+  // Infer a believable per-game shooting line (FG, 3P, FT makes-attempts + true shooting %)
+  // from a player's POINTS that game and their season percentages. Points are the anchor and
+  // are preserved exactly (2*twos + 3*threes + FTM === pts) so the team box still sums to the
+  // final score. Attempts are back-solved from makes via the player's real FG/3P/FT%. `form`
+  // (this game's points relative to the player's average) nudges shooting efficiency, so a hot
+  // night also posts a better line - the hook Hot Hand (#6) will lean on.
+  function shootingLine(pts, stats, form = 1) {
+    if (pts <= 0) return { fgm: 0, fga: 0, tpm: 0, tpa: 0, ftm: 0, fta: 0, ts: 0 };
+    const fgPct = clamp(stats.fg || 0.45, 0.30, 0.68);
+    const tpPct = clamp(stats.tp || 0, 0, 0.48);
+    const ftPct = clamp(stats.ft || 0.72, 0.50, 0.95);
+
+    // Free throws make up ~12-22% of the points (1 point each, so FTM == FT points).
+    let ftm = Math.round(pts * (0.12 + Math.random() * 0.10));
+    let fieldPts = pts - ftm;
+    if (fieldPts < 0) { ftm = pts; fieldPts = 0; }
+
+    // Threes: propensity scales with the player's 3P%, jittered. Floor so threes never
+    // overshoot the field points.
+    const threeShare = Math.min(0.62, tpPct * 1.5) * (0.6 + Math.random() * 0.8);
+    let tpm = Math.floor((fieldPts * threeShare) / 3);
+
+    // Back out twos so the points reconcile exactly. Shift one point to a free throw if the
+    // remainder is odd (twos are worth 2), and never let twos go negative.
+    let twoPts = pts - 3 * tpm - ftm;
+    if (twoPts < 0) { tpm = Math.floor((pts - ftm) / 3); twoPts = pts - 3 * tpm - ftm; }
+    if (twoPts % 2 !== 0) { ftm += 1; twoPts -= 1; }
+    const twoMade = Math.max(0, twoPts / 2);
+
+    const fgm = twoMade + tpm;
+    // Convert form into an efficiency multiplier centered below 1, since box points run above
+    // season averages (five starters split the whole team total). This lands TS% in a real
+    // ~57% neighborhood while still rewarding hot nights with a better clip.
+    const eff = clamp(0.86 + (form - 1) * 0.16, 0.78, 1.10);
+    const fga = Math.max(fgm, Math.round(fgm / (fgPct * eff)));
+    const tpa = Math.max(tpm, tpPct > 0 ? Math.round(tpm / (tpPct * eff)) : tpm);
+    const fta = Math.max(ftm, Math.round(ftm / ftPct));
+    const den = 2 * (fga + 0.44 * fta); // true-shooting attempts
+    const ts = den > 0 ? pts / den : 0;
+    return { fgm, fga, tpm, tpa, ftm, fta, ts };
   }
 
   // A lineup's rating: the average overall (the quality anchor) plus bounded bonuses for
@@ -152,22 +202,35 @@ const Engine = (() => {
     return { yourPoints, oppPoints, youWon };
   }
 
+  // A player carrying a "hot hand" into this game draws a larger share of the scoring
+  // and shoots a touch better. Bounded so it tilts the box score (who erupts) without
+  // ever changing the result - team points are already decided by simulateGame.
+  const HOT_WEIGHT_BOOST = 1.3;
+  const HOT_FORM_BOOST = 1.1;
+
   // Simulate a per-player box score for one team in one game. Points are shares of
   // the team's total (so the sheet adds up to the final score), weighted by each
   // player's scoring average times a random "hot/cold" factor - that factor is why
   // the leading scorer changes from game to game and a role player can erupt.
   // Rebounds and assists are each player's average nudged by their own variance.
-  function simulateBoxScore(players, teamPoints) {
+  // `hotName` (a player carrying a hot hand from the previous game) gets a bounded
+  // scoring-weight boost and is flagged so the UI can mark them.
+  function simulateBoxScore(players, teamPoints, hotName = null) {
     const list = players.filter(Boolean);
     if (!list.length) return [];
 
     const vary = (avg, lo, hi) => Math.max(0, Math.round(avg * (lo + Math.random() * (hi - lo))));
 
-    const weights = list.map((p) => Math.max(0.15, p.stats.ppg) * (0.5 + Math.random() * 1.0));
+    const weights = list.map((p) => {
+      const base = Math.max(0.15, p.stats.ppg) * (0.5 + Math.random() * 1.0);
+      return p.name === hotName ? base * HOT_WEIGHT_BOOST : base;
+    });
     const totalW = weights.reduce((sum, w) => sum + w, 0) || 1;
 
     const lines = list.map((p, i) => ({
       name: p.name,
+      stats: p.stats, // kept to derive the shooting line once points are final, then dropped
+      hot: p.name === hotName, // riding a hot hand into this game
       pts: Math.round(teamPoints * (weights[i] / totalW)),
       reb: vary(p.stats.rpg, 0.6, 1.4),
       ast: vary(p.stats.apg, 0.6, 1.4),
@@ -180,6 +243,16 @@ const Engine = (() => {
       const step = diff > 0 ? 1 : -1;
       if (lines[i].pts + step >= 0) { lines[i].pts += step; diff -= step; }
     }
+
+    // Now that each line's points are final, derive its shooting splits. form compares this
+    // game's points to the player's scoring average, so over-average nights shoot better.
+    // form is kept on the line so the UI can decide who carries a hot hand into the next game.
+    lines.forEach((l) => {
+      const form = l.stats.ppg > 0 ? l.pts / l.stats.ppg : 1;
+      l.form = form;
+      Object.assign(l, shootingLine(l.pts, l.stats, l.hot ? form * HOT_FORM_BOOST : form));
+      delete l.stats;
+    });
     return lines.sort((a, b) => b.pts - a.pts);
   }
 
@@ -212,7 +285,8 @@ const Engine = (() => {
   }
 
   return {
-    spinTeam, teamOverall, isEligible, autoFillLineup,
+    spinTeam, teamOverall, isEligible, setPositionless, autoFillLineup,
     lineupScore, simulateGame, simulateSeries, simulateBoxScore, simulateSeasonRecord,
+    shootingLine, shootingScore,
   };
 })();

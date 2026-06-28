@@ -97,6 +97,24 @@ body.light .era-card:hover {
   justify-content: center;
   padding-top: 0;
 }
+/* Faint hardwood-court texture behind the playoff screen: subtle horizontal "plank" lines that
+   tile down the whole screen, plus a soft warm glow from the top. Drawn as background gradients
+   (not a pseudo-element) so content sits cleanly on top and nothing intercepts clicks. A tiling
+   pattern (not a single positioned shape) so it never drifts as the screen grows taller. Kept
+   very low-contrast - ambient texture, not a diagram. */
+.screen[data-screen="tournament"] {
+  background-image:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-gold) 4%, transparent) 0 1px, transparent 1px 2.6rem),
+    radial-gradient(130% 55% at 50% -12%, color-mix(in srgb, var(--color-gold) 6%, transparent), transparent 55%);
+  background-repeat: repeat, no-repeat;
+}
+
+/* The Records screen is a content page, not a hero: stretch its children to full width so
+   the grids lay out in columns instead of collapsing to a centered single stack. */
+.screen[data-screen="stats"] {
+  align-items: stretch;
+  text-align: left;
+}
 
 @keyframes screen-in {
   from { opacity: 0; transform: translateY(8px); }
@@ -238,6 +256,17 @@ body.light .era-card:hover {
   margin-top: 0.35rem;
 }
 
+/* ---- Confetti (championship celebration) ---- */
+.confetti-layer { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 55; }
+.confetti-piece {
+  position: absolute; top: -16px; width: 8px; height: 14px; border-radius: 2px; opacity: 0.95;
+  animation-name: confetti-fall; animation-timing-function: ease-in; animation-fill-mode: forwards;
+}
+@keyframes confetti-fall {
+  0% { transform: translateY(-16px) translateX(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(104vh) translateX(var(--drift, 0)) rotate(var(--rot, 360deg)); opacity: 0.9; }
+}
+
 /* ---- Spin ---- */
 .spin-stage {
   width: 100%;
@@ -280,8 +309,12 @@ body.light .era-card:hover {
   animation: reel-pop 320ms var(--ease);
 }
 .spin-reel .reel-year { display: block; font-size: 0.85em; color: var(--color-muted); }
+/* Each tick slides the new name up into place, reinforcing the rolling-reel illusion.
+   Defined after .is-spinning so it wins on source order while the reel is mid-spin. */
+.spin-reel.reel-roll { animation: reel-roll 110ms var(--ease); }
 @keyframes reel-pulse { 50% { transform: translateY(-2px); } }
 @keyframes reel-pop { 0% { transform: scale(0.85); } 60% { transform: scale(1.06); } 100% { transform: scale(1); } }
+@keyframes reel-roll { 0% { transform: translateY(-55%); opacity: 0.25; } 100% { transform: translateY(0); opacity: 0.85; } }
 
 /* ---- Draft layout: spin reel + picks on the left, half-court on the right ---- */
 .draft-layout {
@@ -435,6 +468,16 @@ body.light .era-card:hover {
   color: var(--color-gold);
 }
 
+/* Active-mutator note above the draft progress line. */
+.draft-mutator {
+  margin: 0.35rem auto 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+}
+
 /* Slot positions mirror a real half-court diagram (basket at top):
    PF + C flank the paint up high, SF on the left wing, SG on the right wing,
    PG out front at the top of the key. */
@@ -536,6 +579,8 @@ body.light .era-card:hover {
   line-height: 1.45;
 }
 .build-note strong { color: var(--color-gold); }
+/* Gold on the pale light-mode background is too faint; use a darker amber for contrast. */
+body.light .build-note strong { color: #a16207; }
 
 .matchup {
   display: grid;
@@ -546,9 +591,11 @@ body.light .era-card:hover {
 }
 .matchup-side {
   min-width: 0;
-  background: var(--color-surface);
+  /* Faint wash of the team's color from the top, plus a matching top border - a generic,
+     license-safe accent (--side is set inline per team; falls back to neutral). */
+  background: linear-gradient(180deg, color-mix(in srgb, var(--side, transparent) 12%, var(--color-surface)), var(--color-surface) 70%);
   border: 1px solid var(--color-surface-2);
-  border-top: 3px solid var(--color-surface-2); /* color set inline per team */
+  border-top: 3px solid var(--side, var(--color-surface-2));
   border-radius: var(--radius);
   padding: 0.85rem;
   text-align: center;
@@ -564,6 +611,32 @@ body.light .era-card:hover {
   color: var(--color-muted);
 }
 .opp-year { color: var(--color-muted); font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+
+/* Descriptive analytics card on the tournament screen: your five's aggregates + the round's
+   matchup edge. Ratings mode only (hidden in Blind). */
+.analytics {
+  width: 100%; max-width: 40rem; margin: 0.75rem auto 0;
+  background: var(--color-surface); border: 1px solid var(--color-surface-2);
+  border-radius: var(--radius); padding: 0.85rem 1rem;
+}
+.an-head { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+.an-title {
+  font-family: "Oswald", sans-serif; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; font-size: 0.75rem; color: var(--color-gold);
+}
+.an-edge {
+  font-family: "Oswald", sans-serif; font-weight: 700; font-size: 0.78rem;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: 999px;
+  padding: 0.15rem 0.6rem; white-space: nowrap;
+}
+.an-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); gap: 0.5rem; }
+.an-metric { text-align: center; }
+.an-val { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 1.25rem; line-height: 1; color: var(--color-text); }
+.an-key { margin-top: 0.25rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted); }
+/* Strength bar under each metric: a quick visual read of where the value sits in its range. */
+.an-bar { margin-top: 0.3rem; height: 4px; border-radius: 999px; background: var(--color-surface-2); overflow: hidden; }
+.an-bar span { display: block; height: 100%; border-radius: inherit; background: var(--color-gold);
+  transition: width var(--duration) var(--ease); }
 
 /* Matchup record + rating line under each team name. Numbers read cleaner in the
    non-condensed body face with tabular figures than in bold condensed. */
@@ -646,6 +719,33 @@ body.light .era-card:hover {
 .game-row.win { border-color: var(--color-gold); }
 .game-row.loss { border-color: #9aa6b2; }
 
+/* Series momentum banner: a short, color-coded phrase under the series score that calls
+   out the stakes (lead, series point, facing elimination). fit-content + auto margins
+   center the pill; min-height reserves its row so the scoreboard never jumps as it changes. */
+.series-momentum {
+  width: fit-content;
+  margin: 0.5rem auto 0;
+  min-height: 1.7rem;
+  padding: 0.22rem 0.75rem;
+  border-radius: 999px;
+  font-family: "Oswald", system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  transition: color var(--duration) var(--ease), background var(--duration) var(--ease);
+}
+.series-momentum[hidden] { display: none; }
+.series-momentum.mood-neutral { color: var(--color-muted); background: transparent; }
+.series-momentum.mood-good { color: var(--color-gold); background: rgba(251, 191, 36, 0.12); }
+.series-momentum.mood-bad { color: var(--color-orange); background: rgba(232, 116, 59, 0.13); }
+.series-momentum.mood-critical {
+  color: #ff6a5d;
+  background: rgba(239, 68, 68, 0.15);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
 /* Live game scoreboard with the count-up score. */
 .scoreboard { text-align: center; margin-top: 1rem; min-height: 4.5rem; }
 .sb-label {
@@ -710,7 +810,7 @@ body.light .era-card:hover {
   gap: 0.6rem;
   margin: 1rem auto 0;
   width: 100%;
-  max-width: 40rem;
+  max-width: 52rem; /* room for the two box tables side by side on wide screens */
   animation: screen-in 240ms var(--ease);
 }
 .statsheet:empty { display: none; }
@@ -752,6 +852,54 @@ body.light .era-card:hover {
 .ss-table tbody tr.ss-top { background: color-mix(in srgb, var(--color-gold) 16%, transparent); }
 .ss-table tbody tr.ss-top td { font-weight: 700; color: var(--color-text); }
 .ss-table tbody td { font-variant-numeric: tabular-nums; }
+/* Expanded box score adds FG/3P/FT/TS columns. Scope the tighter padding + wider cap to the
+   in-game statsheet so the Records and run-summary tables keep their roomier layout. */
+/* Two in-game tables: stacked on phones, side by side on wide screens. Orientation is chosen
+   by VIEWPORT width (the media query below), never by content width, and the row never wraps -
+   so the count-up can't flip the layout from horizontal to vertical mid-animation. Each table
+   is pinned to a stable width so its footprint doesn't jump as the stats fill in. */
+.statsheet .ss-tables { flex-direction: column; flex-wrap: nowrap; align-items: center; }
+.statsheet .ss-table { width: min(24rem, 100%); max-width: 24rem; }
+.statsheet .ss-table th, .statsheet .ss-table td { padding: 0.28rem 0.3rem; }
+@media (min-width: 54rem) {
+  .statsheet .ss-tables { flex-direction: row; align-items: flex-start; justify-content: center; }
+}
+/* Pin the in-game columns so the NUMERIC cells never wrap to a second line (the bug) and the
+   widths stay put as the stats count up. table-layout:fixed makes the browser honor the widths
+   below instead of sizing to content. Scoped to .statsheet so the roomier Records/result tables
+   are untouched. Widths sum to 100%: name 33, PTS/REB/AST 7 each, FG/3P/FT 12 each, TS 10. */
+.statsheet .ss-table { table-layout: fixed; }
+.statsheet .ss-table th, .statsheet .ss-table td { white-space: nowrap; overflow: hidden; }
+.statsheet .ss-table th:nth-child(1), .statsheet .ss-table td:nth-child(1) { width: 33%; }
+.statsheet .ss-table th:nth-child(2), .statsheet .ss-table td:nth-child(2),
+.statsheet .ss-table th:nth-child(3), .statsheet .ss-table td:nth-child(3),
+.statsheet .ss-table th:nth-child(4), .statsheet .ss-table td:nth-child(4) { width: 7%; }
+.statsheet .ss-table th:nth-child(5), .statsheet .ss-table td:nth-child(5),
+.statsheet .ss-table th:nth-child(6), .statsheet .ss-table td:nth-child(6),
+.statsheet .ss-table th:nth-child(7), .statsheet .ss-table td:nth-child(7) { width: 12%; }
+.statsheet .ss-table th:nth-child(8), .statsheet .ss-table td:nth-child(8) { width: 10%; }
+/* The team-name header is allowed to wrap to two lines so a long name (e.g. Golden State
+   Warriors) stays fully visible - only the numeric STAT cells must stay single-line. */
+.statsheet .ss-table th.ss-team { white-space: normal; font-size: 0.82rem; letter-spacing: 0.01em; line-height: 1.05; }
+/* Name cell: the base rule makes this a flex box, but a flex <td> inside a fixed-layout table
+   doesn't receive the column's fixed width, so the flexible name collapsed to nothing (only the
+   avatar showed). Restore it to a real table-cell (which honors the 33% width) and lay the
+   avatar + name + flame out inline; the name then ellipsis-truncates within the cell. The
+   higher-specificity selector is needed to beat the base `.ss-table td.ss-name` flex rule. */
+.statsheet .ss-table td.ss-name { display: table-cell; white-space: nowrap; }
+.statsheet .ss-av { vertical-align: middle; margin-right: 0.4rem; }
+.statsheet .ss-pname { display: inline-block; max-width: calc(100% - 2.4rem); min-width: 0; vertical-align: middle; }
+.statsheet .ss-hot { vertical-align: middle; }
+.ss-pname { display: inline-block; max-width: 7rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: middle; }
+.ss-fg, .ss-tp, .ss-ft { color: var(--color-muted); font-size: 0.75rem; }
+.ss-ts { font-weight: 700; }
+.ss-table tbody tr.ss-top .ss-fg,
+.ss-table tbody tr.ss-top .ss-tp,
+.ss-table tbody tr.ss-top .ss-ft { color: var(--color-text); }
+/* Hot hand: a flame after the name plus a warm name tint. Coexists with .ss-top (a player
+   can be both the standout and hot) since it only recolors the name, not the row. */
+.ss-hot { font-size: 0.8rem; line-height: 1; flex: none; }
+.ss-table tbody tr.ss-hothand .ss-pname { color: #fb923c; font-weight: 700; }
 .ss-av {
   flex: none;
   width: 1.4rem;
@@ -820,35 +968,36 @@ body.light .era-card:hover {
   margin-top: 0.15rem;
 }
 
+/* Post-run recap: headline tiles, a series-by-series list, and badges unlocked this run. */
+.run-summary { width: 100%; max-width: 540px; margin: 1.75rem auto 0; text-align: left; }
+.summary-head {
+  font-family: "Oswald", sans-serif; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.12em; font-size: 0.8rem; color: var(--color-gold);
+  margin-bottom: 0.6rem; text-align: center;
+}
+.series-list { list-style: none; margin: 0.85rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.series-row {
+  display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 0.5rem 0.75rem;
+  background: var(--color-surface); border: 1px solid var(--color-surface-2);
+  border-left: 3px solid var(--color-surface-2); border-radius: 8px; padding: 0.4rem 0.7rem;
+}
+.series-row.won { border-left-color: var(--color-gold); }
+.series-row .sr-rd { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted); }
+.series-row .sr-opp { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.series-row .sr-score { font-family: "Oswald", system-ui, sans-serif; font-weight: 700; }
+.series-row .sr-margin { font-family: "Oswald", system-ui, sans-serif; font-weight: 700; color: var(--color-muted); min-width: 2.5rem; text-align: right; }
+.run-badges { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-top: 0.9rem; }
+.run-badges-label {
+  width: 100%; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted);
+}
+.run-badge {
+  font-size: 0.78rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 999px;
+  color: var(--color-gold); background: linear-gradient(180deg, rgba(251,191,36,0.12), transparent);
+  border: 1px solid rgba(251,191,36,0.35);
+}
+
 /* Recent attempts preview on the main menu (from local history). */
-.history {
-  width: 100%;
-  max-width: 30rem;
-  margin: 2.5rem auto 0;
-  text-align: left;
-}
-.history-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: "Oswald", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.8rem;
-  color: var(--color-muted);
-  margin-bottom: 0.5rem;
-}
-.history-clear {
-  background: none;
-  border: none;
-  color: var(--color-muted);
-  font: inherit;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-}
-.history-clear:hover { color: var(--color-gold); }
+/* Run rows: shared by the Records > Runs tab. */
 .history-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
 .history-row {
   display: grid;
@@ -956,7 +1105,14 @@ body.light .era-card:hover {
 .pick-head { display: flex; align-items: baseline; gap: 0.5rem; }
 .pick-name { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 0.98rem; line-height: 1.1; }
 .pick-pos { color: var(--color-muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
-.pick-ovr { margin-left: auto; font-family: "Oswald", sans-serif; font-weight: 800; color: var(--color-gold); }
+.pick-right { margin-left: auto; display: flex; align-items: baseline; gap: 0.45rem; }
+.pick-ovr { font-family: "Oswald", sans-serif; font-weight: 800; color: var(--color-gold); }
+.pick-cost {
+  font-family: "Oswald", sans-serif; font-weight: 800; font-size: 0.82rem;
+  color: var(--color-text); background: rgba(154, 166, 178, 0.16);
+  padding: 0.02rem 0.45rem; border-radius: 999px;
+}
+.pick-cost::before { content: "\24"; opacity: 0.55; margin-right: 0.05rem; }
 .pick-stats { color: var(--color-muted); font-size: 0.72rem; margin-top: 0.05rem; line-height: 1.2; }
 
 /* Ratings-mode filters: search, position chips, and sort. */
@@ -1142,3 +1298,141 @@ body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after 
   animation-duration: 0.01ms !important;
   transition-duration: 0.01ms !important;
 }
+
+/* ---- Records screen ---- */
+.stats-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+.stats-tab {
+  font-family: "Oswald", system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(154, 166, 178, 0.35);
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease), background var(--duration) var(--ease);
+}
+.stats-tab:hover { color: var(--color-text); }
+.stats-tab.active { color: #000; background: var(--color-gold); border-color: var(--color-gold); }
+/* Menu difficulty selector: a small labeled row of pill buttons (reuses the stats-tab look). */
+.difficulty-select { display: flex; flex-direction: column; gap: 0.5rem; max-width: 32rem; }
+.diff-label {
+  font-family: "Oswald", system-ui, sans-serif; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; font-size: 0.72rem; color: var(--color-muted);
+}
+.diff-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.diff-btn {
+  font-family: "Oswald", system-ui, sans-serif; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; font-size: 0.78rem; padding: 0.35rem 0.85rem; border-radius: 999px;
+  border: 1px solid rgba(154, 166, 178, 0.35); background: transparent; color: var(--color-muted);
+  cursor: pointer; transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease), background var(--duration) var(--ease);
+}
+.diff-btn:hover { color: var(--color-text); }
+.diff-btn.active { color: #000; background: var(--color-gold); border-color: var(--color-gold); }
+.diff-note { font-size: 0.72rem; margin: 0; }
+
+.stats-body { margin-top: 1.25rem; }
+.stats-body .ss-tables { overflow-x: auto; }
+.stats-note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--color-muted); }
+.stats-empty { margin-top: 2rem; text-align: center; color: var(--color-muted); }
+
+/* Player highlights (Records > Players): a few accent-coloured leader rows, not a long table. */
+.ph-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; max-width: 34rem; }
+.ph-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  background: var(--color-surface); border: 1px solid var(--color-surface-2);
+  border-left: 4px solid var(--accent); border-radius: 10px; padding: 0.7rem 1rem;
+}
+.ph-info { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.ph-cat {
+  font-family: "Oswald", sans-serif; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; font-size: 0.7rem; color: var(--accent);
+}
+.ph-name { font-weight: 600; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ph-val {
+  font-family: "Oswald", sans-serif; font-weight: 800; font-size: 1.5rem; line-height: 1;
+  color: var(--accent); white-space: nowrap; flex: none;
+}
+.ph-val small { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em; color: var(--color-muted); }
+
+.stat-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; }
+.stat-tile {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 1.1rem 0.75rem;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  border: 1px solid rgba(154, 166, 178, 0.12);
+}
+.stat-val { font-family: "Oswald", system-ui, sans-serif; font-weight: 700; font-size: 1.9rem; line-height: 1; color: var(--color-gold); }
+.stat-key { margin-top: 0.4rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted); text-align: center; }
+
+/* Overview charts: a win-rate donut and an outcome bar panel above the tile grid. */
+.overview-charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+.chart-card {
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; background: var(--color-surface); border-radius: var(--radius);
+  border: 1px solid rgba(154, 166, 178, 0.12);
+}
+.bars-card { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+.donut { width: 150px; height: 150px; }
+.donut-track { fill: none; stroke: rgba(154, 166, 178, 0.2); stroke-width: 9; }
+.donut-fill { fill: none; stroke: var(--color-gold); stroke-width: 9; stroke-linecap: round; transition: stroke-dasharray var(--duration) var(--ease); }
+.donut-val { fill: var(--color-text); font-family: "Oswald", system-ui, sans-serif; font-weight: 700; font-size: 18px; text-anchor: middle; }
+.donut-lbl { fill: var(--color-muted); font-size: 7.5px; text-transform: uppercase; letter-spacing: 0.12em; text-anchor: middle; }
+.bar-row { display: grid; grid-template-columns: 64px 1fr 28px; align-items: center; gap: 0.5rem; }
+.bar-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted); }
+.bar-track { height: 9px; border-radius: 999px; background: rgba(154, 166, 178, 0.15); overflow: hidden; }
+.bar-fill { display: block; height: 100%; border-radius: 999px; transition: width var(--duration) var(--ease); }
+.bar-val { font-family: "Oswald", system-ui, sans-serif; font-weight: 700; font-size: 0.85rem; text-align: right; }
+
+.stats-clear {
+  display: block; margin: 1.5rem auto 0;
+  padding: 0.4rem 0.9rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--color-muted); background: transparent;
+  border: 1px solid rgba(154, 166, 178, 0.3); border-radius: 999px; cursor: pointer;
+  transition: color var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+.stats-clear:hover { color: var(--color-orange); border-color: var(--color-orange); }
+
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; }
+.ach-card {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border-left: 3px solid transparent;
+}
+.ach-card.unlocked { border-left-color: var(--color-gold); }
+.ach-card.locked { opacity: 0.55; }
+.ach-name { font-family: "Oswald", system-ui, sans-serif; font-weight: 700; font-size: 1rem; }
+.ach-card.unlocked .ach-name { color: var(--color-gold); }
+.ach-desc { font-size: 0.82rem; color: var(--color-muted); }
+.ach-state { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); }
+.ach-card.unlocked .ach-state { color: var(--color-gold); }
+
+/* ---- Achievement toasts ---- */
+.toast-stack {
+  position: fixed; right: 1rem; bottom: 1rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  z-index: 60; pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  display: flex; flex-direction: column; gap: 0.15rem;
+  min-width: 220px; max-width: 300px;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border-left: 4px solid var(--color-gold);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transform: translateX(120%); opacity: 0;
+  transition: transform 280ms var(--ease), opacity 280ms var(--ease);
+  cursor: pointer;
+}
+.toast.show { transform: translateX(0); opacity: 1; }
+.toast-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-gold); font-weight: 700; }
+.toast-name { font-family: "Oswald", system-ui, sans-serif; font-weight: 700; font-size: 1.05rem; }
+.toast-desc { font-size: 0.8rem; color: var(--color-muted); }

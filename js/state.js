@@ -18,6 +18,7 @@ const GameState = (() => {
       oppWins: 0,        // losses in the current series
       games: [],         // game scores for the current series (reset each round)
       allGames: [],      // every game across the whole run (for the gauntlet MVP)
+      seriesLog: [],     // one summary per finished series (for sweep/Game 7/comeback awards)
       totalWins: 0,      // games won across the whole run
       totalLosses: 0,    // games lost across the whole run
       status: "playing", // "playing" | "won" | "eliminated"
@@ -28,6 +29,8 @@ const GameState = (() => {
     screen: "menu",
     mode: null,          // "ratings" | "blind" (how much info is shown)
     gameMode: null,      // "classic" (16-0) | "gauntlet" (10-0)
+    mutator: null,       // null | "positionless" | "eralock" | "salarycap" | "underdogs" | "ironfive"
+    lockedEra: null,     // Era Lock: the era id fixed by the first pick (spins filter to it)
     five: {},            // slot -> drafted player (the player's starting five)
     spunTeam: null,      // team shown by the latest draft spin
     respins: MAX_RESPINS, // re-rolls remaining this draft
@@ -48,7 +51,7 @@ const GameState = (() => {
 
   function reset() {
     set({
-      screen: "menu", mode: null, gameMode: null,
+      screen: "menu", mode: null, gameMode: null, mutator: null, lockedEra: null,
       five: {}, spunTeam: null, respins: MAX_RESPINS,
       teamRating: 0, teamRecord: null, _teamSig: "",
       tournament: freshTournament(),
